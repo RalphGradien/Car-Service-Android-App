@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewRegTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -25,8 +25,8 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="66dp"
         android:text="Button Gilbert"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
 
     <Button
         android:id="@+id/button2"
@@ -35,7 +35,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="148dp"
         android:text="Button Gilbert"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
