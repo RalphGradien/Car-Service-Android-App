@@ -30,10 +30,10 @@
         android:id="@+id/imageView2"
         android:layout_width="229dp"
         android:layout_height="253dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -41,9 +41,23 @@
         android:id="@+id/btnArifin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="56dp"
         android:text="Button Arifin"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.014" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Just created"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
