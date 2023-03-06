@@ -6,17 +6,161 @@
     android:layout_height="match_parent"
     tools:context=".Customer_Registration">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="232dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRegTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/garkdraftlogo" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_Name"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAddress"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_Address"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCity"
+        app:layout_constraintEnd_toEndOf="@+id/textViewName"
+        app:layout_constraintStart_toStartOf="@+id/textViewName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textViewCity"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_City"
+        app:layout_constraintBottom_toTopOf="@+id/textViewContact"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAddress"
+        app:layout_constraintStart_toStartOf="@+id/textViewAddress"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+
+    <TextView
+        android:id="@+id/textViewContact"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_Contact"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCity"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewCity"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_username"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPWord"
+        app:layout_constraintEnd_toEndOf="@+id/textViewRegTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_Email"
+        app:layout_constraintBottom_toTopOf="@+id/textViewName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewCPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCPassword" />
+
     <TextView
         android:id="@+id/textViewRegTitle"
-        android:layout_width="198dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="247dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="481dp"
         android:text="Customer Registration"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textViewPWord"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_password"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCPassword"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUserName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
+
+    <TextView
+        android:id="@+id/textViewCPassword"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_confirmPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPWord"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewPWord"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPWord" />
+
+    <Button
+        android:id="@+id/buttonCRegister"
+        android:layout_width="150dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/buttonCRegister"
+        app:layout_constraintEnd_toEndOf="@+id/textViewContact"
+        app:layout_constraintStart_toStartOf="@+id/textViewContact"
+        app:layout_constraintTop_toBottomOf="@+id/textViewContact"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textViewHaveAccount"
+        android:layout_width="121dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtHaveAccount"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLogHere"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
+        android:id="@+id/textViewLogHere"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="128dp"
+        android:text="@string/txtLogHere"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister"
+        app:layout_constraintVertical_bias="0.037" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
