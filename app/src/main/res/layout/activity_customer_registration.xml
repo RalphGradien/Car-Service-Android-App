@@ -47,12 +47,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button- Gilbert 10:15pm"
-        app:layout_constraintEnd_toEndOf="@+id/btnArifin"
-        app:layout_constraintStart_toStartOf="@+id/btnArifin"
-        tools:layout_editor_absoluteY="330dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
