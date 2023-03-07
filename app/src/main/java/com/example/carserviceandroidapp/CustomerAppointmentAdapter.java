@@ -1,6 +1,7 @@
 package com.example.carserviceandroidapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -33,6 +34,12 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
           holder.bookedServiceProviderAddressView.setText(customerApointmentItemsList.get(position).getBookedServiceProviderAddress());
           holder.serviceAvailedView.setText(customerApointmentItemsList.get(position).getServiceAvailed());
           holder.bookingStatusView.setText(customerApointmentItemsList.get(position).getBookingStatus());
+          if(customerApointmentItemsList.get(position).getBookingStatus().equals("Ongoing")){
+              holder.bookingStatusView.setTextColor(Color.YELLOW);
+          }
+          else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Completed")){
+              holder.bookingStatusView.setTextColor(Color.RED);
+          }
     }
 
     @Override
