@@ -19,9 +19,9 @@ public class Customer_AppointmentsView extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewCustViewAppointments);
         List<CustomerApointmentItems> customerApointmentItemsList = new ArrayList<CustomerApointmentItems>();
         customerApointmentItemsList.add(new CustomerApointmentItems(12345,"2022-10-12","09:40PM", "","CarServiceProvider1","New Westminster","Brake Check", "Completed"));
-//        customerApointmentItemsList.add(new CustomerApointmentItems(12346,"2022-11-8","07:30AM",
-//                "","CarServiceProvider2","Abbotsford","Steering Wheel Check",
-//                "Ongoing"));
+        customerApointmentItemsList.add(new CustomerApointmentItems(12346,"2022-11-8","07:30AM",
+                "","CarServiceProvider2","Abbotsford","Steering Wheel Check",
+                "Ongoing"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new CustomerAppointmentAdapter(getApplicationContext(),customerApointmentItemsList));

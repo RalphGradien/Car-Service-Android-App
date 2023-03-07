@@ -68,18 +68,19 @@
 
     <TextView
         android:id="@+id/serviceAvailed"
-        android:layout_width="130dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookedServiceProviderName"
         android:text="Brake Fluid Check"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/bookingStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookedServiceProviderName"
-        android:layout_toEndOf="@+id/spacer"
+        android:layout_toEndOf="@+id/serviceAvailed"
         android:text="Ongoing"
         android:textColor="@android:color/holo_orange_light" />
 
