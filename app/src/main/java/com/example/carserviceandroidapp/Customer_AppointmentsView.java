@@ -23,6 +23,10 @@ public class Customer_AppointmentsView extends AppCompatActivity {
                 "","CarServiceProvider2","Abbotsford","Steering Wheel Check",
                 "Ongoing"));
 
+        customerApointmentItemsList.add(new CustomerApointmentItems(12347,"2022-10-8","10:30AM",
+                "","CarServiceProvider3","Burnaby","Oil Refill",
+                "Ready for Pickup"));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new CustomerAppointmentAdapter(getApplicationContext(),customerApointmentItemsList));
     }

@@ -7,6 +7,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +43,8 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
               GradientDrawable drawable = new GradientDrawable();
               drawable.setShape(GradientDrawable.RECTANGLE);
               drawable.setCornerRadius(20);
-              drawable.setColor(Color.YELLOW);
+              int chosenColor = Color.rgb(247,201,16);
+              drawable.setColor(chosenColor);
               holder.bookingStatusView.setBackgroundDrawable(drawable);
           }
           else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Completed")){
@@ -51,6 +54,17 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
               drawable.setCornerRadius(20);
               drawable.setColor(Color.RED);
               holder.bookingStatusView.setBackgroundDrawable(drawable);
+          }
+
+          else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Ready for Pickup")){
+              holder.bookingStatusView.setTextColor(Color.WHITE);
+              GradientDrawable drawable = new GradientDrawable();
+              drawable.setShape(GradientDrawable.RECTANGLE);
+              drawable.setCornerRadius(20);
+              int chosenColor = Color.rgb(101,207,114);
+              drawable.setColor(chosenColor);
+              holder.bookingStatusView.setBackgroundDrawable(drawable);
+
           }
     }
 

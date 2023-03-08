@@ -9,28 +9,28 @@
         android:id="@+id/appointmentIDLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Appointment ID: "
-        android:textColor="@color/design_default_color_primary_dark"
-        android:textStyle="bold"
         android:layout_marginLeft="5dp"
-        />
+        android:text="Appointment ID: "
+        android:textColor="#2E3192"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/appointmentIDInt"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="1dp"
         android:layout_toEndOf="@+id/appointmentIDLabel"
         android:text="12345"
-        android:textColor="@color/design_default_color_primary_dark" />
+        android:textColor="#2E3192" />
 
     <TextView
         android:id="@+id/customAppointmentDate"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-2dp"
         android:layout_toEndOf="@+id/appointmentIDInt"
         android:text="2022-04-14"
-        android:textColor="@color/design_default_color_secondary" />
+        android:textColor="#65CF72" />
 
     <TextView
         android:id="@+id/customAppointmentTime"
@@ -38,24 +38,25 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/customAppointmentDate"
         android:text="09:30AM"
-        android:textColor="@color/design_default_color_secondary" />
+        android:textColor="#65CF72" />
 
     <TextView
         android:id="@+id/bookedServiceProviderName"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appointmentIDLabel"
+        android:layout_marginLeft="5dp"
         android:text="Canadian Tire"
-        android:textColor="@color/material_dynamic_neutral70"
-        android:layout_marginLeft="5dp"/>
+        android:textColor="#707477" />
+
     <TextView
         android:id="@+id/bookedServiceProviderAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/bookedServiceProviderName"
         android:layout_below="@+id/appointmentIDLabel"
+        android:layout_toEndOf="@+id/bookedServiceProviderName"
         android:text="Guildford, Surrey, B.C."
-        android:textColor="@color/material_dynamic_neutral70" />
+        android:textColor="#707477" />
 
     <TextView
         android:id="@+id/spacer"
@@ -68,16 +69,16 @@
 
     <TextView
         android:id="@+id/serviceAvailed"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookedServiceProviderName"
+        android:layout_marginLeft="5dp"
         android:text="Brake Fluid Check"
-        android:textColor="@android:color/darker_gray"
-        android:layout_marginLeft="5dp"/>
+        android:textColor="#707477" />
 
     <TextView
         android:id="@+id/bookingStatus"
-        android:layout_width="80dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookedServiceProviderName"
         android:layout_toEndOf="@+id/serviceAvailed"
