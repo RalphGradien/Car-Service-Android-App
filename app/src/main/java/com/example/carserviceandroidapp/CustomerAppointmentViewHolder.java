@@ -1,6 +1,8 @@
 package com.example.carserviceandroidapp;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,8 @@ public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
     TextView serviceAvailedView;
     TextView bookingStatusView;
 
+    RelativeLayout relativeLayout;
+
     public CustomerAppointmentViewHolder(@NonNull View itemView) {
         super(itemView);
         appointmentIDLabelView = itemView.findViewById(R.id.appointmentIDLabel);
@@ -28,5 +32,9 @@ public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
         spacerView = itemView.findViewById(R.id.spacer);
         serviceAvailedView = itemView.findViewById(R.id.serviceAvailed);
         bookingStatusView = itemView.findViewById(R.id.bookingStatus);
+
+        relativeLayout = itemView.findViewById(R.id.container_custappointment_item);
+
+
     }
 }
