@@ -77,11 +77,12 @@
 
     <TextView
         android:id="@+id/bookingStatus"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookedServiceProviderName"
         android:layout_toEndOf="@+id/serviceAvailed"
         android:text="Ongoing"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_orange_light" />
 
     <LinearLayout

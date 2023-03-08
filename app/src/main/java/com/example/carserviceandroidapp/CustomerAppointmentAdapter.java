@@ -2,6 +2,8 @@ package com.example.carserviceandroidapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -35,10 +37,20 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
           holder.serviceAvailedView.setText(customerApointmentItemsList.get(position).getServiceAvailed());
           holder.bookingStatusView.setText(customerApointmentItemsList.get(position).getBookingStatus());
           if(customerApointmentItemsList.get(position).getBookingStatus().equals("Ongoing")){
-              holder.bookingStatusView.setTextColor(Color.YELLOW);
+              holder.bookingStatusView.setTextColor(Color.WHITE);
+              GradientDrawable drawable = new GradientDrawable();
+              drawable.setShape(GradientDrawable.RECTANGLE);
+              drawable.setCornerRadius(20);
+              drawable.setColor(Color.YELLOW);
+              holder.bookingStatusView.setBackgroundDrawable(drawable);
           }
           else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Completed")){
-              holder.bookingStatusView.setTextColor(Color.RED);
+              holder.bookingStatusView.setTextColor(Color.WHITE);
+              GradientDrawable drawable = new GradientDrawable();
+              drawable.setShape(GradientDrawable.RECTANGLE);
+              drawable.setCornerRadius(20);
+              drawable.setColor(Color.RED);
+              holder.bookingStatusView.setBackgroundDrawable(drawable);
           }
     }
 
