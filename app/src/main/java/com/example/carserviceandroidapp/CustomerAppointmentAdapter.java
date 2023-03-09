@@ -74,12 +74,9 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
           holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  selectInterface.onItemClick(customerApointmentItemsList.get(position));
+                  selectInterface.onItemClick(customerApointmentItemsList.get(holder.getAdapterPosition()));
               }
           });
-
-
-
 
     }
 
