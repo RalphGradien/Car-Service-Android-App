@@ -12,9 +12,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="269dp"
         android:text="Edit Appointments"
-        app:layout_constraintBottom_toTopOf="@+id/textViewServiceProviderName"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,5 +26,16 @@
         android:layout_marginBottom="588dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewEditAppHeader"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEditAppHeader" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="325dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEditAppHeader" />
 </androidx.constraintlayout.widget.ConstraintLayout>
