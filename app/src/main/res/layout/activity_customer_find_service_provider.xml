@@ -4,36 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CustomerFindServiceProviderLocation">
 
-    <Button
-        android:id="@+id/btnView"
+    <TextView
+        android:id="@+id/txtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="292dp"
-        android:text="View Data"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Location"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnInsertDummyData"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinLocation"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="172dp"
-        android:text="Insert Dummy data"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="96dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnFindServiceShop"
+        android:id="@+id/btnNextLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="56dp"
-        android:text="Find a Service Shop"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="284dp"
+        android:text="Next"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/spinLocation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
