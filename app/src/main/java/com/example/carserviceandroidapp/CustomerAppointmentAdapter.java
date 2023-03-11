@@ -1,12 +1,10 @@
 package com.example.carserviceandroidapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 
@@ -19,12 +17,10 @@ import java.util.List;
 public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerAppointmentViewHolder> {
     Context context;
     List<CustomerApointmentItems> customerApointmentItemsList;
-    private CustomerAppointmentsViewSelectInterface selectInterface;
 
-    public CustomerAppointmentAdapter(Context context, List<CustomerApointmentItems> customerApointmentItemsList, CustomerAppointmentsViewSelectInterface selectInterface ) {
+    public CustomerAppointmentAdapter(Context context, List<CustomerApointmentItems> customerApointmentItemsList) {
         this.context = context;
         this.customerApointmentItemsList = customerApointmentItemsList;
-        this.selectInterface = selectInterface;
     }
 
     @NonNull
@@ -70,14 +66,6 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
               holder.bookingStatusView.setBackgroundDrawable(drawable);
 
           }
-
-          holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  selectInterface.onItemClick(customerApointmentItemsList.get(holder.getAdapterPosition()));
-              }
-          });
-
     }
 
     @Override
