@@ -13,13 +13,6 @@
         android:theme="@style/Theme.CarServiceAndroidApp"
         tools:targetApi="31">
         <activity
-            android:name=".Customer_AppointmentsView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Customer_Registration"
             android:exported="false">
             <meta-data
