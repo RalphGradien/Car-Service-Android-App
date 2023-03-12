@@ -163,5 +163,13 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
         return cursor;
     }
+    public boolean checkLogin(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + "CUSTOMER" + " WHERE " + "email" + " = ? AND " + "password" + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{username, password});
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
 
 }
