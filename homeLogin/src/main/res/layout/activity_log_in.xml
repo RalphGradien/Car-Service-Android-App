@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_activity"
-    tools:context=".LogIn">
+    tools:context="com.example.carserviceandroidapp.LogIn">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="34dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/usernameLogin"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,7 @@
 
     <Button
 
-        android:id="@+id/loginBtn2"
+        android:id="@+id/sendLink"
         style="@style/MyButtonStyle3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -36,28 +36,28 @@
         app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
     <EditText
-        android:id="@+id/passwordLogin"
+        android:id="@+id/passwordTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:background="#E3BA12"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/loginPassword"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
-        app:layout_constraintStart_toStartOf="@+id/usernameLogin"
-        app:layout_constraintTop_toBottomOf="@+id/usernameLogin" />
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:id="@+id/usernameLogin"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="23dp"
         android:background="#E3BA12"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/loginEmail"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -72,20 +72,7 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/regService"
         app:layout_constraintStart_toStartOf="@+id/regService"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn2" />
-
-    <TextView
-        android:id="@+id/regService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:clickable="true"
-        android:text="@string/regService"
-        android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/regCustomer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/sendLink" />
 
     <TextView
         android:id="@+id/regCustomer"
@@ -108,18 +95,21 @@
         android:layout_marginBottom="32dp"
         android:text="@string/forgotPassword"
         android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn2"
-        app:layout_constraintEnd_toEndOf="@+id/passwordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
+        app:layout_constraintBottom_toTopOf="@+id/sendLink"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTxt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/regService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="32dp"
-        android:text="test again"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:text="@string/regService"
+        android:textColor="#2E3192"
+        app:layout_constraintBottom_toTopOf="@+id/regCustomer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
