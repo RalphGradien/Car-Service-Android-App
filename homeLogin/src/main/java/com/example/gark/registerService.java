@@ -9,6 +9,6 @@ public class registerService extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_service2);
+        setContentView(R.layout.activity_register_service);
     }
 }
