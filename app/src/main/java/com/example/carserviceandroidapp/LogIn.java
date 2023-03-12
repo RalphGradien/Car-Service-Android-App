@@ -59,7 +59,7 @@ public class LogIn extends AppCompatActivity {
         regCustomerTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogIn.this, registerCustomer.class);
+                Intent intent = new Intent(LogIn.this, Customer_Registration.class);
                 startActivity(intent);
             }
         });
