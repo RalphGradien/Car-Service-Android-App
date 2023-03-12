@@ -29,7 +29,7 @@ public class LogIn extends AppCompatActivity {
 
                 // checks if username or password is empty and creates toast
                 if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter both username and password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -41,7 +41,7 @@ public class LogIn extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     // login failed, show error message
-                    Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
