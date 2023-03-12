@@ -11,4 +11,12 @@
     <string name="buttonCRegister">Register</string>
     <string name="txtHaveAccount">Already have an account?</string>
     <string name="txtLogHere">Login here</string>
+    <string name="dropOffText">Drop-off Date</string>
+    <string name="pickupDate">Pickup Date</string>
+    <string name="pickupTime">Pickup Time</string>
+    <string name="locationLabel">Location</string>
+    <string name="serviceDetailsLabel">Service Details</string>
+    <string name="appointmentStatus">Appointment Status</string>
+    <string name="appointmentDetailsLabel" >Details of Appointment</string>
+    <string name="hintPickUpDate">Pickup Date</string>
 </resources>

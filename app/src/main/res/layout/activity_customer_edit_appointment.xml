@@ -8,34 +8,198 @@
 
     <TextView
         android:id="@+id/textViewEditAppHeader"
-        android:layout_width="279dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="76dp"
+        android:layout_width="253dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="269dp"
-        android:text="Edit Appointments"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="@string/appointmentDetailsLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewServiceProviderName"
-        android:layout_width="202dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="588dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewEditAppHeader"
+        android:id="@+id/textViewStatus"
+        android:layout_width="62dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEditAppHeader" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginBottom="325dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginBottom="52dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSPNameDisplay"
+        android:layout_width="291dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEditAppHeader" />
+        app:layout_constraintTop_toTopOf="@+id/textViewStatus" />
+
+    <TextView
+        android:id="@+id/textViewSPAddress"
+        android:layout_width="291dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewSPNameDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSPNameDisplay" />
+
+    <TextView
+        android:id="@+id/textViewSPCellDisplay"
+        android:layout_width="291dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSPAddress" />
+
+    <TextView
+        android:id="@+id/textViewPickupLabel"
+        android:layout_width="138dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/pickupDate"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplay" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="209dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/hintPickUpDate"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPickupLabel" />
+
+    <TextView
+        android:id="@+id/textViewPickupTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/pickupTime"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <EditText
+        android:id="@+id/editTextPickupTime"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/pickupTime"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPickupTime" />
+
+    <TextView
+        android:id="@+id/textViewLocationLabel"
+        android:layout_width="127dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/locationLabel"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPickupTime" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/pickupTime"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocationLabel" />
+
+    <TextView
+        android:id="@+id/textViewServiceDetails"
+        android:layout_width="127dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/serviceDetailsLabel"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
+
+    <EditText
+        android:id="@+id/editTextServiceDetails"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/serviceDetailsLabel"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewServiceDetails" />
+
+    <TextView
+        android:id="@+id/textViewAppointmentStatus"
+        android:layout_width="127dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/appointmentStatus"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextServiceDetails" />
+
+    <EditText
+        android:id="@+id/editTextAppointmentStatus"
+        android:layout_width="210dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/appointmentStatus"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAppointmentStatus" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
