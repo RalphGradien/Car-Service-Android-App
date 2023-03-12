@@ -37,6 +37,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         Intent intent = new Intent(Customer_AppointmentsView.this, Customer_EditAppointment.class);
         intent.putExtra("ServiceProviderName",customerApointmentItems.bookedServiceProviderName);
         intent.putExtra("SPAddress",customerApointmentItems.bookedServiceProviderAddress);
+        intent.putExtra("AppStatus",customerApointmentItems.bookingStatus);
         //place cell number here
         //place email address
         startActivity(intent);

@@ -17,11 +17,14 @@ public class Customer_EditAppointment extends AppCompatActivity {
         if(intent != null){
             String serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
+            String appointmentStatus = intent.getStringExtra("AppStatus");
             TextView textViewSPName = (TextView) findViewById(R.id.textViewSPNameDisplay);
             TextView textViewSPAddress = (TextView) findViewById(R.id.textViewSPAddress);
+            TextView textViewAppStatus = (TextView) findViewById(R.id.textViewStatus);
 
             textViewSPName.setText(serviceProviderName);
             textViewSPAddress.setText(serviceProviderAddress);
+            textViewAppStatus.setText(appointmentStatus);
         }
     }
 }

@@ -19,4 +19,7 @@
     <string name="appointmentStatus">Appointment Status</string>
     <string name="appointmentDetailsLabel" >Details of Appointment</string>
     <string name="hintPickUpDate">Pickup Date</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonUpdate">Update</string>
+    <string name="buttonAmend">Amend</string>
 </resources>
