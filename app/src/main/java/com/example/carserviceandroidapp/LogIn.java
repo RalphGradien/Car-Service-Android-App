@@ -16,10 +16,11 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.gark.R.layout.activity_log_in);
-        EditText username = findViewById(com.example.gark.R.id.usernameTxt);
+        EditText username = findViewById(com.example.gark.R.id.email);
         EditText password = findViewById(com.example.gark.R.id.passwordTxt);
 
-        Button login = findViewById(com.example.gark.R.id.loginBtn2);
+
+        Button login = findViewById(com.example.gark.R.id.sendLink);
         //LOGIN BUTTON
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,15 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LogIn.this, Customer_Registration.class);
+                startActivity(intent);
+            }
+        });
+        //Forgot Password
+        TextView forgotPw = findViewById(com.example.gark.R.id.forgotPassword);
+        forgotPw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogIn.this, ForgotPassword.class);
                 startActivity(intent);
             }
         });

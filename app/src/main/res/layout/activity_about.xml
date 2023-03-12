@@ -4,59 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.carserviceandroidapp.home">
-
-    <Button
-        android:id="@+id/aboutBtn"
-        style="@style/MyButtonStyle"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginBottom="10dp"
-        android:text="@string/about"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        style="@style/MyButtonStyle2"
-
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+    tools:context=".About">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView7"
         android:layout_width="332dp"
         android:layout_height="0dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="416dp"
         android:layout_marginBottom="124dp"
         android:adjustViewBounds="true"
         app:layout_constraintBottom_toTopOf="@+id/aboutBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView5"
         android:layout_width="250dp"
         android:layout_height="0dp"
-        android:layout_marginTop="391dp"
+        android:layout_marginTop="84dp"
         android:layout_marginBottom="100dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/horizontallogo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="355dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:text="@string/aboutTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
