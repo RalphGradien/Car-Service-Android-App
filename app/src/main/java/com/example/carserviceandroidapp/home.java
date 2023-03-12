@@ -1,4 +1,4 @@
-package com.example.gark;
+package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,8 @@ public class home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        login = findViewById(R.id.loginBtn);
+        setContentView(com.example.gark.R.layout.activity_home);
+        login = findViewById(com.example.gark.R.id.loginBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

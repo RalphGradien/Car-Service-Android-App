@@ -36,7 +36,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.gark.home"
+            android:name=".home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

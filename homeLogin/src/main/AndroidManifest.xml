@@ -15,16 +15,16 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".registerService"
+            android:name="com.example.carserviceandroidapp.registerService"
             android:exported="false" />
         <activity
-            android:name=".registerCustomer"
+            android:name="com.example.carserviceandroidapp.registerCustomer"
             android:exported="false" />
         <activity
-            android:name=".LogIn"
+            android:name="com.example.carserviceandroidapp.LogIn"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name="com.example.carserviceandroidapp.home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
