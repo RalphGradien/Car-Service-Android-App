@@ -20,15 +20,23 @@ public class LogIn extends AppCompatActivity {
         EditText password = findViewById(R.id.passwordTxt);
 
         Button login = findViewById(R.id.loginBtn2);
+        //LOGIN BUTTON
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String enteredUsername = username.getText().toString();
                 String enteredPassword = password.getText().toString();
+
+                // checks if username or password is empty and creates toast
+                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter both username and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 DBHelper dbHelper = new DBHelper(LogIn.this);
                 boolean loginSuccessful = dbHelper.checkLogin(enteredUsername, enteredPassword);
                 if (loginSuccessful) {
-                    // login successful, do something
+                    // login successful, start app
                     Intent intent = new Intent(LogIn.this, home.class);
                     startActivity(intent);
                 } else {
@@ -37,6 +45,7 @@ public class LogIn extends AppCompatActivity {
                 }
             }
         });
+        //REGISTER AS SERVICE PROVIDER
         TextView regServiceTxt = findViewById(R.id.regService);
         regServiceTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +54,7 @@ public class LogIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //REGISTER AS CUSTOMER
         TextView regCustomerTxt = findViewById(R.id.regCustomer);
         regCustomerTxt.setOnClickListener(new View.OnClickListener() {
             @Override
