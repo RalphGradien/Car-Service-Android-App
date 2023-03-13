@@ -34,13 +34,13 @@ public class MainMenu extends AppCompatActivity {
                            selectedFragment = new FragmentAccount();
                            break;
                        case R.id.search:
-                           selectedFragment = new FragmentAccount();
+                           selectedFragment = new FragmentSearch();
                            break;
                        case R.id.appointment:
                            selectedFragment = new FragmentAppointment();
                            break;
                        case R.id.history:
-                           selectedFragment = new FragmentAccount();
+                           selectedFragment = new FragmentHistory();
                            break;
                    }
 
