@@ -11,12 +11,21 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     DBHelper DB;
+    Button toKen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DB = new DBHelper(this);
         Button btnDummyData = findViewById(R.id.btnDummyData);
+        toKen = findViewById(R.id.toKenneth);
+        toKen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainMenu.class);
+                startActivity(intent);
+            }
+        });
 
         btnDummyData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,4 +65,7 @@ public class MainActivity extends AppCompatActivity {
        // Intent intent = new Intent(MainActivity.this, Customer_Registration.class);
       //  startActivity(intent);
     }
+
+
+
 }
