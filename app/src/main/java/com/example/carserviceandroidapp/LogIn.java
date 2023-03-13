@@ -25,25 +25,25 @@ public class LogIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String enteredUsername = username.getText().toString();
-                String enteredPassword = password.getText().toString();
-
-                // checks if username or password is empty and creates toast
-                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                DBHelper dbHelper = new DBHelper(LogIn.this);
-                boolean loginSuccessful = dbHelper.checkLogin(enteredUsername, enteredPassword);
-                if (loginSuccessful) {
-                    // login successful, start app
-                    Intent intent = new Intent(LogIn.this, home.class);
-                    startActivity(intent);
-                } else {
-                    // login failed, show error message
-                    Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
-                }
+//                String enteredUsername = username.getText().toString();
+//                String enteredPassword = password.getText().toString();
+//
+//                // checks if username or password is empty and creates toast
+//                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+//                    Toast.makeText(getApplicationContext(), "Please enter both email and password", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+                Intent intent = new Intent(LogIn.this, MainActivity.class);
+                startActivity(intent);
+//                DBHelper dbHelper = new DBHelper(LogIn.this);
+//                boolean loginSuccessful = dbHelper.checkLogin(enteredUsername, enteredPassword);
+//                if (loginSuccessful) {
+//                    // login successful, start app
+//
+//                } else {
+//                    // login failed, show error message
+//                    Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
         //REGISTER AS SERVICE PROVIDER
