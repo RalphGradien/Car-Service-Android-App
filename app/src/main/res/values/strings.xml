@@ -15,4 +15,10 @@
     <string name="sendLinkBtn">Send Link</string>
     <string name="aboutTxt">Introducing Geo Automobile Repair Kalendar (G.A.R.K.) - the ultimate car service app for hassle-free vehicle maintenance! Our app makes it easy for vehicle owners (called “Customers”) to find service centers (called “Service Providers”) in their area, view available services, and book appointments for drop-off and pick-up. Plus, we offer convenient reminders and the ability to make changes to appointments, so you never have to worry about forgetting or missing a scheduled service. With separate modules for Customers and Service Providers, G.A.R.K. offers a streamlined experience for both types of users. Say goodbye to the stress of car maintenance and try G.A.R.K. today!</string>
     <string name="toKenneth">TO KENNETH</string>
+    <string name="profileName">John Doe</string>
+    <string name="editProfile">EDIT PROFILE</string>
+    <string name="logOutTxt">LOG OUT</string>
+    <string name="editProfileMsg">Set up your profile for others to see</string>
+    <string name="deleteAccountBtnTxt">Delete Account</string>
+    <string name="saveChangesBtnTxt">Save Changes</string>
 </resources>
