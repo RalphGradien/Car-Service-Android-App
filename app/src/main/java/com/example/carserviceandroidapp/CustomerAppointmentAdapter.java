@@ -35,7 +35,7 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
 
     @Override
     public void onBindViewHolder(@NonNull CustomerAppointmentViewHolder holder, int position) {
-          holder.appointmentIDTextView.setText(String.valueOf((customerApointmentItemsList.get(position).getAppointmentIDText())));
+          holder.appointmentIDTextView.setText(String.valueOf(customerApointmentItemsList.get(position).getAppointmentIDText()));
           holder.appointmentDateView.setText(customerApointmentItemsList.get(position).getAppointmentDate());
           holder.appointmentTimeView.setText(customerApointmentItemsList.get(position).getAppointmentTime());
           holder.bookedServiceProviderNameView.setText(customerApointmentItemsList.get(position).getBookedServiceProviderName());
