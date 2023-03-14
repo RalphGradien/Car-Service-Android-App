@@ -27,26 +27,15 @@ public class Customer_Registration extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
     }
-
-
-
-
-
-
 
     //temporary. to replace accordingly later
     public void onClickToAppointmentsView(View v){
        Intent intent = new Intent(Customer_Registration.this, Customer_AppointmentsView.class);
        startActivity(intent);
-    }
-
-    public void onClickToHistoryView(View v){
-        Intent intent = new Intent(Customer_Registration.this, Customer_ServiceHistoryView.class);
-        startActivity(intent);
     }
 
 }
