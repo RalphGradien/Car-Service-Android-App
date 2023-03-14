@@ -41,4 +41,6 @@
     <string name="txtMobile" />
     <string name="txtAddress" />
     <string name="imgDesc" />
+    <string name="btnCSDOConfirm" />
+    <string name="btnCSDOCancel" />
 </resources>

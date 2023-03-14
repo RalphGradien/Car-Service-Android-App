@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtCSDO_ServiceProviderName" type="id" />
+    <item name="txtCSDO_ServiceDetail" type="id" />
+    <item name="spinCSDO_ServiceDetail" type="id" />
+    <item name="txtCSDO_Location" type="id" />
+    <item name="spinCSDO_Location" type="id" />
+    <item name="txtCSDO_Date" type="id" />
+    <item name="spinCSDO_Date" type="id" />
+    <item name="txtCSDO_Time" type="id" />
+    <item name="spinCSDO_Time" type="id" />
+    <item name="btnCSDOConfirm" type="id" />
+    <item name="btnCSDOCancel" type="id" />
+</resources>
