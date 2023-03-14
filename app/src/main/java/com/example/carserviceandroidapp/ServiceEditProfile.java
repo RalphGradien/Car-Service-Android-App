@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class EditAccount extends AppCompatActivity {
+public class ServiceEditProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_edit_appointment);
+        setContentView(R.layout.activity_service_edit_profile);
     }
 }

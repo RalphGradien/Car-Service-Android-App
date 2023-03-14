@@ -23,7 +23,7 @@ public class FragmentAccount extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(rootView.getContext(), EditAccount.class));
+                    startActivity(new Intent(rootView.getContext(), ServiceEditProfile.class));
             }
         });
         return rootView;
