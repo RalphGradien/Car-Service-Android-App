@@ -9,29 +9,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
-    TextView appointmentIDLabelView;
-    TextView appointmentIDTextView;
-    TextView appointmentDateView;
-    TextView appointmentTimeView;
-    TextView bookedServiceProviderNameView;
-    TextView bookedServiceProviderAddressView;
-    TextView spacerView;
-    TextView serviceAvailedView;
-    TextView bookingStatusView;
+    TextView tvhistappointmentIDLabel,tvhistappointmentIDInt, tvhistbookedServiceProviderName,
+            tvhistserviceAvailed, tvhistbookedServiceProviderAddress, tvhistbookingStatus,
+            tvhistdropofflabel, tvhistdropoffAppointmentDate, tvhistcustomDropOffTime,
+            tvhistpickuplabel, tvhistpickupAppointmentDate, tvhistcustomPickupTime;
 
     RelativeLayout relativeLayout;
 
     public CustomerAppointmentViewHolder(@NonNull View itemView) {
         super(itemView);
-        appointmentIDLabelView = itemView.findViewById(R.id.appointmentIDLabel);
-        appointmentIDTextView = itemView.findViewById(R.id.appointmentIDInt);
-        appointmentDateView = itemView.findViewById(R.id.customAppointmentDate);
-        appointmentTimeView = itemView.findViewById(R.id.customAppointmentTime);
-        bookedServiceProviderNameView = itemView.findViewById(R.id.bookedServiceProviderName);
-        bookedServiceProviderAddressView = itemView.findViewById(R.id.bookedServiceProviderAddress);
-        spacerView = itemView.findViewById(R.id.spacer);
-        serviceAvailedView = itemView.findViewById(R.id.serviceAvailed);
-        bookingStatusView = itemView.findViewById(R.id.bookingStatus);
+        tvhistappointmentIDLabel= itemView.findViewById(R.id.histappointmentIDLabel);
+        tvhistappointmentIDInt = itemView.findViewById(R.id.histappointmentIDInt);
+        tvhistbookedServiceProviderName= itemView.findViewById(R.id.histbookedServiceProviderName);
+        tvhistserviceAvailed=itemView.findViewById(R.id.histserviceAvailed);
+        tvhistbookedServiceProviderAddress=itemView.findViewById(R.id.histbookedServiceProviderAddress);
+        tvhistbookingStatus = itemView.findViewById(R.id.histbookingStatus);
+        tvhistdropofflabel = itemView.findViewById(R.id.histdropofflabel);
+        tvhistdropoffAppointmentDate = itemView.findViewById(R.id.histdropoffAppointmentDate);
+        tvhistcustomDropOffTime = itemView.findViewById(R.id.histcustomDropOffTime);
+        tvhistpickuplabel = itemView.findViewById(R.id.histpickuplabel);
+        tvhistpickupAppointmentDate = itemView.findViewById(R.id.histpickupAppointmentDate);
+        tvhistcustomPickupTime = itemView.findViewById(R.id.histcustomPickupTime);
 
         relativeLayout = itemView.findViewById(R.id.container_custappointment_item);
 

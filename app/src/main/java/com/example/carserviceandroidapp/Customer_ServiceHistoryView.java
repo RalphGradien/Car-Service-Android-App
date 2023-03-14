@@ -31,9 +31,8 @@ public class Customer_ServiceHistoryView extends AppCompatActivity {
                 "Steering Wheel Check","Metrotown Area","Ongoing","2023-03-11",
                 "4:30PM","",""));
 
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new Customer_ServiceHistory_Adapter(getApplicationContext(),customer_serviceHistory_itemsList));
     }
+
 }

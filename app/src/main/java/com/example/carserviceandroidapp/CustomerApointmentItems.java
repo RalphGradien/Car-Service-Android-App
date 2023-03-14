@@ -3,89 +3,121 @@ package com.example.carserviceandroidapp;
 import java.util.Date;
 
 public class CustomerApointmentItems {
-    int appointmentIDText;
-    String appointmentDate;  //to change later to DateType
-    String appointmentTime;   //to change later to TimeType
-    String customerName;
-    String bookedServiceProviderName;
-    String bookedServiceProviderAddress;
-    String serviceAvailed;
-    String bookingStatus;
+    int histappointmentIDInt;
+    String histbookedServiceProviderName;
+    String histserviceAvailed;
+    String histbookedServiceProviderAddress;
+    String histbookingStatus;
+    String histdropoffAppointmentDate;
+    String histcustomDropOffTime;
+    String histcustomDropOffLoc;
+    String histpickupAppointmentDate;
+    String histcustomPickupTime;
+    String histcustomPickupLoc;
 
-    public CustomerApointmentItems(int appointmentIDText, String appointmentDate, String appointmentTime,
-                                   String customerName, String bookedServiceProviderName, String bookedServiceProviderAddress,
-                                   String serviceAvailed, String bookingStatus) {
-        this.appointmentIDText = appointmentIDText;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
-        this.customerName = customerName;
-        this.bookedServiceProviderName = bookedServiceProviderName;
-        this.bookedServiceProviderAddress = bookedServiceProviderAddress;
-        this.serviceAvailed = serviceAvailed;
-        this.bookingStatus = bookingStatus;
+    public String getHistcustomDropOffLoc() {
+        return histcustomDropOffLoc;
     }
 
-    public int getAppointmentIDText() {
-        return appointmentIDText;
+    public void setHistcustomDropOffLoc(String histcustomDropOffLoc) {
+        this.histcustomDropOffLoc = histcustomDropOffLoc;
     }
 
-    public void setAppointmentIDText(int appointmentIDText) {
-        this.appointmentIDText = appointmentIDText;
+    public String getHistcustomPickupLoc() {
+        return histcustomPickupLoc;
     }
 
-    public String getAppointmentDate() {
-        return appointmentDate;
+    public void setHistcustomPickupLoc(String histcustomPickupLoc) {
+        this.histcustomPickupLoc = histcustomPickupLoc;
     }
 
-    public void setAppointmentDate(String appointmentDate) {
-        this.appointmentDate = appointmentDate;
+    public CustomerApointmentItems(int histappointmentIDInt, String histbookedServiceProviderName,
+                                   String histserviceAvailed, String histbookedServiceProviderAddress,
+                                   String histbookingStatus, String histdropoffAppointmentDate,
+                                   String histcustomDropOffTime, String histpickupAppointmentDate,
+                                   String histcustomPickupTime, String histcustomDropOffLoc, String histcustomPickupLoc) {
+        this.histappointmentIDInt = histappointmentIDInt;
+        this.histbookedServiceProviderName = histbookedServiceProviderName;
+        this.histserviceAvailed = histserviceAvailed;
+        this.histbookedServiceProviderAddress = histbookedServiceProviderAddress;
+        this.histbookingStatus = histbookingStatus;
+        this.histdropoffAppointmentDate = histdropoffAppointmentDate;
+        this.histcustomDropOffTime = histcustomDropOffTime;
+        this.histpickupAppointmentDate = histpickupAppointmentDate;
+        this.histcustomPickupTime = histcustomPickupTime;
+        this.histcustomDropOffLoc = histcustomDropOffLoc;
+        this.histcustomPickupLoc = histcustomPickupLoc;
     }
 
-    public String getAppointmentTime() {
-        return appointmentTime;
+    public int getHistappointmentIDInt() {
+        return histappointmentIDInt;
     }
 
-    public void setAppointmentTime(String appointmentTime) {
-        this.appointmentTime = appointmentTime;
+    public void setHistappointmentIDInt(int histappointmentIDInt) {
+        this.histappointmentIDInt = histappointmentIDInt;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getHistbookedServiceProviderName() {
+        return histbookedServiceProviderName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setHistbookedServiceProviderName(String histbookedServiceProviderName) {
+        this.histbookedServiceProviderName = histbookedServiceProviderName;
     }
 
-    public String getBookedServiceProviderName() {
-        return bookedServiceProviderName;
+    public String getHistserviceAvailed() {
+        return histserviceAvailed;
     }
 
-    public void setBookedServiceProviderName(String bookedServiceProviderName) {
-        this.bookedServiceProviderName = bookedServiceProviderName;
+    public void setHistserviceAvailed(String histserviceAvailed) {
+        this.histserviceAvailed = histserviceAvailed;
     }
 
-    public String getBookedServiceProviderAddress() {
-        return bookedServiceProviderAddress;
+    public String getHistbookedServiceProviderAddress() {
+        return histbookedServiceProviderAddress;
     }
 
-    public void setBookedServiceProviderAddress(String bookedServiceProviderAddress) {
-        this.bookedServiceProviderAddress = bookedServiceProviderAddress;
+    public void setHistbookedServiceProviderAddress(String histbookedServiceProviderAddress) {
+        this.histbookedServiceProviderAddress = histbookedServiceProviderAddress;
     }
 
-    public String getServiceAvailed() {
-        return serviceAvailed;
+    public String getHistbookingStatus() {
+        return histbookingStatus;
     }
 
-    public void setServiceAvailed(String serviceAvailed) {
-        this.serviceAvailed = serviceAvailed;
+    public void setHistbookingStatus(String histbookingStatus) {
+        this.histbookingStatus = histbookingStatus;
     }
 
-    public String getBookingStatus() {
-        return bookingStatus;
+    public String getHistdropoffAppointmentDate() {
+        return histdropoffAppointmentDate;
     }
 
-    public void setBookingStatus(String bookingStatus) {
-        this.bookingStatus = bookingStatus;
+    public void setHistdropoffAppointmentDate(String histdropoffAppointmentDate) {
+        this.histdropoffAppointmentDate = histdropoffAppointmentDate;
+    }
+
+    public String getHistcustomDropOffTime() {
+        return histcustomDropOffTime;
+    }
+
+    public void setHistcustomDropOffTime(String histcustomDropOffTime) {
+        this.histcustomDropOffTime = histcustomDropOffTime;
+    }
+
+    public String getHistpickupAppointmentDate() {
+        return histpickupAppointmentDate;
+    }
+
+    public void setHistpickupAppointmentDate(String histpickupAppointmentDate) {
+        this.histpickupAppointmentDate = histpickupAppointmentDate;
+    }
+
+    public String getHistcustomPickupTime() {
+        return histcustomPickupTime;
+    }
+
+    public void setHistcustomPickupTime(String histcustomPickupTime) {
+        this.histcustomPickupTime = histcustomPickupTime;
     }
 }

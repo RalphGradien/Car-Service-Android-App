@@ -43,4 +43,9 @@
     <string name="imgDesc" />
     <string name="btnCSDOConfirm" />
     <string name="btnCSDOCancel" />
+    <string name="dropOffLabel">Drop-off Date and Time</string>
+    <string name="dropOffLocLabel">Drop-Off Location</string>
+    <string name="pickupDTLabel">Pickup Date and Time</string>
+    <string name="pickupLocationLabel">Pickup Location</string>
+    <string name="buttonRemind">REMIND</string>
 </resources>

@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/appointmentIDLabel"
+        android:id="@+id/histappointmentIDLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -16,82 +16,121 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/appointmentIDInt"
+        android:id="@+id/histappointmentIDInt"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_toEndOf="@+id/appointmentIDLabel"
+        android:layout_toEndOf="@+id/histappointmentIDLabel"
         android:text="12345"
         android:textColor="#2E3192" />
 
     <TextView
-        android:id="@+id/customAppointmentDate"
-        android:layout_width="80dp"
+        android:id="@+id/histbookedServiceProviderName"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-2dp"
-        android:layout_toEndOf="@+id/appointmentIDInt"
-        android:text="2022-04-14"
-        android:textColor="#65CF72" />
-
-    <TextView
-        android:id="@+id/customAppointmentTime"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/customAppointmentDate"
-        android:text="09:30AM"
-        android:textColor="#65CF72" />
-
-    <TextView
-        android:id="@+id/bookedServiceProviderName"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appointmentIDLabel"
+        android:layout_below="@+id/histappointmentIDLabel"
         android:layout_marginLeft="5dp"
         android:text="Canadian Tire"
         android:textColor="#707477" />
 
     <TextView
-        android:id="@+id/bookedServiceProviderAddress"
-        android:layout_width="wrap_content"
+        android:id="@+id/histserviceAvailed"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appointmentIDLabel"
-        android:layout_toEndOf="@+id/bookedServiceProviderName"
+        android:layout_below="@+id/histappointmentIDInt"
+        android:layout_toEndOf="@+id/histbookedServiceProviderName"
+        android:text="Brake Fluid Check"
+        android:textAlignment="textEnd"
+        android:layout_marginRight="20dp"
+        android:textColor="#707477"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/histbookedServiceProviderAddress"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedServiceProviderName"
+        android:layout_marginLeft="5dp"
         android:text="Guildford, Surrey, B.C."
         android:textColor="#707477" />
 
     <TextView
-        android:id="@+id/spacer"
-        android:layout_width="50dp"
+        android:id="@+id/histbookingStatus"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/bookedServiceProviderAddress"
-        android:layout_below="@+id/appointmentIDLabel"
+        android:layout_below="@+id/histbookedServiceProviderName"
+        android:layout_toEndOf="@+id/histbookedServiceProviderAddress"
         android:text=""
-        android:textColor="@color/material_dynamic_neutral70" />
+        android:textAlignment="center"
+        android:layout_marginRight="20dp"
+        android:textColor="@android:color/holo_orange_light" />
+
 
     <TextView
-        android:id="@+id/serviceAvailed"
+        android:id="@+id/histdropofflabel"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bookedServiceProviderName"
         android:layout_marginLeft="5dp"
-        android:text="Brake Fluid Check"
-        android:textColor="#707477" />
+        android:text="Drop-Off "
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:textColor="#707477"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/bookingStatus"
-        android:layout_width="110dp"
+        android:id="@+id/histdropoffAppointmentDate"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bookedServiceProviderName"
-        android:layout_toEndOf="@+id/serviceAvailed"
-        android:text="Ongoing"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_light" />
+        android:layout_marginStart="-2dp"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_toEndOf="@+id/histdropofflabel"
+        android:text="2022-04-14"
+        android:textColor="#65CF72" />
+
+    <TextView
+        android:id="@+id/histcustomDropOffTime"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/histdropoffAppointmentDate"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:text="09:30AM"
+        android:textColor="#65CF72" />
+
+    <TextView
+        android:id="@+id/histpickuplabel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Pickup "
+        android:layout_below="@+id/histdropofflabel"
+        android:textColor="#707477"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/histpickupAppointmentDate"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-2dp"
+        android:layout_below="@+id/histcustomDropOffTime"
+        android:layout_toEndOf="@+id/histdropofflabel"
+        android:text="2022-05-10"
+        android:textColor="#65CF72" />
+
+    <TextView
+        android:id="@+id/histcustomPickupTime"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/histdropoffAppointmentDate"
+        android:layout_below="@+id/histcustomDropOffTime"
+        android:text="02:30PM"
+        android:textColor="#65CF72" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/serviceAvailed"
+        android:layout_below="@id/histcustomPickupTime"
         android:layout_marginTop="10dp"
         android:background="#DAB8D8"/>
+
+
 
 </RelativeLayout>
