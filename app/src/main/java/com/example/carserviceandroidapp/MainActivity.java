@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         toKen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainMenu.class);
+                Intent intent = new Intent(MainActivity.this, ServiceMainMenu.class);
                 startActivity(intent);
             }
         });

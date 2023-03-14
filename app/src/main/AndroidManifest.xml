@@ -17,7 +17,7 @@
             android:name=".ServiceEditProfile"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name=".ServiceMainMenu"
             android:exported="false" />
         <activity
             android:name=".About"
