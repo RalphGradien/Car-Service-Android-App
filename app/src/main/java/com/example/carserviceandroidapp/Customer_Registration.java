@@ -27,7 +27,8 @@ public class Customer_Registration extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Customer_Registration.this, Customer_AppointmentsView.class);
+                startActivity(intent);
             }
         });
     }
