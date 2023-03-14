@@ -40,4 +40,5 @@
     <string name="txtEmail" />
     <string name="txtMobile" />
     <string name="txtAddress" />
+    <string name="imgDesc" />
 </resources>
