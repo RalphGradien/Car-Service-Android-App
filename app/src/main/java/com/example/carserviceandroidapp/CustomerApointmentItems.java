@@ -12,7 +12,9 @@ public class CustomerApointmentItems {
     String serviceAvailed;
     String bookingStatus;
 
-    public CustomerApointmentItems(int appointmentIDText, String appointmentDate, String appointmentTime, String customerName, String bookedServiceProviderName, String bookedServiceProviderAddress, String serviceAvailed, String bookingStatus) {
+    public CustomerApointmentItems(int appointmentIDText, String appointmentDate, String appointmentTime,
+                                   String customerName, String bookedServiceProviderName, String bookedServiceProviderAddress,
+                                   String serviceAvailed, String bookingStatus) {
         this.appointmentIDText = appointmentIDText;
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
