@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewSPAddress" />
 
         <TextView
-            android:id="@+id/textViewDropOffDTLabel"
+            android:id="@+id/tvDropOffDTLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplay" />
 
         <TextView
-            android:id="@+id/textViewDropOffDT"
+            android:id="@+id/tvDropOffDT"
             android:layout_width="200dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
@@ -87,10 +87,10 @@
             android:layout_marginEnd="195dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDropOffDTLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabel" />
 
         <TextView
-            android:id="@+id/textViewDropOffLocation"
+            android:id="@+id/tvDropOffLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -100,7 +100,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDropOffDT" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDT" />
 
         <TextView
             android:id="@+id/textViewDropOffLoc"
@@ -111,10 +111,10 @@
             android:layout_marginEnd="197dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDropOffLocation" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocation" />
 
         <TextView
-            android:id="@+id/textViewpickupDTLabel"
+            android:id="@+id/tvpickupDTLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -139,10 +139,10 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewpickupDTLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabel" />
 
         <TextView
-            android:id="@+id/textViewPickupLocationLabel"
+            android:id="@+id/tvPickupLocationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -156,7 +156,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewPickupTime" />
 
         <TextView
-            android:id="@+id/textViewPickupLocation"
+            android:id="@+id/tvPickupLocation"
             android:layout_width="200dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
@@ -164,10 +164,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPickupLocationLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabel" />
 
         <TextView
-            android:id="@+id/textViewServiceDetailLabel"
+            android:id="@+id/tvServiceDetailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -178,7 +178,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPickupLocation" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocation" />
 
         <TextView
             android:id="@+id/textViewServiceDetails"
@@ -193,10 +193,10 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewServiceDetailLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvServiceDetailLabel" />
 
         <TextView
-            android:id="@+id/textViewAppointmentStatusLabel"
+            android:id="@+id/tvAppointmentStatusLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -222,7 +222,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAppointmentStatusLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabel" />
 
         <Button
             android:id="@+id/buttonCancel"
@@ -247,7 +247,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatus" />
 
         <Button
-            android:id="@+id/buttonRemind"
+            android:id="@+id/butnRemind"
             android:layout_width="85dp"
             android:layout_height="34dp"
             android:layout_marginStart="8dp"

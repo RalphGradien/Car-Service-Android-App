@@ -31,10 +31,10 @@ public class Customer_EditAppointment extends AppCompatActivity {
             TextView textViewSPName = (TextView) findViewById(R.id.textViewSPNameDisplay);
             TextView textViewSPAddress = (TextView) findViewById(R.id.textViewSPAddress);
             TextView textViewAppStatus = (TextView) findViewById(R.id.textViewStatus);
-            TextView textViewdropOffDT = (TextView) findViewById(R.id.textViewDropOffDT);
+            TextView textViewdropOffDT = (TextView) findViewById(R.id.tvDropOffDT);
             TextView textViewdropOffLoc = (TextView)findViewById(R.id.textViewDropOffLoc);
             TextView textViewPickupDT = (TextView) findViewById(R.id.textViewPickupTime);
-            TextView textViewPickupLoc = (TextView)findViewById(R.id.textViewPickupLocation);
+            TextView textViewPickupLoc = (TextView)findViewById(R.id.tvPickupLocation);
             TextView textViewServiceDetails = (TextView)findViewById(R.id.textViewServiceDetails);
             TextView textViewAppStatusDown = (TextView)findViewById(R.id.editTextAppointmentStatus);
             textViewSPName.setText(serviceProviderName);
