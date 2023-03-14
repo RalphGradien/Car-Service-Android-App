@@ -6,4 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".CustomerScheduleDropOff">
 
+    <TextView
+        android:id="@+id/txtCSDO_ServiceProviderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCSDO_ServiceDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="11dp"
+        android:text="Service Detail"
+        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_ServiceDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCSDO_Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="11dp"
+        android:text="Location"
+        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinCSDO_ServiceDetail" />
+
+    <TextView
+        android:id="@+id/txtCSDO_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="15dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinCSDO_Location" />
+
+    <TextView
+        android:id="@+id/txtCSDO_Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="Time"
+        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Time"
+        app:layout_constraintStart_toStartOf="@+id/spinCSDO_Time"
+        app:layout_constraintTop_toBottomOf="@+id/spinCSDO_Date" />
+
+    <Spinner
+        android:id="@+id/spinCSDO_ServiceDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="35dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Location"
+        app:layout_constraintEnd_toEndOf="@+id/spinCSDO_Location"
+        app:layout_constraintStart_toStartOf="@+id/txtCSDO_ServiceDetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceDetail"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Spinner
+        android:id="@+id/spinCSDO_Location"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Date"
+        app:layout_constraintEnd_toEndOf="@+id/spinCSDO_Date"
+        app:layout_constraintStart_toStartOf="@+id/txtCSDO_Location"
+        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_Location"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Spinner
+        android:id="@+id/spinCSDO_Date"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Time"
+        app:layout_constraintEnd_toEndOf="@+id/spinCSDO_Time"
+        app:layout_constraintStart_toStartOf="@+id/txtCSDO_Date"
+        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_Date"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Spinner
+        android:id="@+id/spinCSDO_Time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="161dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_Time"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnCSDOConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/btnCSDOConfirm"
+        android:textColor="#263238"
+        app:layout_constraintStart_toEndOf="@+id/btnCSDOCancel"
+        app:layout_constraintTop_toBottomOf="@+id/spinCSDO_Time" />
+
+    <Button
+        android:id="@+id/btnCSDOCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:text="@string/btnCSDOCancel"
+        android:textColor="#000000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCSDOConfirm"
+        app:layout_constraintStart_toStartOf="@+id/spinCSDO_Time" />
 </androidx.constraintlayout.widget.ConstraintLayout>
