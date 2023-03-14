@@ -40,4 +40,14 @@
         android:text="Create Dummy Data"
         app:layout_constraintBottom_toTopOf="@+id/buttonGilbert"
         app:layout_constraintEnd_toEndOf="@+id/buttonGilbert" />
+
+    <Button
+        android:id="@+id/toKenneth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:text="@string/toKenneth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonArifin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,12 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ServiceEditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceMainMenu"
+            android:exported="false" />
+        <activity
             android:name=".About"
             android:exported="false" />
         <activity
