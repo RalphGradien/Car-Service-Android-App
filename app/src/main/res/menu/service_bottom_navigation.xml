@@ -6,10 +6,6 @@
         android:icon="@drawable/accounts"
         />
     <item
-        android:id="@+id/search"
-        android:icon="@drawable/search"
-        />
-    <item
         android:id="@+id/appointment"
         android:icon="@drawable/appointments"
         />
