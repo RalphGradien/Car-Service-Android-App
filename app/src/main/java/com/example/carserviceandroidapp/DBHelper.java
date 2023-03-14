@@ -1,6 +1,5 @@
 package com.example.carserviceandroidapp;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public DBHelper(Context context) {
+    public DBHelper( Context context) {
         super(context, "Userdata.db", null, 1);
     }
 
@@ -20,25 +19,25 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // Create the Customer table
         DB.execSQL("create table IF NOT EXISTS CUSTOMER(Userid INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT, password TEXT, " +
-                "email TEXT, mobile TEXT, address TEXT)");
+                "email TEXT, mobile TEXT , address TEXT)");
 
         // Create the Appointment table
         DB.execSQL("CREATE TABLE IF NOT EXISTS APPOINTMENT (AppointmentID INTEGER PRIMARY KEY AUTOINCREMENT, Userid INTEGER, ServiceProviderID INTEGER, " +
-                "PickUpDateTime DATE, PickUpLocation TEXT, PickUpReadyDate DATE, " +
-                "DropOffTimeDate DATE, BookingDate DATE, CancelledDate DATE, AppointmentType TEXT, " +
+                "PickUpDateTime DATE, PickUpLocation TEXT , PickUpReadyDate DATE, " +
+                "DropOffTimeDate DATE, DropOffLocation TEXT, BookingDate DATE, CancelledDate DATE , AppointmentType TEXT, " +
                 "AppointmentStatus TEXT, FOREIGN KEY(Userid) REFERENCES CUSTOMER(Userid), " +
                 "FOREIGN KEY(ServiceProviderID) REFERENCES SERVICE_PROVIDER(ServiceProviderID))");
 
         // Create the Service Provider table
         DB.execSQL("CREATE TABLE IF NOT EXISTS SERVICE_PROVIDER (ServiceProviderID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "serviceProviderPassword TEXT, serviceProviderFullName TEXT, street TEXT, city TEXT, province TEXT, " +
-                "postalCode TEXT, phone TEXT, email TEXT)");
+                "postalCode TEXT, phone TEXT, email TEXT, imageName TEXT)");
 
         // Create the Appointment Detail table
-        DB.execSQL("CREATE TABLE IF NOT EXISTS APPOINTMENT_DETAIL(AppointmentDetailID INTEGER PRIMARY KEY AUTOINCREMENT,AppointmentID INTEGER, ServiceListID INTEGER, " +
+        DB.execSQL("CREATE TABLE IF NOT EXISTS APPOINTMENT_DETAIL(AppointmentDetailID INTEGER PRIMARY KEY AUTOINCREMENT,AppointmentID INTEGER, ServiceListID TEXT, " +
                 "FOREIGN KEY(AppointmentID) REFERENCES APPOINTMENT(AppointmentID), FOREIGN KEY(ServiceListID) REFERENCES SERVICE_LIST(ServiceListID) )");
 
-        // Create the Service List table
+        // Create the Service List provided by each Service Provider table
         DB.execSQL("CREATE TABLE IF NOT EXISTS SERVICE_LIST(ServiceListID TEXT, ServiceProviderID INTEGER, " +
                 "ServiceDetailID INTEGER, FOREIGN KEY(ServiceProviderID) REFERENCES SERVICE_PROVIDER(ServiceProviderID), " +
                 "FOREIGN KEY(ServiceDetailID) REFERENCES SERVICE_DETAIL(ServiceDetailID) )");
@@ -54,8 +53,67 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists Customer");
     }
 
+    public Boolean insertServiceList(String serviceListID, int serviceProviderID, int serviceDetailID)
+    {
 
-    public Boolean insertuserdata(String name, String password, String email, String mobile, String address) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues Values = new ContentValues();
+        Values.put("ServiceListID", serviceListID);
+        Values.put("ServiceProviderID", serviceProviderID);
+        Values.put("ServiceDetailID", serviceDetailID);
+
+        long result = DB.insert("SERVICE_LIST", null, Values);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+    public Boolean insertAppointmentDetail(int AppointmentID, String ServiceListID)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues Values = new ContentValues();
+        Values.put("AppointmentID",AppointmentID);
+        Values.put("ServiceListID",ServiceListID);
+        long result = DB.insert("APPOINTMENT_DETAIL", null, Values);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+
+    }
+
+    public Boolean insertServiceDetail(String serviceName, String serviceInformation)
+    {
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues Values = new ContentValues();
+        Values.put("ServiceName", serviceName);
+        Values.put("ServiceInformation", serviceInformation);
+
+        long result = DB.insert("SERVICE_DETAIL", null, Values);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    public Boolean insertuserdata(String name, String password, String email, String mobile, String address)
+    {
 
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -66,38 +124,79 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("address", address);
 
         long result = DB.insert("CUSTOMER", null, contentValues);
-        if (result == -1) {
+        if(result==-1)
+        {
             return false;
-        } else {
+        }
+        else
+        {
             return true;
         }
 
     }
 
     public Boolean insertServiceProvider(String password, String fullName, String street, String city,
-                                         String province, String postalCode, String email, String phone) {
+                                         String province, String postalCode, String email, String phone, String imageName )
+    {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("serviceProviderPassword", password);
         values.put("serviceProviderFullName", fullName);
         values.put("street", street);
-        values.put("city", city);
-        values.put("province", province);
-        values.put("postalCode", postalCode);
+        values.put("city",city);
+        values.put("province",province);
+        values.put("postalCode",postalCode);
         values.put("email", email);
         values.put("phone", phone);
+        values.put("imageName", imageName);
+
 
 
         long result = db.insert("SERVICE_PROVIDER", null, values);
-        if (result == -1) {
+        if(result==-1)
+        {
             return false;
-        } else {
+        }
+        else
+        {
             return true;
         }
     }
 
+    public Boolean insertAppointment(int userID, int serviceProviderID, String pickupDateTime, String pickupLocation,
+                                     String pickupReadyDate, String DropoffTimeDate, String DropoffLocation,
+                                     String BookingDate,String CancelledDate, String appointmentType, String AppointmentStatus)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Userid",userID);
+        values.put("PickUpDateTime",pickupDateTime);
+        values.put("ServiceProviderID",serviceProviderID);
+        values.put("PickUpLocation",pickupLocation);
+        values.put("PickUpReadyDate",pickupReadyDate);
+        values.put("DropOffTimeDate",DropoffTimeDate);
+        values.put("DropOffLocation",DropoffLocation);
+        values.put("BookingDate", BookingDate);
+        values.put("CancelledDate",CancelledDate);
+        values.put("AppointmentType",appointmentType);
+        values.put("AppointmentStatus",AppointmentStatus);
 
-    public Boolean updateData(String name, int userID, String password, String email, String mobile, String address) {
+        long result = db.insert("APPOINTMENT", null, values);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+
+
+    public Boolean updateData(String name, int userID, String password, String email, String mobile, String address)
+    {
         SQLiteDatabase db = this.getWritableDatabase();
         // get a reference to the database
         // define the new values for the record
@@ -110,7 +209,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // define the selection criteria
         String selection = "userID = ?";
-        String[] selectionArgs = {Integer.toString(userID)};
+        String[] selectionArgs = { Integer.toString(userID) };
         int count = db.update("CUSTOMER", values, selection, selectionArgs);
 
         // check if the record was updated successfully
@@ -126,11 +225,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Boolean deleteData(int userID) {
+    public Boolean deleteData(int userID)
+    {
         SQLiteDatabase DB = this.getWritableDatabase();
         // Define the WHERE clause (i.e., the condition that must be met for the record to be deleted)
         String selection = "userID = ?";
-        String[] selectionArgs = {Integer.toString(userID)}; // Replace with the actual ID of the record to delete
+        String[] selectionArgs = { Integer.toString(userID) }; // Replace with the actual ID of the record to delete
 
         // Perform the deletion
         int deletedRows = DB.delete("CUSTOMER", selection, selectionArgs);
@@ -146,30 +246,68 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Cursor getCustomerData() {
+    public Cursor getCustomerData()
+    {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from CUSTOMER", null);
         return cursor;
     }
+    public Cursor getAppointmentID()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT last_insert_rowid()", null);
 
-    public Cursor getServiceProviderData() {
+        return cursor;
+    }
+    public Cursor getServiceProviderData()
+    {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select distinct city from SERVICE_PROVIDER", null);
         return cursor;
     }
 
-    public Cursor getServiceProviderList() {
+    public Cursor getServiceProviderList()
+    {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
         return cursor;
     }
-    public boolean checkLogin(String username, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + "CUSTOMER" + " WHERE " + "email" + " = ? AND " + "password" + " = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{username, password});
-        int count = cursor.getCount();
-        cursor.close();
-        return count > 0;
+
+    public Cursor getServiceDetails()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT SD.ServiceName, SD.ServiceInformation, SL.ServiceProviderID, SD.ServiceDetailID \n" +
+                "FROM SERVICE_DETAIL SD\n" +
+                "INNER JOIN SERVICE_LIST SL ON SD.ServiceDetailID = SL.ServiceDetailID\n" +
+                "INNER JOIN SERVICE_PROVIDER SP ON SL.ServiceProviderID = SP.ServiceProviderID", null);
+        return cursor;
     }
 
+    public Cursor getAppointment()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from APPOINTMENT", null);
+        return cursor;
+
+    }
+    public Cursor getDropOffLocationCust()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select Userid,address from CUSTOMER", null);
+        return cursor;
+    }
+
+    public Cursor getDropOffLocationSP()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select ServiceProviderID, street, city, province, postalCode from SERVICE_PROVIDER", null);
+        return cursor;
+    }
+
+    public Cursor getServiceList()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from SERVICE_LIST", null);
+        return cursor;
+    }
 }
