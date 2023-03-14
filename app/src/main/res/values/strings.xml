@@ -33,4 +33,11 @@
     <string name="deleteAccountBtnTxt">Delete Account</string>
     <string name="saveChangesBtnTxt">Save Changes</string>
     <string name="hint_Services">Services</string>
+    <string name="TxtCustName" />
+    <string name="txtUserName" />
+    <string name="txtPassword" />
+    <string name="txtConfirmPassword" />
+    <string name="txtEmail" />
+    <string name="txtMobile" />
+    <string name="txtAddress" />
 </resources>
