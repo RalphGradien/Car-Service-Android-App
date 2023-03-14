@@ -4,177 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@drawable/bg_activity"
     tools:context=".Customer_Registration">
 
     <TextView
-        android:id="@+id/ProviderName"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Name"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderAddress"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ProviderEmail"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
-
-    <TextView
-        android:id="@+id/ProviderAddress"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Address"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCity"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderName"
-        app:layout_constraintStart_toStartOf="@+id/ProviderName"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
-
-    <TextView
-        android:id="@+id/textViewCity"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_City"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderContact"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderAddress"
-        app:layout_constraintStart_toStartOf="@+id/ProviderAddress"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
-
-    <TextView
-        android:id="@+id/ProviderContact"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Contact"
-        app:layout_constraintEnd_toEndOf="@+id/textViewCity"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewCity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
-
-    <TextView
-        android:id="@+id/ProviderUserName"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/hint_username"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderPassWord"
-        app:layout_constraintEnd_toEndOf="@+id/textViewRegTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
-
-    <TextView
-        android:id="@+id/ProviderEmail"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Email"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderName"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderConfirmPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ProviderConfirmPassword"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderConfirmPassword" />
-
-    <TextView
-        android:id="@+id/textViewRegTitle"
-
-        android:layout_width="247dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="481dp"
+        android:id="@+id/textView"
+        android:layout_width="198dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="169dp"
         android:text="Customer Registration"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/ProviderPassWord"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_password"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderConfirmPassword"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderUserName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ProviderUserName"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderUserName" />
-
-    <TextView
-        android:id="@+id/ProviderConfirmPassword"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_confirmPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderEmail"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderPassWord"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ProviderPassWord"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnProviderRegister"
-        android:layout_width="150dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:onClick="onClickToAppointmentsView"
-        android:text="@string/buttonCRegister"
-        app:layout_constraintEnd_toEndOf="@+id/ProviderContact"
-        app:layout_constraintStart_toStartOf="@+id/ProviderContact"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderContact"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="499dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/ProviderHaveAccount"
-        android:layout_width="121dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="53dp"
-        android:text="@string/txtHaveAccount"
-        android:textSize="10sp"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="412dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewLogHere"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textViewLogHere"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="128dp"
-        android:text="@string/txtLogHere"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProviderRegister"
-        app:layout_constraintVertical_bias="0.037" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="201dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="427dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderHaveAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/verticallogo" />
-
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="6dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
