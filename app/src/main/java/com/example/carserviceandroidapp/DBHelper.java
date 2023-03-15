@@ -310,4 +310,18 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from SERVICE_LIST", null);
         return cursor;
     }
+
+    public String checkLogin(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor customerCursor = db.rawQuery("SELECT * FROM CUSTOMER WHERE email=? AND password=?", new String[]{email, password});
+        Cursor providerCursor = db.rawQuery("SELECT * FROM SERVICE_PROVIDER WHERE email=? AND password=?", new String[]{email, password});
+
+        if (customerCursor.getCount() > 0) {
+            return "CUSTOMER";
+        } else if (providerCursor.getCount() > 0) {
+            return "SERVICE_PROVIDER";
+        } else {
+            return "NOT_FOUND";
+        }
+    }
 }
