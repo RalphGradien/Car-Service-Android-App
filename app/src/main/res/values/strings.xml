@@ -11,6 +11,17 @@
     <string name="buttonCRegister">Register</string>
     <string name="txtHaveAccount">Already have an account?</string>
     <string name="txtLogHere">Login here</string>
+    <string name="dropOffText">Drop-off Date</string>
+    <string name="pickupDate">Pickup Date</string>
+    <string name="pickupTime">Pickup Time</string>
+    <string name="locationLabel">Location</string>
+    <string name="serviceDetailsLabel">Service Details</string>
+    <string name="appointmentStatus">Appointment Status</string>
+    <string name="appointmentDetailsLabel">Details of Appointment</string>
+    <string name="hintPickUpDate">Pickup Date</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonUpdate">Update</string>
+    <string name="buttonAmend">Amend</string>
     <string name="forgotPWmessage">Enter your email address and we\'ll send you a link to reset your password</string>
     <string name="sendLinkBtn">Send Link</string>
     <string name="aboutTxt">Introducing Geo Automobile Repair Kalendar (G.A.R.K.) - the ultimate car service app for hassle-free vehicle maintenance! Our app makes it easy for vehicle owners (called “Customers”) to find service centers (called “Service Providers”) in their area, view available services, and book appointments for drop-off and pick-up. Plus, we offer convenient reminders and the ability to make changes to appointments, so you never have to worry about forgetting or missing a scheduled service. With separate modules for Customers and Service Providers, G.A.R.K. offers a streamlined experience for both types of users. Say goodbye to the stress of car maintenance and try G.A.R.K. today!</string>
@@ -22,4 +33,19 @@
     <string name="deleteAccountBtnTxt">Delete Account</string>
     <string name="saveChangesBtnTxt">Save Changes</string>
     <string name="hint_Services">Services</string>
+    <string name="TxtCustName" />
+    <string name="txtUserName" />
+    <string name="txtPassword" />
+    <string name="txtConfirmPassword" />
+    <string name="txtEmail" />
+    <string name="txtMobile" />
+    <string name="txtAddress" />
+    <string name="imgDesc" />
+    <string name="btnCSDOConfirm" />
+    <string name="btnCSDOCancel" />
+    <string name="dropOffLabel">Drop-off Date and Time</string>
+    <string name="dropOffLocLabel">Drop-Off Location</string>
+    <string name="pickupDTLabel">Pickup Date and Time</string>
+    <string name="pickupLocationLabel">Pickup Location</string>
+    <string name="buttonRemind">REMIND</string>
 </resources>

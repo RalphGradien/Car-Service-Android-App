@@ -1,8 +1,6 @@
 package com.example.carserviceandroidapp;
 
-import java.util.Date;
-
-public class CustomerApointmentItems {
+public class Customer_ServiceHistory_Items {
     int histappointmentIDInt;
     String histbookedServiceProviderName;
     String histserviceAvailed;
@@ -10,32 +8,14 @@ public class CustomerApointmentItems {
     String histbookingStatus;
     String histdropoffAppointmentDate;
     String histcustomDropOffTime;
-    String histcustomDropOffLoc;
     String histpickupAppointmentDate;
     String histcustomPickupTime;
-    String histcustomPickupLoc;
 
-    public String getHistcustomDropOffLoc() {
-        return histcustomDropOffLoc;
-    }
-
-    public void setHistcustomDropOffLoc(String histcustomDropOffLoc) {
-        this.histcustomDropOffLoc = histcustomDropOffLoc;
-    }
-
-    public String getHistcustomPickupLoc() {
-        return histcustomPickupLoc;
-    }
-
-    public void setHistcustomPickupLoc(String histcustomPickupLoc) {
-        this.histcustomPickupLoc = histcustomPickupLoc;
-    }
-
-    public CustomerApointmentItems(int histappointmentIDInt, String histbookedServiceProviderName,
-                                   String histserviceAvailed, String histbookedServiceProviderAddress,
-                                   String histbookingStatus, String histdropoffAppointmentDate,
-                                   String histcustomDropOffTime, String histpickupAppointmentDate,
-                                   String histcustomPickupTime, String histcustomDropOffLoc, String histcustomPickupLoc) {
+    public Customer_ServiceHistory_Items(int histappointmentIDInt, String histbookedServiceProviderName,
+                                         String histserviceAvailed, String histbookedServiceProviderAddress,
+                                         String histbookingStatus, String histdropoffAppointmentDate,
+                                         String histcustomDropOffTime, String histpickupAppointmentDate,
+                                         String histcustomPickupTime) {
         this.histappointmentIDInt = histappointmentIDInt;
         this.histbookedServiceProviderName = histbookedServiceProviderName;
         this.histserviceAvailed = histserviceAvailed;
@@ -45,8 +25,6 @@ public class CustomerApointmentItems {
         this.histcustomDropOffTime = histcustomDropOffTime;
         this.histpickupAppointmentDate = histpickupAppointmentDate;
         this.histcustomPickupTime = histcustomPickupTime;
-        this.histcustomDropOffLoc = histcustomDropOffLoc;
-        this.histcustomPickupLoc = histcustomPickupLoc;
     }
 
     public int getHistappointmentIDInt() {

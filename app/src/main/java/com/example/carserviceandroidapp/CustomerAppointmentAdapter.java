@@ -35,50 +35,51 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
 
     @Override
     public void onBindViewHolder(@NonNull CustomerAppointmentViewHolder holder, int position) {
-          holder.appointmentIDTextView.setText(String.valueOf((customerApointmentItemsList.get(position).getAppointmentIDText())));
-          holder.appointmentDateView.setText(customerApointmentItemsList.get(position).getAppointmentDate());
-          holder.appointmentTimeView.setText(customerApointmentItemsList.get(position).getAppointmentTime());
-          holder.bookedServiceProviderNameView.setText(customerApointmentItemsList.get(position).getBookedServiceProviderName());
-          holder.bookedServiceProviderAddressView.setText(customerApointmentItemsList.get(position).getBookedServiceProviderAddress());
-          holder.serviceAvailedView.setText(customerApointmentItemsList.get(position).getServiceAvailed());
-          holder.bookingStatusView.setText(customerApointmentItemsList.get(position).getBookingStatus());
-          if(customerApointmentItemsList.get(position).getBookingStatus().equals("Ongoing")){
-              holder.bookingStatusView.setTextColor(Color.WHITE);
-              GradientDrawable drawable = new GradientDrawable();
-              drawable.setShape(GradientDrawable.RECTANGLE);
-              drawable.setCornerRadius(20);
-              int chosenColor = Color.rgb(247,201,16);
-              drawable.setColor(chosenColor);
-              holder.bookingStatusView.setBackgroundDrawable(drawable);
-          }
-          else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Completed")){
-              holder.bookingStatusView.setTextColor(Color.WHITE);
-              GradientDrawable drawable = new GradientDrawable();
-              drawable.setShape(GradientDrawable.RECTANGLE);
-              drawable.setCornerRadius(20);
-              drawable.setColor(Color.RED);
-              holder.bookingStatusView.setBackgroundDrawable(drawable);
-          }
 
-          else if(customerApointmentItemsList.get(position).getBookingStatus().equals("Ready for Pickup")){
-              holder.bookingStatusView.setTextColor(Color.WHITE);
-              GradientDrawable drawable = new GradientDrawable();
-              drawable.setShape(GradientDrawable.RECTANGLE);
-              drawable.setCornerRadius(20);
-              int chosenColor = Color.rgb(101,207,114);
-              drawable.setColor(chosenColor);
-              holder.bookingStatusView.setBackgroundDrawable(drawable);
+            holder.tvhistappointmentIDInt.setText(String.valueOf(customerApointmentItemsList.get(position).getHistappointmentIDInt()));
+            holder.tvhistbookedServiceProviderName.setText(customerApointmentItemsList.get(position).getHistbookedServiceProviderName());
+            holder.tvhistserviceAvailed.setText(customerApointmentItemsList.get(position).getHistserviceAvailed());
+            holder.tvhistbookedServiceProviderAddress.setText(customerApointmentItemsList.get(position).getHistbookedServiceProviderAddress());
+            holder.tvhistbookingStatus.setText(customerApointmentItemsList.get(position).getHistbookingStatus());
+            holder.tvhistdropoffAppointmentDate.setText(customerApointmentItemsList.get(position).getHistdropoffAppointmentDate());
+            holder.tvhistcustomDropOffTime.setText(customerApointmentItemsList.get(position).getHistcustomDropOffTime());
+            holder.tvhistpickupAppointmentDate.setText(customerApointmentItemsList.get(position).getHistpickupAppointmentDate());
+            holder.tvhistcustomPickupTime.setText(customerApointmentItemsList.get(position).getHistcustomPickupTime());
 
-          }
+            if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ongoing")) {
+                holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+                GradientDrawable drawable = new GradientDrawable();
+                drawable.setShape(GradientDrawable.RECTANGLE);
+                drawable.setCornerRadius(20);
+                int chosenColor = Color.rgb(247, 201, 16);
+                drawable.setColor(chosenColor);
+                holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
+            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Completed")) {
+                holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+                GradientDrawable drawable = new GradientDrawable();
+                drawable.setShape(GradientDrawable.RECTANGLE);
+                drawable.setCornerRadius(20);
+                drawable.setColor(Color.RED);
+                holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
+            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ready for Pickup")) {
+                holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+                GradientDrawable drawable = new GradientDrawable();
+                drawable.setShape(GradientDrawable.RECTANGLE);
+                drawable.setCornerRadius(20);
+                int chosenColor = Color.rgb(101, 207, 114);
+                drawable.setColor(chosenColor);
+                holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
 
-          holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  selectInterface.onItemClick(customerApointmentItemsList.get(holder.getAdapterPosition()));
-              }
-          });
+            }
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectInterface.onItemClick(customerApointmentItemsList.get(holder.getAdapterPosition()));
+            }
+        });
 
-    }
+        }
+
 
     @Override
     public int getItemCount() {

@@ -8,171 +8,141 @@
     android:background="@drawable/bg_activity"
     tools:context=".Customer_Registration">
 
-    <TextView
-        android:id="@+id/textViewName"
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="254dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
         android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
         android:hint="@string/hint_Name"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAddress"
-        app:layout_constraintEnd_toEndOf="@+id/textViewEmail"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
-
-    <TextView
-        android:id="@+id/textViewAddress"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Address"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCity"
-        app:layout_constraintEnd_toEndOf="@+id/textViewName"
-        app:layout_constraintStart_toStartOf="@+id/textViewName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
-
-    <TextView
-        android:id="@+id/textViewCity"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_City"
-        app:layout_constraintBottom_toTopOf="@+id/textViewContact"
-        app:layout_constraintEnd_toEndOf="@+id/textViewAddress"
-        app:layout_constraintStart_toStartOf="@+id/textViewAddress"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
-
-    <TextView
-        android:id="@+id/textViewContact"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Contact"
-        app:layout_constraintEnd_toEndOf="@+id/textViewCity"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewCity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
-
-    <TextView
-        android:id="@+id/textViewUserName"
-        android:background="#E3BA12"
-        android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/hint_username"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPWord"
-        app:layout_constraintEnd_toEndOf="@+id/textViewRegTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewRegTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
 
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:background="#E3BA12"
+    <EditText
+        android:id="@+id/editTextAddress"
         android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/hint_Email"
-        app:layout_constraintBottom_toTopOf="@+id/textViewName"
-        app:layout_constraintEnd_toEndOf="@+id/textViewCPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewCPassword"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCPassword" />
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#E3BA12"
+        android:hint="@string/hint_Address"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
-    <TextView
+    <EditText
+        android:id="@+id/editTextContact"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#E3BA12"
+        android:hint="@string/hint_Contact"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#E3BA12"
+        android:hint="@string/hint_Email"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCPassword" />
+
+    <EditText
         android:id="@+id/textViewRegTitle"
 
         android:layout_width="247dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="481dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
         android:text="Customer Registration"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-    <TextView
-        android:id="@+id/textViewPWord"
-        android:background="#E3BA12"
+    <EditText
+        android:id="@+id/editTextPWord"
         android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#E3BA12"
         android:hint="@string/hint_password"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCPassword"
-        app:layout_constraintEnd_toEndOf="@+id/textViewUserName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewUserName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
-    <TextView
-        android:id="@+id/textViewCPassword"
-        android:background="#E3BA12"
+    <EditText
+        android:id="@+id/editTextCPassword"
         android:layout_width="250dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#E3BA12"
         android:hint="@string/hint_confirmPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
-        app:layout_constraintEnd_toEndOf="@+id/textViewPWord"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewPWord"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPWord" />
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPWord" />
 
     <Button
         android:id="@+id/buttonCRegister"
-        android:layout_width="150dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="167dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="12dp"
         android:onClick="onClickToAppointmentsView"
         android:text="@string/buttonCRegister"
-        app:layout_constraintEnd_toEndOf="@+id/textViewContact"
-        app:layout_constraintStart_toStartOf="@+id/textViewContact"
-        app:layout_constraintTop_toBottomOf="@+id/textViewContact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContact"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textViewHaveAccount"
-        android:layout_width="121dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="53dp"
+        android:layout_width="153dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickToHistoryView"
         android:text="@string/txtHaveAccount"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/textViewLogHere"
-        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister" />
 
     <TextView
         android:id="@+id/textViewLogHere"
-        android:layout_width="50dp"
-        android:layout_height="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="128dp"
+        android:layout_width="112dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_toEndOf="@+id/textViewHaveAccount"
+        android:onClick="onClickToAppointmentsView"
         android:text="@string/txtLogHere"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="201dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="427dp"
+        android:layout_width="199dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/textViewHaveAccount"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/verticallogo" />
