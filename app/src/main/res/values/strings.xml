@@ -48,4 +48,20 @@
     <string name="pickupDTLabel">Pickup Date and Time</string>
     <string name="pickupLocationLabel">Pickup Location</string>
     <string name="buttonRemind">REMIND</string>
+
+    <string name="hint_ProviderUserName">Provider Name</string>
+    <string name="hint_ProviderPassWord">Provider Password</string>
+    <string name="hint_ProviderConfirmPass">Confirm Password</string>
+    <string name="hint_ProviderEmail">Email</string>
+    <string name="hint_ProviderName">Name</string>
+    <string name="hint_ProviderAddress">Address</string>
+    <string name="hint_ProviderCity">City</string>
+    <string name="hint_ProviderContact">Contact #</string>
+    <string name="hint_ProviderServices">Services #</string>
+    <string name="bntProviderRegister">Register</string>
+    <string name="txtProviderHaveAccount">Already have an account?</string>
+    <string name="txtProviderLogHere">Login here</string>
+    <string name="ProviderforgotPWmessage">Enter your email address and we\'ll send you a link to reset your password</string>
+    <string name="btnServicesRegistration">Services</string>
+    <string name="btnProviderRegistration">Register</string>
 </resources>

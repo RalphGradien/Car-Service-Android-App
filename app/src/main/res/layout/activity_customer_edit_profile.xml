@@ -99,7 +99,7 @@
 
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/ProviderEmail"
         android:layout_width="227dp"
         android:layout_height="39dp"
         android:ems="10"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:text="@string/txtMobile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/ProviderEmail"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp" />
 

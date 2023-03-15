@@ -19,14 +19,14 @@ public class Customer_Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_registration);
 
-        EditText etName = (EditText) findViewById(R.id.editTextName);
-        EditText etPW = (EditText) findViewById(R.id.editTextPWord);
-        EditText etConfirmPW = (EditText) findViewById(R.id.editTextCPassword);
-        EditText etEmail = (EditText) findViewById(R.id.editTextEmail);
-        EditText etAddress = (EditText) findViewById(R.id.editTextAddress);
-        EditText etContact = (EditText) findViewById(R.id.editTextContact);
+        EditText etName = (EditText) findViewById(R.id.ProviderName);
+        EditText etPW = (EditText) findViewById(R.id.ProviderPassWord);
+        EditText etConfirmPW = (EditText) findViewById(R.id.ProviderConfirmPassword);
+        EditText etEmail = (EditText) findViewById(R.id.ProviderEmail);
+        EditText etAddress = (EditText) findViewById(R.id.ProviderAddress);
+        EditText etContact = (EditText) findViewById(R.id.ProviderContact);
 
-        Button buttonRegister = (Button) findViewById(R.id.buttonCRegister);
+        Button buttonRegister = (Button) findViewById(R.id.btnProviderRegister);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
