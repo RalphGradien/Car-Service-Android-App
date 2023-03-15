@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -27,7 +26,7 @@ public class CustomerEditProfile extends AppCompatActivity {
         DB = new DBHelper(this);
         TextView txtCustName = findViewById(R.id.txtCustName);
         EditText editTxtUserName = findViewById(R.id.editTxtUserName);
-        EditText editTxtEmail = findViewById(R.id.editTextEmail);
+        EditText editTxtEmail = findViewById(R.id.ProviderEmail);
         EditText editTxtPassword = findViewById(R.id.editTextPassword);
         EditText editTxtConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         EditText editTxtMobile = findViewById(R.id.editTextMobile);

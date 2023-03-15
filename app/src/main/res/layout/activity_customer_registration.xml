@@ -9,7 +9,7 @@
     tools:context=".Customer_Registration">
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/ProviderName"
         android:layout_width="254dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
 
     <EditText
-        android:id="@+id/editTextAddress"
+        android:id="@+id/ProviderAddress"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -30,10 +30,10 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
 
     <EditText
-        android:id="@+id/editTextContact"
+        android:id="@+id/ProviderContact"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -42,10 +42,10 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/ProviderEmail"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -54,7 +54,7 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/ProviderConfirmPassword" />
 
     <EditText
         android:id="@+id/textViewRegTitle"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <EditText
-        android:id="@+id/editTextPWord"
+        android:id="@+id/ProviderPassWord"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -81,10 +81,10 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
 
     <EditText
-        android:id="@+id/editTextCPassword"
+        android:id="@+id/ProviderConfirmPassword"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -93,10 +93,10 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPWord" />
+        app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
 
     <Button
-        android:id="@+id/buttonCRegister"
+        android:id="@+id/btnProviderRegister"
         android:layout_width="167dp"
         android:layout_height="62dp"
         android:layout_marginTop="12dp"
@@ -104,7 +104,7 @@
         android:text="@string/buttonCRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContact"
+        app:layout_constraintTop_toBottomOf="@+id/ProviderContact"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -116,13 +116,13 @@
         android:onClick="onClickToHistoryView"
         android:text="@string/txtHaveAccount"
         android:textSize="13sp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewLogHere"
+        app:layout_constraintEnd_toStartOf="@+id/logInHere"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProviderRegister" />
 
     <TextView
-        android:id="@+id/textViewLogHere"
+        android:id="@+id/logInHere"
         android:layout_width="112dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -132,7 +132,7 @@
         android:text="@string/txtLogHere"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProviderRegister" />
 
     <ImageView
         android:id="@+id/imageView4"

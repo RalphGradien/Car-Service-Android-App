@@ -51,7 +51,7 @@ public class LogIn extends AppCompatActivity {
         regServiceTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogIn.this, registerService.class);
+                Intent intent = new Intent(LogIn.this, Provider_Registration.class);
                 startActivity(intent);
             }
         });
