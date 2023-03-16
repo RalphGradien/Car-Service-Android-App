@@ -40,7 +40,7 @@ public class CustomerMainMenu extends AppCompatActivity {
                            selectedFragment = new FragmentAppointment();
                            break;
                        case R.id.history:
-                           new ServiceHistory();
+                           selectedFragment = new FragmentAppointment();
                            break;
                    }
 
