@@ -30,17 +30,23 @@ public class CustomerMainMenu extends AppCompatActivity {
                    Fragment selectedFragment=null;
 
                    switch(item.getItemId()) {
+                       //CHANGE TO THE APPROPRIATE VIEW:
+                       //REPLACE ServiceAccount();
+                       //Customer Account
                        case R.id.account:
                            selectedFragment = new ServiceAccount();
                            break;
+                       //Customer Search
                        case R.id.search:
                            selectedFragment = new ServiceAccount();
                            break;
+                           //Customer Appointments
                        case R.id.appointment:
                            selectedFragment = new FragmentAppointment();
                            break;
+                           //Customer History
                        case R.id.history:
-                           selectedFragment = new FragmentAppointment();
+                           selectedFragment = new Customer_ServiceHistoryView();
                            break;
                    }
 

@@ -1,22 +1,28 @@
 package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer_ServiceHistoryView extends AppCompatActivity {
+public class Customer_ServiceHistoryView extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_service_history_view);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_customer_service_history_view, container, false);
 
-        RecyclerView recyclerView = findViewById(R.id.customer_history_recyclerview);
+        //setContentView(R.layout.activity_customer_service_history_view);
+
+        RecyclerView recyclerView = view.findViewById(R.id.customer_history_recyclerview);
 
         List<Customer_ServiceHistory_Items> customer_serviceHistory_itemsList = new ArrayList<Customer_ServiceHistory_Items>();
         customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(23456,"ServiceProvider 1",
@@ -31,8 +37,9 @@ public class Customer_ServiceHistoryView extends AppCompatActivity {
                 "Steering Wheel Check","Metrotown Area","Ongoing","2023-03-11",
                 "4:30PM","",""));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new Customer_ServiceHistory_Adapter(getApplicationContext(),customer_serviceHistory_itemsList));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new Customer_ServiceHistory_Adapter(requireContext(),customer_serviceHistory_itemsList));
+        return view;
     }
 
 }
