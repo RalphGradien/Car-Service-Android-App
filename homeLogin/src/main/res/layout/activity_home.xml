@@ -9,14 +9,14 @@
     <Button
         android:id="@+id/aboutBtn"
         style="@style/MyButtonStyle"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="9dp"
         android:text="@string/about"
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
@@ -34,14 +34,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="332dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="39dp"
         android:layout_marginTop="55dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="125dp"
         android:adjustViewBounds="true"
+        android:cropToPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/aboutBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home" />
