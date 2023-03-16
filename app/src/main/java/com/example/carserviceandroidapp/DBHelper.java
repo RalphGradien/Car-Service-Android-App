@@ -314,7 +314,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String checkLogin(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor customerCursor = db.rawQuery("SELECT * FROM CUSTOMER WHERE email=? AND password=?", new String[]{email, password});
-        Cursor providerCursor = db.rawQuery("SELECT * FROM SERVICE_PROVIDER WHERE email=? AND password=?", new String[]{email, password});
+        Cursor providerCursor = db.rawQuery("SELECT * FROM SERVICE_PROVIDER WHERE Email=? AND ServiceProviderPassword=?", new String[]{email, password});
 
         if (customerCursor.getCount() > 0) {
             return "CUSTOMER";
@@ -322,6 +322,33 @@ public class DBHelper extends SQLiteOpenHelper {
             return "SERVICE_PROVIDER";
         } else {
             return "NOT_FOUND";
+        }
+    }
+
+    public Boolean insertServiceProvider(String password, String fullName, String street, String city,
+                                         String province, String postalCode, String email )
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("serviceProviderPassword", password);
+        values.put("serviceProviderFullName", fullName);
+        values.put("street", street);
+        values.put("city",city);
+        values.put("province",province);
+        values.put("postalCode",postalCode);
+        values.put("email", email);
+
+
+
+
+        long result = db.insert("SERVICE_PROVIDER", null, values);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }

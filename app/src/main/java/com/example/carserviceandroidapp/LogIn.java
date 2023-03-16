@@ -27,23 +27,26 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View v) {
                 String enteredUsername = username.getText().toString();
                 String enteredPassword = password.getText().toString();
+                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+                    // show error if either field is empty
+                    Toast.makeText(getApplicationContext(), "Username or password is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    DBHelper dbHelper = new DBHelper(LogIn.this);
+                    String loginStatus = dbHelper.checkLogin(enteredUsername, enteredPassword);
 
-                DBHelper dbHelper = new DBHelper(LogIn.this);
-                String loginStatus = dbHelper.checkLogin(enteredUsername, enteredPassword);
-
-
-                if (loginStatus.equals("CUSTOMER")) {
-                    // login customer successful, start app
-                    Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
-                    startActivity(intent);
-                } else if (loginStatus.equals("SERVICE_PROVIDER")) {
-                    // login service provider successful, start app
-                    Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
-                    startActivity(intent);
-                }
-                else if (loginStatus.equals("NOT_FOUND")) {
-                    //login details not in Database, show error
-                    Toast.makeText(getApplicationContext(), "Email does not exist", Toast.LENGTH_SHORT).show();
+                    if (loginStatus.equals("CUSTOMER")) {
+                        // login customer successful, start app
+                        Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
+                        startActivity(intent);
+                    } else if (loginStatus.equals("SERVICE_PROVIDER")) {
+                        // login service provider successful, start app
+                        Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
+                        startActivity(intent);
+                    }
+                    else if (loginStatus.equals("NOT_FOUND")) {
+                        //login details not in Database, show error
+                        Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
