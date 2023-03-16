@@ -1,5 +1,6 @@
 package com.example.carserviceandroidapp;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -324,31 +325,25 @@ public class DBHelper extends SQLiteOpenHelper {
             return "NOT_FOUND";
         }
     }
+    public String[] checkLoginID(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor customerCursor = db.rawQuery("SELECT * FROM CUSTOMER WHERE email=? AND password=?", new String[]{email, password});
+        Cursor providerCursor = db.rawQuery("SELECT * FROM SERVICE_PROVIDER WHERE Email=? AND ServiceProviderPassword=?", new String[]{email, password});
 
-    public Boolean insertServiceProvider(String password, String fullName, String street, String city,
-                                         String province, String postalCode, String email )
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("serviceProviderPassword", password);
-        values.put("serviceProviderFullName", fullName);
-        values.put("street", street);
-        values.put("city",city);
-        values.put("province",province);
-        values.put("postalCode",postalCode);
-        values.put("email", email);
-
-
-
-
-        long result = db.insert("SERVICE_PROVIDER", null, values);
-        if(result==-1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
+        if (customerCursor.getCount() > 0) {
+            customerCursor.moveToFirst();
+            @SuppressLint("Range") int customerId = customerCursor.getInt(customerCursor.getColumnIndex("CustomerId"));
+            return new String[]{"CUSTOMER", String.valueOf(customerId)};
+        } else if (providerCursor.getCount() > 0) {
+            providerCursor.moveToFirst();
+            @SuppressLint("Range") int serviceProviderId = providerCursor.getInt(providerCursor.getColumnIndex("ServiceProviderId"));
+            return new String[]{"SERVICE_PROVIDER", String.valueOf(serviceProviderId)};
+        } else {
+            return new String[]{"NOT_FOUND"};
         }
     }
+
 }
+
+
+

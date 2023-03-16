@@ -1,88 +1,108 @@
 package com.example.carserviceandroidapp;
 
 public class ServiceHistoryItems {
-
-    String Servicename;
-    String Servicenumber;
-    String Serviceemail;
-    String ServiceappointmentType;
-    String ServiceappointmentStatus;
-    String ServicecompletedDate;
-    String ServicepickupDate;
-    String ServicedropOffDate;
-
-    public ServiceHistoryItems(String servicename, String servicenumber, String serviceemail, String serviceappointmentType, String serviceappointmentStatus, String servicecompletedDate, String servicepickupDate, String servicedropOffDate) {
-        Servicename = servicename;
-        Servicenumber = servicenumber;
-        Serviceemail = serviceemail;
-        ServiceappointmentType = serviceappointmentType;
-        ServiceappointmentStatus = serviceappointmentStatus;
-        ServicecompletedDate = servicecompletedDate;
-        ServicepickupDate = servicepickupDate;
-        ServicedropOffDate = servicedropOffDate;
+    public ServiceHistoryItems() {
     }
 
-    public String getServicename() {
-        return Servicename;
+    public int getServiceProviderID() {
+        return ServiceProviderID;
     }
 
-    public void setServicename(String servicename) {
-        Servicename = servicename;
+    public void setServiceProviderID(int serviceProviderID) {
+        ServiceProviderID = serviceProviderID;
     }
 
-    public String getServicenumber() {
-        return Servicenumber;
+    public int getCustomerId() {
+        return CustomerId;
     }
 
-    public void setServicenumber(String servicenumber) {
-        Servicenumber = servicenumber;
+    public void setCustomerId(int customerId) {
+        CustomerId = customerId;
     }
 
-    public String getServiceemail() {
-        return Serviceemail;
+    int CustomerId;
+    int ServiceProviderID;
+    String CustomerName;
+    String CustomerNumber;
+    String CustomerEmail;
+    String ServiceCompletedDate;
+    String ServicePickupDate;
+    String ServiceDropOffDate;
+    String ServiceAppointmentStatus;
+    String ServiceAppointmentType;
+
+    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceAppointmentType) {
+        CustomerName = customerName;
+        CustomerNumber = customerNumber;
+        CustomerEmail = customerEmail;
+        ServiceCompletedDate = serviceCompletedDate;
+        ServicePickupDate = servicePickupDate;
+        ServiceDropOffDate = serviceDropOffDate;
+        ServiceAppointmentStatus = serviceAppointmentStatus;
+        ServiceAppointmentType = serviceAppointmentType;
     }
 
-    public void setServiceemail(String serviceemail) {
-        Serviceemail = serviceemail;
+    public String getCustomerName() {
+        return CustomerName;
     }
 
-    public String getServiceappointmentType() {
-        return ServiceappointmentType;
+    public void setCustomerName(String customerName) {
+        CustomerName = customerName;
     }
 
-    public void setServiceappointmentType(String serviceappointmentType) {
-        ServiceappointmentType = serviceappointmentType;
+    public String getCustomerNumber() {
+        return CustomerNumber;
     }
 
-    public String getServiceappointmentStatus() {
-        return ServiceappointmentStatus;
+    public void setCustomerNumber(String customerNumber) {
+        CustomerNumber = customerNumber;
     }
 
-    public void setServiceappointmentStatus(String serviceappointmentStatus) {
-        ServiceappointmentStatus = serviceappointmentStatus;
+    public String getCustomerEmail() {
+        return CustomerEmail;
     }
 
-    public String getServicecompletedDate() {
-        return ServicecompletedDate;
+    public void setCustomerEmail(String customerEmail) {
+        CustomerEmail = customerEmail;
     }
 
-    public void setServicecompletedDate(String servicecompletedDate) {
-        ServicecompletedDate = servicecompletedDate;
+    public String getServiceCompletedDate() {
+        return ServiceCompletedDate;
     }
 
-    public String getServicepickupDate() {
-        return ServicepickupDate;
+    public void setServiceCompletedDate(String serviceCompletedDate) {
+        ServiceCompletedDate = serviceCompletedDate;
     }
 
-    public void setServicepickupDate(String servicepickupDate) {
-        ServicepickupDate = servicepickupDate;
+    public String getServicePickupDate() {
+        return ServicePickupDate;
     }
 
-    public String getServicedropOffDate() {
-        return ServicedropOffDate;
+    public void setServicePickupDate(String servicePickupDate) {
+        ServicePickupDate = servicePickupDate;
     }
 
-    public void setServicedropOffDate(String servicedropOffDate) {
-        ServicedropOffDate = servicedropOffDate;
+    public String getServiceDropOffDate() {
+        return ServiceDropOffDate;
+    }
+
+    public void setServiceDropOffDate(String serviceDropOffDate) {
+        ServiceDropOffDate = serviceDropOffDate;
+    }
+
+    public String getServiceAppointmentStatus() {
+        return ServiceAppointmentStatus;
+    }
+
+    public void setServiceAppointmentStatus(String serviceAppointmentStatus) {
+        ServiceAppointmentStatus = serviceAppointmentStatus;
+    }
+
+    public String getServiceAppointmentType() {
+        return ServiceAppointmentType;
+    }
+
+    public void setServiceAppointmentType(String serviceAppointmentType) {
+        ServiceAppointmentType = serviceAppointmentType;
     }
 }

@@ -2,6 +2,7 @@ package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,18 +33,25 @@ public class LogIn extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Username or password is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     DBHelper dbHelper = new DBHelper(LogIn.this);
-                    String loginStatus = dbHelper.checkLogin(enteredUsername, enteredPassword);
+                    String[] loginStatus = dbHelper.checkLoginID(enteredUsername, enteredPassword);
 
-                    if (loginStatus.equals("CUSTOMER")) {
+                    if (loginStatus[0].equals("CUSTOMER")) {
                         // login customer successful, start app
                         Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
+
+                        ServiceHistoryItems customerID = new ServiceHistoryItems();
+                        customerID.setCustomerId(Integer.parseInt(loginStatus[1]));
                         startActivity(intent);
-                    } else if (loginStatus.equals("SERVICE_PROVIDER")) {
+                    } else if (loginStatus[0].contains("SERVICE_PROVIDER")) {
                         // login service provider successful, start app
+                        ServiceHistoryItems serviceID = new ServiceHistoryItems();
+
+                        serviceID.setServiceProviderID(Integer.parseInt(loginStatus[1]));
+
                         Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
                         startActivity(intent);
                     }
-                    else if (loginStatus.equals("NOT_FOUND")) {
+                    else if (loginStatus[0].contains("NOT_FOUND")) {
                         //login details not in Database, show error
                         Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
                     }
