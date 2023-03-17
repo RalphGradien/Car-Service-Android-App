@@ -2,6 +2,7 @@ package com.example.carserviceandroidapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -21,6 +22,7 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
     List<CustomerApointmentItems> customerApointmentItemsList;
     private CustomerAppointmentsViewSelectInterface selectInterface;
 
+
     public CustomerAppointmentAdapter(Context context, List<CustomerApointmentItems> customerApointmentItemsList, CustomerAppointmentsViewSelectInterface selectInterface ) {
         this.context = context;
         this.customerApointmentItemsList = customerApointmentItemsList;
@@ -35,16 +37,15 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
 
     @Override
     public void onBindViewHolder(@NonNull CustomerAppointmentViewHolder holder, int position) {
-
             holder.tvhistappointmentIDInt.setText(String.valueOf(customerApointmentItemsList.get(position).getHistappointmentIDInt()));
             holder.tvhistbookedServiceProviderName.setText(customerApointmentItemsList.get(position).getHistbookedServiceProviderName());
             holder.tvhistserviceAvailed.setText(customerApointmentItemsList.get(position).getHistserviceAvailed());
             holder.tvhistbookedServiceProviderAddress.setText(customerApointmentItemsList.get(position).getHistbookedServiceProviderAddress());
             holder.tvhistbookingStatus.setText(customerApointmentItemsList.get(position).getHistbookingStatus());
             holder.tvhistdropoffAppointmentDate.setText(customerApointmentItemsList.get(position).getHistdropoffAppointmentDate());
-            holder.tvhistcustomDropOffTime.setText(customerApointmentItemsList.get(position).getHistcustomDropOffTime());
+            //holder.tvhistcustomDropOffTime.setText(customerApointmentItemsList.get(position).getHistcustomDropOffTime());
             holder.tvhistpickupAppointmentDate.setText(customerApointmentItemsList.get(position).getHistpickupAppointmentDate());
-            holder.tvhistcustomPickupTime.setText(customerApointmentItemsList.get(position).getHistcustomPickupTime());
+            //holder.tvhistcustomPickupTime.setText(customerApointmentItemsList.get(position).getHistcustomPickupTime());
 
             if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ongoing")) {
                 holder.tvhistbookingStatus.setTextColor(Color.WHITE);
