@@ -118,7 +118,7 @@ public class Provider_Registration extends AppCompatActivity {
             }
         });
 
-        //Aarady have an account  - Login activity
+        //Already have an account  - Login activity
         TextView logIn = findViewById(R.id.logInHere);
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
