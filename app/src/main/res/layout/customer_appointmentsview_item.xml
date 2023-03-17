@@ -68,7 +68,7 @@
 
     <TextView
         android:id="@+id/histdropofflabel"
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="Drop-Off "
@@ -78,21 +78,14 @@
 
     <TextView
         android:id="@+id/histdropoffAppointmentDate"
-        android:layout_width="80dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-2dp"
         android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_marginStart="-2dp"
+        android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/histdropofflabel"
         android:text="2022-04-14"
-        android:textColor="#65CF72" />
-
-    <TextView
-        android:id="@+id/histcustomDropOffTime"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/histdropoffAppointmentDate"
-        android:layout_below="@+id/histbookedServiceProviderAddress"
-        android:text="09:30AM"
+        android:textAlignment="textEnd"
         android:textColor="#65CF72" />
 
     <TextView
@@ -107,27 +100,20 @@
 
     <TextView
         android:id="@+id/histpickupAppointmentDate"
-        android:layout_width="80dp"
+        android:layout_width="188dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/histdropoffAppointmentDate"
         android:layout_marginStart="-2dp"
-        android:layout_below="@+id/histcustomDropOffTime"
+        android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/histdropofflabel"
         android:text="2022-05-10"
-        android:textColor="#65CF72" />
-
-    <TextView
-        android:id="@+id/histcustomPickupTime"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/histdropoffAppointmentDate"
-        android:layout_below="@+id/histcustomDropOffTime"
-        android:text="02:30PM"
+        android:textAlignment="textEnd"
         android:textColor="#65CF72" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/histcustomPickupTime"
+        android:layout_below="@id/histpickupAppointmentDate"
         android:layout_marginTop="10dp"
         android:background="#DAB8D8"/>
 

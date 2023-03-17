@@ -317,4 +317,11 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from APPOINTMENT_DETAIL",null);
         return cursor;
     }
+
+    public Cursor getServiceProviderDataAll()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
+        return cursor;
+    }
 }

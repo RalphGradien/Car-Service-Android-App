@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         btnDummyData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DB.insertuserdata("John Hancock", "password1", "john123@gmail.com", "9876543210", "123 Main St");
-//                DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
+                DB.insertuserdata("John Hancock", "password1", "john123@gmail.com", "9876543210", "123 Main St");//                DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
+
 //                DB.insertuserdata("Bob Walden", "password3", "bob789@hotmail.com", "5555555555", "789 Elm St");
 //                DB.insertuserdata("Emily Hirch", "password4", "emily567@outlook.com", "1112223333", "321 Maple St");
 //                DB.insertuserdata("David Pleat", "password5", "david999@aol.com", "7777777777", "654 Birch Ln");
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 //                DB.insertuserdata("Sophia Estevez", "password9", "sophia567@hotmail.com", "4445556666", "789 Sycamore Rd");
 //                DB.insertuserdata("Ethan Moriaty", "password10", "ethan123@gmail.com", "2223334444", "321 Magnolia Dr");
 //
-//                DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V43G67","motospot123@gmail.com","5874235","a");
-//                DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
+                DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V43G67","motospot123@gmail.com","5874235","a");
+                DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
 //                DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
 //                DB.insertServiceProvider("password4","Speedy Auto Service","King street","Toronto","ON","M5V 1K4","speedyservice@hotmail.com","416-555-4321","d");
 //                DB.insertServiceProvider("password5","Mr. Lube","Yonge street","Toronto","ON","M4N 3M7","mrlubetoronto@gmail.com","416-555-9876","e");
@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
 //                DB.insertServiceDetail("Transmission Service","It will include draining and refilling the transmission fluid and replacing the filter");
 //                DB.insertServiceDetail("Fuel Injection Service","It will include cleaning the fuel injectors to improve fuel efficiency and engine performance");
 //
-//                DB.insertServiceList("SP_1_2",1,1);
-//                DB.insertServiceList("SP_1_3",1,2);
+                DB.insertServiceList("SP_1_2",1,1);
+                DB.insertServiceList("SP_1_3",1,2);
 //
-//                DB.insertServiceDetail("Wheel Replacement","Change of overall wheels");
-//                DB.insertServiceDetail("Brake Check","Change of overall wheels");
+                DB.insertServiceDetail("Wheel Replacement","Change of overall wheels");
+                DB.insertServiceDetail("Brake Check","Change of overall wheels");
 //                DB.insertServiceList("SP_1_4",1,4);DB.insertServiceList("SP_1_5",1,5);
 //                DB.insertServiceList("SP_2_1", 2, 1); DB.insertServiceList("SP_2_2", 2, 2); DB.insertServiceList("SP_2_6", 2, 6); DB.insertServiceList("SP_2_7", 2, 7);
 //                DB.insertServiceList("SP_3_3", 3, 3);
@@ -77,7 +77,13 @@ public class MainActivity extends AppCompatActivity {
 //                DB.insertServiceList("SP_9_6", 9, 6);
 //                DB.insertServiceList("SP_10_9", 10, 9);
 
-//                DB.insertAppointmentDetail(1,"SP_1_2");
+                DB.insertAppointmentDetail(1,"SP_1_2");
+                // AppointmentStatus set to "Ongoing"
+                DB.insertAppointment(1234, 1, "2023-04-01 10:00:00", "Kelowna", "2023-04-01", "2023-04-01 09:00:00", "Nanaimo", "2023-03-16", "", "Delivery", "Ongoing");
+
+// AppointmentStatus set to "Completed"
+                DB.insertAppointment(5678, 2, "2023-04-02 14:00:00", "Victoria", "2023-04-02", "2023-04-02 13:00:00", "Abbotsford", "2023-03-17", "", "Pickup", "Completed");
+
 //
                 Toast.makeText(MainActivity.this, "Insert Successfully", Toast.LENGTH_LONG).show();
             }

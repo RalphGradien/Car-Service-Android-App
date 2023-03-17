@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
     TextView tvhistappointmentIDLabel,tvhistappointmentIDInt, tvhistbookedServiceProviderName,
             tvhistserviceAvailed, tvhistbookedServiceProviderAddress, tvhistbookingStatus,
-            tvhistdropofflabel, tvhistdropoffAppointmentDate, tvhistcustomDropOffTime,
-            tvhistpickuplabel, tvhistpickupAppointmentDate, tvhistcustomPickupTime;
+            tvhistdropofflabel, tvhistdropoffAppointmentDate,
+            tvhistpickuplabel, tvhistpickupAppointmentDate;
+
 
     RelativeLayout relativeLayout;
 
@@ -26,10 +27,8 @@ public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
         tvhistbookingStatus = itemView.findViewById(R.id.histbookingStatus);
         tvhistdropofflabel = itemView.findViewById(R.id.histdropofflabel);
         tvhistdropoffAppointmentDate = itemView.findViewById(R.id.histdropoffAppointmentDate);
-        tvhistcustomDropOffTime = itemView.findViewById(R.id.histcustomDropOffTime);
         tvhistpickuplabel = itemView.findViewById(R.id.histpickuplabel);
         tvhistpickupAppointmentDate = itemView.findViewById(R.id.histpickupAppointmentDate);
-        tvhistcustomPickupTime = itemView.findViewById(R.id.histcustomPickupTime);
 
         relativeLayout = itemView.findViewById(R.id.container_custappointment_item);
 
