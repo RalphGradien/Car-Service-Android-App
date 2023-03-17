@@ -10,7 +10,7 @@ public class ServiceHistoryViewHolder extends RecyclerView.ViewHolder {
 
    TextView nameView, numberView, emailView,
            appointmentTypeView,appointmentStatusView,
-           completedDateView, pickupDateView, dropOffDateView;
+           completedDateView, pickupDateView, dropOffDateView, completed, pickup;
 
     public ServiceHistoryViewHolder(@NonNull View itemView) {
 
@@ -23,6 +23,10 @@ public class ServiceHistoryViewHolder extends RecyclerView.ViewHolder {
         completedDateView = itemView.findViewById(R.id.completedDate);
         pickupDateView = itemView.findViewById(R.id.pickupDate);
         dropOffDateView = itemView.findViewById(R.id.dropOffDate);
+        completed = itemView.findViewById(R.id.completed);
+        pickup = itemView.findViewById(R.id.pickUpReady);
+
+
 
 
 

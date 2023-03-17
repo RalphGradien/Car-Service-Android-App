@@ -29,24 +29,35 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View v) {
                 String enteredUsername = username.getText().toString();
                 String enteredPassword = password.getText().toString();
+
+
                 if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
                     // show error if either field is empty
                     Toast.makeText(getApplicationContext(), "Username or password is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     DBHelper dbHelper = new DBHelper(LogIn.this);
+
+                    //Checks if login details are correct.
+                    // Returns CUSTOMER, SERVICE_PROVIDED, or NOT_FOUND on loginStatus[0]
+                    //Returns CustomerID or Service ID on loginStatus[1]
                     String[] loginStatus = dbHelper.checkLoginID(enteredUsername, enteredPassword);
 
                     if (loginStatus[0].equals("CUSTOMER")) {
+
+
+                        //Stores ID to global variable
+                        Customer.CustomerID=Integer.parseInt(loginStatus[1]);
+
                         // login customer successful, start app Customer Module
                         Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
-
-                        Customer.CustomerID=Integer.parseInt(loginStatus[1]);
                         startActivity(intent);
                     } else if (loginStatus[0].equals("SERVICE_PROVIDER")) {
-                        // login service provider successful, start app Service Provider Module
 
+
+                        //Stores ID to global variable
                         ServiceProvider.ServiceProviderID=Integer.parseInt(loginStatus[1]);
 
+                        // login service provider successful, start app Service Provider Module
                         Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
                         startActivity(intent);
                     }

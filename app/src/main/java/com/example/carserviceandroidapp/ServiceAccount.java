@@ -18,8 +18,21 @@ public class ServiceAccount extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_account, container, false);
         Button editProfile = rootView.findViewById(R.id.editProfileBtn);
-        // Add any onClickListener or other customization for the editProfile button here
 
+        Button logOut = rootView.findViewById(R.id.logOut);
+
+
+        //Logs out user, clearing global ID variables.
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Customer.CustomerID = 0;
+                ServiceProvider.ServiceProviderID =0;
+                startActivity(new Intent(rootView.getContext(), LogIn.class));
+            }
+        });
+
+        //Starts EditProfileActivity for Service Provider
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,5 +41,6 @@ public class ServiceAccount extends Fragment {
         });
         return rootView;
     }
+
 
 }

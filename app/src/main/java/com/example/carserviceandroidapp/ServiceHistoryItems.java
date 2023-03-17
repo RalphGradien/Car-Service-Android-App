@@ -11,7 +11,7 @@ public class ServiceHistoryItems {
     String ServiceDropOffDate;
     String ServiceAppointmentStatus;
     String ServiceAppointmentType;
-
+    // Constructor for "Completed Status"
     public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceAppointmentType) {
         CustomerName = customerName;
         CustomerNumber = customerNumber;
@@ -22,7 +22,7 @@ public class ServiceHistoryItems {
         ServiceAppointmentStatus = serviceAppointmentStatus;
         ServiceAppointmentType = serviceAppointmentType;
     }
-
+    // Constructor for "Cancelled Status"
     public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceAppointmentType,String serviceDropOffDate) {
         CustomerName = customerName;
         CustomerNumber = customerNumber;

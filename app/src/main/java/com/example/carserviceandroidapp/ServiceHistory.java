@@ -29,8 +29,9 @@ public class ServiceHistory extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.historyRecyclerView);
         List<ServiceHistoryItems> historyItems = new ArrayList<>();
 
+        //Invokes global variable
         int serviceProviderID = ServiceProvider.ServiceProviderID;
-//        int serviceProviderID = 1;
+
         // retrieve appointments data for serviceProviderID
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -53,9 +54,12 @@ public class ServiceHistory extends Fragment {
                         String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
                         String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
 
+                        //If status is "Completed", adds to a constructor that accepts 8 parameters
                         if (appointmentStatus.equals("Completed")) {
                             historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, appointmentType));
-                        } else {
+                        }
+                        //If status is "Cancelled", adds to a constructor that accepts 6 parameters
+                        else {
                             historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, appointmentType, dropOffTimeDate));
                         }
 
