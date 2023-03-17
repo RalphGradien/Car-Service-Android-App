@@ -33,8 +33,10 @@ public class CustomerEditProfile extends AppCompatActivity {
         EditText editTxtAddress = findViewById(R.id.editTxtAddress);
         Button buttonSaveChanges = findViewById(R.id.btnSaveCust);
         Button buttonDeleteChanges = findViewById(R.id.btnDeleteCust);
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        userID = sharedPref.getInt("key1",0);
+     //   SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+     //   userID = sharedPref.getInt("key1",0);
+     //   userID= Customer.CustomerID;
+        userID= 2;
         displaydata();
         txtCustName.setText(username);
         editTxtUserName.setText(username);
