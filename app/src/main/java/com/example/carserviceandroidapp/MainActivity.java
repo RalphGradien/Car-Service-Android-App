@@ -62,7 +62,12 @@ public class MainActivity extends AppCompatActivity {
 //                DB.insertServiceDetail("Transmission Service","It will include draining and refilling the transmission fluid and replacing the filter");
 //                DB.insertServiceDetail("Fuel Injection Service","It will include cleaning the fuel injectors to improve fuel efficiency and engine performance");
 //
-//                DB.insertServiceList("SP_1_2",1,2);DB.insertServiceList("SP_1_3",1,3);DB.insertServiceList("SP_1_4",1,4);DB.insertServiceList("SP_1_5",1,5);
+//                DB.insertServiceList("SP_1_2",1,1);
+//                DB.insertServiceList("SP_1_3",1,2);
+//
+//                DB.insertServiceDetail("Wheel Replacement","Change of overall wheels");
+//                DB.insertServiceDetail("Brake Check","Change of overall wheels");
+//                DB.insertServiceList("SP_1_4",1,4);DB.insertServiceList("SP_1_5",1,5);
 //                DB.insertServiceList("SP_2_1", 2, 1); DB.insertServiceList("SP_2_2", 2, 2); DB.insertServiceList("SP_2_6", 2, 6); DB.insertServiceList("SP_2_7", 2, 7);
 //                DB.insertServiceList("SP_3_3", 3, 3);
 //                DB.insertServiceList("SP_4_5", 4, 5);
@@ -71,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
 //                DB.insertServiceList("SP_8_9", 8, 9);
 //                DB.insertServiceList("SP_9_6", 9, 6);
 //                DB.insertServiceList("SP_10_9", 10, 9);
+
+//                DB.insertAppointmentDetail(1,"SP_1_2");
+//
                 Toast.makeText(MainActivity.this, "Insert Successfully", Toast.LENGTH_LONG).show();
             }
         });
