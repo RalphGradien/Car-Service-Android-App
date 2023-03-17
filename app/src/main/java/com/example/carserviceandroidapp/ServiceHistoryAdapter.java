@@ -2,6 +2,7 @@ package com.example.carserviceandroidapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -31,14 +32,25 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
 
     @Override
     public void onBindViewHolder(@NonNull ServiceHistoryViewHolder holder, int position) {
-       holder.nameView.setText(items.get(position).getCustomerName());
-       holder.numberView.setText(items.get(position).getCustomerNumber());
-       holder.emailView.setText(items.get(position).getCustomerEmail());
-       holder.appointmentTypeView.setText(items.get(position).getServiceAppointmentType());
-       holder.appointmentStatusView.setText(items.get(position).getServiceAppointmentStatus());
-       holder.completedDateView.setText(items.get(position).getServiceCompletedDate());
-       holder.pickupDateView.setText(items.get(position).getServicePickupDate());
-       holder.dropOffDateView.setText(items.get(position).getServiceDropOffDate());
+        ServiceHistoryItems currentItem = items.get(position);
+        holder.nameView.setText(currentItem.getCustomerName());
+        holder.numberView.setText(currentItem.getCustomerNumber());
+        holder.emailView.setText(currentItem.getCustomerEmail());
+        holder.appointmentTypeView.setText(currentItem.getServiceAppointmentType());
+
+        String appointmentStatus = currentItem.getServiceAppointmentStatus();
+        holder.appointmentStatusView.setText(appointmentStatus);
+
+        if (appointmentStatus.equals("Completed")) {
+            holder.completedDateView.setText(currentItem.getServiceCompletedDate());
+
+            holder.appointmentStatusView.setBackgroundResource(R.drawable.green_rounded_rectangle);
+        } else if (appointmentStatus.equals("Cancelled")) {
+            holder.pickupDateView.setVisibility(View.GONE);
+            holder.completedDateView.setVisibility(View.GONE);
+            holder.dropOffDateView.setText(currentItem.getServiceDropOffDate());
+            holder.appointmentStatusView.setBackgroundResource(R.drawable.red_rounded_rectangle);
+        }
     }
 
     @Override

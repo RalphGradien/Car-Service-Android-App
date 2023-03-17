@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,22 +37,20 @@ public class LogIn extends AppCompatActivity {
                     String[] loginStatus = dbHelper.checkLoginID(enteredUsername, enteredPassword);
 
                     if (loginStatus[0].equals("CUSTOMER")) {
-                        // login customer successful, start app
+                        // login customer successful, start app Customer Module
                         Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
 
-                        ServiceHistoryItems customerID = new ServiceHistoryItems();
-                        customerID.setCustomerId(Integer.parseInt(loginStatus[1]));
+                        Customer.CustomerID=Integer.parseInt(loginStatus[1]);
                         startActivity(intent);
-                    } else if (loginStatus[0].contains("SERVICE_PROVIDER")) {
-                        // login service provider successful, start app
-                        ServiceHistoryItems serviceID = new ServiceHistoryItems();
+                    } else if (loginStatus[0].equals("SERVICE_PROVIDER")) {
+                        // login service provider successful, start app Service Provider Module
 
-                        serviceID.setServiceProviderID(Integer.parseInt(loginStatus[1]));
+                        ServiceProvider.ServiceProviderID=Integer.parseInt(loginStatus[1]);
 
                         Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
                         startActivity(intent);
                     }
-                    else if (loginStatus[0].contains("NOT_FOUND")) {
+                    else if (loginStatus[0].equals("NOT_FOUND")) {
                         //login details not in Database, show error
                         Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
                     }

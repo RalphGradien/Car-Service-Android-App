@@ -3,25 +3,6 @@ package com.example.carserviceandroidapp;
 public class ServiceHistoryItems {
     public ServiceHistoryItems() {
     }
-
-    public int getServiceProviderID() {
-        return ServiceProviderID;
-    }
-
-    public void setServiceProviderID(int serviceProviderID) {
-        ServiceProviderID = serviceProviderID;
-    }
-
-    public int getCustomerId() {
-        return CustomerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        CustomerId = customerId;
-    }
-
-    int CustomerId;
-    int ServiceProviderID;
     String CustomerName;
     String CustomerNumber;
     String CustomerEmail;
@@ -38,6 +19,14 @@ public class ServiceHistoryItems {
         ServiceCompletedDate = serviceCompletedDate;
         ServicePickupDate = servicePickupDate;
         ServiceDropOffDate = serviceDropOffDate;
+        ServiceAppointmentStatus = serviceAppointmentStatus;
+        ServiceAppointmentType = serviceAppointmentType;
+    }
+
+    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceAppointmentType) {
+        CustomerName = customerName;
+        CustomerNumber = customerNumber;
+        CustomerEmail = customerEmail;
         ServiceAppointmentStatus = serviceAppointmentStatus;
         ServiceAppointmentType = serviceAppointmentType;
     }

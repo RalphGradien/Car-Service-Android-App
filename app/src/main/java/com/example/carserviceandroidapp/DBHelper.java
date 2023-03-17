@@ -332,11 +332,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (customerCursor.getCount() > 0) {
             customerCursor.moveToFirst();
-            @SuppressLint("Range") int customerId = customerCursor.getInt(customerCursor.getColumnIndex("CustomerId"));
+            @SuppressLint("Range") int customerId = customerCursor.getInt(customerCursor.getColumnIndex("Userid"));
             return new String[]{"CUSTOMER", String.valueOf(customerId)};
         } else if (providerCursor.getCount() > 0) {
             providerCursor.moveToFirst();
-            @SuppressLint("Range") int serviceProviderId = providerCursor.getInt(providerCursor.getColumnIndex("ServiceProviderId"));
+            @SuppressLint("Range") int serviceProviderId = providerCursor.getInt(providerCursor.getColumnIndex("ServiceProviderID"));
             return new String[]{"SERVICE_PROVIDER", String.valueOf(serviceProviderId)};
         } else {
             return new String[]{"NOT_FOUND"};

@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DB.insertuserdata("John Hancock", "password1", "john123@gmail.com", "9876543210", "123 Main St");
-//                DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
-//                DB.insertuserdata("Bob Walden", "password3", "bob789@hotmail.com", "5555555555", "789 Elm St");
+                DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
+                DB.insertuserdata("Bob Walden", "password3", "bob789@hotmail.com", "5555555555", "789 Elm St");
 //                DB.insertuserdata("Emily Hirch", "password4", "emily567@outlook.com", "1112223333", "321 Maple St");
 //                DB.insertuserdata("David Pleat", "password5", "david999@aol.com", "7777777777", "654 Birch Ln");
 //                DB.insertuserdata("Oliver Pascal", "password6", "oliver246@gmail.com", "3334445555", "987 Pine Rd");
@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
                // DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V4N1E3","motospot@gmail.com");
                DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
                DB.insertAppointment(1, 1,"03-13-2023", "Surrey", "03-16-2023", "03-17-2023", "Surrey", "03-15-2023", "", "Fluid Replacement", "Completed");
-               //                DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
+                DB.insertAppointment(2, 1,"04-13-2023", "Burnaby", "04-16-2023", "04-17-2023", "Coquitlam", "04-15-2023", "", "Oil Change", "Completed");
+                DB.insertAppointment(3, 1,"05-13-2023", "New Westminster", "05-16-2023", "05-17-2023", "Richmond", "04-15-2023", "", "Oil Change", "Cancelled");
+                //                DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
 //                DB.insertServiceProvider("password4","Speedy Auto Service","King street","Toronto","ON","M5V 1K4","speedyservice@hotmail.com","416-555-4321","d");
 //                DB.insertServiceProvider("password5","Mr. Lube","Yonge street","Toronto","ON","M4N 3M7","mrlubetoronto@gmail.com","416-555-9876","e");
 //                DB.insertServiceProvider("password6","Precision Tune Auto Care","Portage avenue","Winnipeg","MB","R3G 0W4","precisiontunewinnipeg@yahoo.com","204-555-3456","f");
