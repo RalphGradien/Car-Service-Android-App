@@ -56,7 +56,7 @@ public class ServiceHistory extends Fragment {
                         if (appointmentStatus.equals("Completed")) {
                             historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, appointmentType));
                         } else {
-                            historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, appointmentType));
+                            historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, appointmentType, dropOffTimeDate));
                         }
 
 

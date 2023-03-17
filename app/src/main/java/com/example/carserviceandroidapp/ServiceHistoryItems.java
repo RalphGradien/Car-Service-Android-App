@@ -23,12 +23,13 @@ public class ServiceHistoryItems {
         ServiceAppointmentType = serviceAppointmentType;
     }
 
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceAppointmentType) {
+    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceAppointmentType,String serviceDropOffDate) {
         CustomerName = customerName;
         CustomerNumber = customerNumber;
         CustomerEmail = customerEmail;
         ServiceAppointmentStatus = serviceAppointmentStatus;
         ServiceAppointmentType = serviceAppointmentType;
+        ServiceDropOffDate = serviceDropOffDate;
     }
 
     public String getCustomerName() {
