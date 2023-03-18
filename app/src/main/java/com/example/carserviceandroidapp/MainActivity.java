@@ -33,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertuserdata("John Hancock", "password1", "john123@gmail.com", "9876543210", "123 Main St");
                 DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
                 DB.insertuserdata("Bob Walden", "password3", "bob789@hotmail.com", "5555555555", "789 Elm St");
-                DB.insertuserdata("John Hancock", "password1", "john123@gmail.com", "9876543210", "123 Main St");
-                DB.insertuserdata("Alice Claire", "password2", "alice456@yahoo.com", "1234567890", "456 Oak Ave");
-
-                DB.insertuserdata("Bob Walden", "password3", "bob789@hotmail.com", "5555555555", "789 Elm St");
                 DB.insertuserdata("Emily Hirch", "password4", "emily567@outlook.com", "1112223333", "321 Maple St");
                 DB.insertuserdata("David Pleat", "password5", "david999@aol.com", "7777777777", "654 Birch Ln");
                 DB.insertuserdata("Oliver Pascal", "password6", "oliver246@gmail.com", "3334445555", "987 Pine Rd");
@@ -45,12 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertuserdata("Sophia Estevez", "password9", "sophia567@hotmail.com", "4445556666", "789 Sycamore Rd");
                 DB.insertuserdata("Ethan Moriaty", "password10", "ethan123@gmail.com", "2223334444", "321 Magnolia Dr");
 
-               // DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V4N1E3","motospot@gmail.com");
-               DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
-               DB.insertAppointment(1, 1,"03-13-2023", "Surrey", "03-16-2023", "03-17-2023", "Surrey", "03-15-2023", "", "Fluid Replacement", "Completed");
-                DB.insertAppointment(2, 1,"04-13-2023", "Burnaby", "04-16-2023", "04-17-2023", "Coquitlam", "04-15-2023", "", "Oil Change", "Completed");
-                DB.insertAppointment(3, 1,"05-13-2023", "New Westminster", "05-16-2023", "05-17-2023", "Richmond", "04-15-2023", "", "Oil Change", "Cancelled");
-                //                DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
+                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "Surrey", "03/15/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(2, 1,"04/13/2023 03:00 PM", "Burnaby", "04/22/2023", "04-17-2023 01:00 PM", "Coquitlam", "04/15/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(3, 1,"05/13/2023 02:30 PM", "New Westminster", "05/19/2023", "05/17/2023 11:00 AM", "Richmond", "04/15/2023", "", "Drop Off", "Cancelled");
+
                 DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V43G67","motospot123@gmail.com","5874235","a");
                 DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
                 DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
@@ -106,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void toArifin(View v){
-        Intent intent = new Intent(MainActivity.this, CustomerEditProfile.class);
+        Intent intent = new Intent(MainActivity.this, CustomerFindServiceProviderLocation.class);
         startActivity(intent);
     }
 
