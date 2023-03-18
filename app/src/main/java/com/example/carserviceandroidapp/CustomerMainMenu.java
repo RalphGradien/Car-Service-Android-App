@@ -45,9 +45,9 @@ public class CustomerMainMenu extends AppCompatActivity {
                            selectedFragment = new FragmentAppointment();
                            break;
                            //Customer History
-                       case R.id.history:
-                           selectedFragment = new Customer_ServiceHistoryView();
-                           break;
+//                       case R.id.history:
+//                           selectedFragment = new Customer_ServiceHistoryView();
+//                           break;
                    }
 
                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

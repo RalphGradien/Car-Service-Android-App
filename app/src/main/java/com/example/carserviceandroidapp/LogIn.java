@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
 
                         //Stores ID to global variable
                         Customer.CustomerID=Integer.parseInt(loginStatus[1]);
-
+                        Log.d("CustomerID LOG:", String.valueOf(Customer.CustomerID));
                         // login customer successful, start app Customer Module
                         Intent intent = new Intent(LogIn.this, CustomerMainMenu.class);
                         startActivity(intent);
@@ -57,6 +57,7 @@ public class LogIn extends AppCompatActivity {
                         //Stores ID to global variable
                         ServiceProvider.ServiceProviderID=Integer.parseInt(loginStatus[1]);
 
+                        Log.d("ServiceProviderID LOG:", String.valueOf(ServiceProvider.ServiceProviderID));
                         // login service provider successful, start app Service Provider Module
                         Intent intent = new Intent(LogIn.this, ServiceMainMenu.class);
                         startActivity(intent);
