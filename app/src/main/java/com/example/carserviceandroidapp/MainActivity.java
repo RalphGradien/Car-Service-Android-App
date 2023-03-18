@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointment(6, 7, "", "Kelowna", "", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
                 DB.insertAppointment(7, 9, "", "Kelowna", "", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
                 DB.insertAppointment(8, 2, "2023/04/02 02:00 PM", "Victoria", "2023/04/02", "2023/04/01 01:30 PM", "Abbotsford", "2023/03/27", "", "Pick Up", "Completed");
+                DB.insertAppointment(9, 4, "", "", "", "2023/01/21 01:30 PM", "789 Sycamore Rd", "2023/01/18", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(10, 1, "", "", "", "2023/02/11 01:30 PM", "321 Magnolia Dr", "2023/02/06", "", "Drop Off", "Ongoing");
 
                 //Insert Appointment Detail Data
                 DB.insertAppointmentDetail(1,"SP_1_2");
@@ -99,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointmentDetail(6,"SP_7_3");
                 DB.insertAppointmentDetail(7,"SP_9_5");
                 DB.insertAppointmentDetail(8,"SP_2_1");
-
+                DB.insertAppointmentDetail(9,"SP_4_5");
+                DB.insertAppointmentDetail(10,"SP_1_6");
 
 
 
