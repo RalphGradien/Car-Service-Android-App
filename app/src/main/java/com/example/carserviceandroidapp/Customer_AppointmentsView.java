@@ -24,7 +24,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         List<CustomerApointmentItems> customerApointmentItems = new ArrayList<>();
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
 
-        int userId=1234;
+        int userId=1;
         Cursor cursorAppointment = dbh.getAppointment();
         Cursor cursorServiceProvider = dbh.getServiceProviderDataAll();
         Cursor cursorAppDetail = dbh.getAppointmentDetail();
@@ -113,6 +113,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
     @Override
     public void onItemClick(CustomerApointmentItems customerApointmentItems) {
         Intent intent = new Intent(Customer_AppointmentsView.this, Customer_EditAppointment.class);
+        intent.putExtra("AppId",customerApointmentItems.histappointmentIDInt);
         intent.putExtra("ServiceProviderName",customerApointmentItems.histbookedServiceProviderName);
         intent.putExtra("SPAddress",customerApointmentItems.histbookedServiceProviderAddress);
         intent.putExtra("AppStatus",customerApointmentItems.histbookingStatus);

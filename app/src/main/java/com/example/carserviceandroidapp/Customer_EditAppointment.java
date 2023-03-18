@@ -19,6 +19,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null){
+            int appID = intent.getIntExtra("AppId",0);
             String serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             String appointmentStatus = intent.getStringExtra("AppStatus");
@@ -69,6 +70,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Customer_EditAppointment.this, Customer_EditAppointment_Form.class);
+                intent.putExtra("AppId",getIntent().getIntExtra("ServiceProviderName",0));
                 intent.putExtra("ServiceProviderName",getIntent().getStringExtra("ServiceProviderName"));
                 intent.putExtra("SPAddress",getIntent().getStringExtra("SPAddress"));
                 intent.putExtra("AppStatus",getIntent().getStringExtra("AppStatus"));

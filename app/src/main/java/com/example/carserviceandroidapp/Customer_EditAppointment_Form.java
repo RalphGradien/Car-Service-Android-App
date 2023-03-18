@@ -37,13 +37,29 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null) {
+            int appId = intent.getIntExtra("AppId",0);
             String serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             String appointmentStatus = intent.getStringExtra("AppStatus");
-            String dropoffDateTime = intent.getStringExtra("DropoffD");
-            String dropoffT = intent.getStringExtra("DropoffT");
-            String pickupDateTime = intent.getStringExtra("PickupD");
-            String pickupT = intent.getStringExtra("PickupT");
+            String[] dropoffDateTime = intent.getStringExtra("DropoffD").split(" ");
+            String dropOffDate = dropoffDateTime[0];
+            String droffOffTime = dropoffDateTime[1]+" "+dropoffDateTime[2];
+            //String dropoffT = intent.getStringExtra("DropoffT");
+            String pickupDateTimeString = intent.getStringExtra("PickupD");
+            String[] pickupDateTime = new String[3];
+            String pickupDate="";
+            String pickupTime="";
+
+            if(pickupDateTimeString!=null && !pickupDateTimeString.isEmpty() ){
+                pickupDateTime = intent.getStringExtra("PickupD").split(" ");
+                pickupDate = pickupDateTime[0];
+                pickupTime = pickupDateTime[1]+" "+pickupDateTime[2] ;
+            }else{
+                pickupDate = "";
+                pickupTime="";
+            }
+
+            //String pickupT = intent.getStringExtra("PickupT");
             String dropoffLoc = intent.getStringExtra("DropoffLoc");
             String pickupLoc = intent.getStringExtra("PickupLoc");
             String serviceDetails = intent.getStringExtra("ServiceDet");
@@ -71,27 +87,30 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             tvSPAddressForm.setText(serviceProviderAddress);
             TextView tvSPCellDispForm = (TextView) findViewById(R.id.textViewSPCellDisplayForm);
             tvSPCellDispForm.setText(spPhone);
-            EditText tvDODTForm = (EditText) findViewById(R.id.tvDropOffDTForm);
-            tvDODTForm.setText(dropoffDateTime);
 
-            EditText tvDOLocForm = (EditText) findViewById(R.id.textViewDropOffLocForm);
-            tvDOLocForm.setText(dropoffLoc);
+            EditText etDODateForm = (EditText) findViewById(R.id.tvDropOffDateForm);
+            etDODateForm.setText(dropOffDate);
+            EditText etDOTimeForm = (EditText)findViewById(R.id.etDropOffTimeForm);
+            etDOTimeForm.setText(droffOffTime);
+
+            EditText etDOLocForm = (EditText) findViewById(R.id.textViewDropOffLocForm);
+            etDOLocForm.setText(dropoffLoc);
             String newDOLoc = "";
 
-            EditText tvPUDTForm = (EditText) findViewById(R.id.textViewPickupTimeForm);
-            tvPUDTForm.setText(pickupDateTime);
-            Button btnSetNewDffTime = (Button) findViewById(R.id.btnNewDOTime);
+            EditText etPUDateForm = (EditText) findViewById(R.id.textViewPickupDateForm);
+            etPUDateForm.setText(pickupDate);
+            EditText etPUTimeForm = (EditText)findViewById(R.id.etPickUpTimeForm);
+            etPUTimeForm.setText(pickupTime);
+            String[] newDODateTime = new String[2];
 
-            if(TextUtils.isEmpty(tvPUDTForm.getText().toString())){
-                String[] dateTimeArray = new String[2];
-                tvDODTForm.setEnabled(true);
-                tvDODTForm.setOnClickListener(new View.OnClickListener() {
-
+            if(TextUtils.isEmpty(etPUDateForm.getText().toString())){
+                etDODateForm.setEnabled(true);
+                etDOTimeForm.setEnabled(true);
+                etDOLocForm.setEnabled(true);
+                etDODateForm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        btnSetNewDffTime.setVisibility(View.VISIBLE);
                         Calendar selectedDate = Calendar.getInstance();
-
                         // Create a new DatePickerDialog
                         DatePickerDialog datePickerDialog = new DatePickerDialog(Customer_EditAppointment_Form.this, new DatePickerDialog.OnDateSetListener() {
                             @Override
@@ -104,8 +123,8 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                                 // Do something with the selected date
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
                                 String selectedDateAsString = dateFormat.format(selectedDate.getTime());
-                                tvDODTForm.setText(selectedDateAsString);
-                                dateTimeArray[0] =  selectedDateAsString;
+                                etDODateForm.setText(selectedDateAsString);
+                                newDODateTime[0] =  selectedDateAsString;
 
                             }
                         }, selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH));
@@ -118,7 +137,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
                 Calendar selectedTime = Calendar.getInstance();
                 // Set an OnClickListener to show the TimePickerDialog when the TextView is clicked
-                btnSetNewDffTime.setOnClickListener(new View.OnClickListener() {
+                etDOTimeForm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // Create a new TimePickerDialog
@@ -130,12 +149,9 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                                 selectedTime.set(Calendar.MINUTE, minute);
 
                                 // Do something with the selected time
-                                 String dateOutput= DateFormat.getTimeInstance().format(selectedTime.getTime());
-
-                                 dateTimeArray[1] = dateOutput;
-                                String newDODateTime = dateTimeArray[0] + " "+dateTimeArray[1];
-                                tvDODTForm.setText(newDODateTime);
-                                btnSetNewDffTime.setVisibility(View.INVISIBLE);
+                                String timeOutput = String.format("%02d:%02d %s", (hourOfDay == 0 || hourOfDay == 12) ? 12 : hourOfDay % 12, minute, (hourOfDay < 12) ? "AM" : "PM");
+                                 newDODateTime[1] = timeOutput;
+                                etDOTimeForm.setText(timeOutput);
 
                             }
                         }, selectedTime.get(Calendar.HOUR_OF_DAY), selectedTime.get(Calendar.MINUTE), true);
@@ -145,38 +161,40 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                     }
 
                 });
-                newDOLoc= tvDOLocForm.getText().toString();
+                newDOLoc= etDOLocForm.getText().toString();
 
             } else{
 
-                tvDODTForm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(Customer_EditAppointment_Form.this, "You are not allowed to Edit this field", Toast.LENGTH_LONG).show();
-                    }
-                });
-                tvDODTForm.setEnabled(false);
-                tvDOLocForm.setEnabled(false);
+                etDODateForm.setEnabled(false);
+                etDOTimeForm.setEnabled(false);
+                etDOLocForm.setEnabled(false);
+
             }
 
-            EditText tvPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
-            tvPULocForm.setText(pickupLoc);
-            String newPULoc;
-            Button bntNewPUTime = (Button) findViewById(R.id.btnNewPUTime);
+            String newDODateTimeComb = newDODateTime[0]+ newDODateTime[1];
 
-            if(tvPUDTForm.getText().toString().isEmpty()){
-                tvPUDTForm.setText("NOT READY FOR PICKUP");
-                tvPUDTForm.setEnabled(false);
-                tvPULocForm.setText("NOT READY FOR PICKUP");
-                tvPULocForm.setEnabled(false);
+            EditText etPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
+            etPULocForm.setText(pickupLoc);
+            String newPULoc;
+
+            String[] newPUDateTimeArray = new String[2];
+
+            if(etPUDateForm.getText().toString().isEmpty()){
+                etPUDateForm.setHint("-");
+                etPUDateForm.setEnabled(false);
+                etPUTimeForm.setHint("-");
+                etPUTimeForm.setEnabled(false);
+                etPULocForm.setHint("-");
+                etPULocForm.setEnabled(false);
             }else {
-                String[] dateTimeArray = new String[2];
-                tvPUDTForm.setEnabled(true);
-                tvPUDTForm.setOnClickListener(new View.OnClickListener() {
+                etPUDateForm.setEnabled(true);
+                etPUTimeForm.setEnabled(true);
+                etPULocForm.setEnabled(true);
+
+                etPUDateForm.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
-                        bntNewPUTime.setVisibility(View.VISIBLE);
                         Calendar selectedDate = Calendar.getInstance();
 
                         // Create a new DatePickerDialog
@@ -191,8 +209,8 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                                 // Do something with the selected date
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
                                 String selectedDateAsString = dateFormat.format(selectedDate.getTime());
-                                tvPUDTForm.setText(selectedDateAsString);
-                                dateTimeArray[0] = selectedDateAsString;
+                                etPUDateForm.setText(selectedDateAsString);
+                                newPUDateTimeArray[0] = selectedDateAsString;
 
                             }
                         }, selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH));
@@ -205,7 +223,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
                 Calendar selectedTime = Calendar.getInstance();
                 // Set an OnClickListener to show the TimePickerDialog when the TextView is clicked
-                bntNewPUTime.setOnClickListener(new View.OnClickListener() {
+                etPUTimeForm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // Create a new TimePickerDialog
@@ -217,12 +235,9 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                                 selectedTime.set(Calendar.MINUTE, minute);
 
                                 // Do something with the selected time
-                                String dateOutput = DateFormat.getTimeInstance().format(selectedTime.getTime());
-
-                                dateTimeArray[1] = dateOutput;
-                                String newDODateTime = dateTimeArray[0] + " " + dateTimeArray[1];
-                                tvPUDTForm.setText(newDODateTime);
-                                bntNewPUTime.setVisibility(View.INVISIBLE);
+                                String dateOutput = String.format("%02d:%02d %s", (hourOfDay == 0 || hourOfDay == 12) ? 12 : hourOfDay % 12, minute, (hourOfDay < 12) ? "AM" : "PM");
+                                newPUDateTimeArray[1] = dateOutput;
+                                etPUTimeForm.setText(dateOutput);
 
                             }
                         }, selectedTime.get(Calendar.HOUR_OF_DAY), selectedTime.get(Calendar.MINUTE), true);
@@ -232,7 +247,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                     }
 
                 });
-                newPULoc = tvPULocForm.getText().toString();
+                newPULoc = etPULocForm.getText().toString();
             }
 
             TextView tvServDetailsForm = (TextView) findViewById(R.id.textViewServiceDetailsForm);
@@ -290,9 +305,6 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                     dialog.show();
                 }
             });
-
-
-
 
         }
     }

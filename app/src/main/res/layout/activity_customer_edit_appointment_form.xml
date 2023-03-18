@@ -78,19 +78,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm" />
 
+
         <EditText
-            android:id="@+id/tvDropOffDTForm"
-            android:layout_width="200dp"
+            android:id="@+id/tvDropOffDateForm"
+            android:layout_width="100dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
             android:editable="false"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm" />
 
-
+        <EditText
+            android:id="@+id/etDropOffTimeForm"
+            android:layout_width="100dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.032"
+            app:layout_constraintStart_toEndOf="@+id/tvDropOffDateForm"
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm" />
 
         <TextView
             android:id="@+id/tvDropOffLocationLabelForm"
@@ -103,7 +112,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDateForm" />
 
         <EditText
             android:id="@+id/textViewDropOffLocForm"
@@ -112,7 +121,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="197dp"
-            android:editable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocationLabelForm" />
@@ -131,19 +139,29 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewDropOffLocForm" />
 
         <EditText
-            android:id="@+id/textViewPickupTimeForm"
-            android:layout_width="200dp"
+            android:id="@+id/textViewPickupDateForm"
+            android:layout_width="100dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
+            android:editable="false"
             android:ems="10"
             android:hint=""
-            android:editable="false"
             android:inputType="textPersonName"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm" />
+
+        <EditText
+            android:id="@+id/etPickUpTimeForm"
+            android:layout_width="100dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toEndOf="@+id/textViewPickupDateForm"
             app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm" />
 
         <TextView
@@ -158,7 +176,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPickupTimeForm" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewPickupDateForm" />
 
         <EditText
             android:id="@+id/tvPickupLocationForm"
@@ -241,33 +259,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatusForm" />
 
-        <Button
-            android:id="@+id/btnNewDOTime"
-            android:layout_width="112dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/btnSetDOTime"
-            android:textSize="8dp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tvDropOffDTForm"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm" />
 
-        <Button
-            android:id="@+id/btnNewPUTime"
-            android:layout_width="112dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/setNewPUTime"
-            android:textSize="8dp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewPickupTimeForm"
-            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm" />
+        <!--        <Button-->
+<!--            android:id="@+id/btnNewDOTime"-->
+<!--            android:layout_width="112dp"-->
+<!--            android:layout_height="41dp"-->
+<!--            android:layout_marginStart="33dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="@string/btnSetDOTime"-->
+<!--            android:textSize="8dp"-->
+<!--            android:visibility="invisible"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/tvDropOffDTForm"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
