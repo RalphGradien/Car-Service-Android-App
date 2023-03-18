@@ -31,18 +31,20 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         Cursor cursorServiceList = dbh.getServiceList();
         Cursor cursorServiceDetail = dbh.getServiceDetails();
 
+        String spName = "";
+        String spStreet = "";
+        String spCity = "";
+        String spProvince = "";
+        String spPostal = "";
+        String spPhone="";
         try {
 
             if (cursorAppointment.getCount() > 0) {
                 while (cursorAppointment.moveToNext()) {
                     if (cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("Userid")) == userId) {
                         int appID = cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("AppointmentID"));
-                         int appSPID = cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("ServiceProviderID"));
-                        String spName = "";
-                        String spStreet = "";
-                        String spCity = "";
-                        String spProvince = "";
-                        String spPostal = "";
+                        int appSPID = cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("ServiceProviderID"));
+
 
                         if (cursorServiceProvider.getCount() > 0) {
                             while (cursorServiceProvider.moveToNext()) {
@@ -52,10 +54,10 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
                                     spCity = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("city"));
                                     spProvince = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("province"));
                                     spPostal = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("postalCode"));
+                                    spPhone = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("phone"));
                                 }
                             }
                         }
-
 
                         String spAddress = spStreet + ", " + spCity + ", " + spProvince + " " + spPostal;
                         String appStatus = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentStatus"));
@@ -89,7 +91,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
                             }
                         }
 
-                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT, "", dropOffLoc, pickupLoc));
+                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT, "", dropOffLoc, pickupLoc,spPhone));
                     }
                 }
             }
@@ -120,6 +122,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         intent.putExtra("DropoffLoc",customerApointmentItems.histcustomDropOffLoc);
         intent.putExtra("PickupLoc",customerApointmentItems.histcustomPickupLoc);
         intent.putExtra("ServiceDet",customerApointmentItems.histserviceAvailed);
+        intent.putExtra("SPPhone",customerApointmentItems.histSPPhone);
         //place cell number here
         //place email address
         startActivity(intent);

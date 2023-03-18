@@ -47,6 +47,7 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
             holder.tvhistpickupAppointmentDate.setText(customerApointmentItemsList.get(position).getHistpickupAppointmentDate());
             //holder.tvhistcustomPickupTime.setText(customerApointmentItemsList.get(position).getHistcustomPickupTime());
 
+
             if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ongoing")) {
                 holder.tvhistbookingStatus.setTextColor(Color.WHITE);
                 GradientDrawable drawable = new GradientDrawable();
