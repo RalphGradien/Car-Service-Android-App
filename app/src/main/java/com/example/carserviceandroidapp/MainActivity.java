@@ -75,25 +75,33 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertServiceList("SP_4_5", 4, 5);DB.insertServiceList("SP_4_1", 4, 1); DB.insertServiceList("SP_4_2", 4, 2); DB.insertServiceList("SP_4_3", 4, 3);
                 DB.insertServiceList("SP_5_8", 5, 8);DB.insertServiceList("SP_5_7", 5, 7);DB.insertServiceList("SP_5_11", 5, 11);
                 DB.insertServiceList("SP_6_4", 6, 4);DB.insertServiceList("SP_6_10", 6, 10);DB.insertServiceList("SP_6_11", 6, 11);
+                DB.insertServiceList("SP_7_1", 7, 1);DB.insertServiceList("SP_7_2", 7, 2);DB.insertServiceList("SP_7_3", 7, 3);
                 DB.insertServiceList("SP_8_9", 8, 9);DB.insertServiceList("SP_8_8", 8, 8);DB.insertServiceList("SP_8_7", 8, 7);
                 DB.insertServiceList("SP_9_6", 9, 6); DB.insertServiceList("SP_9_5", 9, 5); DB.insertServiceList("SP_9_4", 9, 4); DB.insertServiceList("SP_9_3", 9, 3);
                 DB.insertServiceList("SP_10_9", 10, 9); DB.insertServiceList("SP_10_8", 10, 8); DB.insertServiceList("SP_10_7", 10, 7);
 
                 //Insert Appointment Data
-                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "Surrey", "03/15/2023", "", "Drop Off", "Completed");
-                DB.insertAppointment(2, 1,"04/13/2023 03:00 PM", "Burnaby", "04/22/2023", "04-17-2023 01:00 PM", "Coquitlam", "04/15/2023", "", "Pick Up", "Completed");
-                DB.insertAppointment(3, 1,"05/13/2023 02:30 PM", "New Westminster", "05/19/2023", "05/17/2023 11:00 AM", "Richmond", "04/15/2023", "", "Drop Off", "Cancelled");
+                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "123 Main St", "03/15/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(2, 5,"04/13/2023 03:00 PM", "King street, Toronto, ON, M5V 1K4", "04/22/2023", "04-17-2023 01:00 PM", "456 Oak Ave", "04/15/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(3, 8,"05/13/2023 02:30 PM", "789 Elm St", "05/19/2023", "05/19/2023 11:00 AM", "789 Elm St", "04/15/2023", "04/20/2023", "Drop Off", "Cancelled");
+                DB.insertAppointment(4, 3,"","Granville street, Vancouver, BC, V6H 3K4" , "", "05/17/2023 11:00 AM", "Granville street, Vancouver, BC, V6H 3K4", "04/15/2023", "04/17/2023", "Drop Off", "Cancelled");
+                DB.insertAppointment(5, 6,"05/19/2023 02:30 PM", "654 Birch Ln", "05/19/2023", "05/17/2023 11:00 AM", "654 Birch Ln", "04/15/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(6, 7, "", "Kelowna", "", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(7, 9, "", "Kelowna", "", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(8, 2, "2023/04/02 02:00 PM", "Victoria", "2023/04/02", "2023/04/01 01:30 PM", "Abbotsford", "2023/03/27", "", "Pick Up", "Completed");
 
                 //Insert Appointment Detail Data
                 DB.insertAppointmentDetail(1,"SP_1_2");
                 DB.insertAppointmentDetail(2,"SP_5_8");
                 DB.insertAppointmentDetail(3,"SP_8_9");
+                DB.insertAppointmentDetail(4,"SP_3_1");
+                DB.insertAppointmentDetail(5,"SP_6_10");
+                DB.insertAppointmentDetail(6,"SP_7_3");
+                DB.insertAppointmentDetail(7,"SP_9_5");
+                DB.insertAppointmentDetail(8,"SP_2_1");
 
-                // AppointmentStatus set to "Ongoing"
-                DB.insertAppointment(5, 1, "2023/04/01 10:00 AM", "Kelowna", "2023/04/01", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
 
-                // AppointmentStatus set to "Completed"
-                DB.insertAppointment(8, 2, "2023/04/02 02:00 PM", "Victoria", "2023/04/02", "2023/04/01 01:30 PM", "Abbotsford", "2023/03/27", "", "Pick Up", "Completed");
+
 
                 Toast.makeText(MainActivity.this, "Insert Successfully", Toast.LENGTH_LONG).show();
             }
