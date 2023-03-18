@@ -37,6 +37,9 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         String spProvince = "";
         String spPostal = "";
         String spPhone="";
+        String serviceAvailed = "";
+        String serviceListID = "";
+        int serviceDetailID = 0;
         try {
 
             if (cursorAppointment.getCount() > 0) {
@@ -65,9 +68,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
                         String dropOffLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
                         String pickupDT = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
                         String pickupLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpLocation"));
-                        String serviceAvailed = "";
-                        String serviceListID = "";
-                        int serviceDetailID = 0;
+
 //
                         if (cursorAppDetail.getCount() > 0) {
                             while (cursorAppDetail.moveToNext()) {
