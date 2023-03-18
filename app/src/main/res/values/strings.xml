@@ -51,7 +51,6 @@
 
     <string name="hint_ProviderUserName">Provider Name</string>
     <string name="hint_ProviderPassWord">Provider Password</string>
-    <string name="hint_ProviderConfirmPass">Confirm Password</string>
     <string name="hint_ProviderEmail">Email</string>
     <string name="hint_ProviderName">Name</string>
     <string name="hint_ProviderAddress">Address</string>

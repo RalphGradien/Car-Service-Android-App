@@ -23,9 +23,7 @@ public class Provider_Registration extends AppCompatActivity {
     String [] serviceProvide = {"Select 1","Select 2","Select 3","Select 4"};
 
     //variables to hold the input data
-    String v_userName, v_providerPassWord, v_confirmPassWord, v_email, v_providerName, v_address;
-    String v_city, v_contact;
-
+    String v_providerName, v_providerPassWord, v_email,  v_contact, v_address, v_city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +32,10 @@ public class Provider_Registration extends AppCompatActivity {
         //EditText - Button
         EditText name = findViewById(R.id.ProviderName);
         EditText passWord = findViewById(R.id.ProviderPassWord);
-        EditText confirmPassWord = findViewById(R.id.ProviderConfirmPassword);
         EditText email = findViewById(R.id.ProviderEmail);
-        EditText providerName = findViewById(R.id.ProviderName);
-        EditText address = findViewById(R.id.ProviderAddress);
         EditText contact = findViewById(R.id.ProviderContact);
+        EditText address = findViewById(R.id.ProviderAddress);
+        EditText city = findViewById(R.id.ProviderCity);
         Button btnProviderRegister = findViewById(R.id.btnProviderRegister);
 
         //initial all views
@@ -93,28 +90,21 @@ public class Provider_Registration extends AppCompatActivity {
         //On click listener to hold input values
         btnProviderRegister.setOnClickListener(new View.OnClickListener() {
             String str = "";
-            String str2 = "";
-            //            TextView outPut = findViewById(R.id.outPut);
             @Override
             public void onClick(View v) {
-                v_userName = name.getText().toString();
+                v_providerName = name.getText().toString();
                 v_providerPassWord = passWord.getText().toString();
-                v_confirmPassWord = confirmPassWord.getText().toString();
                 v_email = email.getText().toString();
-                v_address = address.getText().toString();
                 v_contact = contact.getText().toString();
+                v_address = address.getText().toString();
+                v_city = city.getText().toString();
 
                 //check array - delete later
                 for (int i = 0; i < selectedServiceList.size(); i++) {
-                    str2 += selectedServiceList.get(i) + " ";
+                    str += selectedServiceList.get(i) + " ";
                 }
-                //remove all items in arrayList everutimes
+                //remove all items in arrayList everytimes
                 selectedServiceList.clear();
-                str = v_userName + " " + v_providerPassWord + " " + v_confirmPassWord
-                        + " " + v_email + " " + v_userName + " " + v_address
-                        + " " + v_city + " " + v_contact + str2;
-//                outPut.setText(str);
-
             }
         });
 
@@ -129,6 +119,3 @@ public class Provider_Registration extends AppCompatActivity {
         });
     }
 }
-
-//add some thing
-
