@@ -58,7 +58,6 @@
 
     <EditText
         android:id="@+id/textViewRegTitle"
-
         android:layout_width="247dp"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
@@ -71,6 +70,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:id="@+id/imageView_showhide_pw"
+        android:layout_below="@id/ProviderPassWord"/>
+
+
     <EditText
         android:id="@+id/ProviderPassWord"
         android:layout_width="250dp"
@@ -82,6 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
+
 
     <EditText
         android:id="@+id/ProviderConfirmPassword"
@@ -96,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
 
     <Button
-        android:id="@+id/btnProviderRegister"
+        android:id="@+id/bthCustomerRegister"
         android:layout_width="167dp"
         android:layout_height="62dp"
         android:layout_marginTop="12dp"
@@ -119,7 +126,7 @@
         app:layout_constraintEnd_toStartOf="@+id/logInHere"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProviderRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
 
     <TextView
         android:id="@+id/logInHere"
@@ -132,7 +139,7 @@
         android:text="@string/txtLogHere"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProviderRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
 
     <ImageView
         android:id="@+id/imageView4"

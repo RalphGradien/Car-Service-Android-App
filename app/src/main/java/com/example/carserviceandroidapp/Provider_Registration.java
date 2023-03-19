@@ -36,7 +36,7 @@ public class Provider_Registration extends AppCompatActivity {
         EditText contact = findViewById(R.id.ProviderContact);
         EditText address = findViewById(R.id.ProviderAddress);
         EditText city = findViewById(R.id.ProviderCity);
-        Button btnProviderRegister = findViewById(R.id.btnProviderRegister);
+        Button btnProviderRegister = findViewById(R.id.bthCustomerRegister);
 
         //initial all views
         ProviderServices = findViewById(R.id.ProviderServices);
