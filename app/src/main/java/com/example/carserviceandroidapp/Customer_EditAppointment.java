@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class Customer_EditAppointment extends AppCompatActivity {
 
-    DBHelper myDbHelper = new DBHelper(this);
+    DBHelper dbh = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,49 +98,33 @@ public class Customer_EditAppointment extends AppCompatActivity {
                 //place email address
                 startActivity(intent);
 
-
             }
         });
 
-        int[] appIDArr= {appID};
+        int[] appIDArr= new int[1];
+        appIDArr[0]= appID;
         String[]status = {appointmentStatus};
         Button btnCancelApp = (Button) findViewById(R.id.buttonCancel);
         btnCancelApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textViewPickupDT.getText().toString().isEmpty()){
+                if(textViewPickupDT.getText().toString().replace(" ","").isEmpty()){
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(Customer_EditAppointment.this, R.style.MyDialogStyle);
                     builder.setTitle("Cancel An Appointment")
                             .setMessage("Are you sure you want to cancel this appointment?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Get the ID of the row to update
-                                    int appIdCurrent = appIDArr[0];
-                                    // Get the new value for the column
-                                    String newColumnValue = "Cancelled";
-                                    // Get a writable database instance
-                                    SQLiteDatabase db = myDbHelper.getWritableDatabase();
+                                   int appIdCurrent = appIDArr[0];
+                                   boolean isUpdated= dbh.cancelAppointment(appIdCurrent);
+                                   if(isUpdated){
+                                       Toast.makeText(Customer_EditAppointment.this, "Record Updated", Toast.LENGTH_SHORT).show();
+                                       startActivity(new Intent(Customer_EditAppointment.this,Customer_AppointmentsView.class));
+                                   }else{
+                                       Toast.makeText(Customer_EditAppointment.this, "Not Updated", Toast.LENGTH_SHORT).show();
+                                   }
 
-                                    // Create a ContentValues object to hold the new column value
-                                    ContentValues values = new ContentValues();
-                                    values.put("AppointmentStatus", newColumnValue);
-                                    // Define the WHERE clause
-                                    String selection = "_id = ?";
-
-                                    // Define the WHERE clause arguments
-                                    String[] selectionArgs = {String.valueOf(appIdCurrent)};
-
-                                    // Update the database table
-                                    int count = db.update("APPOINTMENT", values, selection, selectionArgs);
-//                                // Check if the update was successful
-//                                if (count > 0) {
-//                                    Log.d("TAG", "Update successful");
-//                                } else {
-//                                    Log.d("TAG", "Update failed");
-//                                }
-
-                                    // Close the database connection
-                                    db.close();
                                     // User clicked the Yes button
                                     // Do something here, such as cancel the appointment
                                     dialog.dismiss();

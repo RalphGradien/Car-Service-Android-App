@@ -356,6 +356,33 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
         return cursor;
     }
+
+    public Boolean cancelAppointment(int appID)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Define the new values for the record
+        ContentValues values = new ContentValues();
+        values.put("AppointmentStatus", "Cancelled");
+
+        // Define the selection criteria
+        String selection = "AppointmentID = ?";
+        String[] selectionArgs = { Integer.toString(appID) };
+
+        // Update the record and get the number of rows affected
+        int rowsAffected = db.update("APPOINTMENT", values, selection, selectionArgs);
+
+        // Check if any rows were affected by the update
+        if (rowsAffected > 0) {
+            // Record updated successfully
+            return true;
+        } else {
+            // Failed to update record
+            return false;
+        }
+
+
+    }
 }
 
 
