@@ -380,6 +380,36 @@ public class DBHelper extends SQLiteOpenHelper {
             // Failed to update record
             return false;
         }
+    }
+
+    public Boolean updateAppointment(int appID,String doDate, String doLoc,
+                                     String puDate,  String puLoc, String newStatus)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Define the new values for the record
+        ContentValues values = new ContentValues();
+        values.put("DropOffTimeDate", doDate);
+        values.put("DropOffLocation", doLoc);
+        values.put("PickUpDateTime", puDate);
+        values.put("PickUpLocation", puLoc);
+        values.put("AppointmentStatus", newStatus);
+
+        // Define the selection criteria
+        String selection = "AppointmentID = ?";
+        String[] selectionArgs = { Integer.toString(appID) };
+
+        // Update the record and get the number of rows affected
+        int rowsAffected = db.update("APPOINTMENT", values, selection, selectionArgs);
+
+        // Check if any rows were affected by the update
+        if (rowsAffected > 0) {
+            // Record updated successfully
+            return true;
+        } else {
+            // Failed to update record
+            return false;
+        }
 
 
     }

@@ -3,10 +3,8 @@ package com.example.carserviceandroidapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -14,6 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class Customer_EditAppointment extends AppCompatActivity {
 
@@ -27,6 +37,18 @@ public class Customer_EditAppointment extends AppCompatActivity {
         int appID=0;
 
         String appointmentStatus="";
+        String[] spEmailArr=new String[1];
+        String spEmail = "";
+
+        String[] spNameArr = new String[1];
+        String serviceProviderName="";
+
+        String[] dropOffDateTimeArr = new String[1];
+        String dropoffDate="";
+
+        String[] pickUpDateTimeArr = new String[1];
+        String pickupD = "";
+
 
         TextView textViewSPName = (TextView) findViewById(R.id.textViewSPNameDisplay);
         TextView textViewSPAddress = (TextView) findViewById(R.id.textViewSPAddress);
@@ -41,19 +63,18 @@ public class Customer_EditAppointment extends AppCompatActivity {
 
         if(intent != null){
             appID = intent.getIntExtra("AppId",0);
-            String serviceProviderName = intent.getStringExtra("ServiceProviderName");
+            serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             appointmentStatus = intent.getStringExtra("AppStatus");
-            String dropoffDate = intent.getStringExtra("DropoffD");
+            dropoffDate = intent.getStringExtra("DropoffD");
             String dropoffT = intent.getStringExtra("DropoffT");
-            String pickupD = intent.getStringExtra("PickupD");
+            pickupD = intent.getStringExtra("PickupD");
             String pickupT = intent.getStringExtra("PickupT");
             String dropoffLoc = intent.getStringExtra("DropoffLoc");
             String pickupLoc = intent.getStringExtra("PickupLoc");
             String serviceDetails = intent.getStringExtra("ServiceDet");
             String spPhone = intent.getStringExtra("SPPhone");
-
-
+            spEmail = intent.getStringExtra("SPEmail");
 
             textViewSPName.setText(serviceProviderName);
             textViewSPAddress.setText(serviceProviderAddress);
@@ -76,7 +97,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
 
     }
 
-        Button btnUpdateApp = (Button) findViewById(R.id.buttonUpdate);
+        Button btnUpdateApp = (Button) findViewById(R.id.buttonUpdateFirst);
         btnUpdateApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +115,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                 intent.putExtra("PickupLoc",getIntent().getStringExtra("PickupLoc"));
                 intent.putExtra("ServiceDet",getIntent().getStringExtra("ServiceDet"));
                 intent.putExtra("SPPhone", getIntent().getStringExtra("SPPhone"));
+                intent.putExtra("SPEmail", getIntent().getStringExtra("SPEmail"));
                 //place cell number here
                 //place email address
                 startActivity(intent);
@@ -104,6 +126,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
         int[] appIDArr= new int[1];
         appIDArr[0]= appID;
         String[]status = {appointmentStatus};
+
         Button btnCancelApp = (Button) findViewById(R.id.buttonCancel);
         btnCancelApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,8 +169,68 @@ public class Customer_EditAppointment extends AppCompatActivity {
             }
         });
 
+        spEmailArr[0] = spEmail;
+        spNameArr[0]= serviceProviderName;
+        dropOffDateTimeArr[0]= dropoffDate;
+        pickUpDateTimeArr[0]= pickupD;
 
         Button remindApp = (Button) findViewById(R.id.butnRemind);
+        remindApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
+                try {
+                    String stringSenderEmail = "garkmobileapp@gmail.com";
+                    String stringReceiverEmail = spEmailArr[0];
+                    String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
+
+                    String stringHost = "smtp.gmail.com";
+
+                    Properties properties = System.getProperties();
+
+                    properties.put("mail.smtp.host", stringHost);
+                    properties.put("mail.smtp.port", "465");
+                    properties.put("mail.smtp.ssl.enable", "true");
+                    properties.put("mail.smtp.auth", "true");
+
+                    javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                        }
+                    });
+                    MimeMessage mimeMessage = new MimeMessage(session);
+                    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+                    mimeMessage.setSubject("Subject: Android App email");
+                    if(textViewPickupDT.getText().toString().replace(" ","").isEmpty()){
+                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our drop-off appointment on "+dropOffDateTimeArr[0]+
+                                ". \n\n Cheers!\nCustomer");
+                    }else{
+                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our pickup appointment on "+pickUpDateTimeArr[0]+
+                                ". \n\n Cheers!\nProgrammer World");
+                    }
+
+
+                    Thread thread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Transport.send(mimeMessage);
+                            } catch (MessagingException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    thread.start();
+
+                } catch (AddressException e) {
+                    e.printStackTrace();
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
