@@ -21,8 +21,8 @@
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
-            android:hint="Service Provider Name"
-            android:textSize="18dp"
+            android:hint="@string/hint_ProviderName"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
@@ -34,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Address"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProviderContact" />
@@ -46,7 +46,7 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Contact"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,15 +59,14 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Email"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
 
         <EditText
-            android:id="@+id/textViewRegTitle"
-
+            android:id="@+id/ProviderTitle"
             android:layout_width="247dp"
             android:layout_height="48dp"
             android:text="Service Registration"
@@ -86,7 +85,7 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_password"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
@@ -98,7 +97,7 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_ProviderCity"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
