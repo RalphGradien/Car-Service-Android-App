@@ -36,7 +36,7 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
         holder.nameView.setText(currentItem.getCustomerName());
         holder.numberView.setText(currentItem.getCustomerNumber());
         holder.emailView.setText(currentItem.getCustomerEmail());
-        holder.appointmentTypeView.setText(currentItem.getServiceAppointmentType());
+        holder.appointmentTypeView.setText(currentItem.getServiceDetails());
 
         String appointmentStatus = currentItem.getServiceAppointmentStatus();
         holder.appointmentStatusView.setText(appointmentStatus);

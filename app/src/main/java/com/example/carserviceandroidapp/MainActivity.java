@@ -81,7 +81,17 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertServiceList("SP_10_9", 10, 9); DB.insertServiceList("SP_10_8", 10, 8); DB.insertServiceList("SP_10_7", 10, 7);
 
                 //Insert Appointment Data
-                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "123 Main St", "03/15/2023", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "123 Main St", "03/15/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(1, 1,"03/15/2023 10:30 AM", "Vancouver", "03/22/2023", "03-19-2023 02:00 PM", "456 Oak St", "03/16/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(2, 1,"03/16/2023 11:00 AM", "Burnaby", "03/23/2023", "03-18-2023 01:00 PM", "789 Maple St", "03/17/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(3, 1,"03/18/2023 12:30 PM", "Vancouver", "03/25/2023", "03-20-2023 10:00 AM", "321 Pine St", "03/19/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(4, 1,"03/20/2023 09:00 AM", "Surrey", "03/27/2023", "03-22-2023 11:00 AM", "654 Elm St", "03/21/2023", "", "Drop Off", "Cancelled");
+                DB.insertAppointment(5, 1,"03/22/2023 01:00 PM", "Vancouver", "03/29/2023", "03-24-2023 03:00 PM", "987 Cedar St", "03/23/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(6, 1,"03/23/2023 02:30 PM", "Burnaby", "03/30/2023", "03-26-2023 12:00 PM", "321 Oak St", "03/24/2023", "", "Drop Off", "Cancelled");
+                DB.insertAppointment(7, 1,"03/25/2023 10:00 AM", "Vancouver", "04/01/2023", "03-28-2023 09:00 AM", "654 Pine St", "03/26/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(8, 1,"03/27/2023 12:00 PM", "Surrey", "04/03/2023", "03-29-2023 11:00 AM", "987 Elm St", "03/28/2023", "", "Drop Off", "Cancelled");
+                DB.insertAppointment(9, 1,"03/29/2023 03:30 PM", "Vancouver", "04/05/2023", "03-31-2023 02:00 PM", "321 Cedar St", "03/30/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(10, 1,"03/31/2023 11:30 AM", "Burnaby", "04/07/2023", "04-02-2023 01:00 PM", "654 Oak St", "04/01/2023", "", "Drop Off", "Completed");
                 DB.insertAppointment(1, 5,"", "", "04/22/2023", "04-17-2023 01:00 PM", "456 Oak Ave", "04/15/2023", "", "Pick Up", "Ongoing");
                 DB.insertAppointment(1, 8,"05/13/2023 02:30 PM", "789 Elm St", "05/19/2023", "05/19/2023 11:00 AM", "789 Elm St", "04/15/2023", "04/20/2023", "Drop Off", "Completed");
                 DB.insertAppointment(1, 3,"05/13/2023 02:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "", "05/17/2023 11:00 AM", "Granville street, Vancouver, BC, V6H 3K4", "04/15/2023", "04/17/2023", "Drop Off", "Completed");
@@ -90,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointment(7, 9, "", "Kelowna", "", "2023/03/11 11:30 AM", "Nanaimo", "2023/03/06", "", "Drop Off", "Ongoing");
                 DB.insertAppointment(8, 2, "2023/04/02 02:00 PM", "Victoria", "2023/04/02", "2023/04/01 01:30 PM", "Abbotsford", "2023/03/27", "", "Pick Up", "Completed");
                 DB.insertAppointment(9, 4, "", "", "", "2023/01/21 01:30 PM", "789 Sycamore Rd", "2023/01/18", "", "Drop Off", "Ongoing");
-                DB.insertAppointment(10, 1, "", "", "", "2023/02/11 01:30 PM", "321 Magnolia Dr", "2023/02/06", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(10, 1, "", "", "", "2023/02/11 01:30 PM", "321 Magnolia Dr", "2023/02/06", "2023/02/06", "Drop Off", "Cancelled");
 
                 //Insert Appointment Detail Data
                 DB.insertAppointmentDetail(1,"SP_1_2");
@@ -103,6 +113,37 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointmentDetail(8,"SP_2_1");
                 DB.insertAppointmentDetail(9,"SP_4_5");
                 DB.insertAppointmentDetail(10,"SP_1_6");
+                DB.insertAppointmentDetail(11,"SP_1_2");
+                DB.insertAppointmentDetail(12,"SP_5_8");
+                DB.insertAppointmentDetail(13,"SP_8_9");
+                DB.insertAppointmentDetail(14,"SP_3_1");
+                DB.insertAppointmentDetail(15,"SP_6_10");
+                DB.insertAppointmentDetail(16,"SP_7_3");
+                DB.insertAppointmentDetail(17,"SP_9_5");
+                DB.insertAppointmentDetail(18,"SP_2_1");
+                DB.insertAppointmentDetail(19,"SP_4_5");
+                DB.insertAppointmentDetail(20,"SP_1_6");
+                DB.insertAppointmentDetail(21,"SP_1_2");
+                DB.insertAppointmentDetail(22,"SP_5_8");
+                DB.insertAppointmentDetail(23,"SP_8_9");
+                DB.insertAppointmentDetail(24,"SP_3_1");
+                DB.insertAppointmentDetail(25,"SP_6_10");
+                DB.insertAppointmentDetail(26,"SP_7_3");
+                DB.insertAppointmentDetail(27,"SP_9_5");
+                DB.insertAppointmentDetail(28,"SP_2_1");
+                DB.insertAppointmentDetail(29,"SP_4_5");
+                DB.insertAppointmentDetail(30,"SP_1_6");
+                DB.insertAppointmentDetail(31,"SP_9_5");
+                DB.insertAppointmentDetail(32,"SP_2_1");
+                DB.insertAppointmentDetail(33,"SP_4_5");
+                DB.insertAppointmentDetail(34,"SP_1_6");
+                DB.insertAppointmentDetail(35,"SP_1_2");
+                DB.insertAppointmentDetail(36,"SP_5_8");
+                DB.insertAppointmentDetail(37,"SP_8_9");
+                DB.insertAppointmentDetail(38,"SP_3_1");
+                DB.insertAppointmentDetail(39,"SP_6_10");
+                DB.insertAppointmentDetail(40,"SP_7_3");
+
 
 
 

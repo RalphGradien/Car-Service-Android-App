@@ -10,9 +10,9 @@ public class ServiceHistoryItems {
     String ServicePickupDate;
     String ServiceDropOffDate;
     String ServiceAppointmentStatus;
-    String ServiceAppointmentType;
+    String ServiceDetails;
     // Constructor for "Completed Status"
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceAppointmentType) {
+    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceDetails) {
         CustomerName = customerName;
         CustomerNumber = customerNumber;
         CustomerEmail = customerEmail;
@@ -20,15 +20,15 @@ public class ServiceHistoryItems {
         ServicePickupDate = servicePickupDate;
         ServiceDropOffDate = serviceDropOffDate;
         ServiceAppointmentStatus = serviceAppointmentStatus;
-        ServiceAppointmentType = serviceAppointmentType;
+        ServiceDetails = serviceDetails;
     }
     // Constructor for "Cancelled Status"
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceAppointmentType,String serviceDropOffDate) {
+    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceDetails, String serviceDropOffDate) {
         CustomerName = customerName;
         CustomerNumber = customerNumber;
         CustomerEmail = customerEmail;
         ServiceAppointmentStatus = serviceAppointmentStatus;
-        ServiceAppointmentType = serviceAppointmentType;
+        ServiceDetails = serviceDetails;
         ServiceDropOffDate = serviceDropOffDate;
     }
 
@@ -88,11 +88,11 @@ public class ServiceHistoryItems {
         ServiceAppointmentStatus = serviceAppointmentStatus;
     }
 
-    public String getServiceAppointmentType() {
-        return ServiceAppointmentType;
+    public String getServiceDetails() {
+        return ServiceDetails;
     }
 
-    public void setServiceAppointmentType(String serviceAppointmentType) {
-        ServiceAppointmentType = serviceAppointmentType;
+    public void setServiceDetails(String serviceDetails) {
+        ServiceDetails = serviceDetails;
     }
 }

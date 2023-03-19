@@ -20,6 +20,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceHistory extends Fragment {
+    //E/SQLiteLog: (1) no such column: A.ServiceDetailID in "SELECT C.name, C.mobile, C.email, A.PickUpDateTime, A.PickUpReadyDate, A.DropOffTimeDate, A.AppointmentStatus, SD.ServiceName FROM APPOINTMENT A INNER JOIN CUSTOMER C ON A
+    //D/AndroidRuntime: Shutting down VM
+    //E/AndroidRuntime: FATAL EXCEPTION: main
+    private static final String QUERY_COMPLETED_APPOINTMENTS =
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+                    "FROM APPOINTMENT A " +
+                    "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
+                    "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
+                    "INNER JOIN SERVICE_LIST SL ON AD.ServiceListID = SL.ServiceListID " +
+                    "INNER JOIN SERVICE_DETAIL SD ON SL.ServiceDetailID = SD.ServiceDetailID " +
+                    "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Completed'";
+
+    private static final String QUERY_CANCELLED_APPOINTMENTS =
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+                    "FROM APPOINTMENT A " +
+                    "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
+                    "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
+                    "INNER JOIN SERVICE_LIST SL ON AD.ServiceListID = SL.ServiceListID " +
+                    "INNER JOIN SERVICE_DETAIL SD ON SL.ServiceDetailID = SD.ServiceDetailID " +
+                    "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Cancelled'";
 
     @Nullable
     @Override
@@ -29,50 +49,42 @@ public class ServiceHistory extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.historyRecyclerView);
         List<ServiceHistoryItems> historyItems = new ArrayList<>();
 
-        //Invokes global variable
         int serviceProviderID = ServiceProvider.ServiceProviderID;
+//        int serviceProviderID = 1;
 
-        // retrieve appointments data for serviceProviderID
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        try (Cursor cursor = db.rawQuery("SELECT * FROM APPOINTMENT WHERE ServiceProviderID=?", new String[]{String.valueOf(serviceProviderID)})) {
-            // loop through cursor and add values to historyItems
+
+        try (Cursor cursor = db.rawQuery(QUERY_COMPLETED_APPOINTMENTS, new String[]{String.valueOf(serviceProviderID)})) {
             while (cursor.moveToNext()) {
-                int customerId = cursor.getInt(cursor.getColumnIndexOrThrow("Userid"));
-                try (Cursor customerCursor = db.rawQuery("SELECT * FROM CUSTOMER WHERE Userid=?", new String[]{String.valueOf(customerId)})) {
-                    if (customerCursor.moveToFirst()) {
-                        String customerName = customerCursor.getString(customerCursor.getColumnIndexOrThrow("name"));
-                        String customerNumber = customerCursor.getString(customerCursor.getColumnIndexOrThrow("mobile"));
-                        String customerEmail = customerCursor.getString(customerCursor.getColumnIndexOrThrow("email"));
-                        String pickUpDateTime = cursor.getString(cursor.getColumnIndexOrThrow("PickUpDateTime"));
-                        String pickUpLocation = cursor.getString(cursor.getColumnIndexOrThrow("PickUpLocation"));
-                        String pickUpReadyDate = cursor.getString(cursor.getColumnIndexOrThrow("PickUpReadyDate"));
-                        String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
-                        String dropOffLocation = cursor.getString(cursor.getColumnIndexOrThrow("DropOffLocation"));
-                        String bookingDate = cursor.getString(cursor.getColumnIndexOrThrow("BookingDate"));
-                        String cancelledDate = cursor.getString(cursor.getColumnIndexOrThrow("CancelledDate"));
-                        String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
-                        String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String customerName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                String customerNumber = cursor.getString(cursor.getColumnIndexOrThrow("mobile"));
+                String customerEmail = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                String pickUpDateTime = cursor.getString(cursor.getColumnIndexOrThrow("PickUpDateTime"));
+                String pickUpReadyDate = cursor.getString(cursor.getColumnIndexOrThrow("PickUpReadyDate"));
+                String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
+                String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-                        //If status is "Completed", adds to a constructor that accepts 8 parameters
-                        if (appointmentStatus.equals("Completed")) {
-                            historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, appointmentType));
-                        }
-                        //If status is "Cancelled", adds to a constructor that accepts 6 parameters
-                        else {
-                            historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, appointmentType, dropOffTimeDate));
-                        }
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, serviceName));
+            }
+        }
 
+        try (Cursor cursor = db.rawQuery(QUERY_CANCELLED_APPOINTMENTS, new String[]{String.valueOf(serviceProviderID)})) {
+            while (cursor.moveToNext()) {
+                String customerName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                String customerNumber = cursor.getString(cursor.getColumnIndexOrThrow("mobile"));
+                String customerEmail = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
+                String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-
-                    }
-                }
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, serviceName , dropOffTimeDate));
             }
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new ServiceHistoryAdapter(getActivity(), historyItems));
         return view;
-
     }
 }
