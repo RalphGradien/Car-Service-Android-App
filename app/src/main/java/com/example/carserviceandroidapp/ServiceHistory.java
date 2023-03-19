@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,12 +47,44 @@ public class ServiceHistory extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_service_history, container, false);
-
-        RecyclerView recyclerView = view.findViewById(R.id.historyRecyclerView);
         List<ServiceHistoryItems> historyItems = new ArrayList<>();
+        Spinner filterSpinner = view.findViewById(R.id.filterSpinner);
+        RecyclerView recyclerView = view.findViewById(R.id.historyRecyclerView);
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedOption = parent.getItemAtPosition(position).toString();
+                List<ServiceHistoryItems> filteredItems = new ArrayList<>();
+                if (selectedOption.equals("Completed")) {
+                    for (ServiceHistoryItems item : historyItems) {
+                        if (item.getServiceAppointmentStatus().equals("Completed")) {
+                            filteredItems.add(item);
+                        }
+                    }
+                } else if (selectedOption.equals("Cancelled")) {
+                    for (ServiceHistoryItems item : historyItems) {
+                        if (item.getServiceAppointmentStatus().equals("Cancelled")) {
+                            filteredItems.add(item);
+                        }
+                    }
+                } else {
+                    filteredItems.addAll(historyItems);
+                }
+                recyclerView.setAdapter(new ServiceHistoryAdapter(getActivity(), filteredItems));
+            }
 
-        int serviceProviderID = ServiceProvider.ServiceProviderID;
-//        int serviceProviderID = 1;
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+
+
+
+//        int serviceProviderID = ServiceProvider.ServiceProviderID;
+        int serviceProviderID = 1;
 
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -83,8 +117,10 @@ public class ServiceHistory extends Fragment {
             }
         }
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new ServiceHistoryAdapter(getActivity(), historyItems));
         return view;
     }
+
 }
