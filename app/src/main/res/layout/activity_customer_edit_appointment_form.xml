@@ -43,25 +43,23 @@
 
         <TextView
             android:id="@+id/textViewSPAddressForm"
-            android:layout_width="291dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="104dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSPNameDisplayForm" />
 
         <TextView
             android:id="@+id/textViewSPCellDisplayForm"
             android:layout_width="291dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="104dp"
+            android:layout_height="30dp"
             android:textSize="20sp"
+            android:layout_marginTop="0dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSPAddressForm" />
 
@@ -81,7 +79,7 @@
 
         <EditText
             android:id="@+id/tvDropOffDateForm"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -91,7 +89,7 @@
 
         <EditText
             android:id="@+id/etDropOffTimeForm"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="43dp"
             android:layout_marginTop="8dp"
             android:ems="10"
@@ -140,7 +138,7 @@
 
         <EditText
             android:id="@+id/textViewPickupDateForm"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="43dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -154,7 +152,7 @@
 
         <EditText
             android:id="@+id/etPickUpTimeForm"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="43dp"
             android:layout_marginTop="8dp"
             android:ems="10"
@@ -249,7 +247,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabelForm" />
 
         <Button
-            android:id="@+id/buttonUpdate"
+            android:id="@+id/buttonUpdateSecond"
             android:layout_width="85dp"
             android:layout_height="34dp"
             android:layout_marginStart="148dp"

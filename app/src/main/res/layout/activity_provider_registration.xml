@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
 
         <Button
-            android:id="@+id/btnProviderRegister"
+            android:id="@+id/bthCustomerRegister"
             android:layout_width="167dp"
             android:layout_height="62dp"
             android:layout_marginTop="15dp"
