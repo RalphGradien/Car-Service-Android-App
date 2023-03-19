@@ -24,6 +24,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         List<CustomerApointmentItems> customerApointmentItems = new ArrayList<>();
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
 
+
         int userId=1;
         Cursor cursorAppointment = dbh.getAppointment();
         Cursor cursorServiceProvider = dbh.getServiceProviderDataAll();
@@ -31,12 +32,14 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         Cursor cursorServiceList = dbh.getServiceList();
         Cursor cursorServiceDetail = dbh.getServiceDetails();
 
+
         String spName="";
         String spStreet = "";
         String spCity = "";
         String spProvince = "";
         String spPostal = "";
         String spPhone="";
+        String spEmail="";
         String serviceAvailed = "";
         String serviceListID = "";
         int serviceDetailID = 0;
@@ -62,6 +65,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
                                     spProvince = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("province"));
                                     spPostal = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("postalCode"));
                                     spPhone = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("phone"));
+                                    spEmail = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("email"));
                                 }
                             }
                         }
@@ -97,7 +101,8 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
                                 }
                             }
                         }
-                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT, "", dropOffLoc, pickupLoc,spPhone));
+                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT, "", dropOffLoc, pickupLoc,spPhone,spEmail));
+
                     }
                 }
             }
@@ -130,6 +135,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         intent.putExtra("PickupLoc",customerApointmentItems.histcustomPickupLoc);
         intent.putExtra("ServiceDet",customerApointmentItems.histserviceAvailed);
         intent.putExtra("SPPhone",customerApointmentItems.histSPPhone);
+        intent.putExtra("SPEmail",customerApointmentItems.histSPEmail);
         //place cell number here
         //place email address
         startActivity(intent);

@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertuserdata("Ethan Moriaty", "password10", "ethan123@gmail.com", "2223334444", "321 Magnolia Dr");
 
                 //Insert Service Provider Data
-                DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V43G67","motospot123@gmail.com","5874235","a");
+                DB.insertServiceProvider("password1","Motospot Workshop","Abbosford","Surrey","BC","V43G67","davinci8gilbert@yahoo.com","5874235","a");
                 DB.insertServiceProvider("password2","AutoPro","Main street","Vancouver","BC","V6A 1C7","autoproservice@gmail.com","604-555-1234","b");
                 DB.insertServiceProvider("password3","Jiffy Lube","Granville street","Vancouver","BC","V6H 3K4","jiffylube@outlook.com","604-555-6789","c");
                 DB.insertServiceProvider("password4","Speedy Auto Service","King street","Toronto","ON","M5V 1K4","speedyservice@hotmail.com","416-555-4321","d");
-                DB.insertServiceProvider("password5","Mr. Lube","Yonge street","Toronto","ON","M4N 3M7","mrlubetoronto@gmail.com","416-555-9876","e");
+                DB.insertServiceProvider("password5","Mr. Lube","Yonge street","Toronto","ON","M4N 3M7","davinci8gilbert@yahoo.com","416-555-9876","e");
                 DB.insertServiceProvider("password6","Precision Tune Auto Care","Portage avenue","Winnipeg","MB","R3G 0W4","precisiontunewinnipeg@yahoo.com","204-555-3456","f");
                 DB.insertServiceProvider("password8","Mister Transmission","Regina avenue","Saskatoon","SK","S7N 1B5","mistertranssaskatoon@hotmail.com","306-555-7890","g");
                 DB.insertServiceProvider("password9","Oil Changers","Queen street","Toronto","ON","M4C 1G5","oilchangersontario@gmail.com","416-555-2468","h");
