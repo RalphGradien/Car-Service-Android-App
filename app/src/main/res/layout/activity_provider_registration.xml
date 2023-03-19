@@ -21,8 +21,8 @@
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
-            android:hint="@string/hint_Name"
-            android:textSize="18dp"
+            android:hint="@string/hint_ProviderName"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
@@ -34,10 +34,10 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Address"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/ProviderContact" />
 
         <EditText
             android:id="@+id/ProviderContact"
@@ -46,10 +46,11 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Contact"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
 
         <EditText
             android:id="@+id/ProviderEmail"
@@ -58,14 +59,14 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_Email"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProviderConfirmPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
 
         <EditText
-            android:id="@+id/textViewRegTitle"
-
+            android:id="@+id/ProviderTitle"
             android:layout_width="247dp"
             android:layout_height="48dp"
             android:text="Service Registration"
@@ -84,32 +85,35 @@
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
             android:hint="@string/hint_password"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
 
         <EditText
-            android:id="@+id/ProviderConfirmPassword"
+            android:id="@+id/ProviderCity"
             android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#E3BA12"
-            android:hint="@string/hint_confirmPassword"
-            android:textSize="18dp"
+            android:hint="@string/hint_ProviderCity"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
+            app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
 
         <Button
             android:id="@+id/btnProviderRegister"
             android:layout_width="167dp"
             android:layout_height="62dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="64dp"
             android:text="@string/buttonCRegister"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/ProviderContact"
-            app:layout_constraintStart_toStartOf="@+id/ProviderContact"
+            app:layout_constraintEnd_toEndOf="@+id/ProviderServices"
+            app:layout_constraintStart_toStartOf="@+id/ProviderServices"
+            app:layout_constraintTop_toBottomOf="@+id/ProviderServices"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -152,14 +156,13 @@
             android:id="@+id/ProviderServices"
             android:layout_width="250dp"
             android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:textColor="#100F0F"
             app:cardBackgroundColor="#E2B912"
             app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/ProviderContact"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/ProviderContact"
-            app:layout_constraintTop_toBottomOf="@+id/ProviderContact">
+            app:layout_constraintEnd_toEndOf="@+id/ProviderCity"
+            app:layout_constraintStart_toStartOf="@+id/ProviderCity"
+            app:layout_constraintTop_toBottomOf="@+id/ProviderCity">
 
 
             <TextView
