@@ -76,8 +76,6 @@ public class Customer_EditAppointment extends AppCompatActivity {
             String spPhone = intent.getStringExtra("SPPhone");
             spEmail = intent.getStringExtra("SPEmail");
 
-
-
             textViewSPName.setText(serviceProviderName);
             textViewSPAddress.setText(serviceProviderAddress);
             textViewSPPhone.setText("Contact: "+spPhone);
@@ -99,7 +97,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
 
     }
 
-        Button btnUpdateApp = (Button) findViewById(R.id.buttonUpdate);
+        Button btnUpdateApp = (Button) findViewById(R.id.buttonUpdateFirst);
         btnUpdateApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +115,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                 intent.putExtra("PickupLoc",getIntent().getStringExtra("PickupLoc"));
                 intent.putExtra("ServiceDet",getIntent().getStringExtra("ServiceDet"));
                 intent.putExtra("SPPhone", getIntent().getStringExtra("SPPhone"));
+                intent.putExtra("SPEmail", getIntent().getStringExtra("SPEmail"));
                 //place cell number here
                 //place email address
                 startActivity(intent);

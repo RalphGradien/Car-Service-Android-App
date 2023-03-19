@@ -20,7 +20,7 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
 
         DBHelper dbh = new DBHelper(this);
         RecyclerView recyclerView = findViewById(R.id.recyclerviewCustViewAppointments);
-        //List<CustomerApointmentItems> customerApointmentItemsList = new ArrayList<CustomerApointmentItems>();
+
         List<CustomerApointmentItems> customerApointmentItems = new ArrayList<>();
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
 
@@ -140,4 +140,6 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         //place email address
         startActivity(intent);
     }
+
+
 }

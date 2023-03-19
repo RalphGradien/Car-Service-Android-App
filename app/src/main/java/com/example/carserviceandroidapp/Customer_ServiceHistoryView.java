@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -19,20 +20,99 @@ public class Customer_ServiceHistoryView extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.customer_history_recyclerview);
 
         List<Customer_ServiceHistory_Items> customer_serviceHistory_itemsList = new ArrayList<Customer_ServiceHistory_Items>();
-        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(23456,"ServiceProvider 1",
-                "Brake Check","Burnaby","Completed","2023-01-11",
-                "11:30AM","2023-01-14","01:20PM"));
+        List<Customer_ServiceHistory_Items>customer_serviceHistory_items_noOngoing = new ArrayList<Customer_ServiceHistory_Items>();
+        DBHelper dbh = new DBHelper(this);
 
-        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(23490,"ServiceProvider 30",
-                "Front Wheel Replacement","New Westminster","Completed","2023-02-20",
-                "12:30PM","2023-02-22","01:40PM"));
+        int userId=1;
+        Cursor cursorAppointment = dbh.getAppointment();
+        Cursor cursorServiceProvider = dbh.getServiceProviderDataAll();
+        Cursor cursorAppDetail = dbh.getAppointmentDetail();
+        Cursor cursorServiceList = dbh.getServiceList();
+        Cursor cursorServiceDetail = dbh.getServiceDetails();
 
-        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(23500,"ServiceProvider 40",
-                "Steering Wheel Check","Metrotown Area","Ongoing","2023-03-11",
-                "4:30PM","",""));
+        String spName="";
+        String spStreet = "";
+        String spCity = "";
+        String spProvince = "";
+        String spPostal = "";
+        String spPhone="";
+        String spEmail="";
+        String serviceAvailed = "";
+        String serviceListID = "";
+        int serviceDetailID = 0;
+        int appID = 0;
+        int appSPID=-1;
+
+        try {
+            if (cursorAppointment.getCount() > 0) {
+                while (cursorAppointment.moveToNext()) {
+                    if (cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("Userid")) == userId) {
+                        appID = cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("AppointmentID"));
+                        appSPID = cursorAppointment.getInt(cursorAppointment.getColumnIndexOrThrow("ServiceProviderID"));
+
+                        if (cursorServiceProvider.getCount() > 0) {
+                            cursorServiceProvider.moveToPosition(-1);
+                            while (cursorServiceProvider.moveToNext()) {
+                                if (cursorServiceProvider.getInt(cursorServiceProvider.getColumnIndexOrThrow("ServiceProviderID")) == appSPID) {
+                                    spName = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("serviceProviderFullName"));
+                                    spStreet = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("street"));
+                                    spCity = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("city"));
+                                    spProvince = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("province"));
+                                    spPostal = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("postalCode"));
+                                    spPhone = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("phone"));
+                                    spEmail = cursorServiceProvider.getString(cursorServiceProvider.getColumnIndexOrThrow("email"));
+                                }
+                            }
+                        }
+
+                        String spAddress = spStreet + ", " + spCity + ", " + spProvince + " " + spPostal;
+                        String appStatus = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentStatus"));
+                        String dropOffDT = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffTimeDate"));
+                        String dropOffLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
+                        String pickupDT = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
+                        String pickupLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpLocation"));
+//
+                        if (cursorAppDetail.getCount() > 0) {
+                            cursorAppDetail.moveToPosition(-1);
+                            while (cursorAppDetail.moveToNext()) {
+                                if (cursorAppDetail.getInt(cursorAppDetail.getColumnIndexOrThrow("AppointmentID"))== appID) {
+                                    serviceListID = cursorAppDetail.getString(cursorAppDetail.getColumnIndexOrThrow("ServiceListID"));
+                                }
+                            }
+                        }
+                        if (cursorServiceList.getCount() > 0) {
+                            cursorServiceList.moveToPosition(-1);
+                            while (cursorServiceList.moveToNext()) {
+                                if (cursorServiceList.getString(cursorServiceList.getColumnIndexOrThrow("ServiceListID")).equals(serviceListID)) {
+                                    serviceDetailID = cursorServiceList.getInt(cursorServiceList.getColumnIndexOrThrow("ServiceDetailID"));
+                                }
+                            }
+                        }
+                        if (cursorServiceDetail.getCount() > 0) {
+                            cursorServiceDetail.moveToPosition(-1);
+                            while (cursorServiceDetail.moveToNext()) {
+                                if (cursorServiceDetail.getInt(cursorServiceDetail.getColumnIndexOrThrow("ServiceDetailID")) == serviceDetailID) {
+                                    serviceAvailed = cursorServiceDetail.getString(cursorServiceDetail.getColumnIndexOrThrow("ServiceName"));
+                                }
+                            }
+                        }
+                        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT,""));
+
+                    }
+                }
+            }
+        }catch(Exception exception){
+            exception.printStackTrace();
+        }
+
+        for(Customer_ServiceHistory_Items historyItem : customer_serviceHistory_itemsList){
+            if(!historyItem.histbookingStatus.equals("Ongoing")){
+                customer_serviceHistory_items_noOngoing.add(historyItem);
+            }
+        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new Customer_ServiceHistory_Adapter(getApplicationContext(),customer_serviceHistory_itemsList));
+        recyclerView.setAdapter(new Customer_ServiceHistory_Adapter(getApplicationContext(),customer_serviceHistory_items_noOngoing));
     }
 
 }

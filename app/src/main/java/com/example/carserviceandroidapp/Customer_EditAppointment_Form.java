@@ -27,24 +27,60 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class Customer_EditAppointment_Form extends AppCompatActivity {
+    DBHelper dbh = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_edit_appointment_form);
 
+        TextView tvStatusForm = (TextView) findViewById(R.id.textViewStatusForm);
+        TextView tvSPNameDispForm = (TextView) findViewById(R.id.textViewSPNameDisplayForm);
+        TextView tvSPAddressForm = (TextView) findViewById(R.id.textViewSPAddressForm);
+        TextView tvSPCellDispForm = (TextView) findViewById(R.id.textViewSPCellDisplayForm);
+        EditText etDODateForm = (EditText) findViewById(R.id.tvDropOffDateForm);
+        EditText etDOTimeForm = (EditText)findViewById(R.id.etDropOffTimeForm);
+        EditText etDOLocForm = (EditText) findViewById(R.id.textViewDropOffLocForm);
+        EditText etPUDateForm = (EditText) findViewById(R.id.textViewPickupDateForm);
+        EditText etPUTimeForm = (EditText)findViewById(R.id.etPickUpTimeForm);
+        TextView tvAppStatusDownForm = (TextView) findViewById(R.id.editTextAppointmentStatusForm);
+        EditText etPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
+//
+        int[] appIdArr = new int[1];
+        int appId=0;
+//
+        String[] spEmailArr = new String[1];
+        String spEmail="";
+//
+        String[] spNameArr = new String[1];
+        String serviceProviderName="";
+
         Intent intent = getIntent();
         if(intent != null) {
-            int appId = intent.getIntExtra("AppId",0);
-            String serviceProviderName = intent.getStringExtra("ServiceProviderName");
+
+
+
+            appId = intent.getIntExtra("AppId",0);
+            serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             String appointmentStatus = intent.getStringExtra("AppStatus");
             String[] dropoffDateTime = intent.getStringExtra("DropoffD").split(" ");
             String dropOffDate = dropoffDateTime[0];
             String droffOffTime = dropoffDateTime[1]+" "+dropoffDateTime[2];
-            //String dropoffT = intent.getStringExtra("DropoffT");
+            String dropoffT = intent.getStringExtra("DropoffT");
             String pickupDateTimeString = intent.getStringExtra("PickupD");
             String[] pickupDateTime = new String[3];
             String pickupDate="";
@@ -59,13 +95,14 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                 pickupTime="";
             }
 
-            //String pickupT = intent.getStringExtra("PickupT");
+            String pickupT = intent.getStringExtra("PickupT");
             String dropoffLoc = intent.getStringExtra("DropoffLoc");
             String pickupLoc = intent.getStringExtra("PickupLoc");
             String serviceDetails = intent.getStringExtra("ServiceDet");
             String spPhone = intent.getStringExtra("SPPhone");
+            spEmail = intent.getStringExtra("SPEmail");
 
-            TextView tvStatusForm = (TextView) findViewById(R.id.textViewStatusForm);
+
             tvStatusForm.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
@@ -80,26 +117,16 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             drawable.setColor(chosenColor);
             tvStatusForm.setBackgroundDrawable(drawable);
             tvStatusForm.setText(appointmentStatus);
-
-            TextView tvSPNameDispForm = (TextView) findViewById(R.id.textViewSPNameDisplayForm);
             tvSPNameDispForm.setText(serviceProviderName);
-            TextView tvSPAddressForm = (TextView) findViewById(R.id.textViewSPAddressForm);
             tvSPAddressForm.setText(serviceProviderAddress);
-            TextView tvSPCellDispForm = (TextView) findViewById(R.id.textViewSPCellDisplayForm);
             tvSPCellDispForm.setText(spPhone);
-
-            EditText etDODateForm = (EditText) findViewById(R.id.tvDropOffDateForm);
             etDODateForm.setText(dropOffDate);
-            EditText etDOTimeForm = (EditText)findViewById(R.id.etDropOffTimeForm);
             etDOTimeForm.setText(droffOffTime);
 
-            EditText etDOLocForm = (EditText) findViewById(R.id.textViewDropOffLocForm);
             etDOLocForm.setText(dropoffLoc);
             String newDOLoc = "";
 
-            EditText etPUDateForm = (EditText) findViewById(R.id.textViewPickupDateForm);
             etPUDateForm.setText(pickupDate);
-            EditText etPUTimeForm = (EditText)findViewById(R.id.etPickUpTimeForm);
             etPUTimeForm.setText(pickupTime);
             String[] newDODateTime = new String[2];
 
@@ -173,18 +200,17 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
             String newDODateTimeComb = newDODateTime[0]+ newDODateTime[1];
 
-            EditText etPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
             etPULocForm.setText(pickupLoc);
             String newPULoc;
 
             String[] newPUDateTimeArray = new String[2];
 
             if(etPUDateForm.getText().toString().isEmpty()){
-                etPUDateForm.setHint("-");
+                etPUDateForm.setHint("");
                 etPUDateForm.setEnabled(false);
-                etPUTimeForm.setHint("-");
+                etPUTimeForm.setHint("");
                 etPUTimeForm.setEnabled(false);
-                etPULocForm.setHint("-");
+                etPULocForm.setHint("");
                 etPULocForm.setEnabled(false);
             }else {
                 etPUDateForm.setEnabled(true);
@@ -259,7 +285,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             });
 
             tvServDetailsForm.setText(serviceDetails);
-            TextView tvAppStatusDownForm = (TextView) findViewById(R.id.editTextAppointmentStatusForm);
+
             tvAppStatusDownForm.setText(appointmentStatus);
             tvAppStatusDownForm.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -307,5 +333,118 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             });
 
         }
+
+        appIdArr[0]=appId;
+        spEmailArr[0] = spEmail;
+        spNameArr[0]= serviceProviderName;
+        Button buttonUpdate = (Button) findViewById(R.id.buttonUpdateSecond);
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String doDate;
+                String doTime;
+                String doLoc;
+                String puDate;
+                String puTime;
+                String puLoc;
+                String puDateTime="";
+                String doDateTime="";
+
+                String statusDown = tvAppStatusDownForm.getText().toString();
+                if(!etDODateForm.getText().toString().isEmpty()){
+                    doDate = etDODateForm.getText().toString();
+                }else{
+                    doDate="";
+                }
+                if(!etDOTimeForm.getText().toString().isEmpty()){
+                    doTime = etDOTimeForm.getText().toString();
+                }else{
+                    doTime="";
+                }
+                if(!etDOLocForm.getText().toString().isEmpty()){
+                    doLoc = etDOLocForm.getText().toString();
+                }else{
+                    doLoc="";
+                }
+                if(!etPUDateForm.getText().toString().isEmpty()){
+                    puDate  = etPUDateForm.getText().toString();
+                }else{
+                    puDate="";
+                }
+                if(!etPUTimeForm.getText().toString().isEmpty()){
+                    puTime = etPUTimeForm.getText().toString();
+                    puDateTime = puDate+" "+puTime;
+                }else{
+                    puTime ="";
+                    puDateTime = "";
+
+                }
+                if(!etPULocForm.getText().toString().isEmpty()){
+                    puLoc = etPULocForm.getText().toString();
+                }else{
+                    puLoc ="";
+                }
+
+                doDateTime = doDate+" "+doTime;
+
+               boolean isUpdated = dbh.updateAppointment(appIdArr[0],doDateTime,doLoc,puDateTime,puLoc,statusDown);
+
+                if(isUpdated){
+
+                    try {
+                        String stringSenderEmail = "garkmobileapp@gmail.com";
+                        String stringReceiverEmail = spEmailArr[0];
+                        String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
+
+                        String stringHost = "smtp.gmail.com";
+
+                        Properties properties = System.getProperties();
+
+                        properties.put("mail.smtp.host", stringHost);
+                        properties.put("mail.smtp.port", "465");
+                        properties.put("mail.smtp.ssl.enable", "true");
+                        properties.put("mail.smtp.auth", "true");
+
+                        javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
+                            @Override
+                            protected PasswordAuthentication getPasswordAuthentication() {
+                                return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                            }
+                        });
+                        MimeMessage mimeMessage = new MimeMessage(session);
+                        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+                        mimeMessage.setSubject("Subject: Android App email");
+                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that there are changes to Appointment ID: "+appIdArr[0]+". Check GARK to view the changes."+
+                                    ". \n\n Cheers!\nProgrammer World");
+
+
+                        Thread thread = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Transport.send(mimeMessage);
+                                } catch (MessagingException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        thread.start();
+
+                    } catch (AddressException e) {
+                        e.printStackTrace();
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(Customer_EditAppointment_Form.this, "Record Updated", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Customer_EditAppointment_Form.this,Customer_AppointmentsView.class));
+                }else{
+                    Toast.makeText(Customer_EditAppointment_Form.this, "Record Not Updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+
 }
