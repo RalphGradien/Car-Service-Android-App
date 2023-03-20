@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Car Service Android App</string>
+    <string name="app_name">GARK</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirmPassword">Confirm Password</string>
