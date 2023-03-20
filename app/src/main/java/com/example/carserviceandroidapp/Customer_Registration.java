@@ -174,14 +174,14 @@ public class Customer_Registration extends AppCompatActivity {
 
     //temporary. to replace accordingly later
     public void onClickToAppointmentsView(View v){
-       Intent intent = new Intent(Customer_Registration.this, Customer_AppointmentsView.class);
+       Intent intent = new Intent(Customer_Registration.this, LogIn.class);
        startActivity(intent);
     }
 
-    public void onClickToHistoryView(View v){
-        Intent intent = new Intent(Customer_Registration.this, Customer_ServiceHistoryView.class);
-        startActivity(intent);
-    }
+//    public void onClickToHistoryView(View v){
+//        Intent intent = new Intent(Customer_Registration.this, Customer_ServiceHistoryView.class);
+//        startActivity(intent);
+//    }
 
 
 

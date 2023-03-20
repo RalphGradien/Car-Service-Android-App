@@ -42,12 +42,12 @@ public class CustomerMainMenu extends AppCompatActivity {
                            break;
                            //Customer Appointments
                        case R.id.appointment:
-                           selectedFragment = new FragmentAppointment();
+                           selectedFragment = new Customer_AppointmentsView();
                            break;
                            //Customer History
                        case R.id.history:
-//                           selectedFragment = new Customer_ServiceHistoryView();
-//                           break;
+                           selectedFragment = new Customer_ServiceHistoryView();
+                           break;
                    }
 
                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
