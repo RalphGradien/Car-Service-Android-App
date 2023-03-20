@@ -70,12 +70,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="32dp"
-        android:id="@+id/imageView_showhide_pw"
-        android:layout_below="@id/ProviderPassWord"/>
-
 
     <EditText
         android:id="@+id/ProviderPassWord"
@@ -84,6 +78,7 @@
         android:layout_marginTop="10dp"
         android:background="#E3BA12"
         android:hint="@string/hint_password"
+        android:inputType="textPassword"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +92,7 @@
         android:layout_marginTop="10dp"
         android:background="#E3BA12"
         android:hint="@string/hint_confirmPassword"
+        android:inputType="textPassword"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +116,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickToHistoryView"
         android:text="@string/txtHaveAccount"
         android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/logInHere"
@@ -139,7 +134,8 @@
         android:text="@string/txtLogHere"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/imageView4"

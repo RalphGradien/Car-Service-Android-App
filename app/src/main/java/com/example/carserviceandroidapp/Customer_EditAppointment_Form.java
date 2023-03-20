@@ -2,6 +2,7 @@ package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -70,8 +71,6 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null) {
-
-
 
             appId = intent.getIntExtra("AppId",0);
             serviceProviderName = intent.getStringExtra("ServiceProviderName");
@@ -416,7 +415,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                         mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
 
                         mimeMessage.setSubject("Subject: Android App email");
-                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that there are changes to Appointment ID: "+appIdArr[0]+". Check GARK to view the changes."+
+                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that there are changes to Appointment ID: "+appIdArr[0]+". Check GARK to view the changes"+
                                     ". \n\n Cheers!\nProgrammer World");
 
 
@@ -438,13 +437,18 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Toast.makeText(Customer_EditAppointment_Form.this, "Record Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Customer_EditAppointment_Form.this,Customer_AppointmentsView.class));
+
+                    startActivity(new Intent(Customer_EditAppointment_Form.this, PlainActivity.class));
+
+
+                   // startActivity(new Intent(Customer_EditAppointment_Form.this,Customer_AppointmentsView.class));
                 }else{
                     Toast.makeText(Customer_EditAppointment_Form.this, "Record Not Updated", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
 
 
 }
