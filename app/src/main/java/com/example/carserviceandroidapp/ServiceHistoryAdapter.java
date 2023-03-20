@@ -43,7 +43,6 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
         //Shows all parameters when "completed"
         if (appointmentStatus.equals("Completed")) {
             holder.completedDateView.setText(currentItem.getServiceCompletedDate());
-
             holder.appointmentStatusView.setBackgroundResource(R.drawable.green_rounded_rectangle);
         }
         //Adjusts styling if cancelled

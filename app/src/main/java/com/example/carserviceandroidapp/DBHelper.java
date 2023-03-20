@@ -352,6 +352,26 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String[] checkEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor customerCursor = db.rawQuery("SELECT * FROM CUSTOMER WHERE email=?", new String[]{email});
+        Cursor providerCursor = db.rawQuery("SELECT * FROM SERVICE_PROVIDER WHERE Email=?", new String[]{email});
+
+        if (customerCursor.getCount() > 0) {
+            customerCursor.moveToFirst();
+            @SuppressLint("Range") int customerId = customerCursor.getInt(customerCursor.getColumnIndex("Userid"));
+            @SuppressLint("Range") String password = customerCursor.getString(customerCursor.getColumnIndex("password"));
+            return new String[]{"CUSTOMER", String.valueOf(customerId), password};
+        } else if (providerCursor.getCount() > 0) {
+            providerCursor.moveToFirst();
+            @SuppressLint("Range") int serviceProviderId = providerCursor.getInt(providerCursor.getColumnIndex("ServiceProviderID"));
+            @SuppressLint("Range") String password = customerCursor.getString(customerCursor.getColumnIndex("serviceProviderPassword"));
+            return new String[]{"SERVICE_PROVIDER", String.valueOf(serviceProviderId), password};
+        } else {
+            return new String[]{"NOT_FOUND"};
+        }
+    }
+
     public Cursor getAppointmentDetail()
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -431,6 +451,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT serviceProviderID FROM SERVICE_PROVIDER WHERE email = ?", new String[] { String.valueOf(p_email) });
         return cursor;
     }
+    public boolean deleteServiceProvider(int ID) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        int rowsDeleted = DB.delete("SERVICE_PROVIDER", "ServiceProviderID = ?", new String[] { String.valueOf(ID) });
+        return rowsDeleted > 0;
+    }
+
 }
 
 

@@ -143,7 +143,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                                    boolean isUpdated= dbh.cancelAppointment(appIdCurrent);
                                    if(isUpdated){
                                        Toast.makeText(Customer_EditAppointment.this, "Record Updated", Toast.LENGTH_SHORT).show();
-                                       startActivity(new Intent(Customer_EditAppointment.this,Customer_AppointmentsView.class));
+                                       startActivity(new Intent(Customer_EditAppointment.this,PlainActivity.class));
                                    }else{
                                        Toast.makeText(Customer_EditAppointment.this, "Not Updated", Toast.LENGTH_SHORT).show();
                                    }

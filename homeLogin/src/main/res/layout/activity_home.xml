@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/loginBtn"
-        style="@style/MyButtonStyle2"
+        style="@style/HomeLogin"
 
         android:layout_width="150dp"
         android:layout_height="wrap_content"
