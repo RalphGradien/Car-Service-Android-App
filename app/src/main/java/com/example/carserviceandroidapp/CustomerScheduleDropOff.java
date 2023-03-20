@@ -36,6 +36,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         setContentView(R.layout.activity_customer_schedule_drop_off);
         DB = new DBHelper(this);
         TextView txtServiceProviderName = findViewById(R.id.txtCSDO_ServiceProviderName);
+        TextView txtServiceProviderLocation = findViewById(R.id.txtCSDO_ServiceProviderLocation);
 
         Spinner SpinServiceDetail = findViewById(R.id.spinCSDO_ServiceDetail);
         Spinner SpinServiceLocation = findViewById(R.id.spinCSDO_Location);
@@ -53,15 +54,15 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         {
             spID = Integer.parseInt(intent.getStringExtra("SPID").toString());
         }
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
        // userID = Customer.CustomerID;
         userID = 3;
         displayData();
         displaydata2();
         displayLocation();
         displayLocation2();
-        txtServiceProviderName.setText("Service ID " + spName + "\n" + fullLoc );
-
+        txtServiceProviderName.setText(spName);
+        txtServiceProviderLocation.setText(fullLoc);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, spDetails);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

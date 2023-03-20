@@ -34,31 +34,38 @@ public class Customer_ServiceHistory_Adapter extends RecyclerView.Adapter<Custom
         holder.tvhistbookedServiceProviderAddress.setText(customer_serviceHistory_items.get(position).getHistbookedServiceProviderAddress());
         holder.tvhistbookingStatus.setText(customer_serviceHistory_items.get(position).getHistbookingStatus());
         holder.tvhistdropoffAppointmentDate.setText(customer_serviceHistory_items.get(position).getHistdropoffAppointmentDate());
-        holder.tvhistcustomDropOffTime.setText(customer_serviceHistory_items.get(position).getHistcustomDropOffTime());
+        //holder.tvhistcustomDropOffTime.setText(customer_serviceHistory_items.get(position).getHistcustomDropOffTime());
         holder.tvhistpickupAppointmentDate.setText(customer_serviceHistory_items.get(position).getHistpickupAppointmentDate());
-        holder.tvhistcustomPickupTime.setText(customer_serviceHistory_items.get(position).getHistcustomPickupTime());
+       // holder.tvhistcustomPickupTime.setText(customer_serviceHistory_items.get(position).getHistcustomPickupTime());
 
         if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Ongoing")) {
+            int chosenColor = Color.rgb(247, 201, 16);
             holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+            holder.tvhistdropoffAppointmentDate.setTextColor(chosenColor);
+            holder.tvhistpickupAppointmentDate.setTextColor(chosenColor);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
             drawable.setCornerRadius(20);
-            int chosenColor = Color.rgb(247, 201, 16);
             drawable.setColor(chosenColor);
             holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
-        } else if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Completed")) {
+        } else if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Cancelled")) {
+
             holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+            holder.tvhistdropoffAppointmentDate.setTextColor(Color.RED);
+            holder.tvhistpickupAppointmentDate.setTextColor(Color.RED);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
             drawable.setCornerRadius(20);
             drawable.setColor(Color.RED);
             holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
-        } else if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Ready for Pickup")) {
+        } else if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Completed")) {
+            int chosenColor = Color.rgb(101, 207, 114);
+            holder.tvhistdropoffAppointmentDate.setTextColor(chosenColor);
+            holder.tvhistpickupAppointmentDate.setTextColor(chosenColor);
             holder.tvhistbookingStatus.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
             drawable.setCornerRadius(20);
-            int chosenColor = Color.rgb(101, 207, 114);
             drawable.setColor(chosenColor);
             holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
 

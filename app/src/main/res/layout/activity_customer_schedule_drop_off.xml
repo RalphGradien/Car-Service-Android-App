@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomerScheduleDropOff">
@@ -10,10 +11,10 @@
         android:id="@+id/txtCSDO_ServiceProviderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="90dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,12 +66,12 @@
         android:id="@+id/spinCSDO_ServiceDetail"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="462dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Location"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/spinCSDO_Location"
         app:layout_constraintStart_toStartOf="@+id/txtCSDO_ServiceDetail"
-        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceDetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceProviderLocation"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Spinner
@@ -128,4 +129,16 @@
         android:textColor="#000000"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnCSDOConfirm"
         app:layout_constraintStart_toStartOf="@+id/spinCSDO_Time" />
+
+    <TextView
+        android:id="@+id/txtCSDO_ServiceProviderLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginBottom="56dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_ServiceDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
