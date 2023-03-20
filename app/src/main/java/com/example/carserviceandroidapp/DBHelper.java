@@ -417,6 +417,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean deleteServiceProvider(int ID) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        int rowsDeleted = DB.delete("SERVICE_PROVIDER", "ServiceProviderID = ?", new String[] { String.valueOf(ID) });
+        return rowsDeleted > 0;
+    }
+
 }
 
 

@@ -69,6 +69,7 @@
     <string name="filter_prompt">Select a filter</string>
     <string name="generateReportBtnTxt">Generate Report</string>
     <string-array name="filter_options">
+        <item>Filters</item>
         <item>All</item>
         <item>Completed</item>
         <item>Cancelled</item>

@@ -14,22 +14,23 @@
         android:layout_marginEnd="8dp"
         android:entries="@array/filter_options"
         android:prompt="@string/filter_prompt"
+        android:background="@drawable/spinner_border"
         />
 
     <Button
+        style="@style/GreenButton"
         android:id="@+id/generateReportButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_alignTop="@id/filterSpinner"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:text="@string/generateReportBtnTxt"
-        tools:textSize="10sp" />
+        tools:textSize="8sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/filterSpinner"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

@@ -10,81 +10,116 @@
 
     <EditText
         android:id="@+id/ProviderName"
-        android:layout_width="254dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:textSize="18dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_Name"
+        android:paddingStart="10dp"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderPassWord"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
 
     <EditText
         android:id="@+id/ProviderAddress"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="55dp"
+
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_Address"
+        android:paddingStart="10dp"
         android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderContact"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
 
     <EditText
         android:id="@+id/ProviderContact"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+
+        android:layout_marginEnd="55dp"
+
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_Contact"
-        android:textSize="18dp"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bthCustomerRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderAddress" />
 
     <EditText
+
         android:id="@+id/ProviderEmail"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="55dp"
+
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_Email"
+        android:paddingStart="10dp"
         android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderConfirmPassword" />
 
     <EditText
+
         android:id="@+id/textViewRegTitle"
         android:layout_width="247dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         android:text="Customer Registration"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="32dp"
         android:id="@+id/imageView_showhide_pw"
-        android:layout_below="@id/ProviderPassWord"/>
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_below="@id/ProviderPassWord"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
         android:id="@+id/ProviderPassWord"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="55dp"
+
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_password"
+        android:paddingStart="10dp"
         android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
@@ -92,23 +127,29 @@
 
     <EditText
         android:id="@+id/ProviderConfirmPassword"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="#E3BA12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_yellow_formbox"
         android:hint="@string/hint_confirmPassword"
+        android:paddingStart="10dp"
         android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/ProviderEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderPassWord" />
 
     <Button
         android:id="@+id/bthCustomerRegister"
+        style="@style/MyButtonStyle3"
         android:layout_width="167dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:onClick="onClickToAppointmentsView"
         android:text="@string/buttonCRegister"
+        app:layout_constraintBottom_toTopOf="@+id/logInHere"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProviderContact"
@@ -116,40 +157,38 @@
 
     <TextView
         android:id="@+id/textViewHaveAccount"
-        android:layout_width="153dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="148dp"
+        android:layout_height="55dp"
         android:onClick="onClickToHistoryView"
         android:text="@string/txtHaveAccount"
         android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/logInHere"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
+        tools:layout_editor_absoluteY="605dp" />
 
     <TextView
         android:id="@+id/logInHere"
-        android:layout_width="112dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="64dp"
+        android:layout_height="55dp"
         android:layout_toEndOf="@+id/textViewHaveAccount"
         android:onClick="onClickToAppointmentsView"
         android:text="@string/txtLogHere"
         android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="605dp" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="199dp"
-        android:layout_height="135dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="15dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRegTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView_showhide_pw"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/verticallogo" />
