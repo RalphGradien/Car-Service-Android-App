@@ -23,6 +23,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class CustomerScheduleDropOff extends AppCompatActivity {
     DBHelper DB; int spID,userID;String spName,sdID, fullLoc; int aptID;
@@ -123,7 +134,50 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 getAptID();
                 DB.insertAppointmentDetail(aptID,ServiceList);
                 Toast.makeText(CustomerScheduleDropOff.this,"Successfuly Book an Appointment!!",Toast.LENGTH_SHORT).show();
+                try {
+                    String stringSenderEmail = "garkmobileapp@gmail.com";
+                    String stringReceiverEmail = "arifinw@gmail.com";
+                    String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
 
+                    String stringHost = "smtp.gmail.com";
+
+                    Properties properties = System.getProperties();
+
+                    properties.put("mail.smtp.host", stringHost);
+                    properties.put("mail.smtp.port", "465");
+                    properties.put("mail.smtp.ssl.enable", "true");
+                    properties.put("mail.smtp.auth", "true");
+
+                    javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                        }
+                    });
+
+                    MimeMessage mimeMessage = new MimeMessage(session);
+                    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+                    mimeMessage.setSubject("Subject: Booking Appointment Details");
+                    mimeMessage.setText("Hello, \n\nThere is a booking appointment \n\n Regards, \nService Provider");
+
+                    Thread thread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Transport.send(mimeMessage);
+                            } catch (MessagingException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    thread.start();
+
+                } catch (AddressException e) {
+                    e.printStackTrace();
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
             }
         });
 //        // Define the arrays of working hours for each day
