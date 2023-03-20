@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,12 +13,23 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/filter_options"
-        android:prompt="@string/filter_prompt"/>
+        android:prompt="@string/filter_prompt"
+        />
+
+    <Button
+        android:id="@+id/generateReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignTop="@id/filterSpinner"
+        android:layout_marginLeft="10dp"
+        android:text="@string/generateReportBtnTxt"
+        tools:textSize="10sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/filterSpinner"/>
+        android:layout_below="@id/filterSpinner"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

@@ -4,10 +4,20 @@ package com.example.carserviceandroidapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     DBHelper DB;
@@ -19,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         DB = new DBHelper(this);
         Button btnDummyData = findViewById(R.id.btnDummyData);
         toKen = findViewById(R.id.toKenneth);
+        Button generatePDF = findViewById(R.id.createPDFbtn);
+
+        generatePDF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                generatePDF();
+            }
+        });
+
         toKen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,7 +180,51 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, CustomerFindServiceProviderLocation.class);
         startActivity(intent);
     }
+    private void generatePDF() {
+        // Define the name of the PDF file
+        String pdfFileName = "example2.pdf";
 
+// Get a directory where the PDF will be saved
+        File pdfFileDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/" + pdfFileName);
 
+        try {
+            // Create a new document object
+            PdfDocument document = new PdfDocument();
 
+            // Create a page description
+            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+
+            // Start a new page
+            PdfDocument.Page page = document.startPage(pageInfo);
+
+            // Get a canvas to draw on the page
+            Canvas canvas = page.getCanvas();
+
+            // Create a paint object
+            Paint paint = new Paint();
+
+            // Set the color of the paint
+            paint.setColor(Color.BLACK);
+
+            // Draw some text on the page
+            canvas.drawText("Hello World!", 100, 100, paint);
+
+            // Finish the page
+            document.finishPage(page);
+
+            // Save the document to the file
+            FileOutputStream outputStream = new FileOutputStream(pdfFileDirectory);
+            document.writeTo(outputStream);
+            document.close();
+
+            // Display a success message
+            Toast.makeText(getApplicationContext(), "PDF created successfully", Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Display an error message
+            Toast.makeText(getApplicationContext(), "Error creating PDF", Toast.LENGTH_LONG).show();
+        }
+
+    }
 }
