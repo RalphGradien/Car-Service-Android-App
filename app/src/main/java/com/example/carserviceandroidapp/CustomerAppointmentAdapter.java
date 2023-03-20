@@ -49,27 +49,33 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
 
 
             if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ongoing")) {
+                int chosenColor = Color.rgb(247, 201, 16);
+                holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+                holder.tvhistdropoffAppointmentDate.setTextColor(chosenColor);
+                holder.tvhistpickupAppointmentDate.setTextColor(chosenColor);
+                GradientDrawable drawable = new GradientDrawable();
+                drawable.setShape(GradientDrawable.RECTANGLE);
+                drawable.setCornerRadius(20);
+                drawable.setColor(chosenColor);
+                holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
+            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Completed")) {
+                int chosenColor = Color.rgb(101, 207, 114);
+                holder.tvhistdropoffAppointmentDate.setTextColor(chosenColor);
+                holder.tvhistpickupAppointmentDate.setTextColor(chosenColor);
                 holder.tvhistbookingStatus.setTextColor(Color.WHITE);
                 GradientDrawable drawable = new GradientDrawable();
                 drawable.setShape(GradientDrawable.RECTANGLE);
                 drawable.setCornerRadius(20);
-                int chosenColor = Color.rgb(247, 201, 16);
                 drawable.setColor(chosenColor);
                 holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
-            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Completed")) {
+            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Cancelled")) {
                 holder.tvhistbookingStatus.setTextColor(Color.WHITE);
+                holder.tvhistdropoffAppointmentDate.setTextColor(Color.RED);
+                holder.tvhistpickupAppointmentDate.setTextColor(Color.RED);
                 GradientDrawable drawable = new GradientDrawable();
                 drawable.setShape(GradientDrawable.RECTANGLE);
                 drawable.setCornerRadius(20);
                 drawable.setColor(Color.RED);
-                holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
-            } else if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ready for Pickup")) {
-                holder.tvhistbookingStatus.setTextColor(Color.WHITE);
-                GradientDrawable drawable = new GradientDrawable();
-                drawable.setShape(GradientDrawable.RECTANGLE);
-                drawable.setCornerRadius(20);
-                int chosenColor = Color.rgb(101, 207, 114);
-                drawable.setColor(chosenColor);
                 holder.tvhistbookingStatus.setBackgroundDrawable(drawable);
 
             }
