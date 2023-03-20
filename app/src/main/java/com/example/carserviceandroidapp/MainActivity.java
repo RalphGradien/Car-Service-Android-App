@@ -180,50 +180,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void generatePDF() {
-        // Define the name of the PDF file
-        String pdfFileName = "example2.pdf";
-
-// Get a directory where the PDF will be saved
-        File pdfFileDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/" + pdfFileName);
-
-        try {
-            // Create a new document object
-            PdfDocument document = new PdfDocument();
-
-            // Create a page description
-            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
-
-            // Start a new page
-            PdfDocument.Page page = document.startPage(pageInfo);
-
-            // Get a canvas to draw on the page
-            Canvas canvas = page.getCanvas();
-
-            // Create a paint object
-            Paint paint = new Paint();
-
-            // Set the color of the paint
-            paint.setColor(Color.BLACK);
-
-            // Draw some text on the page
-            canvas.drawText("Hello World!", 100, 100, paint);
-
-            // Finish the page
-            document.finishPage(page);
-
-            // Save the document to the file
-            FileOutputStream outputStream = new FileOutputStream(pdfFileDirectory);
-            document.writeTo(outputStream);
-            document.close();
-
-            // Display a success message
-            Toast.makeText(getApplicationContext(), "PDF created successfully", Toast.LENGTH_LONG).show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Display an error message
-            Toast.makeText(getApplicationContext(), "Error creating PDF", Toast.LENGTH_LONG).show();
-        }
+        DB.insertuserdata("Kenneth", "password1", "kenleano@gmail.com", "9876543210", "123 Main St");
 
     }
 }
