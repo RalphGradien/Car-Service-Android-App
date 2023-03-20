@@ -1,31 +1,34 @@
 package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer_AppointmentsView extends AppCompatActivity implements CustomerAppointmentsViewSelectInterface {
+public class Customer_AppointmentsView extends Fragment implements CustomerAppointmentsViewSelectInterface {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_appointments_view);
-
-        DBHelper dbh = new DBHelper(this);
-        RecyclerView recyclerView = findViewById(R.id.recyclerviewCustViewAppointments);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        DBHelper dbh = new DBHelper(getActivity());
+        View view = inflater.inflate(R.layout.activity_customer_appointments_view, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewCustViewAppointments);
 
         List<CustomerApointmentItems> customerApointmentItems = new ArrayList<>();
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
 
 
-        int userId=1;
+        int userId=Customer.CustomerID;
         Cursor cursorAppointment = dbh.getAppointment();
         Cursor cursorServiceProvider = dbh.getServiceProviderDataAll();
         Cursor cursorAppDetail = dbh.getAppointmentDetail();
@@ -116,13 +119,17 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
             }
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new CustomerAppointmentAdapter(getApplicationContext(),customerAppointmentsOngoing, this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(),customerAppointmentsOngoing, this));
+        return view;
     }
+
+
 
     @Override
     public void onItemClick(CustomerApointmentItems customerApointmentItems) {
-        Intent intent = new Intent(Customer_AppointmentsView.this, Customer_EditAppointment.class);
+
+        Intent intent = new Intent(getActivity(), Customer_EditAppointment.class);
         intent.putExtra("AppId",customerApointmentItems.histappointmentIDInt);
         intent.putExtra("ServiceProviderName",customerApointmentItems.histbookedServiceProviderName);
         intent.putExtra("SPAddress",customerApointmentItems.histbookedServiceProviderAddress);
@@ -140,6 +147,12 @@ public class Customer_AppointmentsView extends AppCompatActivity implements Cust
         //place email address
         startActivity(intent);
     }
+
+    public void onClickHome(View v){
+        startActivity(new Intent(getActivity(),CustomerMainMenu.class));
+    }
+
+
 
 
 }

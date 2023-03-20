@@ -68,6 +68,7 @@
     <string name="setNewPUTime">set new pick-up time</string>
     <string name="filter_prompt">Select a filter</string>
     <string name="generateReportBtnTxt">Generate Report</string>
+    <string name="bttn">HOME</string>
     <string-array name="filter_options">
         <item>All</item>
         <item>Completed</item>
