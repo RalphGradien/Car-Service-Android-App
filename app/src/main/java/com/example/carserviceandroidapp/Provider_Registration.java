@@ -3,13 +3,16 @@ package com.example.carserviceandroidapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 
@@ -89,7 +92,6 @@ public class Provider_Registration extends AppCompatActivity {
 
         //On click listener to hold input values
         btnProviderRegister.setOnClickListener(new View.OnClickListener() {
-            String str = "";
             @Override
             public void onClick(View v) {
                 v_providerName = name.getText().toString();
@@ -99,11 +101,42 @@ public class Provider_Registration extends AppCompatActivity {
                 v_address = address.getText().toString();
                 v_city = city.getText().toString();
 
-                //check array - delete later
-                for (int i = 0; i < selectedServiceList.size(); i++) {
-                    str += selectedServiceList.get(i) + " ";
-                }
-                //remove all items in arrayList everytimes
+                //validate input
+                if (v_providerName.isEmpty() || v_providerPassWord.isEmpty() || v_email.isEmpty() ||
+                    v_contact.isEmpty() || v_address.isEmpty() || v_city.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please provide all the required fields!", Toast.LENGTH_SHORT).show();
+                } else {
+                    DBHelper dbHelper = new DBHelper(Provider_Registration.this);
+                    Toast.makeText(Provider_Registration.this, "Successful registration!", Toast.LENGTH_SHORT).show();
+
+                    //add service provider data
+                    dbHelper.insertServiceProvider(
+                            v_providerPassWord, v_providerName, v_address, v_city, null, null, v_email,
+                            v_contact, null);
+
+                    //insert service list
+                    dbHelper.getServiceList();
+                };
+
+
+
+
+//                    public Boolean insertServiceProvider(String password, String fullName, String street, String city,
+//                            String province, String postalCode, String email, String phone, String imageName )
+//                    {
+//                        SQLiteDatabase db = this.getWritableDatabase();
+//                        ContentValues values = new ContentValues();
+//                        values.put("serviceProviderPassword", password);
+//                        values.put("serviceProviderFullName", fullName);
+//                        values.put("street", street);
+//                        values.put("city",city);
+//                        values.put("province",province);
+//                        values.put("postalCode",postalCode);
+//                        values.put("email", email);
+//                        values.put("phone", phone);
+//                        values.put("imageName", imageName);
+//                };
+                //remove all items in arrayList everytime
                 selectedServiceList.clear();
             }
         });
