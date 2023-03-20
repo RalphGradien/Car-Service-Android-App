@@ -19,245 +19,192 @@
             android:id="@+id/textViewStatus"
             android:layout_width="95dp"
             android:layout_height="18dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="300dp"
-            android:layout_marginBottom="17dp"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/textViewSPNameDisplay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/textViewSPNameDisplay"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
-            android:id="@+id/textViewSPNameDisplay"
-            android:layout_width="290dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="107dp"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
-
-        <TextView
-            android:id="@+id/textViewSPAddress"
-            android:layout_width="350dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="104dp"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.033"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSPNameDisplay" />
-
-        <TextView
-            android:id="@+id/textViewSPCellDisplay"
-            android:layout_width="291dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="104dp"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSPAddress" />
-
-        <TextView
-            android:id="@+id/tvDropOffDTLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="249dp"
-            android:text="@string/dropOffLabel"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplay" />
-
-        <TextView
-            android:id="@+id/tvDropOffDT"
-            android:layout_width="200dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabel" />
-
-        <TextView
-            android:id="@+id/tvDropOffLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="284dp"
-            android:text="@string/dropOffLocLabel"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDT" />
-
-        <TextView
+            android:background="@drawable/textview_border"
             android:id="@+id/textViewDropOffLoc"
-            android:layout_width="200dp"
+            android:layout_width="350dp"
             android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="197dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocation" />
+            app:layout_constraintStart_toStartOf="@+id/tvpickupDTLabel"
+            tools:layout_editor_absoluteY="270dp" />
 
         <TextView
+            android:textColor="#2E3192"
             android:id="@+id/tvpickupDTLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="259dp"
             android:text="@string/pickupDTLabel"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDropOffLoc" />
+            app:layout_constraintStart_toStartOf="@+id/textViewPickupTime"
+            tools:layout_editor_absoluteY="322dp" />
 
         <TextView
-            android:id="@+id/textViewPickupTime"
-            android:layout_width="200dp"
+            android:background="@drawable/textview_border"
+            android:id="@+id/textViewServiceDetails"
+            android:layout_width="350dp"
             android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
             android:ems="10"
             android:hint=""
             android:inputType="textPersonName"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabel" />
+            app:layout_constraintStart_toStartOf="@+id/tvAppointmentStatusLabel"
+            tools:layout_editor_absoluteY="512dp" />
 
         <TextView
-            android:id="@+id/tvPickupLocationLabel"
+
+            android:id="@+id/textViewSPCellDisplay"
+            android:layout_width="291dp"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvDropOffDTLabel"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <TextView
+            android:textColor="#2E3192"
+            android:id="@+id/tvDropOffDTLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="290dp"
-            android:text="@string/pickupLocationLabel"
-            android:textSize="15sp"
+            android:text="@string/dropOffLabel"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPickupTime" />
+            app:layout_constraintStart_toStartOf="@+id/tvDropOffDT"
+            tools:layout_editor_absoluteY="162dp" />
 
         <TextView
-            android:id="@+id/tvPickupLocation"
-            android:layout_width="200dp"
+            android:background="@drawable/textview_border"
+            android:id="@+id/textViewPickupTime"
+            android:layout_width="350dp"
             android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabel" />
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/tvPickupLocationLabel"
+            tools:layout_editor_absoluteY="350dp" />
 
         <TextView
+            android:textStyle="bold"
+            android:textColor="#2E3192"
+            android:id="@+id/textViewSPNameDisplay"
+            android:layout_width="290dp"
+            android:layout_height="32dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewSPAddress"
+            tools:layout_editor_absoluteY="42dp" />
+
+        <TextView
+            android:textColor="#2E3192"
             android:id="@+id/tvServiceDetailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="298dp"
             android:text="@string/serviceDetailsLabel"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocation" />
+            app:layout_constraintStart_toStartOf="@+id/textViewServiceDetails"
+            tools:layout_editor_absoluteY="483dp" />
 
         <TextView
-            android:id="@+id/textViewServiceDetails"
-            android:layout_width="200dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
-            android:ems="10"
-            android:hint=""
-            android:inputType="textPersonName"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvServiceDetailLabel" />
+
+            android:id="@+id/textViewSPAddress"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewSPCellDisplay"
+            tools:layout_editor_absoluteY="83dp" />
 
         <TextView
+            android:textColor="#2E3192"
             android:id="@+id/tvAppointmentStatusLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="262dp"
             android:text="@string/appointmentStatus"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewServiceDetails" />
+            app:layout_constraintStart_toStartOf="@+id/editTextAppointmentStatus"
+            tools:layout_editor_absoluteY="565dp" />
 
         <TextView
+            android:background="@drawable/textview_border"
             android:id="@+id/editTextAppointmentStatus"
-            android:layout_width="200dp"
+            android:layout_width="350dp"
             android:layout_height="43dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="195dp"
             android:ems="10"
             android:hint=""
             android:inputType="textPersonName"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabel" />
+            tools:layout_editor_absoluteY="594dp" />
+
+        <TextView
+            android:background="@drawable/textview_border"
+            android:id="@+id/tvDropOffDT"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            app:layout_constraintStart_toStartOf="@+id/tvDropOffLocation"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <TextView
+            android:background="@drawable/textview_border"
+            android:id="@+id/tvPickupLocation"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            app:layout_constraintStart_toStartOf="@+id/tvServiceDetailLabel"
+            tools:layout_editor_absoluteY="431dp" />
+
+        <TextView
+            android:textColor="#2E3192"
+            android:id="@+id/tvDropOffLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dropOffLocLabel"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textViewDropOffLoc"
+            tools:layout_editor_absoluteY="241dp" />
+
+        <TextView
+            android:textColor="#2E3192"
+            android:id="@+id/tvPickupLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pickupLocationLabel"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvPickupLocation"
+            tools:layout_editor_absoluteY="403dp" />
 
         <Button
+            style="@style/RedButton"
             android:id="@+id/buttonCancel"
             android:layout_width="85dp"
             android:layout_height="34dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
             android:text="@string/buttonCancel"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/buttonUpdateFirst"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatus" />
+            tools:layout_editor_absoluteX="173dp"
+            tools:layout_editor_absoluteY="659dp" />
 
         <Button
+            style="@style/GreenButton"
             android:id="@+id/buttonUpdateFirst"
             android:layout_width="85dp"
             android:layout_height="34dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="25dp"
             android:text="@string/buttonUpdate"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatus" />
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="659dp" />
 
         <Button
+            style="@style/BlueButton"
             android:id="@+id/butnRemind"
             android:layout_width="85dp"
             android:layout_height="34dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="25dp"
             android:text="@string/buttonRemind"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/buttonCancel"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatus" />
+            tools:layout_editor_absoluteX="266dp"
+            tools:layout_editor_absoluteY="659dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
