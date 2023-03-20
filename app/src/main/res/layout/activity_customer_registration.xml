@@ -116,7 +116,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClickToHistoryView"
         android:text="@string/txtHaveAccount"
         android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/logInHere"
@@ -135,7 +134,8 @@
         android:text="@string/txtLogHere"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/bthCustomerRegister"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/imageView4"
