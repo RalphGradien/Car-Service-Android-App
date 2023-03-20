@@ -81,11 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertServiceList("SP_10_9", 10, 9); DB.insertServiceList("SP_10_8", 10, 8); DB.insertServiceList("SP_10_7", 10, 7);
 
                 //Insert Appointment Data
-                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "123 Main St", "03/15/2023", "", "Drop Off", "Completed");
-                DB.insertAppointment(1, 1,"03/15/2023 10:30 AM", "Vancouver", "03/22/2023", "03-19-2023 02:00 PM", "456 Oak St", "03/16/2023", "", "Pick Up", "Completed");
-                DB.insertAppointment(2, 1,"03/16/2023 11:00 AM", "Burnaby", "03/23/2023", "03-18-2023 01:00 PM", "789 Maple St", "03/17/2023", "", "Drop Off", "Completed");
-                DB.insertAppointment(3, 1,"03/18/2023 12:30 PM", "Vancouver", "03/25/2023", "03-20-2023 10:00 AM", "321 Pine St", "03/19/2023", "", "Pick Up", "Completed");
-                DB.insertAppointment(4, 1,"03/20/2023 09:00 AM", "Surrey", "03/27/2023", "03-22-2023 11:00 AM", "654 Elm St", "03/21/2023", "", "Drop Off", "Cancelled");
+                DB.insertAppointment(1, 1,"03/13/2023 11:00 AM", "Surrey", "03/21/2023", "03-17-2023 04:00 PM", "123 Main St", "03/15/2023", "", "Drop Off", "Ongoing");
+                DB.insertAppointment(1, 2,"03/15/2023 10:30 AM", "Vancouver", "03/22/2023", "03-19-2023 02:00 PM", "456 Oak St", "03/16/2023", "", "Pick Up", "Ongoing");
+                DB.insertAppointment(1, 3,"03/18/2023 12:30 PM", "Vancouver", "03/25/2023", "03-20-2023 10:00 AM", "321 Pine St", "03/19/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(1, 4,"03/20/2023 09:00 AM", "Surrey", "03/27/2023", "03-22-2023 11:00 AM", "654 Elm St", "03/21/2023", "", "Drop Off", "Cancelled");
                 DB.insertAppointment(5, 1,"03/22/2023 01:00 PM", "Vancouver", "03/29/2023", "03-24-2023 03:00 PM", "987 Cedar St", "03/23/2023", "", "Pick Up", "Completed");
                 DB.insertAppointment(6, 1,"03/23/2023 02:30 PM", "Burnaby", "03/30/2023", "03-26-2023 12:00 PM", "321 Oak St", "03/24/2023", "", "Drop Off", "Cancelled");
                 DB.insertAppointment(7, 1,"03/25/2023 10:00 AM", "Vancouver", "04/01/2023", "03-28-2023 09:00 AM", "654 Pine St", "03/26/2023", "", "Pick Up", "Completed");
