@@ -66,8 +66,8 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
             spID = Integer.parseInt(intent.getStringExtra("SPID").toString());
         }
         //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-       // userID = Customer.CustomerID;
-        userID = 3;
+        userID = Customer.CustomerID;
+       // userID = 3;
         displayData();
         displaydata2();
         displayLocation();
