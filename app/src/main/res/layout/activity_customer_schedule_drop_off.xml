@@ -11,10 +11,10 @@
         android:id="@+id/txtCSDO_ServiceProviderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="90dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,11 +134,11 @@
         android:id="@+id/txtCSDO_ServiceProviderLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="155dp"
         android:layout_marginBottom="56dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/spinCSDO_ServiceDetail"
-        app:layout_constraintEnd_toStartOf="@+id/txtCSDO_ServiceProviderName"
-        app:layout_constraintStart_toStartOf="@+id/txtCSDO_ServiceProviderName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
