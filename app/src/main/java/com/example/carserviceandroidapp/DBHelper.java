@@ -255,6 +255,13 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from CUSTOMER", null);
         return cursor;
     }
+    //Get Service Provider Data
+    public Cursor getServiceProviderInfo()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
+        return cursor;
+    }
     public Cursor getAppointmentID()
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -416,6 +423,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getServiceProviderName(int ID) {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT serviceProviderFullName FROM SERVICE_PROVIDER WHERE ServiceProviderID = ?", new String[] { String.valueOf(ID) });
+        return cursor;
+    }
+
+    public Cursor getServiceProviderID(String p_email) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT serviceProviderID FROM SERVICE_PROVIDER WHERE email = ?", new String[] { String.valueOf(p_email) });
         return cursor;
     }
 }

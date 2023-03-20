@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,10 @@ public class Provider_Registration extends AppCompatActivity {
     boolean [] selectedServices;
     ArrayList<Integer> selectedLocation = new ArrayList<>();
     ArrayList<StringBuilder> selectedServiceList = new ArrayList<>();
-    String [] serviceProvide = {"Select 1","Select 2","Select 3","Select 4"};
+    String [] serviceProvide = {"Full Brake Check","Tire Rotation","Battery Replacement","Air Filter Replacement",
+        "Wheel Alignment", "Spark Plug Replacement", "Coolant Flush", "Transmission Service", "Fuel Injection Service",
+        "Wheel Replacement", "Brake Check"};
+//    String [] serviceID = {"1","2","3","4","5","6","7","8","9","10","11"};
 
     //variables to hold the input data
     String v_providerName, v_providerPassWord, v_email,  v_contact, v_address, v_city;
@@ -64,7 +68,6 @@ public class Provider_Registration extends AppCompatActivity {
                 }).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         for (int i = 0; i < selectedLocation.size(); i++) {
                             //create String builder
                             StringBuilder stringBuilder = new StringBuilder();
@@ -107,35 +110,36 @@ public class Provider_Registration extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please provide all the required fields!", Toast.LENGTH_SHORT).show();
                 } else {
                     DBHelper dbHelper = new DBHelper(Provider_Registration.this);
-                    Toast.makeText(Provider_Registration.this, "Successful registration!", Toast.LENGTH_SHORT).show();
-
                     //add service provider data
                     dbHelper.insertServiceProvider(
                             v_providerPassWord, v_providerName, v_address, v_city, null, null, v_email,
-                            v_contact, null);
+                            v_contact, "d");
 
-                    //insert service list
-                    dbHelper.getServiceList();
+                    //get service provider ID from service provider email
+                    Integer serviceProviderID = null;
+                    Cursor cursor = dbHelper.getServiceProviderID(v_email);
+                    if (cursor.moveToFirst()) {
+                        serviceProviderID = cursor.getInt(cursor.getColumnIndexOrThrow("ServiceProviderID"));
+                    }
+
+                    //insert service list to SERVICE_LIST table
+                    String serviceListID = "";
+                    Integer serviceDetailID;
+
+                    for (int i = 0; i < selectedLocation.size(); i++) {
+                        serviceDetailID = selectedLocation.get(i) + 1;
+                        serviceListID = "SP_" + serviceProviderID + "_" + serviceDetailID ;
+                        dbHelper.insertServiceList(
+                                serviceListID, serviceProviderID, serviceDetailID
+                        );
+                    };
+                    Toast.makeText(Provider_Registration.this, "Successful registration!", Toast.LENGTH_SHORT).show();
+
+//                    //start ServiceMainMenu activity after successfully login
+//                    Intent intent = new Intent(Provider_Registration.this, LogIn.class);
+//                    startActivity(intent);
                 };
 
-
-
-
-//                    public Boolean insertServiceProvider(String password, String fullName, String street, String city,
-//                            String province, String postalCode, String email, String phone, String imageName )
-//                    {
-//                        SQLiteDatabase db = this.getWritableDatabase();
-//                        ContentValues values = new ContentValues();
-//                        values.put("serviceProviderPassword", password);
-//                        values.put("serviceProviderFullName", fullName);
-//                        values.put("street", street);
-//                        values.put("city",city);
-//                        values.put("province",province);
-//                        values.put("postalCode",postalCode);
-//                        values.put("email", email);
-//                        values.put("phone", phone);
-//                        values.put("imageName", imageName);
-//                };
                 //remove all items in arrayList everytime
                 selectedServiceList.clear();
             }

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <!--    xmlns:tools="http://schemas.android.com/tools">-->
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -57,7 +58,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ServiceEditProfile"
+            android:name=".Provider_EditProfile"
             android:exported="false" />
         <activity
             android:name=".ServiceMainMenu"

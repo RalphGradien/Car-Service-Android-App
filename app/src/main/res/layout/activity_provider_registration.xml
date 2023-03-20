@@ -19,13 +19,14 @@
             android:id="@+id/ProviderName"
             android:layout_width="250dp"
             android:layout_height="48dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="192dp"
             android:background="#E3BA12"
             android:hint="@string/hint_ProviderName"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRegTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/ProviderAddress"
@@ -67,16 +68,18 @@
 
         <EditText
             android:id="@+id/ProviderTitle"
-            android:layout_width="247dp"
+            android:layout_width="250dp"
             android:layout_height="48dp"
             android:text="Service Registration"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ProviderName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.796" />
 
         <EditText
             android:id="@+id/ProviderPassWord"
@@ -87,6 +90,7 @@
             android:hint="@string/hint_password"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ProviderName" />
 
@@ -112,8 +116,10 @@
             android:text="@string/buttonCRegister"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/ProviderServices"
+            app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="@+id/ProviderServices"
             app:layout_constraintTop_toBottomOf="@+id/ProviderServices"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -142,9 +148,9 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="199dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="209dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
