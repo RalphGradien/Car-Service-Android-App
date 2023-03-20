@@ -19,7 +19,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         DBHelper dbh = new DBHelper(getActivity());
         View view = inflater.inflate(R.layout.activity_customer_appointments_view, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerviewCustViewAppointments);
@@ -28,7 +28,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
 
 
-        int userId=Customer.CustomerID;
+        int userId = Customer.CustomerID;
         Cursor cursorAppointment = dbh.getAppointment();
         Cursor cursorServiceProvider = dbh.getServiceProviderDataAll();
         Cursor cursorAppDetail = dbh.getAppointmentDetail();
@@ -36,18 +36,18 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         Cursor cursorServiceDetail = dbh.getServiceDetails();
 
 
-        String spName="";
+        String spName = "";
         String spStreet = "";
         String spCity = "";
         String spProvince = "";
         String spPostal = "";
-        String spPhone="";
-        String spEmail="";
+        String spPhone = "";
+        String spEmail = "";
         String serviceAvailed = "";
         String serviceListID = "";
         int serviceDetailID = 0;
         int appID = 0;
-        int appSPID=-1;
+        int appSPID = -1;
         try {
 
             if (cursorAppointment.getCount() > 0) {
@@ -83,7 +83,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
                         if (cursorAppDetail.getCount() > 0) {
                             cursorAppDetail.moveToPosition(-1);
                             while (cursorAppDetail.moveToNext()) {
-                                if (cursorAppDetail.getInt(cursorAppDetail.getColumnIndexOrThrow("AppointmentID"))== appID) {
+                                if (cursorAppDetail.getInt(cursorAppDetail.getColumnIndexOrThrow("AppointmentID")) == appID) {
                                     serviceListID = cursorAppDetail.getString(cursorAppDetail.getColumnIndexOrThrow("ServiceListID"));
                                 }
                             }
@@ -104,27 +104,26 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
                                 }
                             }
                         }
-                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT,"", pickupDT, "", dropOffLoc, pickupLoc,spPhone,spEmail));
+                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT, "", pickupDT, "", dropOffLoc, pickupLoc, spPhone, spEmail));
 
                     }
                 }
             }
-        }catch(Exception exception){
+
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
-        for(CustomerApointmentItems ongoingItem : customerApointmentItems){
-            if(ongoingItem.histbookingStatus.equals("Ongoing")){
+        for (CustomerApointmentItems ongoingItem : customerApointmentItems) {
+            if (ongoingItem.histbookingStatus.equals("Ongoing") ) {
                 customerAppointmentsOngoing.add(ongoingItem);
             }
         }
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(), customerAppointmentsOngoing, this));
+            return view;
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(),customerAppointmentsOngoing, this));
-        return view;
     }
-
-
 
     @Override
     public void onItemClick(CustomerApointmentItems customerApointmentItems) {
@@ -147,12 +146,6 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         //place email address
         startActivity(intent);
     }
-
-    public void onClickHome(View v){
-        startActivity(new Intent(getActivity(),CustomerMainMenu.class));
-    }
-
-
 
 
 }
