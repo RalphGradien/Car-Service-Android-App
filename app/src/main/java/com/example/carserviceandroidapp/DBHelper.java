@@ -410,8 +410,13 @@ public class DBHelper extends SQLiteOpenHelper {
             // Failed to update record
             return false;
         }
-
     }
+    public Cursor getServiceProviderName(int ID) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT serviceProviderFullName FROM SERVICE_PROVIDER WHERE ServiceProviderID = ?", new String[] { String.valueOf(ID) });
+        return cursor;
+    }
+
 }
 
 
