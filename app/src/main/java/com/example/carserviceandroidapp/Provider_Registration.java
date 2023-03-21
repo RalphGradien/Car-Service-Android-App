@@ -37,13 +37,13 @@ public class Provider_Registration extends AppCompatActivity {
         setContentView(R.layout.activity_provider_registration);
 
         //EditText - Button
-        EditText name = findViewById(R.id.ProviderName);
-        EditText passWord = findViewById(R.id.ProviderPassWord);
-        EditText email = findViewById(R.id.ProviderEmail);
-        EditText contact = findViewById(R.id.ProviderContact);
-        EditText address = findViewById(R.id.ProviderAddress);
-        EditText city = findViewById(R.id.ProviderCity);
-        Button btnProviderRegister = findViewById(R.id.bthCustomerRegister);
+        EditText name = findViewById(R.id.ServiceProviderName);
+        EditText passWord = findViewById(R.id.ServiceProviderPassword);
+        EditText email = findViewById(R.id.ServiceProviderEmail);
+        EditText contact = findViewById(R.id.ServiceProviderContact);
+        EditText address = findViewById(R.id.ServiceProviderAddress);
+        EditText city = findViewById(R.id.ServiceProviderCity);
+        Button btnProviderRegister = findViewById(R.id.btnProviderRegister);
 
         //initial all views
         ProviderServices = findViewById(R.id.ProviderServices);

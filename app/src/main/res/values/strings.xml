@@ -56,7 +56,7 @@
     <string name="hint_ProviderAddress">Address</string>
     <string name="hint_ProviderCity">City</string>
     <string name="hint_ProviderContact">Contact #</string>
-    <string name="hint_ProviderServices">Services</string>
+    <string name="hint_ProviderServices">Select Services</string>
 
     <string name="hint_editProviderUserName">Provider Name</string>
     <string name="hint_editProviderPassWord">Provider Password</string>

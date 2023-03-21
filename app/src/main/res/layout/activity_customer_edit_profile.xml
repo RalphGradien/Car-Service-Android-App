@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="74dp"
-        android:text="@string/txtConfirmPassword"
+        android:text="@string/hint_confirmPassword"
         app:layout_constraintBottom_toTopOf="@+id/ProviderEmail"
         app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
