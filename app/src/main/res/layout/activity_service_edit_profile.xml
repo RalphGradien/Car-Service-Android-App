@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:accessibilityPaneTitle="Hello"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:accessibilityPaneTitle="Hello"
     tools:context=".CustomerEditProfile">
 
     <TextView
@@ -28,7 +28,7 @@
         android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/txtUserName"
         app:layout_constraintBottom_toTopOf="@+id/editTxtUserName"
         app:layout_constraintStart_toStartOf="@+id/editTxtUserName"
@@ -96,9 +96,9 @@
         android:id="@+id/txtAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="123dp"
         android:text="@string/txtAddress"
-        app:layout_constraintBottom_toTopOf="@+id/btnDeleteCust"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveCust"
         app:layout_constraintStart_toStartOf="@+id/editTxtAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextMobile" />
 
@@ -156,30 +156,30 @@
         app:layout_constraintTop_toTopOf="@+id/txtEmail" />
 
     <Button
-        android:id="@+id/btnSaveCust"
-        style="@style/GreenButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Save Changes"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDeleteCust"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnDeleteCust"
-        app:layout_constraintTop_toTopOf="@+id/btnDeleteCust" />
-
-    <Button
         android:id="@+id/btnDeleteCust"
         style="@style/RedButton"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
         android:text="Delete Account"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSaveCust"
         app:layout_constraintEnd_toStartOf="@+id/btnSaveCust"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSaveCust"
+        style="@style/GreenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="46dp"
+        android:text="Save Changes"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteCust"
         app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
 
     <EditText
@@ -196,6 +196,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
