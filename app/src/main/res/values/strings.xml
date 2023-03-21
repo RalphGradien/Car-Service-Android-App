@@ -36,7 +36,7 @@
     <string name="TxtCustName">Full Name</string>
     <string name="txtUserName">User Name</string>
     <string name="txtPassword">Password</string>
-    <string name="txtConfirmPassword">Confirm Password</string>
+    <string name="City">Confirm Password</string>
     <string name="txtEmail">Email</string>
     <string name="txtMobile">Mobile</string>
     <string name="txtAddress">Address</string>
@@ -56,7 +56,18 @@
     <string name="hint_ProviderAddress">Address</string>
     <string name="hint_ProviderCity">City</string>
     <string name="hint_ProviderContact">Contact #</string>
-    <string name="hint_ProviderServices">Services #</string>
+    <string name="hint_ProviderServices">Select Services</string>
+
+    <string name="hint_editProviderUserName">Provider Name</string>
+    <string name="hint_editProviderPassWord">Provider Password</string>
+    <string name="hint_editProviderEmail">Email</string>
+    <string name="hint_editProviderName">Name</string>
+    <string name="hint_editProviderAddress">Address</string>
+    <string name="hint_editProviderCity">City</string>
+    <string name="hint_editProviderContact">Contact #</string>
+    <string name="hint_editProviderServices">Services</string>
+    <string name="titleEditProviderProfile">EDIT PROFILE</string>
+
     <string name="bntProviderRegister">Register</string>
     <string name="txtProviderHaveAccount">Already have an account?</string>
     <string name="txtProviderLogHere">Login here</string>

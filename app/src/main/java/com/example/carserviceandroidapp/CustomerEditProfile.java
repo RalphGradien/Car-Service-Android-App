@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,12 +24,12 @@ public class CustomerEditProfile extends AppCompatActivity {
         DB = new DBHelper(this);
         TextView txtCustName = findViewById(R.id.txtCustName);
         EditText editTxtUserName = findViewById(R.id.editTxtUserName);
-        EditText editTxtEmail = findViewById(R.id.ProviderEmail);
+        EditText editTxtEmail = findViewById(R.id.editTextEmail);
         EditText editTxtPassword = findViewById(R.id.editTextPassword);
         EditText editTxtConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         EditText editTxtMobile = findViewById(R.id.editTextMobile);
         EditText editTxtAddress = findViewById(R.id.editTxtAddress);
-        Button buttonSaveChanges = findViewById(R.id.btnSaveCust);
+        Button buttonSaveChanges = findViewById(R.id.btnSaveChanges);
         Button buttonDeleteChanges = findViewById(R.id.btnDeleteCust);
      //   SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
      //   userID = sharedPref.getInt("key1",0);

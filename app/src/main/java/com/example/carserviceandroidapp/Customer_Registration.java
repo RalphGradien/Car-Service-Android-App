@@ -31,7 +31,7 @@ public class Customer_Registration extends AppCompatActivity {
         etName = (EditText) findViewById(R.id.ProviderName);
         etPW = (EditText) findViewById(R.id.ProviderPassWord);
         etConfirmPW = (EditText) findViewById(R.id.ProviderConfirmPassword);
-        etEmail = (EditText) findViewById(R.id.ProviderEmail);
+        etEmail = (EditText) findViewById(R.id.editTextEmail);
         etAddress = (EditText) findViewById(R.id.ProviderAddress);
         etContact = (EditText) findViewById(R.id.ProviderContact);
 

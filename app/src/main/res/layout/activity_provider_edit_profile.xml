@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:accessibilityPaneTitle="Hello"
+    tools:context=".CustomerEditProfile"
+    tools:layout_editor_absoluteX="-3dp"
+    tools:layout_editor_absoluteY="-75dp">
+
+    <TextView
+        android:id="@+id/txtCustName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="58dp"
+        android:text="@string/titleEditProviderProfile"
+        android:textColor="#2E3192"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Service Provider Name"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCustName" />
+
+    <EditText
+        android:id="@+id/editProviderName"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/textview_border"
+        android:hint="@string/hint_editProviderName"
+        android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+    <TextView
+        android:id="@+id/txtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/txtPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderName" /><![CDATA[
+
+    />
+
+    ]]>
+
+    <EditText
+        android:id="@+id/editProviderPassword"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/textview_border"
+        android:hint="@string/hint_editProviderPassWord"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <TextView
+        android:id="@+id/txtConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/editProviderEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+
+    <EditText
+        android:id="@+id/editProviderCity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/textview_border"
+        android:hint="@string/hint_editProviderCity"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteAccount"
+        app:layout_constraintEnd_toEndOf="@+id/editProviderAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtMobile"
+        app:layout_constraintTop_toBottomOf="@+id/txtMobile" />
+
+    <TextView
+        android:id="@+id/txtMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Location City"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderCity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderAddress" />
+
+    <EditText
+        android:id="@+id/editProviderEmail"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:hint="@string/hint_editProviderEmail"
+        android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/txtContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtMobile"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderContact"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderEmail" />
+
+    <EditText
+        android:id="@+id/editProviderContact"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/textview_border"
+        android:hint="@string/hint_editProviderContact"
+        android:inputType="phone"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editProviderEmail"
+        app:layout_constraintStart_toStartOf="@+id/txtContact"
+        app:layout_constraintTop_toBottomOf="@+id/txtContact" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/txtEmail"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderPassword" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtAddress"
+        app:layout_constraintBottom_toTopOf="@+id/editProviderAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderContact" />
+
+    <EditText
+        android:id="@+id/editProviderAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/textview_border"
+        android:hint="@string/hint_editProviderAddress"
+        android:inputType="textPersonName"
+        android:paddingStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtMobile"
+        app:layout_constraintEnd_toEndOf="@+id/editProviderContact"
+        app:layout_constraintStart_toStartOf="@+id/txtAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+    <Button
+        android:id="@+id/btnSaveChanges"
+        style="@style/GreenButton"
+        android:layout_width="148dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="52dp"
+        android:text="Save Changes"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteAccount" />
+
+    <Button
+        android:id="@+id/btnDeleteAccount"
+        style="@style/RedButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="52dp"
+        android:text="Delete Account"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveChanges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProviderCity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

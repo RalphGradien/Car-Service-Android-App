@@ -8,10 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper( Context context) {
         super(context, "Userdata.db", null, 1);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
@@ -253,6 +256,13 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from CUSTOMER", null);
         return cursor;
     }
+    //Get Service Provider Data
+    public Cursor getServiceProviderInfo()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from SERVICE_PROVIDER", null);
+        return cursor;
+    }
     public Cursor getAppointmentID()
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -435,6 +445,36 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT serviceProviderFullName FROM SERVICE_PROVIDER WHERE ServiceProviderID = ?", new String[] { String.valueOf(ID) });
         return cursor;
+    }
+
+    public Cursor getServiceProviderID(String p_email) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT serviceProviderID FROM SERVICE_PROVIDER WHERE email = ?", new String[] { String.valueOf(p_email) });
+        return cursor;
+    }
+    //update Service provider profile
+    public Boolean updateServiceProviderProfile(Integer spID, String password, String name, String address, String city, String contact, String email)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("serviceProviderPassword", password);
+        values.put("serviceProviderFullName", name);
+        values.put("street", address);
+        values.put("city", city);
+        values.put("phone", contact);
+        values.put("email", email);
+
+        // define the selection criteria
+        String selection = "ServiceProviderID = ?";
+        String[] selectionArgs = { Integer.toString(spID) };
+        int count = db.update("SERVICE_PROVIDER", values, selection, selectionArgs);
+
+        // check if the record was updated successfully
+        if (count > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean deleteServiceProvider(int ID) {
