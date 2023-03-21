@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="71dp"
         android:text="@string/txtAddress"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveCust"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveChanges"
         app:layout_constraintStart_toStartOf="@+id/editTxtAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextMobile" />
 
@@ -55,8 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtEmail"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderEmail"
-        app:layout_constraintStart_toStartOf="@+id/ProviderEmail" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail" />
 
     <TextView
         android:id="@+id/txtConfirmPassword"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="74dp"
         android:text="@string/hint_confirmPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ProviderEmail"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
         app:layout_constraintStart_toStartOf="@+id/editTextConfirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
@@ -128,7 +128,7 @@
 
 
     <EditText
-        android:id="@+id/ProviderEmail"
+        android:id="@+id/editTextEmail"
         android:layout_width="227dp"
         android:layout_height="0dp"
         android:layout_marginBottom="35dp"
@@ -157,7 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProviderEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
         android:id="@+id/editTxtAddress"
@@ -176,7 +176,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextMobile" />
 
     <Button
-        android:id="@+id/btnSaveCust"
+        android:id="@+id/btnSaveChanges"
         style="@style/GreenButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -196,8 +196,8 @@
         android:layout_height="wrap_content"
         android:text="Delete Account"
         android:textSize="12dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnSaveCust"
-        app:layout_constraintEnd_toStartOf="@+id/btnSaveCust"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSaveChanges"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveChanges"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 

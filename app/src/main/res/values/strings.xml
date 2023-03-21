@@ -66,7 +66,7 @@
     <string name="hint_editProviderCity">City</string>
     <string name="hint_editProviderContact">Contact #</string>
     <string name="hint_editProviderServices">Services</string>
-    <string name="titleEditProviderProfile">EDIT SERVICE PROVIDER PROFILE</string>
+    <string name="titleEditProviderProfile">EDIT PROFILE</string>
 
     <string name="bntProviderRegister">Register</string>
     <string name="txtProviderHaveAccount">Already have an account?</string>

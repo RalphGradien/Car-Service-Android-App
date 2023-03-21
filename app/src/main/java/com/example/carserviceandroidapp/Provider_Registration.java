@@ -134,10 +134,6 @@ public class Provider_Registration extends AppCompatActivity {
                         );
                     };
                     Toast.makeText(Provider_Registration.this, "Successful registration!", Toast.LENGTH_SHORT).show();
-
-//                    //start ServiceMainMenu activity after successfully login
-//                    Intent intent = new Intent(Provider_Registration.this, LogIn.class);
-//                    startActivity(intent);
                 };
 
                 //remove all items in arrayList everytime

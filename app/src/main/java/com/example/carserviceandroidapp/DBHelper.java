@@ -15,6 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, "Userdata.db", null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase DB) {
         // This method is only called if the database does not exist
@@ -451,6 +452,31 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT serviceProviderID FROM SERVICE_PROVIDER WHERE email = ?", new String[] { String.valueOf(p_email) });
         return cursor;
     }
+    //update Service provider profile
+    public Boolean updateServiceProviderProfile(Integer spID, String password, String name, String address, String city, String contact, String email)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("serviceProviderPassword", password);
+        values.put("serviceProviderFullName", name);
+        values.put("street", address);
+        values.put("city", city);
+        values.put("phone", contact);
+        values.put("email", email);
+
+        // define the selection criteria
+        String selection = "ServiceProviderID = ?";
+        String[] selectionArgs = { Integer.toString(spID) };
+        int count = db.update("SERVICE_PROVIDER", values, selection, selectionArgs);
+
+        // check if the record was updated successfully
+        if (count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean deleteServiceProvider(int ID) {
         SQLiteDatabase DB = this.getWritableDatabase();
         int rowsDeleted = DB.delete("SERVICE_PROVIDER", "ServiceProviderID = ?", new String[] { String.valueOf(ID) });
