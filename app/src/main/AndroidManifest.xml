@@ -136,9 +136,6 @@
                 android:value="" />
 
         </activity>
-        <label
-            android:textColor="@android:color/yellow"
-            />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.carserviceandroidapp.provider"
