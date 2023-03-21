@@ -16,6 +16,9 @@
         tools:context=".Customer_EditAppointment">
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/textViewDropOffLoc"
             android:layout_width="350dp"
             android:layout_height="43dp"
@@ -27,17 +30,24 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocation" />
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/tvDropOffDT"
             android:layout_width="350dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/textview_border"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabel" />
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/editTextAppointmentStatus"
             android:layout_width="350dp"
             android:layout_height="43dp"
@@ -46,13 +56,16 @@
             android:ems="10"
             android:hint=""
             android:inputType="textPersonName"
-            android:textSize="15sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabel" />
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/textViewServiceDetails"
             android:layout_width="350dp"
             android:layout_height="43dp"
@@ -61,13 +74,16 @@
             android:ems="10"
             android:hint=""
             android:inputType="textPersonName"
-            android:textSize="15sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvServiceDetailLabel" />
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/textViewPickupTime"
             android:layout_width="350dp"
             android:layout_height="43dp"
@@ -76,13 +92,16 @@
             android:ems="10"
             android:hint=""
             android:inputType="textPersonName"
-            android:textSize="15sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabel" />
 
         <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
             android:id="@+id/tvPickupLocation"
             android:layout_width="350dp"
             android:layout_height="43dp"
@@ -175,10 +194,10 @@
         <TextView
             android:id="@+id/textViewSPNameDisplay"
             android:layout_width="290dp"
-            android:layout_height="32dp"
+            android:layout_height="36dp"
             android:layout_marginTop="10dp"
             android:textColor="#2E3192"
-            android:textSize="24sp"
+            android:textSize="28dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textViewSPAddress"
             app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
