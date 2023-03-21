@@ -65,7 +65,7 @@ public class Customer_Registration extends AppCompatActivity {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.dismiss();
-                                        startActivity(new Intent(Customer_Registration.this, MainActivity.class));
+                                        startActivity(new Intent(Customer_Registration.this, LogIn.class));
                                     }
                                 });
                         AlertDialog dialog = builder.create();
