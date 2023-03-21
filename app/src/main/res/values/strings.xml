@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Car Service Android App</string>
+    <string name="app_name">GARK</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirmPassword">Confirm Password</string>
@@ -71,6 +71,7 @@
     <string name="bttn">HOME</string>
     <string name="noAppointmentMessage">YOU DON\'T HAVE ANY APPOINTMENT YET</string>
     <string-array name="filter_options">
+        <item>Filters</item>
         <item>All</item>
         <item>Completed</item>
         <item>Cancelled</item>
