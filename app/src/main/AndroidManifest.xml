@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<!--    xmlns:tools="http://schemas.android.com/tools">-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- xmlns:tools="http://schemas.android.com/tools"> -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,7 +18,9 @@
         android:theme="@style/Theme.CarServiceAndroidApp"
         tools:replace="android:theme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Provider_Appointment"
+            android:exported="false" />
         <activity
             android:name=".PlainActivity"
             android:exported="false">
@@ -28,91 +29,87 @@
                 android:value="" />
         </activity>
         <activity
-
-            android:label="Edit Appointment"
             android:name=".Customer_EditAppointment_Form"
-            android:exported="false">
+            android:exported="false"
+            android:label="Edit Appointment">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:label="Service Provider Registration"
             android:name=".Provider_Registration"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Service Provider Registration" />
         <activity
-            android:label="Drop Off"
             android:name=".CustomerScheduleDropOff"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Drop Off" />
         <activity
-            android:label="Find a Service Provider"
             android:name=".CustomerFindServiceProviderLocation"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Find a Service Provider" />
         <activity
-            android:label="Find a Service Provider"
             android:name=".CustomerFindServiceProviderList"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Find a Service Provider" />
         <activity
-            android:label="Edit Profile"
             android:name=".CustomerEditProfile"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Edit Profile" />
         <activity
-            android:label="History"
             android:name=".Customer_ServiceHistoryView"
-            android:exported="false">
+            android:exported="false"
+            android:label="History">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Provider_EditProfile"
-            android:label="Edit Profile"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Edit Profile" />
         <activity
-            android:label="History"
             android:name=".ServiceHistory"
-            android:exported="false" />
+            android:exported="false"
+            android:label="History" />
         <activity
             android:name=".ServiceMainMenu"
             android:exported="false" />
         <activity
-            android:label="Login"
             android:name=".LogIn"
-            android:exported="false" />
-
+            android:exported="false"
+            android:label="Login" />
         <activity
             android:name=".CustomerMainMenu"
             android:exported="false" />
         <activity
-            android:label="About"
             android:name=".About"
-            android:exported="false" />
+            android:exported="false"
+            android:label="About" />
         <activity
-            android:label="Forgot Password"
             android:name=".ForgotPassword"
-            android:exported="false" />
-
+            android:exported="false"
+            android:label="Forgot Password" />
         <activity
-            android:label="Edit Appointment"
             android:name=".Customer_EditAppointment"
-            android:exported="false">
+            android:exported="false"
+            android:label="Edit Appointment">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:label="Appointments"
             android:name=".Customer_AppointmentsView"
-            android:exported="false">
+            android:exported="false"
+            android:label="Appointments">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:label="Customer Registration"
             android:name=".Customer_Registration"
-            android:exported="false">
+            android:exported="false"
+            android:label="Customer Registration">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -125,9 +122,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:label="Home"
             android:name=".home"
-            android:exported="true">
+            android:exported="true"
+            android:label="Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -137,8 +134,8 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.carserviceandroidapp.provider"
@@ -158,6 +155,5 @@
                 android:resource="@xml/provider_paths" />
         </provider>
     </application>
-
 
 </manifest>

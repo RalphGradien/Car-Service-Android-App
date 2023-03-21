@@ -5,7 +5,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 public class PlainActivity extends AppCompatActivity {
@@ -15,7 +17,12 @@ public class PlainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plain);
 
-        Customer_AppointmentsView customer_appointmentsView = new Customer_AppointmentsView();
+        Customer_AppointmentsView customer_appointmentsView = new Customer_AppointmentsView() {
+            @Override
+            public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+                return null;
+            }
+        };
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.plainLayout,customer_appointmentsView);
         transaction.commit();

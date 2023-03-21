@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer_AppointmentsView extends Fragment implements CustomerAppointmentsViewSelectInterface {
+public abstract class Customer_AppointmentsView extends Fragment implements CustomerAppointmentsViewSelectInterface {
 
 
     @Override
@@ -148,4 +148,5 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
     }
 
 
+    public abstract View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 }

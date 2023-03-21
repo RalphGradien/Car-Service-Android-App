@@ -1,7 +1,10 @@
 package com.example.carserviceandroidapp;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +45,12 @@ public class CustomerMainMenu extends AppCompatActivity {
                            break;
                            //Customer Appointments
                        case R.id.appointment:
-                           selectedFragment = new Customer_AppointmentsView();
+                           selectedFragment = new Customer_AppointmentsView() {
+                               @Override
+                               public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+                                   return null;
+                               }
+                           };
                            break;
                            //Customer History
                        case R.id.history:
