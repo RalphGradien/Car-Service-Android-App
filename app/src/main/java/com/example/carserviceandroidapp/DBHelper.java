@@ -490,6 +490,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return rowsDeleted > 0;
     }
 
+    public Cursor getCustomerName(int cID) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT name FROM CUSTOMER WHERE Userid = ?", new String[] { String.valueOf(cID) });
+        return cursor;
+    }
+
+    public Cursor getServiceProviderImage(int ID) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT imageName FROM SERVICE_PROVIDER WHERE ServiceProviderID = ?", new String[] { String.valueOf(ID) });
+        return cursor;
+    }
+
 }
 
 
