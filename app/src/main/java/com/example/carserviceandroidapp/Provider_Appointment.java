@@ -60,10 +60,8 @@ public class Provider_Appointment extends Fragment implements CustomerAppointmen
                                     if (cursorCustomer.getInt(cursorCustomer.getColumnIndexOrThrow("Userid")) == cusID) {
                                         cusName = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("name"));
                                         cusAddress = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("address"));
-
-
                                         cusContact = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("mobile"));
-                                        cusEmail = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("address"));
+                                        cusEmail = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("email"));
                                     }
                                 }
                             }
