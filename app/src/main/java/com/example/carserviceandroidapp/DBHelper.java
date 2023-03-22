@@ -476,6 +476,13 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    //Get customer info
+    public Cursor getCustomerInfo()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from CUSTOMER", null);
+        return cursor;
+    }
 
     public boolean deleteServiceProvider(int ID) {
         SQLiteDatabase DB = this.getWritableDatabase();

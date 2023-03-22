@@ -45,12 +45,7 @@ public class CustomerMainMenu extends AppCompatActivity {
                            break;
                            //Customer Appointments
                        case R.id.appointment:
-                           selectedFragment = new Customer_AppointmentsView() {
-                               @Override
-                               public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                                   return null;
-                               }
-                           };
+                           selectedFragment = new Customer_AppointmentsView();
                            break;
                            //Customer History
                        case R.id.history:
