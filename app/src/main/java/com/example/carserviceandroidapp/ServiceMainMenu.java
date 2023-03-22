@@ -34,7 +34,7 @@ public class ServiceMainMenu extends AppCompatActivity {
                            selectedFragment = new ServiceAccount();
                            break;
                        case R.id.appointment:
-                           selectedFragment = new FragmentAppointment();
+                           selectedFragment = new Provider_Appointment();
                            break;
                        case R.id.history:
                            selectedFragment = new ServiceHistory();

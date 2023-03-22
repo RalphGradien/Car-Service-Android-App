@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:id="@+id/container_custappointment_item"
+    android:id="@+id/container"
     >
 
     <TextView
-        android:id="@+id/histappointmentIDLabel"
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -16,29 +16,29 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/histappointmentIDInt"
+        android:id="@+id/appointmentID"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_toEndOf="@+id/histappointmentIDLabel"
+        android:layout_toEndOf="@+id/label"
         android:text="12345"
         android:textColor="#2E3192" />
 
     <TextView
-        android:id="@+id/histbookedServiceProviderName"
+        android:id="@+id/serviceProviderName"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histappointmentIDLabel"
+        android:layout_below="@+id/label"
         android:layout_marginLeft="5dp"
         android:text="Canadian Tire"
         android:textColor="#707477" />
 
     <TextView
-        android:id="@+id/histserviceAvailed"
+        android:id="@+id/selectedServices"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histappointmentIDInt"
-        android:layout_toEndOf="@+id/histbookedServiceProviderName"
+        android:layout_below="@+id/appointmentID"
+        android:layout_toEndOf="@+id/serviceProviderName"
         android:text="Brake Fluid Check"
         android:textAlignment="textEnd"
         android:layout_marginRight="20dp"
@@ -46,20 +46,20 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/histbookedServiceProviderAddress"
+        android:id="@+id/ServiceProviderAddress"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histbookedServiceProviderName"
+        android:layout_below="@+id/serviceProviderName"
         android:layout_marginLeft="5dp"
         android:text="Guildford, Surrey, B.C."
         android:textColor="#707477" />
 
     <TextView
-        android:id="@+id/histbookingStatus"
+        android:id="@+id/appointmentStatus"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histbookedServiceProviderName"
-        android:layout_toEndOf="@+id/histbookedServiceProviderAddress"
+        android:layout_below="@+id/serviceProviderName"
+        android:layout_toEndOf="@+id/ServiceProviderAddress"
         android:text=""
         android:textAlignment="center"
         android:layout_marginRight="20dp"
@@ -67,45 +67,45 @@
 
 
     <TextView
-        android:id="@+id/histdropofflabel"
+        android:id="@+id/dropOffDateLabel"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="Drop-Off "
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_below="@+id/ServiceProviderAddress"
         android:textColor="#707477"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/histdropoffAppointmentDate"
+        android:id="@+id/dropOffDate"
         android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_below="@+id/ServiceProviderAddress"
         android:layout_marginStart="-2dp"
         android:layout_marginRight="20dp"
-        android:layout_toEndOf="@+id/histdropofflabel"
+        android:layout_toEndOf="@+id/dropOffDateLabel"
         android:text="2022-04-14"
         android:textAlignment="textEnd"
         android:textColor="#65CF72" />
 
     <TextView
-        android:id="@+id/histpickuplabel"
+        android:id="@+id/pickUpDateLabel"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="Pickup "
-        android:layout_below="@+id/histdropofflabel"
+        android:layout_below="@+id/dropOffDateLabel"
         android:textColor="#707477"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/histpickupAppointmentDate"
+        android:id="@+id/pickUpDate"
         android:layout_width="188dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histdropoffAppointmentDate"
+        android:layout_below="@+id/dropOffDate"
         android:layout_marginStart="-2dp"
         android:layout_marginRight="20dp"
-        android:layout_toEndOf="@+id/histdropofflabel"
+        android:layout_toEndOf="@+id/dropOffDateLabel"
         android:text="2022-05-10"
         android:textAlignment="textEnd"
         android:textColor="#65CF72" />
@@ -113,7 +113,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/histpickupAppointmentDate"
+        android:layout_below="@id/pickUpDate"
         android:layout_marginTop="10dp"
         android:background="#DAB8D8"/>
 </RelativeLayout>

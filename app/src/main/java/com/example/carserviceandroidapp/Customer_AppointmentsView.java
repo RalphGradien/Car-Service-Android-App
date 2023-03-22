@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Customer_AppointmentsView extends Fragment implements CustomerAppointmentsViewSelectInterface {
+public class Customer_AppointmentsView extends Fragment implements CustomerAppointmentsViewSelectInterface {
 
 
     @Override
@@ -146,7 +146,4 @@ public abstract class Customer_AppointmentsView extends Fragment implements Cust
         //place email address
         startActivity(intent);
     }
-
-
-    public abstract View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 }

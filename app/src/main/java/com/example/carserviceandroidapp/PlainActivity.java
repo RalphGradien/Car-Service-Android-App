@@ -18,7 +18,7 @@ public class PlainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plain);
 
         Customer_AppointmentsView customer_appointmentsView = new Customer_AppointmentsView() {
-            @Override
+//            @Override
             public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
                 return null;
             }
