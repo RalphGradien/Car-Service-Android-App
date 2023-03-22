@@ -115,13 +115,13 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         }
 
         for (CustomerApointmentItems ongoingItem : customerApointmentItems) {
-            if (ongoingItem.histbookingStatus.equals("Ongoing") ) {
+            if (ongoingItem.histbookingStatus.equals("Ongoing")) {
                 customerAppointmentsOngoing.add(ongoingItem);
             }
         }
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(), customerAppointmentsOngoing, this));
-            return view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(), customerAppointmentsOngoing, this));
+        return view;
 
     }
 
@@ -129,21 +129,22 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
     public void onItemClick(CustomerApointmentItems customerApointmentItems) {
 
         Intent intent = new Intent(getActivity(), Customer_EditAppointment.class);
-        intent.putExtra("AppId",customerApointmentItems.histappointmentIDInt);
-        intent.putExtra("ServiceProviderName",customerApointmentItems.histbookedServiceProviderName);
-        intent.putExtra("SPAddress",customerApointmentItems.histbookedServiceProviderAddress);
-        intent.putExtra("AppStatus",customerApointmentItems.histbookingStatus);
-        intent.putExtra("DropoffD",customerApointmentItems.histdropoffAppointmentDate);
-        intent.putExtra("DropoffT",customerApointmentItems.histcustomDropOffTime);
-        intent.putExtra("PickupD",customerApointmentItems.histpickupAppointmentDate);
-        intent.putExtra("PickupT",customerApointmentItems.histcustomPickupTime);
-        intent.putExtra("DropoffLoc",customerApointmentItems.histcustomDropOffLoc);
-        intent.putExtra("PickupLoc",customerApointmentItems.histcustomPickupLoc);
-        intent.putExtra("ServiceDet",customerApointmentItems.histserviceAvailed);
-        intent.putExtra("SPPhone",customerApointmentItems.histSPPhone);
-        intent.putExtra("SPEmail",customerApointmentItems.histSPEmail);
+        intent.putExtra("AppId", customerApointmentItems.histappointmentIDInt);
+        intent.putExtra("ServiceProviderName", customerApointmentItems.histbookedServiceProviderName);
+        intent.putExtra("SPAddress", customerApointmentItems.histbookedServiceProviderAddress);
+        intent.putExtra("AppStatus", customerApointmentItems.histbookingStatus);
+        intent.putExtra("DropoffD", customerApointmentItems.histdropoffAppointmentDate);
+        intent.putExtra("DropoffT", customerApointmentItems.histcustomDropOffTime);
+        intent.putExtra("PickupD", customerApointmentItems.histpickupAppointmentDate);
+        intent.putExtra("PickupT", customerApointmentItems.histcustomPickupTime);
+        intent.putExtra("DropoffLoc", customerApointmentItems.histcustomDropOffLoc);
+        intent.putExtra("PickupLoc", customerApointmentItems.histcustomPickupLoc);
+        intent.putExtra("ServiceDet", customerApointmentItems.histserviceAvailed);
+        intent.putExtra("SPPhone", customerApointmentItems.histSPPhone);
+        intent.putExtra("SPEmail", customerApointmentItems.histSPEmail);
         //place cell number here
         //place email address
         startActivity(intent);
     }
+
 }

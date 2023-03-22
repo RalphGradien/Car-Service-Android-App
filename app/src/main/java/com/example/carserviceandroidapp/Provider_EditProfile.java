@@ -86,7 +86,7 @@ public class Provider_EditProfile extends AppCompatActivity {
 
     private void displayService()
     {
-        Cursor cursor = dbHelper.getCustomerData();
+        Cursor cursor = dbHelper.getServiceProviderDataAll();
 
         if(cursor.getCount()==0)
         {

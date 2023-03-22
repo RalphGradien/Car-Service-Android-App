@@ -147,7 +147,7 @@
         android:layout_marginBottom="12dp"
         android:background="@drawable/textview_border"
         android:hint="@string/hint_editProviderContact"
-        android:inputType="phone"
+        android:inputType="number|text"
         android:paddingStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/txtAddress"
         app:layout_constraintEnd_toEndOf="@+id/editProviderEmail"
