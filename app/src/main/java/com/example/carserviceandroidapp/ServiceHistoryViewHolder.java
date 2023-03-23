@@ -19,7 +19,7 @@ public class ServiceHistoryViewHolder extends RecyclerView.ViewHolder {
         numberView = itemView.findViewById(R.id.number);
         emailView = itemView.findViewById(R.id.email);
         appointmentTypeView = itemView.findViewById(R.id.appointmentType);
-        appointmentStatusView = itemView.findViewById(R.id.appointmentStatus);
+        appointmentStatusView = itemView.findViewById(R.id.appointmentStatusHead);
         completedDateView = itemView.findViewById(R.id.completedDate);
         pickupDateView = itemView.findViewById(R.id.pickupDate);
         dropOffDateView = itemView.findViewById(R.id.dropOffDate);

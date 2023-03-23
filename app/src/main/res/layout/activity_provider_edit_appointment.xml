@@ -9,5 +9,303 @@
     tools:layout_editor_absoluteX="198dp"
     tools:layout_editor_absoluteY="210dp">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".Customer_EditAppointment">
+
+        <TextView
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:id="@+id/dropOffLocation"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dropOffLocationlbl" />
+
+        <TextView
+            android:id="@+id/dropOffDateTime"
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickUpDateTimelbl" />
+
+        <TextView
+            android:id="@+id/appointmentStatusEdit"
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statusLbl" />
+
+        <TextView
+            android:id="@+id/selectedServices"
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serviceDetaillbl" />
+
+        <TextView
+            android:id="@+id/pickUpDateTime"
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPersonName"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabel" />
+
+        <TextView
+            android:id="@+id/pickUpLocation"
+            android:paddingStart="10dp"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_width="350dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabel" />
+
+        <TextView
+
+            android:id="@+id/email"
+            android:layout_width="291dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/pickUpDateTimelbl"
+            app:layout_constraintTop_toBottomOf="@+id/contact" />
+
+        <TextView
+            android:id="@+id/appointmentStatusHead"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="269dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dropOffLocationlbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/dropOffLocLabel"
+            android:textColor="#2E3192"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvpickupDTLabel"
+            app:layout_constraintTop_toBottomOf="@+id/dropOffDateTime" />
+
+        <TextView
+            android:id="@+id/tvPickupLocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/pickupLocationLabel"
+            android:textColor="#2E3192"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/serviceDetaillbl"
+            app:layout_constraintTop_toBottomOf="@+id/pickUpDateTime" />
+
+        <TextView
+            android:id="@+id/tvpickupDTLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:text="@string/pickupDTLabel"
+            android:textColor="#2E3192"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvPickupLocationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/dropOffLocation" />
+
+        <TextView
+            android:id="@+id/pickUpDateTimelbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/dropOffLabel"
+            android:textColor="#2E3192"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/dropOffLocationlbl"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <TextView
+
+            android:id="@+id/contact"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+        <TextView
+            android:id="@+id/customerName"
+            android:layout_width="290dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#2E3192"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/contact"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusHead" />
+
+        <TextView
+            android:id="@+id/serviceDetaillbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/serviceDetailsLabel"
+            android:textColor="#2E3192"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/statusLbl"
+            app:layout_constraintTop_toBottomOf="@+id/pickUpLocation" />
+
+        <TextView
+            android:id="@+id/statusLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/appointmentStatus"
+            android:textColor="#2E3192"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/selectedServices"
+            app:layout_constraintTop_toBottomOf="@+id/selectedServices" />
+
+        <Button
+            android:id="@+id/btnEmail"
+            style="@style/BlueButton"
+            android:layout_width="85dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/buttonRemind"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnCancel"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            style="@style/GreenButton"
+            android:layout_width="85dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/buttonUpdate"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/RedButton"
+            android:layout_width="85dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/buttonCancel"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnEmail"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="47dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/appointmentStatusHead"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
