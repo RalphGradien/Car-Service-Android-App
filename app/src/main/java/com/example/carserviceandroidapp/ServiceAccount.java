@@ -41,32 +41,33 @@ public class ServiceAccount extends Fragment {
 
             String imageLetter=imageCursor.getString(0);
             int image = 0;
-            if(imageLetter .equals("a")){
-                image = com.example.gark.R.drawable.a;
-            }
-            if(imageLetter .equals("b")){
-                image = com.example.gark.R.drawable.b;
-            }
-            if(imageLetter .equals("c")){
-                image = com.example.gark.R.drawable.c;
-            }
-            if(imageLetter .equals("d")){
-                image = com.example.gark.R.drawable.d;
-            }
-            if(imageLetter .equals("e")){
-                image = com.example.gark.R.drawable.e;
-            }
 
-            if(imageLetter .equals("f")){
-                image = com.example.gark.R.drawable.f;
+            switch(imageLetter){
+                case "a":
+                    image = com.example.gark.R.drawable.a;
+                    break;
+                case "b":
+                    image = com.example.gark.R.drawable.b;
+                    break;
+                case "c":
+                    image = com.example.gark.R.drawable.c;
+                    break;
+                case "d":
+                    image = com.example.gark.R.drawable.d;
+                    break;
+                case "e":
+                    image = com.example.gark.R.drawable.e;
+                    break;
+                case "f":
+                    image = com.example.gark.R.drawable.f;
+                    break;
+                case "g":
+                    image = com.example.gark.R.drawable.g;
+                    break;
+                case "h":
+                    image = com.example.gark.R.drawable.h;
+                    break;
             }
-            if(imageLetter .equals("g")){
-                image = com.example.gark.R.drawable.g;
-            }
-            if(imageLetter .equals("h")){
-                image = com.example.gark.R.drawable.h;
-            }
-
             profileName.setText(cursor.getString(0));
             imageProfile.setImageResource(image);
         }
@@ -76,9 +77,6 @@ public class ServiceAccount extends Fragment {
             custCursor.moveToFirst();
             profileName.setText(custCursor.getString(0));
         }
-
-
-
 
         Button logOut = rootView.findViewById(R.id.logOut);
 
