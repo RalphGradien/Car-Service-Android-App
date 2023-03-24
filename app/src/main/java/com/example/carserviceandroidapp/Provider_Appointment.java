@@ -114,7 +114,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
     @Override
     public void onItemClick(Provider_Appointment_Class providerAppointmentClass) {
         Intent intent = new Intent(getActivity(), Provider_Edit_Appointment.class);
-        intent.putExtra("AppointmentID", providerAppointmentClass.appointmentID);
+        intent.putExtra("AppointmentID", appointmentID);
         intent.putExtra("CustomerName", providerAppointmentClass.customerName);
         intent.putExtra("CustomerAddress", providerAppointmentClass.customerAddress);
         intent.putExtra("AppointmentStatus", providerAppointmentClass.appointmentStatus);

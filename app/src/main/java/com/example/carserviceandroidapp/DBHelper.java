@@ -196,9 +196,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
-
-
-
     public Boolean updateData(String name, int userID, String password, String email, String mobile, String address)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -476,6 +473,30 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    //
+    //update Customer Appointment with Service Provider
+    public Boolean updateServiceProviderAppointment(Integer appointmentID, String pickUpDateTime,
+          String pickUpLocation, String appointmentStatus)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("PickUpDateTime", pickUpDateTime);
+        values.put("PickUpLocation", pickUpLocation);
+        values.put("AppointmentStatus", appointmentStatus);
+
+        // define the selection criteria
+        String selection = "AppointmentID = ?";
+        String[] selectionArgs = { Integer.toString(appointmentID) };
+        int count = db.update("APPOINTMENT", values, selection, selectionArgs);
+
+        // check if the record was updated successfully
+        if (count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Get customer info
     public Cursor getCustomerInfo()
     {

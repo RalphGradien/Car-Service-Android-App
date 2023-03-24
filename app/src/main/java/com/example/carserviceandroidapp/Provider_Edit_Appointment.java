@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Properties;
 
@@ -33,13 +36,15 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
     String v_customerName, v_customerContact, v_customerEmail, v_dropOffDateTime, v_dropOffLocation, v_pickUpDateTime,
             v_pickUpLocation, v_selectedServices, v_appointmentStatus;
     int v_appointmentID;
-    EditText pickUpDateTime, pickUpLocation, appointmentStatusEdit;
-//    RadioGroup appointmentStatusEdit;
+    EditText pickUpDateTime, pickUpLocation;
     private static final String TAG = "RemindEmail";
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_edit_appointment);
+        dbHelper = new DBHelper(this);
+
         Intent intent = getIntent();
         TextView appointmentStatusHead = (TextView) findViewById(R.id.appointmentStatusHead);
         TextView customerName = (TextView) findViewById(R.id.customerName);
@@ -50,14 +55,13 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
         pickUpDateTime = findViewById(R.id.pickUpDateTime);
         pickUpLocation = findViewById(R.id.pickUpLocation);
         TextView selectedServices = (TextView) findViewById(R.id.selectedServices);
-        TextView appointmentStatusEdit = (TextView) findViewById(R.id.appointmentStatusEdit);
-//        appointmentStatusEdit = findViewById(R.id.appointmentStatusEdit);
+        TextView appointmentStatusEdit = findViewById(R.id.appointmentStatusEdit);
         Button btnUpdate = findViewById(R.id.btnUpdate);
         Button btnCancel = findViewById(R.id.btnCancel);
         Button btnRemind = findViewById(R.id.btnEmail);
 
         if (intent != null) {
-            v_appointmentID = Appointment.AppointmentID;
+            v_appointmentID = intent.getIntExtra("AppointmentStatus", 0);
             v_appointmentStatus = intent.getStringExtra("AppointmentStatus");
             v_customerName = intent.getStringExtra("CustomerName");
             v_customerContact = intent.getStringExtra("CustomerContact");
@@ -79,7 +83,6 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             pickUpLocation.setText(v_pickUpLocation);
             selectedServices.setText(v_selectedServices);
             appointmentStatusEdit.setText(v_appointmentStatus);
-//            appointmentStatusEdit.check(v_appointmentStatus.equals("Ongoing") ? R.id.ongoingRadioButton : R.id.completedRadioButton);
 
             appointmentStatusHead.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
@@ -141,22 +144,63 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             }
         });
 
+
+        //set radio button for Appointment Status change
+        appointmentStatusEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create the RadioGroup
+                RadioGroup radioGroup = new RadioGroup(Provider_Edit_Appointment.this);
+                radioGroup.setOrientation(RadioGroup.VERTICAL);
+                // Create the RadioButtons and add them to the RadioGroup
+                RadioButton rdOngoing = new RadioButton(Provider_Edit_Appointment.this);
+                rdOngoing.setText("Ongoing");
+                radioGroup.addView(rdOngoing);
+
+                RadioButton rdCompleted = new RadioButton(Provider_Edit_Appointment.this);
+                rdCompleted.setText("Completed");
+                radioGroup.addView(rdCompleted);
+
+                // Show the RadioGroup in an AlertDialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(Provider_Edit_Appointment.this);
+                builder.setView(radioGroup);
+                builder.setTitle("Select Appointment Status");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Get the selected RadioButton
+                        int selectedStatus = radioGroup.getCheckedRadioButtonId();
+                        RadioButton selectedRadioButton = (RadioButton) radioGroup.findViewById(selectedStatus);
+                        String selectedOption = selectedRadioButton.getText().toString();
+                        appointmentStatusHead.setText(selectedOption);
+                        appointmentStatusEdit.setText(selectedOption);
+
+                        //set color for the status
+                        GradientDrawable drawable = new GradientDrawable();
+                        if(selectedOption.equals("Ongoing")){
+                            drawable.setColor( Color.rgb(247, 201, 16));
+                        }else if(selectedOption.equals("Completed")){
+                            drawable.setColor( Color.GREEN);
+                        }
+
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Provider_Edit_Appointment.this, Provider_Update_Appointment.class);
-                intent.putExtra("AppointmentID",getIntent().getIntExtra("AppointmentID",0));
-                intent.putExtra("CustomerName",getIntent().getStringExtra("CustomerName"));
-                intent.putExtra("CustomerAddress",getIntent().getStringExtra("CustomerAddress"));
-                intent.putExtra("AppointmentStatus",getIntent().getStringExtra("AppointmentStatus"));
-                intent.putExtra("DropOffDateTime",getIntent().getStringExtra("DropOffDateTime"));
-                intent.putExtra("PickupDateTime",getIntent().getStringExtra("PickupDateTime"));
-                intent.putExtra("DropOffLocation",getIntent().getStringExtra("DropOffLocation"));
-                intent.putExtra("PickUpLocation",getIntent().getStringExtra("PickUpLocation"));
-                intent.putExtra("SelectedService",getIntent().getStringExtra("SelectedService"));
-                intent.putExtra("CustomerContact", getIntent().getStringExtra("CustomerContact"));
-                intent.putExtra("CustomerEmail", getIntent().getStringExtra("CustomerEmail"));
-                startActivity(intent);
+                Boolean checkupdatedata = dbHelper.updateServiceProviderAppointment(v_appointmentID, pickUpDateTime.getText().toString(), pickUpLocation.getText().toString(),
+                        appointmentStatusEdit.getText().toString());
+                if (checkupdatedata == true) {
+                    Toast.makeText(Provider_Edit_Appointment.this, "Updated Successfully", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(Provider_Edit_Appointment.this, "Update failed", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
