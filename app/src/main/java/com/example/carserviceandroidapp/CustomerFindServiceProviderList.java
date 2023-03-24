@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CustomerFindServiceProviderList extends AppCompatActivity  implements CustomAdapter.ItemClickListener{
     DBHelper DB;
     CustomAdapter adapter;
-    String location="";String spID;
+    String location="";String spID, fullLoc;
 
     ArrayList<ImageAndText> aList = new ArrayList<>();
     @Override
@@ -52,6 +52,28 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
         startActivity(intent);
     }
 
+//    private void displayLocation2()
+//    {
+//        Cursor cursor = DB.getDropOffLocationSP();
+//        if(cursor.getCount()==0)
+//        {
+//            Toast.makeText(CustomerFindServiceProviderList.this,"No Entry Exists",Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        else
+//        {
+//            while(cursor.moveToNext())
+//            {
+//                if(Integer.parseInt(cursor.getString(0).toString()) == spID)
+//                {
+//                    fullLoc = cursor.getString(1) + ", " + cursor.getString(2) +", "
+//                            +cursor.getString(3) +", " + cursor.getString(4) ;
+//                }
+//
+//            }
+//        }
+//
+//    }
     private void displayData()
     {
         Cursor cursor = DB.getServiceProviderList();
@@ -69,8 +91,11 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
                 {
                     String imageName = cursor.getString(9); // replace with the name of the desired image
                     int imageResourceId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    aList.add(new ImageAndText(cursor.getString(2), imageResourceId,cursor.getString(0)));
-
+                   // aList.add(new ImageAndText(cursor.getString(2), imageResourceId,cursor.getString(0)));
+                    fullLoc = cursor.getString(2) + "\n" + cursor.getString(3) + "," +
+                            cursor.getString(4) + ", " + cursor.getString(5) +", "
+                            +  cursor.getString(6);
+                    aList.add(new ImageAndText(fullLoc, imageResourceId,cursor.getString(0)));
 
                 }
             }

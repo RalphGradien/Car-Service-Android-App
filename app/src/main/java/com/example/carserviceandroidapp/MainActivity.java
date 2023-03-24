@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertServiceProvider("password6","Precision Tune Auto Care","Portage avenue","Winnipeg","MB","R3G 0W4","precisiontunewinnipeg@yahoo.com","204-555-3456","f");
                 DB.insertServiceProvider("password8","Mister Transmission","Regina avenue","Saskatoon","SK","S7N 1B5","mistertranssaskatoon@hotmail.com","306-555-7890","g");
                 DB.insertServiceProvider("password9","Oil Changers","Queen street","Toronto","ON","M4C 1G5","oilchangersontario@gmail.com","416-555-2468","h");
-                DB.insertServiceProvider("password10","Great Canadian Oil Change","Albert street","Regina","SK","S4R 2N3","greatcanadianoilchange@yahoo.ca","306-555-1357","i");
+                DB.insertServiceProvider("password10","Great Canadian Oil Change","Albert street","Toronto","ON","S4R 2N3","greatcanadianoilchange@yahoo.ca","306-555-1357","i");
                 DB.insertServiceProvider("password11","Meineke Car Care","St. James street","Surrey","MB","R3G 3J6","meinekewinnipeg@outlook.com","204-555-8642","j");
 
                 //Insert Service Detail Data
