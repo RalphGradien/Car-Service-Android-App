@@ -180,17 +180,18 @@ public class Customer_EditAppointment extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
                 try {
-                    String stringSenderEmail = "garkmobileapp@gmail.com";
+                    String stringSenderEmail = "thienphuocufo@yahoo.com.vn";
                     String stringReceiverEmail = spEmailArr[0];
-                    String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
+                    String stringPasswordSenderEmail = "wnvqewwhprkhwrqd";
 
-                    String stringHost = "smtp.gmail.com";
+                    String stringHost = "smtp.mail.yahoo.com";
 
-                    Properties properties = System.getProperties();
+                   // Properties properties = System.getProperties();
+                    Properties properties = new Properties();
 
                     properties.put("mail.smtp.host", stringHost);
-                    properties.put("mail.smtp.port", "465");
-                    properties.put("mail.smtp.ssl.enable", "true");
+                    properties.put("mail.smtp.port", "587");
+                    properties.put("mail.smtp.starttls.enable", "true");
                     properties.put("mail.smtp.auth", "true");
 
                     javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
