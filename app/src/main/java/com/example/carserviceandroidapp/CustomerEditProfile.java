@@ -54,8 +54,8 @@ public class CustomerEditProfile extends AppCompatActivity {
         etAddress = editTxtAddress;
         etContact = editTxtMobile;
 
-      //  userID= Customer.CustomerID;
-        userID= 2;
+        userID= Customer.CustomerID;
+       // userID= 2;
 
         displaydata();
         txtCustName.setText(username);
