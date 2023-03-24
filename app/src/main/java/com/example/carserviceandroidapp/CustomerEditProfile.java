@@ -18,6 +18,14 @@ public class CustomerEditProfile extends AppCompatActivity {
     DBHelper DB;
     String username,password,confirm_password,email,mobile,address;
     int userID;
+
+    EditText etName;
+    EditText etPW;
+    EditText etConfirmPW;
+    EditText etEmail;
+    EditText etAddress;
+    EditText etContact;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +40,17 @@ public class CustomerEditProfile extends AppCompatActivity {
         EditText editTxtAddress = findViewById(R.id.editTxtAddress);
         Button buttonSaveChanges = findViewById(R.id.btnSaveChanges);
         Button buttonDeleteChanges = findViewById(R.id.btnDeleteCust);
-     //   SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-     //   userID = sharedPref.getInt("key1",0);
-        userID= Customer.CustomerID;
-      //  userID= 2;
+
+        etName = editTxtUserName;
+        etPW = editTxtPassword;
+        etConfirmPW = editTxtConfirmPassword;
+        etEmail = editTxtEmail;
+        etAddress = editTxtAddress;
+        etContact = editTxtMobile;
+
+      //  userID= Customer.CustomerID;
+        userID= 2;
+
         displaydata();
         txtCustName.setText(username);
         editTxtUserName.setText(username);
@@ -109,7 +124,29 @@ public class CustomerEditProfile extends AppCompatActivity {
         buttonSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogBox2();
+                String cName = editTxtUserName.getText().toString();
+                String cPW = editTxtPassword.getText().toString();
+                String confPW = editTxtConfirmPassword.getText().toString();
+                String cEmail = editTxtEmail.getText().toString();
+                String cAddress = editTxtAddress.getText().toString();
+                String cNumber = editTxtMobile.getText().toString();
+
+                boolean emailIsValidated = validateEmail(cEmail);
+                boolean passwordCheck= comparedPassword(cPW, confPW);
+                boolean checkInputs = validateInfo(cName,cPW,confPW,cEmail,cAddress,cNumber);
+                if (checkInputs == true && emailIsValidated==false && passwordCheck==true  ) {
+                    showDialogBox2();
+                } else {
+                    if (emailIsValidated == true) {
+                        Toast.makeText(CustomerEditProfile.this, "Email is already existing", Toast.LENGTH_LONG).show();
+                    } else if (passwordCheck == false) {
+                        Toast.makeText(CustomerEditProfile.this, "Password Did Not Match", Toast.LENGTH_LONG).show();
+                    } else if (emailIsValidated == false && passwordCheck == false) {
+                        Toast.makeText(CustomerEditProfile.this, "Email is already registered and password is incorrect.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CustomerEditProfile.this, "Some fields do not meet the needed parameters.", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
 
 
@@ -146,8 +183,90 @@ public class CustomerEditProfile extends AppCompatActivity {
         });
     }
 
+    private Boolean validateInfo(String cName, String pWord, String confPW,String cEmail, String cAddress, String cContact ){
 
+        if(cName.length()==0){
+            etName.requestFocus();
+            etName.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else if(!cName.matches("(?=.*[a-zA-Z])" +".{4,}")){   //any letter,  at least 4
+            etName.requestFocus();
+            etName.setError("ENTER AT LEAST 4 CHARACTERS");
+            return false;
+        }
+        else if(pWord.length()==0){
+            etPW.requestFocus();
+            etPW.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else if(confPW.length()==0){
+            etConfirmPW.requestFocus();
+            etConfirmPW.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else if(cEmail.length()==0){
+            etEmail.requestFocus();
+            etEmail.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else if(cAddress.length()==0){
+            etAddress.requestFocus();
+            etAddress.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else if(cContact.length()==0){
+            etContact.requestFocus();
+            etContact.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
 
+        else if(!cEmail.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+            etEmail.requestFocus();
+            etEmail.setError("ENTER VALID EMAIL");
+            return false;
+        }
+
+        else if(pWord.length()==0){
+            etPW.requestFocus();
+            etPW.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    private boolean validateEmail(String email){
+
+        boolean result=false;
+        Cursor cursor = DB.getCustomerData();
+        try{
+            if(cursor.getCount() > 0){
+                //  cursor.moveToPosition(-1);
+                while(cursor.moveToNext()){
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).equals(email)){
+                        result = true;
+                    }else{
+                        result =   false;
+                    }
+                }
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean comparedPassword(String cPW, String confPW){
+        boolean passwordOk=false;
+        if(cPW.equals(confPW)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     private void displaydata()
     {

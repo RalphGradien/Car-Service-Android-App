@@ -11,15 +11,17 @@
         android:id="@+id/txtCSDO_ServiceProviderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="77dp"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="33dp"
+        android:text="Service Provider"
         android:textColor="#2E3192"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/txtCSDO_ServiceProviderLocation"
         app:layout_constraintStart_toEndOf="@+id/txtCSDO_ServiceProviderLocation"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
+        android:textAlignment="center"
         />
 
     <Spinner

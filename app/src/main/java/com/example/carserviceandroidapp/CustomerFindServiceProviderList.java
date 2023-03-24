@@ -31,7 +31,7 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
         if(intent!=null)
         {
             location = intent.getStringExtra("LOC");
-            txtServiceLoc.setText(location);
+            txtServiceLoc.setText("Available Service Providers at \n" +location);
         }
 
 
