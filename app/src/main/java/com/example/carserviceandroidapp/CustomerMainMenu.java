@@ -41,7 +41,7 @@ public class CustomerMainMenu extends AppCompatActivity {
                            break;
                        //Customer Search
                        case R.id.search:
-                           selectedFragment = new ServiceAccount();
+                           selectedFragment = new CustomerFindServiceProviderLocation();
                            break;
                            //Customer Appointments
                        case R.id.appointment:
