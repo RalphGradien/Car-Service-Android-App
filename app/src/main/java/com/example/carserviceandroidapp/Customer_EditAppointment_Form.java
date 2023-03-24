@@ -392,16 +392,16 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                 if(isUpdated){
 
                     try {
-                        String stringSenderEmail = "thienphuocufo@yahoo.com.vn";
+                        String stringSenderEmail = "garkmobileapp@gmail.com";
                         String stringReceiverEmail = spEmailArr[0];
-                        String stringPasswordSenderEmail = "wnvqewwhprkhwrqd";
+                        String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
 
-                        String stringHost = "smtp.mail.yahoo.com";
+                        String stringHost = "smtp.gmail.com";
 
                         Properties properties = System.getProperties();
 
                         properties.put("mail.smtp.host", stringHost);
-                        properties.put("mail.smtp.port", "587");
+                        properties.put("mail.smtp.port", "465");
                         properties.put("mail.smtp.ssl.enable", "true");
                         properties.put("mail.smtp.auth", "true");
 

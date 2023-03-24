@@ -37,7 +37,6 @@ android {
 
 dependencies {
 
-
     implementation project(':homeLogin')
     implementation 'com.itextpdf:itextpdf:5.5.13.2'
     implementation 'androidx.appcompat:appcompat:1.6.1'
