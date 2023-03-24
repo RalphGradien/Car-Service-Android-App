@@ -237,7 +237,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         // define the selection criteria
-        String selection = "userID = ?";
+        String selection = "userID = ? AND AppointmentStatus != 'Cancelled'";
         String[] selectionArgs = { Integer.toString(userID) };
         int count = db.update("APPOINTMENT", values, selection, selectionArgs);
 
