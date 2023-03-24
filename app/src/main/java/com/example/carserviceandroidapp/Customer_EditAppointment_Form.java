@@ -59,6 +59,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
         EditText etPUTimeForm = (EditText)findViewById(R.id.etPickUpTimeForm);
         TextView tvAppStatusDownForm = (TextView) findViewById(R.id.editTextAppointmentStatusForm);
         EditText etPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
+        TextView tvAppType = (TextView) findViewById(R.id.tvAppointTypeForm);
 //
         int[] appIdArr = new int[1];
         int appId=0;
@@ -76,6 +77,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             String appointmentStatus = intent.getStringExtra("AppStatus");
+            String appType = intent.getStringExtra("AppType");
             String[] dropoffDateTime = intent.getStringExtra("DropoffD").split(" ");
             String dropOffDate = dropoffDateTime[0];
             String droffOffTime = dropoffDateTime[1]+" "+dropoffDateTime[2];
@@ -102,6 +104,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             spEmail = intent.getStringExtra("SPEmail");
 
 
+
             tvStatusForm.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
@@ -121,6 +124,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             tvSPCellDispForm.setText(spPhone);
             etDODateForm.setText(dropOffDate);
             etDOTimeForm.setText(droffOffTime);
+            tvAppType.setText(appType);
 
             etDOLocForm.setText(dropoffLoc);
             String newDOLoc = "";

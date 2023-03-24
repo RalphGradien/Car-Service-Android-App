@@ -79,6 +79,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
                         String dropOffLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
                         String pickupDT = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
                         String pickupLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpLocation"));
+                        String appType = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentType"));
 //
                         if (cursorAppDetail.getCount() > 0) {
                             cursorAppDetail.moveToPosition(-1);
@@ -104,7 +105,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
                                 }
                             }
                         }
-                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT, "", pickupDT, "", dropOffLoc, pickupLoc, spPhone, spEmail));
+                        customerApointmentItems.add(new CustomerApointmentItems(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT, "", pickupDT, "", dropOffLoc, pickupLoc, spPhone, spEmail, appType));
 
                     }
                 }
@@ -142,6 +143,7 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         intent.putExtra("ServiceDet", customerApointmentItems.histserviceAvailed);
         intent.putExtra("SPPhone", customerApointmentItems.histSPPhone);
         intent.putExtra("SPEmail", customerApointmentItems.histSPEmail);
+        intent.putExtra("AppType",customerApointmentItems.histAppointType);
         //place cell number here
         //place email address
         startActivity(intent);

@@ -45,6 +45,7 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
             //holder.tvhistcustomDropOffTime.setText(customerApointmentItemsList.get(position).getHistcustomDropOffTime());
             holder.tvhistpickupAppointmentDate.setText(customerApointmentItemsList.get(position).getHistpickupAppointmentDate());
             //holder.tvhistcustomPickupTime.setText(customerApointmentItemsList.get(position).getHistcustomPickupTime());
+            holder.tvhistAppointmentType.setText(customerApointmentItemsList.get(position).getHistAppointType());
 
 
             if (customerApointmentItemsList.get(position).getHistbookingStatus().equals("Ongoing")) {

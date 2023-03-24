@@ -55,6 +55,28 @@
         android:textColor="#707477" />
 
     <TextView
+        android:id="@+id/histbookedAppointmentTypeLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_marginLeft="5dp"
+        android:text="Appointment Type"
+        android:textColor="#707477"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/histserviceAppointType"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_toEndOf="@+id/histbookedServiceProviderName"
+        android:text="Pickup"
+        android:textAlignment="textEnd"
+        android:layout_marginRight="20dp"
+        android:textColor="#707477" />
+
+
+    <TextView
         android:id="@+id/histbookingStatus"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -71,8 +93,8 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Drop-Off "
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:text="Date/Time of Appointment"
+        android:layout_below="@+id/histserviceAppointType"
         android:textColor="#707477"
         android:textStyle="bold" />
 
@@ -80,7 +102,7 @@
         android:id="@+id/histdropoffAppointmentDate"
         android:layout_width="187dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_below="@+id/histbookedAppointmentTypeLabel"
         android:layout_marginStart="-2dp"
         android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/histdropofflabel"
@@ -93,7 +115,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Pickup "
+        android:text="Date/Time of After-Servicing Pickup "
         android:layout_below="@+id/histdropofflabel"
         android:textColor="#707477"
         android:textStyle="bold" />

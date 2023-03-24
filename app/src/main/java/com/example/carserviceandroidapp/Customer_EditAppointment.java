@@ -60,6 +60,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
         TextView textViewPickupLoc = (TextView)findViewById(R.id.tvPickupLocation);
         TextView textViewServiceDetails = (TextView)findViewById(R.id.textViewServiceDetails);
         TextView textViewAppStatusDown = (TextView)findViewById(R.id.editTextAppointmentStatus);
+        TextView textViewAppontType = (TextView) findViewById(R.id.tvAppointType);
 
         if(intent != null){
             appID = intent.getIntExtra("AppId",0);
@@ -75,6 +76,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
             String serviceDetails = intent.getStringExtra("ServiceDet");
             String spPhone = intent.getStringExtra("SPPhone");
             spEmail = intent.getStringExtra("SPEmail");
+            String appType = intent.getStringExtra("AppType");
 
             textViewSPName.setText(serviceProviderName);
             textViewSPAddress.setText(serviceProviderAddress);
@@ -86,6 +88,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
             textViewPickupLoc.setText(pickupLoc);
             textViewServiceDetails.setText(serviceDetails);
             textViewAppStatusDown.setText(appointmentStatus);
+            textViewAppontType.setText(appType);
 
             textViewAppStatus.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
@@ -116,6 +119,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                 intent.putExtra("ServiceDet",getIntent().getStringExtra("ServiceDet"));
                 intent.putExtra("SPPhone", getIntent().getStringExtra("SPPhone"));
                 intent.putExtra("SPEmail", getIntent().getStringExtra("SPEmail"));
+                intent.putExtra("AppType",getIntent().getStringExtra("AppType"));
                 //place cell number here
                 //place email address
                 startActivity(intent);
