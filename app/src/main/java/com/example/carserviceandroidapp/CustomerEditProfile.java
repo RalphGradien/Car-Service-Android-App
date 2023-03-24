@@ -14,6 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class CustomerEditProfile extends AppCompatActivity {
     DBHelper DB;
     String username,password,confirm_password,email,mobile,address;
@@ -63,7 +69,9 @@ public class CustomerEditProfile extends AppCompatActivity {
         buttonDeleteChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ShowDialogBox();
+
             }
 
 
@@ -80,8 +88,14 @@ public class CustomerEditProfile extends AppCompatActivity {
                 });
 
                 mView.findViewById(R.id.okBTN).setOnClickListener(v -> {
+
+                    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+                    Calendar calendar = Calendar.getInstance();
+                    Date currentDate = calendar.getTime();
+                    String CurrDate = dateFormat.format(currentDate);
+                    Boolean checkDelData = DB.cancelApt(userID,"Cancelled",CurrDate);
                     Boolean deletedata=  DB.deleteData(userID);
-                        if (deletedata == true) {
+                        if (deletedata == true && checkDelData ==true) {
                             showDelDialog();
                            Toast.makeText(CustomerEditProfile.this, "Deleted successfully", Toast.LENGTH_LONG).show();
                         } else {
@@ -158,6 +172,7 @@ public class CustomerEditProfile extends AppCompatActivity {
 
                 final AlertDialog alertDialog = alert.create();
                 alertDialog.setCancelable(false);
+
                 Boolean checkupdatedata = DB.updateData(editTxtUserName.getText().toString(), userID, editTxtPassword.getText().toString(), editTxtEmail.getText().toString(), editTxtMobile.getText().toString(), editTxtAddress.getText().toString());
                 if (checkupdatedata == true) {
                     Toast.makeText(CustomerEditProfile.this, "Updated Successfully", Toast.LENGTH_LONG).show();

@@ -229,6 +229,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public Boolean cancelApt(int userID, String aptStatus, String cancelDate)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // get a reference to the database
+        // define the new values for the record
+        ContentValues values = new ContentValues();
+        values.put("AppointmentStatus", aptStatus);
+        values.put("CancelledDate", cancelDate);
+
+
+        // define the selection criteria
+        String selection = "userID = ?";
+        String[] selectionArgs = { Integer.toString(userID) };
+        int count = db.update("APPOINTMENT", values, selection, selectionArgs);
+
+        // check if the record was updated successfully
+        if (count > 0) {
+            return true;
+
+            // record updated successfully
+        } else {
+            return false;
+            // failed to update record
+        }
+    }
+
     public Boolean deleteData(int userID)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
