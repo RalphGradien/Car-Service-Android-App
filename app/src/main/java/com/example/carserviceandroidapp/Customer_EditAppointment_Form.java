@@ -214,7 +214,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             }else {
                 etPUDateForm.setEnabled(true);
                 etPUTimeForm.setEnabled(true);
-                etPULocForm.setEnabled(true);
+                //etPULocForm.setEnabled(true);
 
                 etPUDateForm.setOnClickListener(new View.OnClickListener() {
 
