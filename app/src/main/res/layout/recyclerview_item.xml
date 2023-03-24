@@ -22,5 +22,6 @@
         android:layout_height="wrap_content"
         android:background="#FFEB3B"
         android:paddingBottom="10dp"
+        android:textAlignment="center"
         />
 </LinearLayout>
