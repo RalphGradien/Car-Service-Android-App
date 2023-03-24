@@ -95,7 +95,7 @@ public class ServiceAccount extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(rootView.getContext(), Provider_EditProfile.class));
+                    startActivity(new Intent(rootView.getContext(), CustomerEditProfile.class));
             }
         });
         return rootView;

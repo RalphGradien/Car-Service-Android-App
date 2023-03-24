@@ -187,9 +187,17 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                             message.setFrom(new InternetAddress(username));
                             message.setRecipients(Message.RecipientType.TO,
                                     InternetAddress.parse("arifinw@gmail.com"));
-                            message.setSubject("Car Service Remind");
-                            message.setText("Dear " );
+                            message.setSubject("Subject: Booking Appointment Details");
+                            message.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
+                                    "\n\nService Booked   :   " + ServiceDetail +
+                                    "\nBooking Time  :   " + BookingDate +
+                                    "\nDrop-Off Date and Time  :  " + DropoffTimeDate  +
+                                    "\nDrop-Off Location  :   " + DropoffLocation +
+                                    "\n\nIf you need any further information, please contact us by phone, we will be gladly at your service." +
+                                    "\n\nThank you!" +
+                                    "\n\n"+ spName
 
+                            );
 
                             Transport.send(message);
                             Log.i(TAG, "Email sent successfully");
