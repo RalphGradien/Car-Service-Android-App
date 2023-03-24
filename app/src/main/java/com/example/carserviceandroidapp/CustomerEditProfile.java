@@ -109,15 +109,44 @@ public class CustomerEditProfile extends AppCompatActivity {
         buttonSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDialogBox2();
+            }
+
+
+            private void showDialogBox2()
+            {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(CustomerEditProfile.this);
+                View mView = getLayoutInflater().inflate(R.layout.confirm_customer_update_dialog, null);
+                alert.setView(mView);
+
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCancelable(false);
                 Boolean checkupdatedata = DB.updateData(editTxtUserName.getText().toString(), userID, editTxtPassword.getText().toString(), editTxtEmail.getText().toString(), editTxtMobile.getText().toString(), editTxtAddress.getText().toString());
                 if (checkupdatedata == true) {
                     Toast.makeText(CustomerEditProfile.this, "Updated Successfully", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(CustomerEditProfile.this, "Failed to Updated", Toast.LENGTH_LONG).show();
                 }
+
+
+                mView.findViewById(R.id.okBTN).setOnClickListener(v -> {
+                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CustomerEditProfile.this, MainActivity.class);
+                    startActivity(intent);
+                    alertDialog.dismiss();
+                });
+
+                alertDialog.show();
+
+
             }
+
+
+
         });
     }
+
+
 
 
     private void displaydata()
