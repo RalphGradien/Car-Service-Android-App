@@ -70,9 +70,9 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         {
             spID = Integer.parseInt(intent.getStringExtra("SPID").toString());
         }
-        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        //userID = Customer.CustomerID;
-        userID = 3;
+
+        userID = Customer.CustomerID;
+        //userID = 3;
         displayData();
         displaydata2();
         displayLocation();
@@ -209,62 +209,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
 
             }
-            private void sendEmail()
-            {
-                try {
-                    String stringSenderEmail = "garkmobileapp@gmail.com";
-                    String stringReceiverEmail = "arifinw@gmail.com";
-                    String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
 
-                    String stringHost = "smtp.gmail.com";
-
-                    Properties properties = System.getProperties();
-
-                    properties.put("mail.smtp.host", stringHost);
-                    properties.put("mail.smtp.port", "465");
-                    properties.put("mail.smtp.ssl.enable", "true");
-                    properties.put("mail.smtp.auth", "true");
-
-                    javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
-                        @Override
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-                        }
-                    });
-
-                    MimeMessage mimeMessage = new MimeMessage(session);
-                    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-
-                    mimeMessage.setSubject("Subject: Booking Appointment Details");
-                    mimeMessage.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
-                            "\n\nService Booked   :   " + ServiceDetail +
-                            "\nBooking Time  :   " + BookingDate +
-                            "\nDrop-Off Date and Time  :  " + DropoffTimeDate  +
-                            "\nDrop-Off Location  :   " + DropoffLocation +
-                            "\n\nIf you need any further information, please contact us by phone, we will be gladly at your service." +
-                            "\n\nThank you!" +
-                            "\n\n"+ spName
-
-                    );
-
-                    Thread thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Transport.send(mimeMessage);
-                            } catch (MessagingException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                    thread.start();
-
-                } catch (AddressException e) {
-                    e.printStackTrace();
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-            }
 
         });
 //        // Define the arrays of working hours for each day
