@@ -34,8 +34,8 @@ public class CustomerEditProfile extends AppCompatActivity {
         Button buttonDeleteChanges = findViewById(R.id.btnDeleteCust);
      //   SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
      //   userID = sharedPref.getInt("key1",0);
-      //  userID= Customer.CustomerID;
-        userID= 2;
+        userID= Customer.CustomerID;
+      //  userID= 2;
         displaydata();
         txtCustName.setText(username);
         editTxtUserName.setText(username);

@@ -3,6 +3,7 @@ package com.example.carserviceandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -36,7 +37,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class CustomerScheduleDropOff extends AppCompatActivity {
-    DBHelper DB; int spID,userID;String spName,sdID, fullLoc; int aptID;
+    DBHelper DB; int spID,userID;String spName,sdID,userName, fullLoc; int aptID;
     ArrayList<String>spDetails = new ArrayList<>();
     ArrayList<String>location = new ArrayList<>();
     String pickupDateTime="",pickupLocation="",pickupReadyDate="", DropoffTimeDate="", DropoffLocation="",
@@ -67,7 +68,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         }
         //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         userID = Customer.CustomerID;
-       // userID = 3;
+        //userID = 3;
         displayData();
         displaydata2();
         displayLocation();
@@ -123,6 +124,17 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         btnCSDOConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+             showDialog();
+            }
+
+            private void showDialog()
+            {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(CustomerScheduleDropOff.this);
+                View mView = getLayoutInflater().inflate(R.layout.confirm_customer_appointment_dialog, null);
+                alert.setView(mView);
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCancelable(false);
                 ServiceDetail = SpinServiceDetail.getSelectedItem().toString();
                 displayData3();
                 DropoffTimeDate = SpinDate.getSelectedItem().toString() + " " + SpinHours.getSelectedItem().toString() ;
@@ -159,7 +171,16 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                     mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
 
                     mimeMessage.setSubject("Subject: Booking Appointment Details");
-                    mimeMessage.setText("Hello, \n\nThere is a booking appointment \n\n Regards, \nService Provider");
+                    mimeMessage.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
+                            "\n\nService Booked   :   " + ServiceDetail +
+                            "\nBooking Time  :   " + BookingDate +
+                            "\nDrop-Off Date and Time  :  " + DropoffTimeDate  +
+                            "\nDrop-Off Location  :   " + DropoffLocation +
+                            "\n\nIf you need any further information, please contact us by phone, we will be gladly at your service." +
+                            "\n\nThank you!" +
+                            "\n\n"+ spName
+
+                    );
 
                     Thread thread = new Thread(new Runnable() {
                         @Override
@@ -178,7 +199,16 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
+
+                mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
+                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CustomerScheduleDropOff.this, MainActivity.class);
+                    startActivity(intent);
+                    alertDialog.dismiss();
+                });
+                alertDialog.show();
             }
+
         });
 //        // Define the arrays of working hours for each day
 //        String[] sundayHours = {"11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM"};
@@ -345,6 +375,29 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 {
                     sdID = cursor.getString(3);
 //                    spName = cursor.getString(2);
+                }
+            }
+        }
+
+    }
+
+    private void displaydata4()
+    {
+        Cursor cursor = DB.getCustomerData();
+
+        if(cursor.getCount()==0)
+        {
+            Toast.makeText(CustomerScheduleDropOff.this,"No Entry Exists",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else
+        {
+            while(cursor.moveToNext())
+            {
+                if(Integer.parseInt( cursor.getString(0))==userID)
+                {
+                    userName = cursor.getString(1);
+
                 }
             }
         }
