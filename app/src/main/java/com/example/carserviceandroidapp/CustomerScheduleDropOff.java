@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,6 +43,9 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
     ArrayList<String>location = new ArrayList<>();
     String pickupDateTime="",pickupLocation="",pickupReadyDate="", DropoffTimeDate="", DropoffLocation="",
             BookingDate="",CancelledDate="", appointmentType="", AppointmentStatus="", ServiceList, ServiceDetail;
+
+    private static final String TAG = "RemindEmail";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +150,59 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 getAptID();
                 DB.insertAppointmentDetail(aptID,ServiceList);
                 Toast.makeText(CustomerScheduleDropOff.this,"Successfuly Book an Appointment!!",Toast.LENGTH_SHORT).show();
+                sendEmail2();
+
+                mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
+                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CustomerScheduleDropOff.this, MainActivity.class);
+                    startActivity(intent);
+                    alertDialog.dismiss();
+                });
+                alertDialog.show();
+            }
+            private  void sendEmail2()
+            {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String host = "smtp.mail.yahoo.com";
+                        String port = "587";
+                        String username = "thienphuocufo@yahoo.com.vn";
+                        String password = "wnvqewwhprkhwrqd";
+
+                        Properties props = new Properties();
+                        props.put("mail.smtp.host", host);
+                        props.put("mail.smtp.port", port);
+                        props.put("mail.smtp.auth", "true");
+                        props.put("mail.smtp.starttls.enable", "true");
+
+                        Session session = Session.getInstance(props,
+                                new javax.mail.Authenticator() {
+                                    protected PasswordAuthentication getPasswordAuthentication() {
+                                        return new PasswordAuthentication(username, password);
+                                    }
+                                });
+                        try {
+                            Message message = new MimeMessage(session);
+                            message.setFrom(new InternetAddress(username));
+                            message.setRecipients(Message.RecipientType.TO,
+                                    InternetAddress.parse("arifinw@gmail.com"));
+                            message.setSubject("Car Service Remind");
+                            message.setText("Dear " );
+
+
+                            Transport.send(message);
+                            Log.i(TAG, "Email sent successfully");
+                        } catch (MessagingException e) {
+                            Log.e(TAG, "Email sending failed: " + e.getMessage());
+                        }
+                    }
+                }).start();
+
+
+            }
+            private void sendEmail()
+            {
                 try {
                     String stringSenderEmail = "garkmobileapp@gmail.com";
                     String stringReceiverEmail = "arifinw@gmail.com";
@@ -199,14 +256,6 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 } catch (MessagingException e) {
                     e.printStackTrace();
                 }
-
-                mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
-                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CustomerScheduleDropOff.this, MainActivity.class);
-                    startActivity(intent);
-                    alertDialog.dismiss();
-                });
-                alertDialog.show();
             }
 
         });
