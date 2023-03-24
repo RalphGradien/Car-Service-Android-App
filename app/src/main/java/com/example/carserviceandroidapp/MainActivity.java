@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void toArifin(View v){
-        Intent intent = new Intent(MainActivity.this, CustomerEditProfile.class);
+        Intent intent = new Intent(MainActivity.this, CustomerFindServiceProviderLocation.class);
         startActivity(intent);
     }
     private void generatePDF() {

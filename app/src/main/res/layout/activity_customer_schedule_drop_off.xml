@@ -11,18 +11,16 @@
         android:id="@+id/txtCSDO_ServiceProviderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginTop="96dp"
+
         android:text="Service Provider"
+
         android:textColor="#2E3192"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_ServiceProviderLocation"
-        app:layout_constraintStart_toEndOf="@+id/txtCSDO_ServiceProviderLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textAlignment="center"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinCSDO_Time"
@@ -150,10 +148,10 @@
         android:id="@+id/txtCSDO_ServiceProviderLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="51dp"
         android:layout_marginBottom="307dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Time"
-        app:layout_constraintStart_toEndOf="@+id/txtCSDO_ServiceDetail"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceProviderName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
