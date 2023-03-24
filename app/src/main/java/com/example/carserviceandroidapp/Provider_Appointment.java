@@ -1,11 +1,9 @@
 package com.example.carserviceandroidapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,23 +14,21 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Provider_Appointment extends Fragment implements CustomerAppointmentsViewSelectInterface {
-    String cusName = "";
-    String cusAddress = "";
-    String cusContact = "";
-    String cusEmail = "";
-    String selectedServices = "";
-    String serviceListID = "";
-    int serviceDetailID = 0;
-    int appointmentID;
-    int customerID;
-    String spAddress, appStatus, dropOffDateTime, dropOffLocation, pickUpDateTime, pickUpLocation;
+public class Provider_Appointment extends Fragment implements ProviderAppointmentInterface {
+
+    int serviceDetailID;
+    int appointmentID, customerID;
+    String appointmentStatus, dropOffDateTime, dropOffLocation, pickUpDateTime, pickUpLocation;
+    String customerName, customerAddress, customerContact, customerEmail, selectedService, serviceListID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         DBHelper dbh = new DBHelper(getActivity());
         View view = inflater.inflate(R.layout.activity_provider_appointment, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewProviderAppointment);
+
+        List<Provider_Appointment_Class> providerAppointmentClass = new ArrayList<>();
+        List<Provider_Appointment_Class> providerAppointmentsOngoing = new ArrayList<>();
 
         List<CustomerApointmentItems> customerApointmentItems = new ArrayList<>();
         List<CustomerApointmentItems> customerAppointmentsOngoing = new ArrayList<>();
@@ -58,16 +54,16 @@ public class Provider_Appointment extends Fragment implements CustomerAppointmen
                             cursorCustomer.moveToPosition(-1);
                             while (cursorCustomer.moveToNext()) {
                                 if (cursorCustomer.getInt(cursorCustomer.getColumnIndexOrThrow("Userid")) == customerID) {
-                                    cusName = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("name"));
-                                    cusAddress = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("address"));
-                                    cusContact = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("mobile"));
-                                    cusEmail = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("email"));
+                                    customerName = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("name"));
+                                    customerAddress = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("address"));
+                                    customerContact = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("mobile"));
+                                    customerEmail = cursorCustomer.getString(cursorCustomer.getColumnIndexOrThrow("email"));
                                 }
                             }
                         }
 
 //                            spAddress = cusAddress;
-                        appStatus = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentStatus"));
+                        appointmentStatus = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentStatus"));
                         dropOffDateTime = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffTimeDate"));
                         dropOffLocation = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
                         pickUpDateTime = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
@@ -93,13 +89,12 @@ public class Provider_Appointment extends Fragment implements CustomerAppointmen
                             cursorServiceDetail.moveToPosition(-1);
                             while (cursorServiceDetail.moveToNext()) {
                                 if (cursorServiceDetail.getInt(cursorServiceDetail.getColumnIndexOrThrow("ServiceDetailID")) == serviceDetailID) {
-                                    selectedServices = cursorServiceDetail.getString(cursorServiceDetail.getColumnIndexOrThrow("ServiceName"));
+                                    selectedService = cursorServiceDetail.getString(cursorServiceDetail.getColumnIndexOrThrow("ServiceName"));
                                 }
                             }
                         }
-                        customerApointmentItems.add(new CustomerApointmentItems(appointmentID, cusName, selectedServices, cusAddress, appStatus, dropOffDateTime,
-                                "", pickUpDateTime, "", dropOffLocation, pickUpLocation, cusContact, cusEmail));
-
+                        providerAppointmentClass.add(new Provider_Appointment_Class(appointmentID, customerName, customerContact, customerEmail, selectedService, customerAddress,
+                                appointmentStatus, dropOffDateTime, pickUpDateTime, pickUpLocation, dropOffLocation));
                     }
                 }
             }
@@ -107,31 +102,29 @@ public class Provider_Appointment extends Fragment implements CustomerAppointmen
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-
-        for (CustomerApointmentItems ongoingItem : customerApointmentItems) {
-            if (ongoingItem.histbookingStatus.equals("Ongoing")) {
-                customerAppointmentsOngoing.add(ongoingItem);
+        for (Provider_Appointment_Class ongoingItem : providerAppointmentClass) {
+            if (ongoingItem.appointmentStatus.equals("Ongoing")) {
+                providerAppointmentsOngoing.add(ongoingItem);
             }
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new CustomerAppointmentAdapter(getActivity(), customerAppointmentsOngoing, this));
+        recyclerView.setAdapter(new Provider_Appointment_Adapter(getActivity(), providerAppointmentsOngoing, this));
         return view;
     }
-
     @Override
-    public void onItemClick(CustomerApointmentItems customerApointmentItems) {
+    public void onItemClick(Provider_Appointment_Class providerAppointmentClass) {
         Intent intent = new Intent(getActivity(), Provider_Edit_Appointment.class);
-        intent.putExtra("AppointmentID", appointmentID);
-        intent.putExtra("CustomerName", cusName);
-        intent.putExtra("CustomerAddress", cusAddress);
-        intent.putExtra("AppointmentStatus", appStatus);
-        intent.putExtra("DropOffDateTime", dropOffDateTime);
-        intent.putExtra("PickupDateTime", pickUpDateTime);
-        intent.putExtra("DropOffLocation", dropOffLocation);
-        intent.putExtra("PickUpLocation", pickUpLocation);
-        intent.putExtra("SelectedService", selectedServices);
-        intent.putExtra("CustomerContact", cusContact);
-        intent.putExtra("CustomerEmail", cusEmail);
+        intent.putExtra("AppointmentID", providerAppointmentClass.appointmentID);
+        intent.putExtra("CustomerName", providerAppointmentClass.customerName);
+        intent.putExtra("CustomerAddress", providerAppointmentClass.customerAddress);
+        intent.putExtra("AppointmentStatus", providerAppointmentClass.appointmentStatus);
+        intent.putExtra("DropOffDateTime", providerAppointmentClass.dropOffDateTime);
+        intent.putExtra("PickupDateTime", providerAppointmentClass.pickUpDateTime);
+        intent.putExtra("DropOffLocation", providerAppointmentClass.dropOffLocation);
+        intent.putExtra("PickUpLocation", providerAppointmentClass.pickUpLocation);
+        intent.putExtra("SelectedService", providerAppointmentClass.selectedService);
+        intent.putExtra("CustomerContact", providerAppointmentClass.customerContact);
+        intent.putExtra("CustomerEmail", providerAppointmentClass.customerEmail);
         startActivity(intent);
     }
 }

@@ -1,6 +1,8 @@
 package com.example.carserviceandroidapp;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +17,14 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
     Context context;
 
     List<ServiceHistoryItems> items;
+    private CustomerAppointmentsViewSelectInterface selectInterface;
 
     public ServiceHistoryAdapter(Context context, List<ServiceHistoryItems> items) {
         this.context = context;
         this.items = items;
     }
 
-    public ServiceHistoryAdapter(Context applicationContext) {
-    }
+//    public ServiceHistoryAdapter(Context applicationContext) {}
 
     @NonNull
     @Override
@@ -56,7 +58,6 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
             holder.appointmentStatusView.setBackgroundResource(R.drawable.red_rounded_rectangle);
         }
     }
-
     @Override
     public int getItemCount() {
         return items.size();

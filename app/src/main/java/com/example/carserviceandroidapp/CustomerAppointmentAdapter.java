@@ -22,7 +22,6 @@ public class CustomerAppointmentAdapter extends RecyclerView.Adapter<CustomerApp
     List<CustomerApointmentItems> customerApointmentItemsList;
     private CustomerAppointmentsViewSelectInterface selectInterface;
 
-
     public CustomerAppointmentAdapter(Context context, List<CustomerApointmentItems> customerApointmentItemsList, CustomerAppointmentsViewSelectInterface selectInterface ) {
         this.context = context;
         this.customerApointmentItemsList = customerApointmentItemsList;

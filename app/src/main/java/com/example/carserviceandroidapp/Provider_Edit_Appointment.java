@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +33,9 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
     String v_customerName, v_customerContact, v_customerEmail, v_dropOffDateTime, v_dropOffLocation, v_pickUpDateTime,
             v_pickUpLocation, v_selectedServices, v_appointmentStatus;
     int v_appointmentID;
-
+    EditText pickUpDateTime, pickUpLocation, appointmentStatusEdit;
+//    RadioGroup appointmentStatusEdit;
+    private static final String TAG = "RemindEmail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +47,14 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
         TextView customerEmail = (TextView) findViewById(R.id.email);
         TextView dropOffDateTime = (TextView) findViewById(R.id.dropOffDateTime);
         TextView dropOffLocation = (TextView) findViewById(R.id.dropOffLocation);
-        TextView pickUpDateTime = (TextView) findViewById(R.id.pickUpDateTime);
-        TextView pickUpLocation = (TextView) findViewById(R.id.pickUpLocation);
+        pickUpDateTime = findViewById(R.id.pickUpDateTime);
+        pickUpLocation = findViewById(R.id.pickUpLocation);
         TextView selectedServices = (TextView) findViewById(R.id.selectedServices);
         TextView appointmentStatusEdit = (TextView) findViewById(R.id.appointmentStatusEdit);
+//        appointmentStatusEdit = findViewById(R.id.appointmentStatusEdit);
         Button btnUpdate = findViewById(R.id.btnUpdate);
         Button btnCancel = findViewById(R.id.btnCancel);
         Button btnRemind = findViewById(R.id.btnEmail);
-
-
-//        String[] spEmailArr=new String[1];
-//        String[] spNameArr = new String[1];
-//        String[] dropOffDateTimeArr = new String[1];
-//        String[] pickUpDateTimeArr = new String[1];
 
         if (intent != null) {
             v_appointmentID = Appointment.AppointmentID;
@@ -79,6 +79,7 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             pickUpLocation.setText(v_pickUpLocation);
             selectedServices.setText(v_selectedServices);
             appointmentStatusEdit.setText(v_appointmentStatus);
+//            appointmentStatusEdit.check(v_appointmentStatus.equals("Ongoing") ? R.id.ongoingRadioButton : R.id.completedRadioButton);
 
             appointmentStatusHead.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
@@ -88,138 +89,114 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             drawable.setColor(chosenColor);
             appointmentStatusHead.setBackgroundDrawable(drawable);
         }
+
+        //Remind by email
+        btnRemind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String host = "smtp.mail.yahoo.com";
+                        String port = "587";
+                        String username = "thienphuocufo@yahoo.com.vn";
+                        String password = "wnvqewwhprkhwrqd";
+
+                        Properties props = new Properties();
+                        props.put("mail.smtp.host", host);
+                        props.put("mail.smtp.port", port);
+                        props.put("mail.smtp.auth", "true");
+                        props.put("mail.smtp.starttls.enable", "true");
+
+                        Session session = Session.getInstance(props,
+                                new javax.mail.Authenticator() {
+                                    protected PasswordAuthentication getPasswordAuthentication() {
+                                        return new PasswordAuthentication(username, password);
+                                    }
+                                });
+                        try {
+                            Message message = new MimeMessage(session);
+                            message.setFrom(new InternetAddress(username));
+                            message.setRecipients(Message.RecipientType.TO,
+                                    InternetAddress.parse("ralphgradien01@gmail.com"));
+                            message.setSubject("Car Service Remind");
+                            message.setText("Dear " + v_customerName + ",\n\n" +
+                            "This is a reminder email about the service you booked at our company. \n\n" +
+                            "Service booked:            " + v_selectedServices + "\n" +
+                            "Drop-off date and time: " + v_dropOffDateTime + "\n" +
+                            "Drop-off location:          " + v_dropOffLocation + "\n" +
+                            "Pick-up date and time:  " + v_pickUpDateTime + "\n" +
+                            "Pick up location:            " + v_pickUpLocation + "\n\n" +
+                            "If you need any further information, please contact us by phone or email.\n\n" +
+                            "Thank you!"
+                            );
+
+                            Transport.send(message);
+                            Log.i(TAG, "Email sent successfully");
+                        } catch (MessagingException e) {
+                            Log.e(TAG, "Email sending failed: " + e.getMessage());
+                        }
+                    }
+                }).start();
+            }
+        });
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//
-//                Intent intent = new Intent(Customer_EditAppointment.this, Customer_EditAppointment_Form.class);
-//                intent.putExtra("AppId",getIntent().getIntExtra("AppId",0));
-//                intent.putExtra("ServiceProviderName",getIntent().getStringExtra("ServiceProviderName"));
-//                intent.putExtra("SPAddress",getIntent().getStringExtra("SPAddress"));
-//                intent.putExtra("AppStatus",getIntent().getStringExtra("AppStatus"));
-//                intent.putExtra("DropoffD",getIntent().getStringExtra("DropoffD"));
-//                intent.putExtra("DropoffT",getIntent().getStringExtra("DropoffT"));
-//                intent.putExtra("PickupD",getIntent().getStringExtra("PickupD"));
-//                intent.putExtra("PickupT",getIntent().getStringExtra("PickupT"));
-//                intent.putExtra("DropoffLoc",getIntent().getStringExtra("DropoffLoc"));
-//                intent.putExtra("PickupLoc",getIntent().getStringExtra("PickupLoc"));
-//                intent.putExtra("ServiceDet",getIntent().getStringExtra("ServiceDet"));
-//                intent.putExtra("SPPhone", getIntent().getStringExtra("SPPhone"));
-//                intent.putExtra("SPEmail", getIntent().getStringExtra("SPEmail"));
-//                //place cell number here
-//                //place email address
-//                startActivity(intent);
-
+                Intent intent = new Intent(Provider_Edit_Appointment.this, Provider_Update_Appointment.class);
+                intent.putExtra("AppointmentID",getIntent().getIntExtra("AppointmentID",0));
+                intent.putExtra("CustomerName",getIntent().getStringExtra("CustomerName"));
+                intent.putExtra("CustomerAddress",getIntent().getStringExtra("CustomerAddress"));
+                intent.putExtra("AppointmentStatus",getIntent().getStringExtra("AppointmentStatus"));
+                intent.putExtra("DropOffDateTime",getIntent().getStringExtra("DropOffDateTime"));
+                intent.putExtra("PickupDateTime",getIntent().getStringExtra("PickupDateTime"));
+                intent.putExtra("DropOffLocation",getIntent().getStringExtra("DropOffLocation"));
+                intent.putExtra("PickUpLocation",getIntent().getStringExtra("PickUpLocation"));
+                intent.putExtra("SelectedService",getIntent().getStringExtra("SelectedService"));
+                intent.putExtra("CustomerContact", getIntent().getStringExtra("CustomerContact"));
+                intent.putExtra("CustomerEmail", getIntent().getStringExtra("CustomerEmail"));
+                startActivity(intent);
             }
         });
-//
-//        int[] appIDArr = new int[1];
-//        appIDArr[0] = appID;
-//        String[] status = {appointmentStatus};
-//
-//        Button btnCancelApp = (Button) findViewById(R.id.buttonCancel);
-//        btnCancelApp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (textViewPickupDT.getText().toString().replace(" ", "").isEmpty()) {
-//
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(Customer_EditAppointment.this, R.style.MyDialogStyle);
-//                    builder.setTitle("Cancel An Appointment")
-//                            .setMessage("Are you sure you want to cancel this appointment?")
-//                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                    // Get the ID of the row to update
-//                                    int appIdCurrent = appIDArr[0];
-//                                    boolean isUpdated = dbh.cancelAppointment(appIdCurrent);
-//                                    if (isUpdated) {
-//                                        Toast.makeText(Customer_EditAppointment.this, "Record Updated", Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(Customer_EditAppointment.this, PlainActivity.class));
-//                                    } else {
-//                                        Toast.makeText(Customer_EditAppointment.this, "Not Updated", Toast.LENGTH_SHORT).show();
-//                                    }
-//
-//                                    // User clicked the Yes button
-//                                    // Do something here, such as cancel the appointment
-//                                    dialog.dismiss();
-//                                }
-//                            })
-//                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                    // User clicked the No button
-//                                    // Do nothing, simply close the dialog box
-//                                    dialog.dismiss();
-//                                }
-//                            });
-//                    AlertDialog dialog = builder.create();
-//                    dialog.show();
-//                } else {
-//                    Toast.makeText(Customer_EditAppointment.this, "You cannot cancel this Appointment", Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//        });
-//
-//        spEmailArr[0] = spEmail;
-//        spNameArr[0] = serviceProviderName;
-//        dropOffDateTimeArr[0] = dropoffDate;
-//        pickUpDateTimeArr[0] = pickupD;
-//
-//        Button remindApp = (Button) findViewById(R.id.butnRemind);
-//        remindApp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
-//                try {
-//                    String stringSenderEmail = "garkmobileapp@gmail.com";
-//                    String stringReceiverEmail = spEmailArr[0];
-//                    String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
-//
-//                    String stringHost = "smtp.gmail.com";
-//
-//                    Properties properties = System.getProperties();
-//
-//                    properties.put("mail.smtp.host", stringHost);
-//                    properties.put("mail.smtp.port", "465");
-//                    properties.put("mail.smtp.ssl.enable", "true");
-//                    properties.put("mail.smtp.auth", "true");
-//
-//                    javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
-//                        @Override
-//                        protected PasswordAuthentication getPasswordAuthentication() {
-//                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-//                        }
-//                    });
-//                    MimeMessage mimeMessage = new MimeMessage(session);
-//                    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-//
-//                    mimeMessage.setSubject("Subject: Android App email");
-//                    if (textViewPickupDT.getText().toString().replace(" ", "").isEmpty()) {
-//                        mimeMessage.setText("Hello " + spNameArr[0] + ", \n\nThis a reminder of our drop-off appointment on " + dropOffDateTimeArr[0] +
-//                                ". \n\n Cheers!\nCustomer");
-//                    } else {
-//                        mimeMessage.setText("Hello " + spNameArr[0] + ", \n\nThis a reminder of our pickup appointment on " + pickUpDateTimeArr[0] +
-//                                ". \n\n Cheers!\nProgrammer World");
-//                    }
-//
-//
-//                    Thread thread = new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            try {
-//                                Transport.send(mimeMessage);
-//                            } catch (MessagingException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    });
-//                    thread.start();
-//
-//                } catch (AddressException e) {
-//                    e.printStackTrace();
-//                } catch (MessagingException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+
+        DBHelper dbh = new DBHelper(this);
+        int[] appIDArr = new int[1];
+        appIDArr[0] = v_appointmentID;
+        String[] status = {v_appointmentStatus};
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (pickUpDateTime.getText().toString().replace(" ", "").isEmpty()) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Provider_Edit_Appointment.this, R.style.MyDialogStyle);
+                    builder.setTitle("Cancel the appointment")
+                            .setMessage("Are you sure you want to cancel this appointment?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // Get the ID of the row to update
+                                    int appIdCurrent = appIDArr[0];
+                                    boolean isUpdated = dbh.cancelAppointment(appIdCurrent);
+                                    if (isUpdated) {
+                                        Toast.makeText(Provider_Edit_Appointment.this, "Successfully Cancelled", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(Provider_Edit_Appointment.this, PlainActivity.class));
+                                    } else {
+                                        Toast.makeText(Provider_Edit_Appointment.this, "Failure to Cancel", Toast.LENGTH_SHORT).show();
+                                    }
+                                    dialog.dismiss();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Toast.makeText(Provider_Edit_Appointment.this, "You cannot cancel this Appointment", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }
