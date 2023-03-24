@@ -56,7 +56,7 @@ public class CustomAdapter extends RecyclerView.Adapter {
         TextView textView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imgSmall);
+            imageView = itemView.findViewById(R.id.imgDelete);
             textView = itemView.findViewById(R.id.txt);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
