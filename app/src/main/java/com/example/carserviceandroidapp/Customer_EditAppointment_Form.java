@@ -320,7 +320,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                             if(selectedOption.equals("Ongoing")){
                                 drawable.setColor( Color.rgb(247, 201, 16));
                             }else if(selectedOption.equals("Completed")){
-                                drawable.setColor( Color.RED);
+                                drawable.setColor( Color.rgb(101, 207, 114));
                             }
 
                         }
@@ -392,16 +392,16 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                 if(isUpdated){
 
                     try {
-                        String stringSenderEmail = "garkmobileapp@gmail.com";
+                        String stringSenderEmail = "thienphuocufo@yahoo.com.vn";
                         String stringReceiverEmail = spEmailArr[0];
-                        String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
+                        String stringPasswordSenderEmail = "wnvqewwhprkhwrqd";
 
-                        String stringHost = "smtp.gmail.com";
+                        String stringHost = "smtp.mail.yahoo.com";
 
                         Properties properties = System.getProperties();
 
                         properties.put("mail.smtp.host", stringHost);
-                        properties.put("mail.smtp.port", "465");
+                        properties.put("mail.smtp.port", "587");
                         properties.put("mail.smtp.ssl.enable", "true");
                         properties.put("mail.smtp.auth", "true");
 
