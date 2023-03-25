@@ -38,7 +38,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class CustomerScheduleDropOff extends AppCompatActivity {
-    DBHelper DB; int spID,userID;String spName,sdID,userName, fullLoc; int aptID;
+    DBHelper DB; int spID,userID;String spName,sdID,userName, fullLoc, custLoc; int aptID;
     ArrayList<String>spDetails = new ArrayList<>();
     ArrayList<String>location = new ArrayList<>();
     String pickupDateTime="",pickupLocation="",pickupReadyDate="", DropoffTimeDate="", DropoffLocation="",
@@ -88,7 +88,8 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, location);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SpinServiceLocation.setAdapter(adapter2);
+       // SpinServiceLocation.setAdapter(adapter2);
+
 
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
@@ -143,14 +144,17 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 displayData3();
                 DropoffTimeDate = SpinDate.getSelectedItem().toString() + " " + SpinHours.getSelectedItem().toString() ;
                 ServiceList = "SP_" + spID + "_" + sdID ;
-                DropoffLocation = SpinServiceLocation.getSelectedItem().toString();
-                BookingDate = CurrDate; appointmentType= "Drop Off";AppointmentStatus = "Ongoing";
+                //DropoffLocation = SpinServiceLocation.getSelectedItem().toString();
+                if(SpinServiceLocation.getSelectedItem().toString().equals("Drop Off")) { DropoffLocation = fullLoc;}
+                else {DropoffLocation = custLoc;}
+                appointmentType = SpinServiceLocation.getSelectedItem().toString();
+                BookingDate = CurrDate;AppointmentStatus = "Ongoing";
                 DB.insertAppointment(userID,spID,pickupDateTime,pickupLocation,pickupReadyDate,DropoffTimeDate
                         ,DropoffLocation,BookingDate,CancelledDate,appointmentType,AppointmentStatus);
                 getAptID();
                 DB.insertAppointmentDetail(aptID,ServiceList);
                 Toast.makeText(CustomerScheduleDropOff.this,"Successfuly Book an Appointment!!",Toast.LENGTH_SHORT).show();
-                sendEmail2();
+                sendEmail();
 
                 mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
                     // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
@@ -160,7 +164,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 });
                 alertDialog.show();
             }
-            private  void sendEmail2()
+            private  void sendEmail()
             {
                 new Thread(new Runnable() {
                     @Override
@@ -188,11 +192,13 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                             message.setRecipients(Message.RecipientType.TO,
                                     InternetAddress.parse("arifinw@gmail.com"));
                             message.setSubject("Subject: Booking Appointment Details");
+                            displaydata4();
                             message.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
                                     "\n\nService Booked   :   " + ServiceDetail +
                                     "\nBooking Time  :   " + BookingDate +
-                                    "\nDrop-Off Date and Time  :  " + DropoffTimeDate  +
-                                    "\nDrop-Off Location  :   " + DropoffLocation +
+                                    "\nAppointment type  :   " + appointmentType +
+                                    "\nDate and Time  :  " + DropoffTimeDate  +
+                                    "\nLocation  :   " + DropoffLocation +
                                     "\n\nIf you need any further information, please contact us by phone, we will be gladly at your service." +
                                     "\n\nThank you!" +
                                     "\n\n"+ spName
@@ -212,37 +218,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
 
         });
-//        // Define the arrays of working hours for each day
-//        String[] sundayHours = {"11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM"};
-//        String[] otherDaysHours = {"10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM"};
-//
-//// Create an ArrayAdapter for the hour spinner
-//        ArrayAdapter<String> hourAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, otherDaysHours);
-//        SpinHours.setAdapter(hourAdapter);
-//// Set an OnItemSelectedListener for the day spinner
-//        SpinDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                // Get the selected day from the day spinner
-//                String selectedDay = parent.getSelectedItem().toString();
-//
-//                // Update the adapter for the hour spinner based on the selected day
-//                if (selectedDay.equals("Sunday")) {
-//                    hourAdapter.clear();
-//                    hourAdapter.addAll(sundayHours);
-//                    hourAdapter.notifyDataSetChanged();
-//                } else {
-//                    hourAdapter.clear();
-//                    hourAdapter.addAll(otherDaysHours);
-//                    hourAdapter.notifyDataSetChanged();
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // Do nothing
-//            }
-//        });
+
 
 
 
@@ -328,6 +304,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 if(Integer.parseInt(cursor.getString(0).toString()) == userID)
                 {
                     location.add(cursor.getString(1));
+                    custLoc = cursor.getString(1);
                 }
 
             }

@@ -88,4 +88,9 @@
         <item>Cancelled</item>
     </string-array>
 
+    <string-array name="apt_type">
+        <item>Drop Off</item>
+        <item>Pick Up</item>
+    </string-array>
+
 </resources>

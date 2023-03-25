@@ -46,7 +46,7 @@
         <activity
             android:name=".CustomerScheduleDropOff"
             android:exported="false"
-            android:label="Drop Off" />
+            android:label="Appointment Booking" />
         <activity
             android:name=".CustomerFindServiceProviderLocation"
             android:exported="false"
