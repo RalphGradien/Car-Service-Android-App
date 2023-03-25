@@ -149,4 +149,5 @@ public class Customer_AppointmentsView extends Fragment implements CustomerAppoi
         startActivity(intent);
     }
 
+  //  public abstract View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 }

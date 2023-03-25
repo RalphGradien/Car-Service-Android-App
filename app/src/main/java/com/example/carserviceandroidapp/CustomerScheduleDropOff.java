@@ -121,10 +121,6 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         String selectedHour = SpinHours.getSelectedItem().toString();
 
 
-
-
-
-
         btnCSDOConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,7 +194,6 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                         }
                     }
                 }).start();
-
 
             }
             private void sendEmail()
