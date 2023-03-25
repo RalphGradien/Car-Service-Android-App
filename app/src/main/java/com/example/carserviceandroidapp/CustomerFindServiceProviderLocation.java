@@ -31,7 +31,6 @@ public class CustomerFindServiceProviderLocation extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_customer_find_service_provider_location);
         View view = inflater.inflate(R.layout.activity_customer_find_service_provider_location, container, false);
         Context context = getContext().getApplicationContext();
 
@@ -39,6 +38,7 @@ public class CustomerFindServiceProviderLocation extends Fragment {
         DB = new DBHelper(getActivity());
         displaydata();
 
+        //spinner to choose the location
         Spinner Spinner = view.findViewById(R.id.spinLocation);
         Button btnNextLocation = view.findViewById(R.id.btnNextLocation);
 
@@ -48,7 +48,6 @@ public class CustomerFindServiceProviderLocation extends Fragment {
                 Intent intent = new Intent(getActivity(),CustomerFindServiceProviderList.class);
                 intent.putExtra("LOC",spinLoc);
                 startActivity(intent);
-                //  startActivity(new Intent(CustomerFindServiceProviderLocation.this,CustomerFindServiceProviderList.class));
 
             }
         });
@@ -73,11 +72,11 @@ public class CustomerFindServiceProviderLocation extends Fragment {
             }
         });
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-       // recyclerView.setAdapter(new ServiceHistoryAdapter(getActivity(), historyItems));
         return view;
     }
 
+
+    //method to display the list location of the providers
     private void displaydata()
     {
         Cursor cursor = DB.getServiceProviderData();

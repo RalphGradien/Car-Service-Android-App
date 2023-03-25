@@ -20,6 +20,7 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
     CustomAdapter adapter;
     String location="";String spID, fullLoc;
 
+    //arraylist to store the image and the text for the recycle views
     ArrayList<ImageAndText> aList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,12 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
             location = intent.getStringExtra("LOC");
             txtServiceLoc.setText("Available Service Providers at \n" +location);
         }
-
-
+        //displaying the image and the text name and address of the service providers
         displayData();
+        //showing the recycle view by 2 columns
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         int numOfCols = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this,numOfCols));
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CustomAdapter(this,aList,this);
         recyclerView.setAdapter(adapter);
     }
@@ -52,28 +52,7 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
         startActivity(intent);
     }
 
-//    private void displayLocation2()
-//    {
-//        Cursor cursor = DB.getDropOffLocationSP();
-//        if(cursor.getCount()==0)
-//        {
-//            Toast.makeText(CustomerFindServiceProviderList.this,"No Entry Exists",Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        else
-//        {
-//            while(cursor.moveToNext())
-//            {
-//                if(Integer.parseInt(cursor.getString(0).toString()) == spID)
-//                {
-//                    fullLoc = cursor.getString(1) + ", " + cursor.getString(2) +", "
-//                            +cursor.getString(3) +", " + cursor.getString(4) ;
-//                }
-//
-//            }
-//        }
-//
-//    }
+    //displaying the image and the text name and address of the service providers
     private void displayData()
     {
         Cursor cursor = DB.getServiceProviderList();
@@ -91,7 +70,6 @@ public class CustomerFindServiceProviderList extends AppCompatActivity  implemen
                 {
                     String imageName = cursor.getString(9); // replace with the name of the desired image
                     int imageResourceId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                   // aList.add(new ImageAndText(cursor.getString(2), imageResourceId,cursor.getString(0)));
                     fullLoc = cursor.getString(2) + "\n" + cursor.getString(3) + "," +
                             cursor.getString(4) + ", " + cursor.getString(5) +", "
                             +  cursor.getString(6);
