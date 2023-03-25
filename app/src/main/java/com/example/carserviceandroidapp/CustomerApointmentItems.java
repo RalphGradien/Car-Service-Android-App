@@ -16,6 +16,7 @@ public class CustomerApointmentItems {
     String histcustomPickupLoc;
     String histSPPhone;
     String histSPEmail;
+    String histAppointType;
 
     public String getHistcustomDropOffLoc() {
         return histcustomDropOffLoc;
@@ -38,7 +39,7 @@ public class CustomerApointmentItems {
                                    String histbookingStatus, String histdropoffAppointmentDate,
                                    String histcustomDropOffTime, String histpickupAppointmentDate,
                                    String histcustomPickupTime, String histcustomDropOffLoc, String histcustomPickupLoc, String histSPPhone,
-                                    String histSPEmail) {
+                                    String histSPEmail, String histAppointType) {
         this.histappointmentIDInt = histappointmentIDInt;
         this.histbookedServiceProviderName = histbookedServiceProviderName;
         this.histserviceAvailed = histserviceAvailed;
@@ -52,8 +53,16 @@ public class CustomerApointmentItems {
         this.histcustomPickupLoc = histcustomPickupLoc;
         this.histSPPhone = histSPPhone;
         this.histSPEmail = histSPEmail;
+        this.histAppointType = histAppointType;
     }
 
+    public String getHistAppointType() {
+        return histAppointType;
+    }
+
+    public void setHistAppointType(String histAppointType) {
+        this.histAppointType = histAppointType;
+    }
 
     public String getHistSPEmail() {
         return histSPEmail;

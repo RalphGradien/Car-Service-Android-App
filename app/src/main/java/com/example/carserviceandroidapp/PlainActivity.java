@@ -17,12 +17,8 @@ public class PlainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plain);
 
-        Customer_AppointmentsView customer_appointmentsView = new Customer_AppointmentsView() {
-//            @Override
-            public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                return null;
-            }
-        };
+       Customer_AppointmentsView customer_appointmentsView = new Customer_AppointmentsView();
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.plainLayout,customer_appointmentsView);
         transaction.commit();

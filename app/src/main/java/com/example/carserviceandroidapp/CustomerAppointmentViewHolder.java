@@ -12,7 +12,7 @@ public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
     TextView tvhistappointmentIDLabel,tvhistappointmentIDInt, tvhistbookedServiceProviderName,
             tvhistserviceAvailed, tvhistbookedServiceProviderAddress, tvhistbookingStatus,
             tvhistdropofflabel, tvhistdropoffAppointmentDate,
-            tvhistpickuplabel, tvhistpickupAppointmentDate;
+            tvhistpickuplabel, tvhistpickupAppointmentDate, tvhistAppointmentType;
 
 
     RelativeLayout relativeLayout;
@@ -29,6 +29,7 @@ public class CustomerAppointmentViewHolder extends RecyclerView.ViewHolder{
         tvhistdropoffAppointmentDate = itemView.findViewById(R.id.histdropoffAppointmentDate);
         tvhistpickuplabel = itemView.findViewById(R.id.histpickuplabel);
         tvhistpickupAppointmentDate = itemView.findViewById(R.id.histpickupAppointmentDate);
+        tvhistAppointmentType = itemView.findViewById(R.id.histserviceAppointType);
 
         relativeLayout = itemView.findViewById(R.id.container_custappointment_item);
 

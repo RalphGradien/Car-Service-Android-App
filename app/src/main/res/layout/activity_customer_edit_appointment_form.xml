@@ -19,7 +19,7 @@
 
         <EditText
             android:id="@+id/etDropOffTimeForm"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="43dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="37dp"
@@ -27,9 +27,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/tvDropOffDateForm"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/tvServiceDetailLabelForm"
@@ -82,15 +83,45 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
             android:layout_marginTop="9dp"
-            android:text="@string/dropOffLabel"
+            android:text="@string/date_time_of_appointment2"
             android:textColor="#2E3192"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm" />
 
+        <TextView
+            android:id="@+id/tvAppTypeLabelForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="44dp"
+            android:text="@string/appointment_type"
+            android:textColor="#2E3192"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvDropOffDTLabelForm"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm" />
+
+        <TextView
+            android:id="@+id/tvAppointTypeForm"
+            android:layout_width="121dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="36dp"
+            android:textSize="15dp"
+            android:paddingStart="10dp"
+            android:background="@drawable/textview_border"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.176"
+            app:layout_constraintStart_toEndOf="@+id/etDropOffTimeForm"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSPCellDisplayForm" />
+
+
+
         <EditText
             android:id="@+id/tvDropOffDateForm"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="43dp"
             android:layout_marginStart="31dp"
             android:layout_marginTop="9dp"
@@ -98,10 +129,11 @@
             android:background="@drawable/textview_border"
             android:editable="false"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintEnd_toStartOf="@+id/etDropOffTimeForm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffDTLabelForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <EditText
 
@@ -112,9 +144,10 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/textview_border"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocationLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDropOffLocationLabelForm"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tvpickupDTLabelForm"
@@ -122,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
             android:layout_marginTop="9dp"
-            android:text="@string/pickupDTLabel"
+            android:text="@string/date_time_of_after_servicing_pick_up"
             android:textColor="#2E3192"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,10 +174,11 @@
             android:hint=""
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintEnd_toStartOf="@+id/etPickUpTimeForm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <EditText
 
@@ -157,9 +191,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/textViewPickupDateForm"
-            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvpickupDTLabelForm"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tvPickupLocationLabelForm"
@@ -167,7 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
             android:layout_marginTop="7dp"
-            android:text="@string/pickupLocationLabel"
+            android:text="@string/after_servicing_pick_up_location_Form"
             android:textColor="#2E3192"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -180,13 +215,15 @@
             android:layout_height="43dp"
             android:layout_marginStart="31dp"
             android:layout_marginTop="9dp"
-            android:editable="false"
             android:background="@drawable/textview_border"
-            android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:editable="false"
+            android:paddingStart="15dp"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
 
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabelForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewServiceDetailsForm"
@@ -199,9 +236,11 @@
             android:hint=""
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvServiceDetailLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvServiceDetailLabelForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/tvAppointmentStatusLabelForm"
@@ -227,9 +266,11 @@
             android:hint=""
             android:inputType="textPersonName"
             android:paddingStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabelForm" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAppointmentStatusLabelForm"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textViewStatusForm"
@@ -247,11 +288,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
             android:layout_marginTop="7dp"
-            android:text="@string/dropOffLocLabel"
+            android:text="@string/appointment_location_Form"
             android:textColor="#2E3192"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDropOffDateForm" />
+
 
         <Button
             android:id="@+id/buttonUpdateSecond"
@@ -264,7 +306,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatusForm" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAppointmentStatusForm"
+            tools:ignore="TouchTargetSizeCheck" />
+
 
 
         <!--        <Button-->

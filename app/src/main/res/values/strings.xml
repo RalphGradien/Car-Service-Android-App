@@ -81,6 +81,20 @@
     <string name="generateReportBtnTxt">Generate Report</string>
     <string name="bttn">HOME</string>
     <string name="noAppointmentMessage">YOU DON\'T HAVE ANY APPOINTMENT YET</string>
+    <string name="appointmentLabel">Appointment Date and Time</string>
+    <string name="locationValue">Location</string>
+    <string name="afterServicingDTLabel">Date and Time of After-Servicing Pickup</string>
+    <string name="afterServicingDTLabel2">Date and Time of After-Servicing Pickup</string>
+    <string name="date_time_of_after_servicing_pickup">Date/Time of After-Servicing PIckup</string>
+    <string name="date_time_of_appointment">Date/Time of Appointment</string>
+    <string name="after_servicing_pickup_location">After-Servicing Pickup Location</string>
+    <string name="appointment_location">Appointment Location</string>
+    <string name="appointment_type">Appointment Type</string>
+    <string name="date_time_of_appointment2">Date/Time of Appointment</string>
+    <string name="appointment_location_Form">Appointment Location</string>
+    <string name="after_servicing_pick_up_location">After-Servicing Pick-up Location</string>
+    <string name="date_time_of_after_servicing_pick_up">Date/Time of After-Servicing Pick-up</string>
+    <string name="after_servicing_pick_up_location_Form">After-Servicing Pick-up Location</string>
     <string-array name="filter_options">
         <item>Filters</item>
         <item>All</item>

@@ -1,5 +1,9 @@
 package com.example.carserviceandroidapp;
 
+//import static android.content.ContentValues.TAG;
+
+import static android.service.controls.ControlsProviderService.TAG;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +18,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.KeyListener;
 import android.text.method.TextKeyListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -42,6 +47,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Customer_EditAppointment_Form extends AppCompatActivity {
     DBHelper dbh = new DBHelper(this);
+    private static final String TAG = "RemindEmail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +65,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
         EditText etPUTimeForm = (EditText)findViewById(R.id.etPickUpTimeForm);
         TextView tvAppStatusDownForm = (TextView) findViewById(R.id.editTextAppointmentStatusForm);
         EditText etPULocForm = (EditText) findViewById(R.id.tvPickupLocationForm);
+        TextView tvAppType = (TextView) findViewById(R.id.tvAppointTypeForm);
 //
         int[] appIdArr = new int[1];
         int appId=0;
@@ -76,6 +83,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             serviceProviderName = intent.getStringExtra("ServiceProviderName");
             String serviceProviderAddress = intent.getStringExtra("SPAddress");
             String appointmentStatus = intent.getStringExtra("AppStatus");
+            String appType = intent.getStringExtra("AppType");
             String[] dropoffDateTime = intent.getStringExtra("DropoffD").split(" ");
             String dropOffDate = dropoffDateTime[0];
             String droffOffTime = dropoffDateTime[1]+" "+dropoffDateTime[2];
@@ -102,6 +110,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             spEmail = intent.getStringExtra("SPEmail");
 
 
+
             tvStatusForm.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
@@ -121,6 +130,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
             tvSPCellDispForm.setText(spPhone);
             etDODateForm.setText(dropOffDate);
             etDOTimeForm.setText(droffOffTime);
+            tvAppType.setText(appType);
 
             etDOLocForm.setText(dropoffLoc);
             String newDOLoc = "";
@@ -232,7 +242,7 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
                                 selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                                 // Do something with the selected date
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
                                 String selectedDateAsString = dateFormat.format(selectedDate.getTime());
                                 etPUDateForm.setText(selectedDateAsString);
                                 newPUDateTimeArray[0] = selectedDateAsString;
@@ -387,68 +397,62 @@ public class Customer_EditAppointment_Form extends AppCompatActivity {
 
                 doDateTime = doDate+" "+doTime;
 
-               boolean isUpdated = dbh.updateAppointment(appIdArr[0],doDateTime,doLoc,puDateTime,puLoc,statusDown);
+
+                boolean isUpdated = dbh.updateAppointment(appIdArr[0],doDateTime,doLoc,puDateTime,puLoc,statusDown);
 
                 if(isUpdated){
 
-                    try {
-                        String stringSenderEmail = "garkmobileapp@gmail.com";
-                        String stringReceiverEmail = spEmailArr[0];
-                        String stringPasswordSenderEmail = "fpaozvcdwjnosccy";
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String stringReceiverEmail = spEmailArr[0];
+                            String host = "smtp.mail.yahoo.com";
+                            String port = "587";
+                            String username = "thienphuocufo@yahoo.com.vn";
+                            String password = "wnvqewwhprkhwrqd";
 
-                        String stringHost = "smtp.gmail.com";
+                            Properties props = new Properties();
+                            props.put("mail.smtp.host", host);
+                            props.put("mail.smtp.port", port);
+                            props.put("mail.smtp.auth", "true");
+                            props.put("mail.smtp.starttls.enable", "true");
 
-                        Properties properties = System.getProperties();
+                            Session session = Session.getInstance(props,
+                                    new javax.mail.Authenticator() {
+                                        protected PasswordAuthentication getPasswordAuthentication() {
+                                            return new PasswordAuthentication(username, password);
+                                        }
+                                    });
+                            try {
+                                Message message = new MimeMessage(session);
+                                message.setFrom(new InternetAddress(username));
+                                message.setRecipients(Message.RecipientType.TO,
+                                        InternetAddress.parse(stringReceiverEmail));
+                                message.setSubject("Appointment Update");
+                                message.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that there are changes to Appointment ID: "+appIdArr[0]+". Check GARK to view the changes"+
+                                        ". \n\n Cheers!\nGARK");
 
-                        properties.put("mail.smtp.host", stringHost);
-                        properties.put("mail.smtp.port", "465");
-                        properties.put("mail.smtp.ssl.enable", "true");
-                        properties.put("mail.smtp.auth", "true");
 
-                        javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
-                            @Override
-                            protected PasswordAuthentication getPasswordAuthentication() {
-                                return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                                Transport.send(message);
+                                Log.i(TAG, "Email sent successfully");
+                            } catch (MessagingException e) {
+                                Log.e(TAG, "Email sending failed: " + e.getMessage());
                             }
-                        });
-                        MimeMessage mimeMessage = new MimeMessage(session);
-                        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-
-                        mimeMessage.setSubject("Subject: Android App email");
-                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that there are changes to Appointment ID: "+appIdArr[0]+". Check GARK to view the changes"+
-                                    ". \n\n Cheers!\nProgrammer World");
+                        }
+                    }).start();
 
 
-                        Thread thread = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Transport.send(mimeMessage);
-                                } catch (MessagingException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-                        thread.start();
-
-                    } catch (AddressException e) {
-                        e.printStackTrace();
-                    } catch (MessagingException e) {
-                        e.printStackTrace();
-                    }
                     Toast.makeText(Customer_EditAppointment_Form.this, "Record Updated", Toast.LENGTH_SHORT).show();
-
                     startActivity(new Intent(Customer_EditAppointment_Form.this, PlainActivity.class));
 
-
-                   // startActivity(new Intent(Customer_EditAppointment_Form.this,Customer_AppointmentsView.class));
                 }else{
                     Toast.makeText(Customer_EditAppointment_Form.this, "Record Not Updated", Toast.LENGTH_SHORT).show();
                 }
             }
+
+
         });
+
     }
-
-
 
 }
