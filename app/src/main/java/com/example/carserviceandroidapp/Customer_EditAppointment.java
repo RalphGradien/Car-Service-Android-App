@@ -50,6 +50,9 @@ public class Customer_EditAppointment extends AppCompatActivity {
         String[] pickUpDateTimeArr = new String[1];
         String pickupD = "";
 
+        String[] appTypeArr = new String[1];
+        String appType = "";
+
 
         TextView textViewSPName = (TextView) findViewById(R.id.textViewSPNameDisplay);
         TextView textViewSPAddress = (TextView) findViewById(R.id.textViewSPAddress);
@@ -77,7 +80,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
             String serviceDetails = intent.getStringExtra("ServiceDet");
             String spPhone = intent.getStringExtra("SPPhone");
             spEmail = intent.getStringExtra("SPEmail");
-            String appType = intent.getStringExtra("AppType");
+            appType = intent.getStringExtra("AppType");
 
             textViewSPName.setText(serviceProviderName);
             textViewSPAddress.setText(serviceProviderAddress);
@@ -135,6 +138,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
         spNameArr[0]= serviceProviderName;
         dropOffDateTimeArr[0]= dropoffDate;
         pickUpDateTimeArr[0]= pickupD;
+        appTypeArr[0] = appType;
 
         Button btnCancelApp = (Button) findViewById(R.id.buttonCancel);
         btnCancelApp.setOnClickListener(new View.OnClickListener() {
@@ -242,7 +246,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                         props.put("mail.smtp.starttls.enable", "true");
 
                         Session session = Session.getInstance(props,
-                                new javax.mail.Authenticator() {
+                                new Authenticator() {
                                     protected PasswordAuthentication getPasswordAuthentication() {
                                         return new PasswordAuthentication(username, password);
                                     }
@@ -255,11 +259,11 @@ public class Customer_EditAppointment extends AppCompatActivity {
                             message.setSubject("Appointment Reminder");
 
                             if(textViewPickupDT.getText().toString().replace(" ","").isEmpty()){
-                                message.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our drop-off appointment on "+dropOffDateTimeArr[0]+
-                                ". \n\n Cheers!\nCustomer");
+                                message.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of the "+appTypeArr[0] +" appointment set on "+dropOffDateTimeArr[0]+
+                                " under Appointment ID "+appIDArr[0]+". "+"Check your GARK account for details. \n\n Cheers!\nGARK");
                             }else{
-                                message.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our pickup appointment on "+pickUpDateTimeArr[0]+
-                                ". \n\n Cheers!\nGARK");
+                                message.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our after-servicing pickup appointment on "+pickUpDateTimeArr[0]+
+                                " under Appointment ID "+appIDArr[0]+". "+"Check your GARK account for details. \n\n Cheers!\nGARK");
                                  }
 
                             Transport.send(message);
@@ -269,62 +273,7 @@ public class Customer_EditAppointment extends AppCompatActivity {
                         }
                     }
                 }).start();
-
-
-
-                //                Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
-//                try {
-//                    String stringSenderEmail = "thienphuocufo@yahoo.com.vn";
-//                    String stringReceiverEmail = spEmailArr[0];
-//                    String stringPasswordSenderEmail = "wnvqewwhprkhwrqd";
-//
-//                    String stringHost = "smtp.mail.yahoo.com";
-//
-//                   // Properties properties = System.getProperties();
-//                    Properties properties = new Properties();
-//
-//                    properties.put("mail.smtp.host", stringHost);
-//                    properties.put("mail.smtp.port", "587");
-//                    properties.put("mail.smtp.starttls.enable", "true");
-//                    properties.put("mail.smtp.auth", "true");
-//
-//                    javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
-//                        @Override
-//                        protected PasswordAuthentication getPasswordAuthentication() {
-//                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-//                        }
-//                    });
-//                    MimeMessage mimeMessage = new MimeMessage(session);
-//                    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-//
-//                    mimeMessage.setSubject("Subject: Android App email");
-//                    if(textViewPickupDT.getText().toString().replace(" ","").isEmpty()){
-//                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our drop-off appointment on "+dropOffDateTimeArr[0]+
-//                                ". \n\n Cheers!\nCustomer");
-//                    }else{
-//                        mimeMessage.setText("Hello "+spNameArr[0]+", \n\nThis a reminder of our pickup appointment on "+pickUpDateTimeArr[0]+
-//                                ". \n\n Cheers!\nProgrammer World");
-//                    }
-//
-//
-//                    Thread thread = new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            try {
-//                                Transport.send(mimeMessage);
-//                            } catch (MessagingException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    });
-//                    thread.start();
-//
-//                } catch (AddressException e) {
-//                    e.printStackTrace();
-//                } catch (MessagingException e) {
-//                    e.printStackTrace();
-//                }
-
+                Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
 
             }
         });

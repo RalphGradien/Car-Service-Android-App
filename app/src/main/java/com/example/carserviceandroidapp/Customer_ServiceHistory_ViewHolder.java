@@ -11,7 +11,7 @@ public class Customer_ServiceHistory_ViewHolder extends RecyclerView.ViewHolder 
     TextView tvhistappointmentIDLabel,tvhistappointmentIDInt, tvhistbookedServiceProviderName,
             tvhistserviceAvailed, tvhistbookedServiceProviderAddress, tvhistbookingStatus,
             tvhistdropofflabel, tvhistdropoffAppointmentDate, tvhistcustomDropOffTime,
-            tvhistpickuplabel, tvhistpickupAppointmentDate, tvhistcustomPickupTime;
+            tvhistpickuplabel, tvhistpickupAppointmentDate, tvhistcustomPickupTime, tvhistcustomAppointmentType;
 
     public Customer_ServiceHistory_ViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -27,5 +27,6 @@ public class Customer_ServiceHistory_ViewHolder extends RecyclerView.ViewHolder 
         tvhistpickuplabel = itemView.findViewById(R.id.histpickuplabel);
         tvhistpickupAppointmentDate = itemView.findViewById(R.id.histpickupAppointmentDate);
        // tvhistcustomPickupTime = itemView.findViewById(R.id.histcustomPickupTime);
+        tvhistcustomAppointmentType = itemView.findViewById(R.id.histserviceAppointType);
     }
 }

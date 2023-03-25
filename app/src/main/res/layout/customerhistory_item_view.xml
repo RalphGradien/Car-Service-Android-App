@@ -28,6 +28,7 @@
         android:layout_below="@+id/histappointmentIDLabel"
         android:layout_marginLeft="5dp"
         android:text="Canadian Tire"
+        android:textStyle="bold"
         android:textColor="#707477" />
 
     <TextView
@@ -52,12 +53,34 @@
         android:textColor="#707477" />
 
     <TextView
+        android:id="@+id/histbookedAppointmentTypeLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_marginLeft="5dp"
+        android:text="Appointment Type"
+        android:textColor="#707477"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/histserviceAppointType"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_toEndOf="@+id/histbookedServiceProviderName"
+        android:text="Pickup"
+        android:textAlignment="textEnd"
+        android:layout_marginRight="20dp"
+        android:textColor="#707477" />
+
+
+    <TextView
         android:id="@+id/histbookingStatus"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/histbookedServiceProviderName"
         android:layout_toEndOf="@+id/histbookedServiceProviderAddress"
-        android:text="Ongoing"
+        android:text=""
         android:textAlignment="center"
         android:layout_marginRight="20dp"
         android:textColor="@android:color/holo_orange_light" />
@@ -65,45 +88,47 @@
 
     <TextView
         android:id="@+id/histdropofflabel"
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Drop-Off "
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:text="Date/Time of Appointment"
+        android:layout_below="@+id/histserviceAppointType"
         android:textColor="#707477"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/histdropoffAppointmentDate"
-        android:layout_width="250dp"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/histbookedAppointmentTypeLabel"
         android:layout_marginStart="-2dp"
-        android:layout_below="@+id/histbookedServiceProviderAddress"
+        android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/histdropofflabel"
         android:text="2022-04-14"
+        android:textAlignment="textEnd"
         android:textColor="#65CF72" />
-
 
     <TextView
         android:id="@+id/histpickuplabel"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Pickup "
+        android:text="Date/Time of After-Servicing Pickup "
         android:layout_below="@+id/histdropofflabel"
         android:textColor="#707477"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/histpickupAppointmentDate"
-        android:layout_width="200dp"
+        android:layout_width="188dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-2dp"
         android:layout_below="@+id/histdropoffAppointmentDate"
+        android:layout_marginStart="-2dp"
+        android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/histdropofflabel"
         android:text="2022-05-10"
+        android:textAlignment="textEnd"
         android:textColor="#65CF72" />
-
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -78,6 +78,7 @@ public class Customer_ServiceHistoryView extends Fragment {
                         String dropOffLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
                         String pickupDT = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
                         String pickupLoc = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpLocation"));
+                        String appType = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentType"));
 //
                         if (cursorAppDetail.getCount() > 0) {
                             cursorAppDetail.moveToPosition(-1);
@@ -103,7 +104,7 @@ public class Customer_ServiceHistoryView extends Fragment {
                                 }
                             }
                         }
-                        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT, "", pickupDT, ""));
+                        customer_serviceHistory_itemsList.add(new Customer_ServiceHistory_Items(appID, spName, serviceAvailed, spAddress, appStatus, dropOffDT, "", pickupDT, "",appType));
 
                     }
                 }

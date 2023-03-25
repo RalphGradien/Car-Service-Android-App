@@ -31,6 +31,7 @@
         android:layout_below="@+id/histappointmentIDLabel"
         android:layout_marginLeft="5dp"
         android:text="Canadian Tire"
+        android:textStyle="bold"
         android:textColor="#707477" />
 
     <TextView

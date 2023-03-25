@@ -37,6 +37,7 @@ public class Customer_ServiceHistory_Adapter extends RecyclerView.Adapter<Custom
         //holder.tvhistcustomDropOffTime.setText(customer_serviceHistory_items.get(position).getHistcustomDropOffTime());
         holder.tvhistpickupAppointmentDate.setText(customer_serviceHistory_items.get(position).getHistpickupAppointmentDate());
        // holder.tvhistcustomPickupTime.setText(customer_serviceHistory_items.get(position).getHistcustomPickupTime());
+        holder.tvhistcustomAppointmentType.setText(customer_serviceHistory_items.get(position).getHistcustomAppType());
 
         if (customer_serviceHistory_items.get(position).getHistbookingStatus().equals("Ongoing")) {
             int chosenColor = Color.rgb(247, 201, 16);

@@ -10,12 +10,13 @@ public class Customer_ServiceHistory_Items {
     String histcustomDropOffTime;
     String histpickupAppointmentDate;
     String histcustomPickupTime;
+    String histcustomAppType;
 
     public Customer_ServiceHistory_Items(int histappointmentIDInt, String histbookedServiceProviderName,
                                          String histserviceAvailed, String histbookedServiceProviderAddress,
                                          String histbookingStatus, String histdropoffAppointmentDate,
                                          String histcustomDropOffTime, String histpickupAppointmentDate,
-                                         String histcustomPickupTime) {
+                                         String histcustomPickupTime, String histcustomAppType) {
         this.histappointmentIDInt = histappointmentIDInt;
         this.histbookedServiceProviderName = histbookedServiceProviderName;
         this.histserviceAvailed = histserviceAvailed;
@@ -25,6 +26,15 @@ public class Customer_ServiceHistory_Items {
         this.histcustomDropOffTime = histcustomDropOffTime;
         this.histpickupAppointmentDate = histpickupAppointmentDate;
         this.histcustomPickupTime = histcustomPickupTime;
+        this.histcustomAppType = histcustomAppType;
+    }
+
+    public String getHistcustomAppType() {
+        return histcustomAppType;
+    }
+
+    public void setHistcustomAppType(String histcustomAppType) {
+        this.histcustomAppType = histcustomAppType;
     }
 
     public int getHistappointmentIDInt() {
