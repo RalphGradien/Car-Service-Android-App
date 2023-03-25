@@ -55,9 +55,8 @@ public class CustomerEditProfile extends AppCompatActivity {
         etContact = editTxtMobile;
 
         userID= Customer.CustomerID;
-       // userID= 2;
 
-        displaydata();
+        displaydata(); // display all the information of the customer
         txtCustName.setText(username);
         editTxtUserName.setText(username);
         editTxtEmail.setText(email);
@@ -75,6 +74,7 @@ public class CustomerEditProfile extends AppCompatActivity {
             }
 
 
+            //method to show the confirmation dialog to delete an account
             private void ShowDialogBox (){
                 final AlertDialog.Builder alert = new AlertDialog.Builder(CustomerEditProfile.this);
                 View mView = getLayoutInflater().inflate(R.layout.confirmation_dialog, null);
@@ -111,6 +111,7 @@ public class CustomerEditProfile extends AppCompatActivity {
                 alertDialog.show();
             }
 
+            //method to show if an account has been successfully deleted
             private void showDelDialog()
             {
                 final AlertDialog.Builder alert = new AlertDialog.Builder(CustomerEditProfile.this);
@@ -123,8 +124,7 @@ public class CustomerEditProfile extends AppCompatActivity {
 
 
                 mView.findViewById(R.id.okBTN).setOnClickListener(v -> {
-                   // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CustomerEditProfile.this, MainActivity.class);
+                    Intent intent = new Intent(CustomerEditProfile.this, LogIn.class);
                     startActivity(intent);
                     alertDialog.dismiss();
                 });
@@ -163,7 +163,7 @@ public class CustomerEditProfile extends AppCompatActivity {
                 }
             }
 
-
+    //method to show confirmation if update is successful
             private void showDialogBox2()
             {
                 final AlertDialog.Builder alert = new AlertDialog.Builder(CustomerEditProfile.this);
@@ -183,7 +183,7 @@ public class CustomerEditProfile extends AppCompatActivity {
 
                 mView.findViewById(R.id.okBTN).setOnClickListener(v -> {
                     // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CustomerEditProfile.this, MainActivity.class);
+                    Intent intent = new Intent(CustomerEditProfile.this, CustomerMainMenu.class);
                     startActivity(intent);
                     alertDialog.dismiss();
                 });
@@ -198,6 +198,7 @@ public class CustomerEditProfile extends AppCompatActivity {
         });
     }
 
+    //validation for all the fields information
     private Boolean validateInfo(String cName, String pWord, String confPW,String cEmail, String cAddress, String cContact ){
 
         if(cName.length()==0){
@@ -252,6 +253,7 @@ public class CustomerEditProfile extends AppCompatActivity {
         }
     }
 
+    //email validation
     private boolean validateEmail(String email){
 
         boolean result=false;
@@ -274,6 +276,7 @@ public class CustomerEditProfile extends AppCompatActivity {
         return result;
     }
 
+    //password validation
     public boolean comparedPassword(String cPW, String confPW){
         boolean passwordOk=false;
         if(cPW.equals(confPW)){
@@ -283,6 +286,7 @@ public class CustomerEditProfile extends AppCompatActivity {
         }
     }
 
+    //display all the data in the fields information
     private void displaydata()
     {
         Cursor cursor = DB.getCustomerData();

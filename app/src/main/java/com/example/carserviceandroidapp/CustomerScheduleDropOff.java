@@ -72,7 +72,6 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         }
 
         userID = Customer.CustomerID;
-        //userID = 3;
         displayData();
         displaydata2();
         displayLocation();
@@ -107,6 +106,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, days);
         SpinDate.setAdapter(adapter3);
+
         // Get the selected day from the day spinner
         String selectedDay = SpinDate.getSelectedItem().toString();
 
@@ -125,7 +125,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         btnCSDOConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            //method of confirmation of booking an appointment
              showDialog();
             }
 
@@ -140,7 +140,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 displayData3();
                 DropoffTimeDate = SpinDate.getSelectedItem().toString() + " " + SpinHours.getSelectedItem().toString() ;
                 ServiceList = "SP_" + spID + "_" + sdID ;
-                //DropoffLocation = SpinServiceLocation.getSelectedItem().toString();
+
                 if(SpinServiceLocation.getSelectedItem().toString().equals("Drop Off")) { DropoffLocation = fullLoc;}
                 else {DropoffLocation = custLoc;}
                 appointmentType = SpinServiceLocation.getSelectedItem().toString();
@@ -153,13 +153,15 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 sendEmail();
 
                 mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
-                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CustomerScheduleDropOff.this, MainActivity.class);
+
+                    Intent intent = new Intent(CustomerScheduleDropOff.this, PlainActivity.class);
                     startActivity(intent);
                     alertDialog.dismiss();
                 });
                 alertDialog.show();
             }
+
+            //method for sending email booking confirmation
             private  void sendEmail()
             {
                 new Thread(new Runnable() {
@@ -187,7 +189,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                             message.setFrom(new InternetAddress(username));
                             message.setRecipients(Message.RecipientType.TO,
                                     InternetAddress.parse("arifinw@gmail.com"));
-                            message.setSubject("Subject: Booking Appointment Details");
+                            message.setSubject("Subject: Booking Appointment Confirmation");
                             displaydata4();
                             message.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
                                     "\n\nService Booked   :   " + ServiceDetail +
@@ -219,6 +221,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the latest appointment ID on the appointment table
     private void getAptID()
     {
         Cursor cursor = DB.getAppointmentID();
@@ -239,6 +242,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the list of service providers
     private void displayData()
     {
         Cursor cursor = DB.getServiceProviderList();
@@ -261,6 +265,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the service details from the particular service provider
     private void displaydata2()
     {
         Cursor cursor = DB.getServiceDetails();
@@ -284,6 +289,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the customer location
     private void displayLocation()
     {
         Cursor cursor = DB.getDropOffLocationCust();
@@ -307,6 +313,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the service provider location
     private void displayLocation2()
     {
         Cursor cursor = DB.getDropOffLocationSP();
@@ -331,7 +338,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
-
+//method to get the service ID from the service details
     public void displayData3()
     {
         Cursor cursor = DB.getServiceDetails();
@@ -355,6 +362,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
 
     }
 
+    //method to get the customer name
     private void displaydata4()
     {
         Cursor cursor = DB.getCustomerData();
