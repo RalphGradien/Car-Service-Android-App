@@ -56,7 +56,7 @@ public class ServiceHistory extends Fragment {
     //D/AndroidRuntime: Shutting down VM
     //E/AndroidRuntime: FATAL EXCEPTION: main
     private static final String QUERY_COMPLETED_APPOINTMENTS =
-            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID,  A.AppointmentType, SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
                     "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
@@ -65,7 +65,7 @@ public class ServiceHistory extends Fragment {
                     "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Completed'";
 
     private static final String QUERY_CANCELLED_APPOINTMENTS =
-            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, A.AppointmentType,SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
                     "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
@@ -156,9 +156,10 @@ public class ServiceHistory extends Fragment {
                 String pickUpReadyDate = cursor.getString(cursor.getColumnIndexOrThrow("PickUpReadyDate"));
                 String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
                 String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
                 String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, serviceName));
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, serviceName, appointmentType));
             }
         }
 
@@ -169,9 +170,10 @@ public class ServiceHistory extends Fragment {
                 String customerEmail = cursor.getString(cursor.getColumnIndexOrThrow("email"));
                 String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
                 String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
                 String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, serviceName , dropOffTimeDate));
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, serviceName , dropOffTimeDate, appointmentType));
             }
         }
 
