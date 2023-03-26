@@ -94,12 +94,10 @@ public class Customer_Registration extends AppCompatActivity {
         Cursor cursor = dbh.getCustomerData();
         try{
             if(cursor.getCount() > 0){
-             //  cursor.moveToPosition(-1);
+                cursor.moveToPosition(-1);
                 while(cursor.moveToNext()){
-                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).equals(email)){
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).trim().equals(email)){
                         result = true;
-                    }else{
-                        result =   false;
                     }
                 }
             }
