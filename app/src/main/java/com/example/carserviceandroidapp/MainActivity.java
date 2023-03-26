@@ -121,12 +121,27 @@ public class MainActivity extends AppCompatActivity {
                 //Insert Appointment Data
                 DB.insertAppointment(1, 1,"", "", "", "03/17/2023 01:00 PM",
                         "123 Main St", "03/15/2023", "", "Pick Up", "Ongoing");
+                DB.insertAppointment(2, 1,"", "", "", "03/17/2023 01:00 PM",
+                        "Denman St", "03/15/2023", "", "Pick Up", "Completed");
+
+                DB.insertAppointment(3, 1,"03/20/2023 02:30 PM", "Abbosford, Surrey, BC, V43G67 ", "03/19/2023","03/16/2023 11:00 AM",
+                        "Davie St", "03/15/2023", "", "Drop Off", "Completed");
+                DB.insertAppointment(4, 1,"01/13/2023 03:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "01/11/2023", "01/10/2023 11:00 AM",
+                        "Commercial street, Vancouver, BC, V6H 3K4", "01/06/2023", "", "Drop Off", "Completed");
+
+                DB.insertAppointment(5, 1,"02/20/2023 02:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "02/18/2023", "02/17/2023 11:00 AM",
+                        "Robson street, Vancouver, BC, V6H 3K4", "02/15/2023", "", "Pick Up", "Completed");
+
+                DB.insertAppointment(6, 1,"","" , "", "01/17/2023 11:00 AM",
+                        "456 St", "01/15/2023", "01/18/2023", "Drop Off", "Cancelled");
+                DB.insertAppointment(7, 1,"","" , "", "01/17/2023 11:00 AM",
+                        "Elbow St", "01/15/2023", "01/18/2023", "Drop Off", "Cancelled");
 
                 DB.insertAppointment(1, 2,"03/20/2023 02:30 PM", "Abbosford, Surrey, BC, V43G67 ", "03/19/2023","03/16/2023 11:00 AM",
-                        "123 Main St", "03/15/2023", "", "Drop Off", "Completed");
+                        "Georgia St", "03/15/2023", "", "Drop Off", "Completed");
 
                 DB.insertAppointment(1, 4,"01/13/2023 03:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "01/11/2023", "01/10/2023 11:00 AM",
-                        "Granville street, Vancouver, BC, V6H 3K4", "01/06/2023", "", "Drop Off", "Completed");
+                        "Lonsdale Avenue, Vancouver, BC, V6H 3K4", "01/06/2023", "", "Drop Off", "Completed");
 
                 DB.insertAppointment(1, 4,"02/20/2023 02:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "02/18/2023", "02/17/2023 11:00 AM",
                         "Granville street, Vancouver, BC, V6H 3K4", "02/15/2023", "", "Pick Up", "Completed");

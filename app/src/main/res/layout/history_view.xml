@@ -77,6 +77,14 @@
         android:paddingHorizontal="6dp"
         android:textColor="@color/white"
         android:background="@drawable/green_rounded_rectangle"/>
+    <TextView
+        android:id="@+id/deliveryType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@id/email"
+        android:text="Drop Off/Pickup"
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:layout_marginLeft="10dp"

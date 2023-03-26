@@ -4,6 +4,7 @@ package com.example.carserviceandroidapp;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -32,6 +34,7 @@ import androidx.core.app.ActivityCompat;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +56,7 @@ public class ServiceHistory extends Fragment {
     //D/AndroidRuntime: Shutting down VM
     //E/AndroidRuntime: FATAL EXCEPTION: main
     private static final String QUERY_COMPLETED_APPOINTMENTS =
-            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID,  A.AppointmentType, SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
                     "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
@@ -62,7 +65,7 @@ public class ServiceHistory extends Fragment {
                     "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Completed'";
 
     private static final String QUERY_CANCELLED_APPOINTMENTS =
-            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, SD.ServiceName " +
+            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, A.AppointmentType,SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
                     "INNER JOIN APPOINTMENT_DETAIL AD ON A.AppointmentID = AD.AppointmentID " +
@@ -153,9 +156,10 @@ public class ServiceHistory extends Fragment {
                 String pickUpReadyDate = cursor.getString(cursor.getColumnIndexOrThrow("PickUpReadyDate"));
                 String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
                 String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
                 String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, serviceName));
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, pickUpDateTime, pickUpReadyDate, dropOffTimeDate, appointmentStatus, serviceName, appointmentType));
             }
         }
 
@@ -166,9 +170,10 @@ public class ServiceHistory extends Fragment {
                 String customerEmail = cursor.getString(cursor.getColumnIndexOrThrow("email"));
                 String dropOffTimeDate = cursor.getString(cursor.getColumnIndexOrThrow("DropOffTimeDate"));
                 String appointmentStatus = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentStatus"));
+                String appointmentType = cursor.getString(cursor.getColumnIndexOrThrow("AppointmentType"));
                 String serviceName = cursor.getString(cursor.getColumnIndexOrThrow("ServiceName"));
 
-                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, serviceName , dropOffTimeDate));
+                historyItems.add(new ServiceHistoryItems(customerName, customerNumber, customerEmail, appointmentStatus, serviceName , dropOffTimeDate, appointmentType));
             }
         }
 
@@ -181,7 +186,7 @@ public class ServiceHistory extends Fragment {
         // Define the name of the PDF file
         String pdfFileName = "Service_Report-" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()) + ".pdf";
 
-// Get a directory where the PDF will be saved
+        // Get a directory where the PDF will be saved
         File pdfFileDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/" + pdfFileName);
 
         try {
@@ -211,14 +216,14 @@ public class ServiceHistory extends Fragment {
             // Load the logo drawable
             Drawable logoDrawable = getResources().getDrawable(R.drawable.verticallogo);
 
-// Convert the drawable to a bitmap
+            // Convert the drawable to a bitmap
             Bitmap logoBitmap = ((BitmapDrawable) logoDrawable).getBitmap();
 
-// Define the desired width and height of the logo
+            // Define the desired width and height of the logo
             int desiredWidth = 100;
             int desiredHeight = 100;
 
-// Create a scaled bitmap of the logo
+            // Create a scaled bitmap of the logo
             Bitmap scaledLogoBitmap = Bitmap.createScaledBitmap(logoBitmap, desiredWidth, desiredHeight, true);
 
             // Resize the logo drawable to the calculated width and height
@@ -244,6 +249,16 @@ public class ServiceHistory extends Fragment {
             // Display a success message
             Toast.makeText(getContext(), "PDF created successfully", Toast.LENGTH_LONG).show();
 
+            // Open the PDF in a PDF viewer app
+            Uri contentUri = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getPackageName() + ".fileprovider", pdfFileDirectory);
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(contentUri, "application/pdf");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
         } catch (IOException e) {
             e.printStackTrace();
             // Display an error message
@@ -251,13 +266,7 @@ public class ServiceHistory extends Fragment {
         }
 
     }
-    public static Bitmap getRecyclerViewBitmap(RecyclerView view) {
-        RecyclerView.Adapter adapter = view.getAdapter();
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        view.draw(canvas);
-        return bitmap;
-    }
+
 
 
 }
