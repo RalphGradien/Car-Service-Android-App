@@ -1,8 +1,8 @@
 package com.example.carserviceandroidapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -35,15 +35,12 @@ public class Customer_Registration extends AppCompatActivity {
         etAddress = (EditText) findViewById(R.id.ProviderAddress);
         etContact = (EditText) findViewById(R.id.ProviderContact);
 
-
-
         Button buttonRegister = (Button) findViewById(R.id.bthCustomerRegister);
 
             buttonRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                Intent intent = new Intent(Customer_Registration.this, Customer_AppointmentsView.class);
-//                startActivity(intent);
+
                     String cName = etName.getText().toString();
                     String cPW = etPW.getText().toString();
                     String confPW = etConfirmPW.getText().toString();
@@ -59,17 +56,22 @@ public class Customer_Registration extends AppCompatActivity {
                                 customer_account.getcEmail(), customer_account.getcMobile(),
                                 customer_account.getcAddress());
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Customer_Registration.this, R.style.MyDialogStyle);
-                        builder.setTitle("Action Successful")
-                                .setMessage("The action was completed successfully.")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                        startActivity(new Intent(Customer_Registration.this, LogIn.class));
-                                    }
-                                });
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                        final android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(Customer_Registration.this);
+                        View mView = getLayoutInflater().inflate(R.layout.customer_registration_dialogue, null);
+                        alert.setView(mView);
+
+                        final AlertDialog alertDialog = alert.create();
+                        alertDialog.setCancelable(false);
+
+                        mView.findViewById(R.id.okBTNReg).setOnClickListener(view -> {
+                            // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Customer_Registration.this, LogIn.class);
+                            startActivity(intent);
+                            alertDialog.dismiss();
+                        });
+
+                        alertDialog.show();
+
                     } else {
                         if(emailIsValidated==true){
                             Toast.makeText(Customer_Registration.this, "Email is already existing", Toast.LENGTH_LONG).show();
