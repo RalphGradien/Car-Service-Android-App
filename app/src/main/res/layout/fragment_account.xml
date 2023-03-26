@@ -48,24 +48,28 @@
 
     <Button
         android:id="@+id/logOut"
+        style="@style/BlueButton"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="232dp"
-        style="@style/BlueButton"
+        android:layout_marginBottom="100dp"
         android:text="@string/logOutTxt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProfileBtn" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="159dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="135dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="7dp"
         app:layout_constraintBottom_toTopOf="@+id/profileName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/avatar" />
