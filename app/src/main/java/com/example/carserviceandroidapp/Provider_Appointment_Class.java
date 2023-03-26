@@ -3,12 +3,12 @@ package com.example.carserviceandroidapp;
 public class Provider_Appointment_Class {
     int appointmentID;
     String customerName, selectedService, customerAddress, appointmentStatus,
-            dropOffDateTime, pickUpDateTime, pickUpLocation, dropOffLocation, customerContact, customerEmail;
+            dropOffDateTime, pickUpDateTime, pickUpLocation, dropOffLocation, customerContact, customerEmail, appointmentType;
 
     public Provider_Appointment_Class(int appointmentID, String customerName, String customerContact, String customerEmail,
                                       String selectedService, String customerAddress,
                                       String appointmentStatus, String dropOffDateTime,
-                                      String pickUpDateTime, String pickUpLocation, String dropOffLocation) {
+                                      String pickUpDateTime, String pickUpLocation, String dropOffLocation, String appointmentType) {
         this.appointmentID = appointmentID;
         this.customerName = customerName;
         this.customerContact = customerContact;
@@ -20,6 +20,7 @@ public class Provider_Appointment_Class {
         this.pickUpDateTime = pickUpDateTime;
         this.pickUpLocation = pickUpLocation;
         this.dropOffLocation = dropOffLocation;
+        this.appointmentType = appointmentType;
     }
 
     public int getAppointmentID() {
@@ -108,6 +109,14 @@ public class Provider_Appointment_Class {
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+    }
+
+    public String getAppointmentType() {
+        return appointmentType;
+    }
+
+    public void setAppointmentType(String appointmentType) {
+        this.appointmentType = appointmentType;
     }
 
 }

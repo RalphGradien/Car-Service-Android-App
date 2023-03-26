@@ -43,11 +43,12 @@
     <string name="imgDesc" />
     <string name="btnCSDOConfirm">Confirm</string>
     <string name="btnCSDOCancel">Cancel</string>
-    <string name="dropOffLabel">Drop-off Date and Time</string>
-    <string name="dropOffLocLabel">Drop-Off Location</string>
-    <string name="pickupDTLabel">Pickup Date and Time</string>
-    <string name="pickupLocationLabel">Pickup Location</string>
+    <string name="dropOffLabel">Service booked schedule</string>
+    <string name="dropOffLocLabel">Service booked location and Service type</string>
+    <string name="pickupDTLabel">Service done schedule</string>
+    <string name="pickupLocationLabel">Drop-off/Pick-up location and Service type</string>
     <string name="buttonRemind">REMIND</string>
+    <string name="back">back</string>
 
     <string name="hint_ProviderUserName">Provider Name</string>
     <string name="hint_ProviderPassWord">Provider Password</string>

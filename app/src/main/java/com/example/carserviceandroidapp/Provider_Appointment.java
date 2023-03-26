@@ -18,7 +18,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
 
     int serviceDetailID;
     int appointmentID, customerID;
-    String appointmentStatus, dropOffDateTime, dropOffLocation, pickUpDateTime, pickUpLocation;
+    String appointmentStatus, dropOffDateTime, dropOffLocation, pickUpDateTime, pickUpLocation, serviceType;
     String customerName, customerAddress, customerContact, customerEmail, selectedService, serviceListID;
 
     @Override
@@ -68,6 +68,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
                         dropOffLocation = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("DropOffLocation"));
                         pickUpDateTime = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpDateTime"));
                         pickUpLocation = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("PickUpLocation"));
+                        serviceType = cursorAppointment.getString(cursorAppointment.getColumnIndexOrThrow("AppointmentType"));
 //
                         if (cursorAppDetail.getCount() > 0) {
                             cursorAppDetail.moveToPosition(-1);
@@ -94,7 +95,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
                             }
                         }
                         providerAppointmentClass.add(new Provider_Appointment_Class(appointmentID, customerName, customerContact, customerEmail, selectedService, customerAddress,
-                                appointmentStatus, dropOffDateTime, pickUpDateTime, pickUpLocation, dropOffLocation));
+                                appointmentStatus, dropOffDateTime, pickUpDateTime, pickUpLocation, dropOffLocation, serviceType));
                     }
                 }
             }
@@ -114,7 +115,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
     @Override
     public void onItemClick(Provider_Appointment_Class providerAppointmentClass) {
         Intent intent = new Intent(getActivity(), Provider_Edit_Appointment.class);
-        intent.putExtra("AppointmentID", appointmentID);
+        intent.putExtra("AppointmentID", providerAppointmentClass.appointmentID);
         intent.putExtra("CustomerName", providerAppointmentClass.customerName);
         intent.putExtra("CustomerAddress", providerAppointmentClass.customerAddress);
         intent.putExtra("AppointmentStatus", providerAppointmentClass.appointmentStatus);
@@ -125,6 +126,7 @@ public class Provider_Appointment extends Fragment implements ProviderAppointmen
         intent.putExtra("SelectedService", providerAppointmentClass.selectedService);
         intent.putExtra("CustomerContact", providerAppointmentClass.customerContact);
         intent.putExtra("CustomerEmail", providerAppointmentClass.customerEmail);
+        intent.putExtra("AppointmentType", providerAppointmentClass.appointmentType);
         startActivity(intent);
     }
 }
