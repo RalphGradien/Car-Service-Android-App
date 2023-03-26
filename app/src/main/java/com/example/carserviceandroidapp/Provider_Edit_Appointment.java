@@ -34,11 +34,12 @@ import javax.mail.internet.MimeMessage;
 public class Provider_Edit_Appointment extends AppCompatActivity {
 
     String v_customerName, v_customerContact, v_customerEmail, v_dropOffDateTime, v_dropOffLocation, v_pickUpDateTime,
-            v_pickUpLocation, v_selectedServices, v_appointmentStatus;
-    int v_appointmentID;
+            v_pickUpLocation, v_selectedServices, v_appointmentStatus, v_serviceTypeBook, v_serviceTypeDone;
+    int v_appointmentID = 0;
     EditText pickUpDateTime, pickUpLocation;
     private static final String TAG = "RemindEmail";
     DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,8 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
         TextView customerEmail = (TextView) findViewById(R.id.email);
         TextView dropOffDateTime = (TextView) findViewById(R.id.dropOffDateTime);
         TextView dropOffLocation = (TextView) findViewById(R.id.dropOffLocation);
+        TextView serviceTypeBook = (TextView) findViewById(R.id.serviceTypeBook);
+        TextView serviceTypeDone = (TextView) findViewById(R.id.serviceTypeDone);
         pickUpDateTime = findViewById(R.id.pickUpDateTime);
         pickUpLocation = findViewById(R.id.pickUpLocation);
         TextView selectedServices = (TextView) findViewById(R.id.selectedServices);
@@ -61,7 +64,7 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
         Button btnRemind = findViewById(R.id.btnEmail);
 
         if (intent != null) {
-            v_appointmentID = intent.getIntExtra("AppointmentStatus", 0);
+            v_appointmentID = intent.getIntExtra("AppointmentID", 0);
             v_appointmentStatus = intent.getStringExtra("AppointmentStatus");
             v_customerName = intent.getStringExtra("CustomerName");
             v_customerContact = intent.getStringExtra("CustomerContact");
@@ -71,6 +74,9 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             v_pickUpDateTime = intent.getStringExtra("PickupDateTime");
             v_pickUpLocation = intent.getStringExtra("PickUpLocation");
             v_selectedServices = intent.getStringExtra("SelectedService");
+            v_serviceTypeBook = intent.getStringExtra("AppointmentType");
+            v_serviceTypeDone = intent.getStringExtra("AppointmentType");
+
 
             //add to text view
             appointmentStatusHead.setText(v_appointmentStatus);
@@ -83,6 +89,9 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
             pickUpLocation.setText(v_pickUpLocation);
             selectedServices.setText(v_selectedServices);
             appointmentStatusEdit.setText(v_appointmentStatus);
+            serviceTypeBook.setText(v_serviceTypeBook);
+            serviceTypeDone.setText(v_serviceTypeDone);
+
 
             appointmentStatusHead.setTextColor(Color.WHITE);
             GradientDrawable drawable = new GradientDrawable();
@@ -124,16 +133,17 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                                     InternetAddress.parse("ralphgradien01@gmail.com"));
                             message.setSubject("Car Service Remind");
                             message.setText("Dear " + v_customerName + ",\n\n" +
-                            "This is a reminder email about the service you booked at our company. \n\n" +
-                            "Service booked:            " + v_selectedServices + "\n" +
-                            "Drop-off date and time: " + v_dropOffDateTime + "\n" +
-                            "Drop-off location:          " + v_dropOffLocation + "\n" +
-                            "Pick-up date and time:  " + v_pickUpDateTime + "\n" +
-                            "Pick up location:            " + v_pickUpLocation + "\n\n" +
-                            "If you need any further information, please contact us by phone or email.\n\n" +
-                            "Thank you!"
+                                    "This is a reminder email about the service you booked at our company. \n\n" +
+                                    "Service booked              : " + v_selectedServices + "\n" +
+                                    "Service booked schedule: " + v_dropOffDateTime + "\n" +
+                                    "Service booked location  : " + v_dropOffLocation + "\n" +
+                                    "Service type booked       : " + v_serviceTypeBook + "\n" +
+                                    "Service done schedule    : " + v_pickUpDateTime + "\n" +
+                                    "Drop-off/Pick-up location: " + v_pickUpLocation + "\n" +
+                                    "After serviced                : " + v_serviceTypeDone + "\n\n" +
+                                    "If you need any further information, please contact us by phone or email.\n\n" +
+                                    "Thank you!"
                             );
-
                             Transport.send(message);
                             Log.i(TAG, "Email sent successfully");
                         } catch (MessagingException e) {
@@ -141,9 +151,10 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                         }
                     }
                 }).start();
+                Toast.makeText(Provider_Edit_Appointment.this, "Email sent", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
-
 
         //set radio button for Appointment Status change
         appointmentStatusEdit.setOnClickListener(new View.OnClickListener() {
@@ -177,10 +188,10 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
 
                         //set color for the status
                         GradientDrawable drawable = new GradientDrawable();
-                        if(selectedOption.equals("Ongoing")){
-                            drawable.setColor( Color.rgb(247, 201, 16));
-                        }else if(selectedOption.equals("Completed")){
-                            drawable.setColor( Color.GREEN);
+                        if (selectedOption.equals("Ongoing")) {
+                            drawable.setColor(Color.rgb(247, 201, 16));
+                        } else if (selectedOption.equals("Completed")) {
+                            drawable.setColor(Color.GREEN);
                         }
 
                     }
@@ -201,10 +212,11 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                 } else {
                     Toast.makeText(Provider_Edit_Appointment.this, "Update failed", Toast.LENGTH_LONG).show();
                 }
+                finish();
             }
         });
 
-        DBHelper dbh = new DBHelper(this);
+
         int[] appIDArr = new int[1];
         appIDArr[0] = v_appointmentID;
         String[] status = {v_appointmentStatus};
@@ -220,10 +232,10 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // Get the ID of the row to update
                                     int appIdCurrent = appIDArr[0];
-                                    boolean isUpdated = dbh.cancelAppointment(appIdCurrent);
+                                    boolean isUpdated = dbHelper.cancelAppointment(appIdCurrent);
                                     if (isUpdated) {
                                         Toast.makeText(Provider_Edit_Appointment.this, "Successfully Cancelled", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Provider_Edit_Appointment.this, PlainActivity.class));
+                                        startActivity(new Intent(Provider_Edit_Appointment.this, Provider_Appointment.class));
                                     } else {
                                         Toast.makeText(Provider_Edit_Appointment.this, "Failure to Cancel", Toast.LENGTH_SHORT).show();
                                     }
@@ -238,9 +250,11 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    Toast.makeText(Provider_Edit_Appointment.this, "You cannot cancel this Appointment", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Provider_Edit_Appointment.this, "Service in progress, you cannot cancel the appointment", Toast.LENGTH_LONG).show();
                 }
+                finish();
             }
         });
     }
 }
+
