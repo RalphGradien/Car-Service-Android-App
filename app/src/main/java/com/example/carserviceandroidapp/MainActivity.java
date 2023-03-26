@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertServiceList("SP_10_7", 10, 7);
 
                 //Insert Appointment Data
-                DB.insertAppointment(1, 1,"", "", "", "03-17-2023 01:00 PM",
+                DB.insertAppointment(1, 1,"", "", "", "03/17/2023 01:00 PM",
                         "123 Main St", "03/15/2023", "", "Pick Up", "Ongoing");
 
                 DB.insertAppointment(1, 2,"03/20/2023 02:30 PM", "Abbosford, Surrey, BC, V43G67 ", "03/19/2023","03/16/2023 11:00 AM",
@@ -144,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointment(2, 4,"02/19/2023 03:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "02/15/2023", "02/10/2023 11:00 AM",
                         "Granville street, Vancouver, BC, V6H 3K4", "02/05/2023", "", "Drop Off", "Completed");
 
-                DB.insertAppointment(2, 4,"03/25/2023 02:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "03/19/2023", "03/17/2023 11:00 AM",
-                        "Granville street, Vancouver, BC, V6H 3K4", "03/15/2023", "", "Pick Up", "Completed");
+                DB.insertAppointment(1, 4,"03/25/2023 02:30 PM","Granville street, Vancouver, BC, V6H 3K4" , "03/19/2023", "03/17/2023 11:00 AM",
+                        "Granville street, Vancouver, BC, V6H 3K4", "03/15/2023", "", "Pick Up", "Ongoing");
 
                 DB.insertAppointment(2, 5,"","" , "", "01/17/2023 11:00 AM",
                         "123 Main St", "01/15/2023", "01/20/2023", "Drop Off", "Cancelled");

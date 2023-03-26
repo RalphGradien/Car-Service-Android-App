@@ -1,8 +1,8 @@
 package com.example.carserviceandroidapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +14,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -144,91 +149,104 @@ public class Customer_EditAppointment extends AppCompatActivity {
         btnCancelApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            showDialogCancelApp();
+            }
+
+            private void showDialogCancelApp(){
                 if(textViewPickupDT.getText().toString().replace(" ","").isEmpty()){
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Customer_EditAppointment.this, R.style.MyDialogStyle);
-                    builder.setTitle("Cancel An Appointment")
-                            .setMessage("Are you sure you want to cancel this appointment?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // Get the ID of the row to update
-                                   int appIdCurrent = appIDArr[0];
-                                   boolean isUpdated= dbh.cancelAppointment(appIdCurrent);
-                                   if(isUpdated){
-                                       new Thread(new Runnable() {
-                                           @Override
-                                           public void run() {
-                                               String stringReceiverEmail = spEmailArr[0];
-                                               String host = "smtp.mail.yahoo.com";
-                                               String port = "587";
-                                               String username = "thienphuocufo@yahoo.com.vn";
-                                               String password = "wnvqewwhprkhwrqd";
+                    final android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(Customer_EditAppointment.this);
+                    View mView = getLayoutInflater().inflate(R.layout.customer_cancelappointment, null);
+                    alert.setView(mView);
 
-                                               Properties props = new Properties();
-                                               props.put("mail.smtp.host", host);
-                                               props.put("mail.smtp.port", port);
-                                               props.put("mail.smtp.auth", "true");
-                                               props.put("mail.smtp.starttls.enable", "true");
+                    final AlertDialog alertDialog = alert.create();
+                    alertDialog.setCancelable(false);
 
-                                               Session session = Session.getInstance(props,
-                                                       new Authenticator() {
-                                                           protected PasswordAuthentication getPasswordAuthentication() {
-                                                               return new PasswordAuthentication(username, password);
-                                                           }
-                                                       });
-                                               try {
-                                                   Message message = new MimeMessage(session);
-                                                   message.setFrom(new InternetAddress(username));
-                                                   message.setRecipients(Message.RecipientType.TO,
-                                                           InternetAddress.parse(stringReceiverEmail));
-                                                   message.setSubject("APPOINTMENT CANCELLATION MESSAGE");
+                    mView.findViewById(R.id.noButton).setOnClickListener(v -> {
+                        alertDialog.dismiss();
+                    });
 
+                    mView.findViewById(R.id.yesButton).setOnClickListener(v -> {
+                        // Get the ID of the row to update
+                           int appIdCurrent = appIDArr[0];
+                           boolean isUpdated= dbh.cancelAppointment(appIdCurrent);
+                           if(isUpdated){
+                               new Thread(new Runnable() {
+                                   @Override
+                                   public void run() {
+                                       String stringReceiverEmail = spEmailArr[0];
+                                       String host = "smtp.mail.yahoo.com";
+                                       String port = "587";
+                                       String username = "thienphuocufo@yahoo.com.vn";
+                                       String password = "wnvqewwhprkhwrqd";
 
-                                                   message.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that Appointment "+appIDArr[0]+" set on "+dropOffDateTimeArr[0]+
-                                                               " has been cancelled by the Customer.  Check you GARK account for details. \n\n Cheers!\nGARK");
+                                       Properties props = new Properties();
+                                       props.put("mail.smtp.host", host);
+                                       props.put("mail.smtp.port", port);
+                                       props.put("mail.smtp.auth", "true");
+                                       props.put("mail.smtp.starttls.enable", "true");
 
-                                                   Transport.send(message);
-                                                   Log.i(TAG, "Email sent successfully");
-                                               } catch (MessagingException e) {
-                                                   Log.e(TAG, "Email sending failed: " + e.getMessage());
-                                               }
-                                           }
-                                       }).start();
+                                       Session session = Session.getInstance(props,
+                                               new Authenticator() {
+                                                   protected PasswordAuthentication getPasswordAuthentication() {
+                                                       return new PasswordAuthentication(username, password);
+                                                   }
+                                               });
+                                       try {
+                                           Message message = new MimeMessage(session);
+                                           message.setFrom(new InternetAddress(username));
+                                           message.setRecipients(Message.RecipientType.TO,
+                                                   InternetAddress.parse(stringReceiverEmail));
+                                           message.setSubject("APPOINTMENT CANCELLATION MESSAGE");
 
+                                           message.setText("Hello "+spNameArr[0]+", \n\nThis is to inform that Appointment "+appIDArr[0]+" set on "+dropOffDateTimeArr[0]+
+                                                       " has been cancelled by the Customer.  Check you GARK account for details. \n\n Cheers!\nGARK");
 
-                                       Toast.makeText(Customer_EditAppointment.this, "Record Updated", Toast.LENGTH_SHORT).show();
-                                       startActivity(new Intent(Customer_EditAppointment.this,PlainActivity.class));
-                                   }else{
-                                       Toast.makeText(Customer_EditAppointment.this, "Not Updated", Toast.LENGTH_SHORT).show();
+                                           Transport.send(message);
+                                           Log.i(TAG, "Email sent successfully");
+                                       } catch (MessagingException e) {
+                                           Log.e(TAG, "Email sending failed: " + e.getMessage());
+                                       }
                                    }
+                               }).start();
 
-                                    // User clicked the Yes button
-                                    // Do something here, such as cancel the appointment
-                                    dialog.dismiss();
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // User clicked the No button
-                                    // Do nothing, simply close the dialog box
-                                    dialog.dismiss();
-                                }
-                            });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }else {
-                    Toast.makeText(Customer_EditAppointment.this, "You cannot cancel this Appointment", Toast.LENGTH_LONG).show();
+                               Toast.makeText(Customer_EditAppointment.this, "Appointment Cancelled", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(Customer_EditAppointment.this,PlainActivity.class));
+                           }else{
+                               Toast.makeText(Customer_EditAppointment.this, "Unsuccessful Cancellation", Toast.LENGTH_SHORT).show();
+                           }
+                        alertDialog.dismiss();
+
+                    });
+                    alertDialog.show();
+
+                }
+                else{
+                    Toast.makeText(Customer_EditAppointment.this, "You can only update this appointment but not cancel.", Toast.LENGTH_SHORT).show();
                 }
 
             }
+
         });
-
-
 
         Button remindApp = (Button) findViewById(R.id.butnRemind);
         remindApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(Customer_EditAppointment.this);
+                View mView = getLayoutInflater().inflate(R.layout.customer_appointment_reminder_dialogue, null);
+                alert.setView(mView);
+
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCancelable(false);
+
+                mView.findViewById(R.id.okBTNRemind).setOnClickListener(view -> {
+
+                    alertDialog.dismiss();
+                });
+
+                alertDialog.show();
 
                 new Thread(new Runnable() {
                     @Override
@@ -273,7 +291,6 @@ public class Customer_EditAppointment extends AppCompatActivity {
                         }
                     }
                 }).start();
-                Toast.makeText(Customer_EditAppointment.this, "Email Reminder Sent", Toast.LENGTH_LONG).show();
 
             }
         });
