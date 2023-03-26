@@ -4,6 +4,7 @@ package com.example.carserviceandroidapp;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -181,7 +183,7 @@ public class ServiceHistory extends Fragment {
         // Define the name of the PDF file
         String pdfFileName = "Service_Report-" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()) + ".pdf";
 
-// Get a directory where the PDF will be saved
+        // Get a directory where the PDF will be saved
         File pdfFileDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/" + pdfFileName);
 
         try {
@@ -211,14 +213,14 @@ public class ServiceHistory extends Fragment {
             // Load the logo drawable
             Drawable logoDrawable = getResources().getDrawable(R.drawable.verticallogo);
 
-// Convert the drawable to a bitmap
+            // Convert the drawable to a bitmap
             Bitmap logoBitmap = ((BitmapDrawable) logoDrawable).getBitmap();
 
-// Define the desired width and height of the logo
+            // Define the desired width and height of the logo
             int desiredWidth = 100;
             int desiredHeight = 100;
 
-// Create a scaled bitmap of the logo
+            // Create a scaled bitmap of the logo
             Bitmap scaledLogoBitmap = Bitmap.createScaledBitmap(logoBitmap, desiredWidth, desiredHeight, true);
 
             // Resize the logo drawable to the calculated width and height
@@ -244,6 +246,12 @@ public class ServiceHistory extends Fragment {
             // Display a success message
             Toast.makeText(getContext(), "PDF created successfully", Toast.LENGTH_LONG).show();
 
+            // Open the PDF in a PDF viewer app
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(pdfFileDirectory), "application/pdf");
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+
         } catch (IOException e) {
             e.printStackTrace();
             // Display an error message
@@ -251,13 +259,7 @@ public class ServiceHistory extends Fragment {
         }
 
     }
-    public static Bitmap getRecyclerViewBitmap(RecyclerView view) {
-        RecyclerView.Adapter adapter = view.getAdapter();
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        view.draw(canvas);
-        return bitmap;
-    }
+
 
 
 }
