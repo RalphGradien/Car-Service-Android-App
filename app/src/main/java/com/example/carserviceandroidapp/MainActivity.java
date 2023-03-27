@@ -201,6 +201,12 @@ public class MainActivity extends AppCompatActivity {
                 DB.insertAppointmentDetail(13,"SP_4_3");
                 DB.insertAppointmentDetail(14,"SP_4_5");
                 DB.insertAppointmentDetail(15,"SP_5_11");
+                DB.insertAppointmentDetail(16,"SP_1_3");
+                DB.insertAppointmentDetail(17,"SP_2_6");
+                DB.insertAppointmentDetail(18,"SP_4_2");
+                DB.insertAppointmentDetail(19,"SP_4_3");
+                DB.insertAppointmentDetail(20,"SP_5_8");
+                DB.insertAppointmentDetail(21,"SP_5_8");
 
 
 

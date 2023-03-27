@@ -2,12 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+    <TextView
+        android:id="@+id/appointmentIDtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/appointmentIDtext"
+        android:text="Appointment ID: "
+        android:textStyle="bold"
+        android:textColor="#2E3192"/>
+    <TextView
+        android:id="@+id/iD_Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_toEndOf="@id/appointmentIDtext"
+        android:text="99"
+        android:textStyle="bold"
+        android:textColor="#2E3192"/>
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_below="@id/appointmentIDtext"
         android:text="Customer Name"
         android:textStyle="bold"
         android:textColor="#2E3192"/>

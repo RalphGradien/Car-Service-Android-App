@@ -12,6 +12,15 @@ public class ServiceHistoryItems {
     String ServiceAppointmentStatus;
     String ServiceDetails;
 
+    public String getServiceAppointmentID() {
+        return ServiceAppointmentID;
+    }
+
+    public void setServiceAppointmentID(String serviceAppointmentID) {
+        this.ServiceAppointmentID = serviceAppointmentID;
+    }
+
+    String ServiceAppointmentID;
     public String getServiceAppointmentType() {
         return ServiceAppointmentType;
     }
@@ -22,17 +31,18 @@ public class ServiceHistoryItems {
 
     String ServiceAppointmentType;
     // Constructor for "Completed Status"
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceDetails) {
-        CustomerName = customerName;
-        CustomerNumber = customerNumber;
-        CustomerEmail = customerEmail;
-        ServiceCompletedDate = serviceCompletedDate;
-        ServicePickupDate = servicePickupDate;
-        ServiceDropOffDate = serviceDropOffDate;
-        ServiceAppointmentStatus = serviceAppointmentStatus;
-        ServiceDetails = serviceDetails;
-    }
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceDetails, String serviceAppointmentType) {
+//    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceDetails) {
+//        CustomerName = customerName;
+//        CustomerNumber = customerNumber;
+//        CustomerEmail = customerEmail;
+//        ServiceCompletedDate = serviceCompletedDate;
+//        ServicePickupDate = servicePickupDate;
+//        ServiceDropOffDate = serviceDropOffDate;
+//        ServiceAppointmentStatus = serviceAppointmentStatus;
+//        ServiceDetails = serviceDetails;
+//    }
+    public ServiceHistoryItems(String serviceAppointmentID, String customerName, String customerNumber, String customerEmail, String serviceCompletedDate, String servicePickupDate, String serviceDropOffDate, String serviceAppointmentStatus, String serviceDetails, String serviceAppointmentType) {
+        ServiceAppointmentID = serviceAppointmentID;
         CustomerName = customerName;
         CustomerNumber = customerNumber;
         CustomerEmail = customerEmail;
@@ -44,15 +54,16 @@ public class ServiceHistoryItems {
         ServiceAppointmentType = serviceAppointmentType;
     }
     // Constructor for "Cancelled Status"
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceDetails, String serviceDropOffDate) {
-        CustomerName = customerName;
-        CustomerNumber = customerNumber;
-        CustomerEmail = customerEmail;
-        ServiceAppointmentStatus = serviceAppointmentStatus;
-        ServiceDetails = serviceDetails;
-        ServiceDropOffDate = serviceDropOffDate;
-    }
-    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceDetails, String serviceDropOffDate, String serviceAppointmentType) {
+//    public ServiceHistoryItems(String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceDetails, String serviceDropOffDate) {
+//        CustomerName = customerName;
+//        CustomerNumber = customerNumber;
+//        CustomerEmail = customerEmail;
+//        ServiceAppointmentStatus = serviceAppointmentStatus;
+//        ServiceDetails = serviceDetails;
+//        ServiceDropOffDate = serviceDropOffDate;
+//    }
+    public ServiceHistoryItems(String serviceAppointmentID, String customerName, String customerNumber, String customerEmail, String serviceAppointmentStatus, String serviceDetails, String serviceDropOffDate, String serviceAppointmentType) {
+        ServiceAppointmentID = serviceAppointmentID;
         CustomerName = customerName;
         CustomerNumber = customerNumber;
         CustomerEmail = customerEmail;
