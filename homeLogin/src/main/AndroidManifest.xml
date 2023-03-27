@@ -11,18 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GARK"
         tools:targetApi="31">
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.carserviceandroidapp.registerService"
-            android:exported="false" />
-        <activity
-            android:name="com.example.carserviceandroidapp.registerCustomer"
-            android:exported="false" />
-        <activity
-            android:name="com.example.carserviceandroidapp.LogIn"
-            android:exported="false" />
+
         <activity
             android:name="com.example.carserviceandroidapp.home"
             android:exported="true">

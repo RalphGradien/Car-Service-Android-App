@@ -475,6 +475,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT serviceProviderID FROM SERVICE_PROVIDER WHERE email = ?", new String[] { String.valueOf(p_email) });
         return cursor;
     }
+
     //update Service provider profile
     public Boolean updateServiceProviderProfile(Integer spID, String password, String name, String address, String city, String contact, String email)
     {
@@ -547,6 +548,17 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("SELECT imageName FROM SERVICE_PROVIDER WHERE ServiceProviderID = ?", new String[] { String.valueOf(ID) });
         return cursor;
+    }
+
+    //check the exist of the data in database
+    public boolean isDatabaseEmpty() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String count = "SELECT count(*) FROM CUSTOMER";
+        Cursor cursor = db.rawQuery(count, null);
+        cursor.moveToFirst();
+        int rowCount = cursor.getInt(0);
+        cursor.close();
+        return rowCount == 0;
     }
 
 }

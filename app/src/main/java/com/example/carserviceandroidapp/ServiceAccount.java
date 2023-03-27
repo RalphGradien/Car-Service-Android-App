@@ -3,6 +3,7 @@ package com.example.carserviceandroidapp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,6 +88,8 @@ public class ServiceAccount extends Fragment {
             public void onClick(View v) {
                 Customer.CustomerID = 0;
                 ServiceProvider.ServiceProviderID =0;
+                Log.d("ServiceProviderID LOG:", String.valueOf(ServiceProvider.ServiceProviderID));
+                Log.d("ServiceProviderID LOG:", String.valueOf( Customer.CustomerID));
                 startActivity(new Intent(rootView.getContext(), LogIn.class));
             }
         });
@@ -95,7 +98,11 @@ public class ServiceAccount extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(rootView.getContext(), CustomerEditProfile.class));
+                if( ServiceProvider.ServiceProviderID == 0){
+                    startActivity(new Intent(rootView.getContext(), CustomerEditProfile.class)); }
+                else {
+                    startActivity(new Intent(rootView.getContext(), Provider_EditProfile.class));
+                }
             }
         });
         return rootView;

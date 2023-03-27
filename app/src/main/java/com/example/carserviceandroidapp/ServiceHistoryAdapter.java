@@ -39,12 +39,15 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
         holder.numberView.setText(currentItem.getCustomerNumber());
         holder.emailView.setText(currentItem.getCustomerEmail());
         holder.appointmentTypeView.setText(currentItem.getServiceDetails());
+        holder.deliveryTypeView.setText(currentItem.getServiceAppointmentType());
 
         String appointmentStatus = currentItem.getServiceAppointmentStatus();
         holder.appointmentStatusView.setText(appointmentStatus);
         //Shows all parameters when "completed"
         if (appointmentStatus.equals("Completed")) {
             holder.completedDateView.setText(currentItem.getServiceCompletedDate());
+            holder.pickupDateView.setText(currentItem.getServicePickupDate());
+            holder.dropOffDateView.setText(currentItem.getServiceDropOffDate());
             holder.appointmentStatusView.setBackgroundResource(R.drawable.green_rounded_rectangle);
         }
         //Adjusts styling if cancelled

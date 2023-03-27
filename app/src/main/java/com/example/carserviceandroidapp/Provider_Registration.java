@@ -24,6 +24,7 @@ public class Provider_Registration extends AppCompatActivity {
     boolean [] selectedServices;
     ArrayList<Integer> selectedLocation = new ArrayList<>();
     ArrayList<StringBuilder> selectedServiceList = new ArrayList<>();
+    DBHelper dbHelper = new DBHelper(Provider_Registration.this);
     String [] serviceProvide = {"Full Brake Check","Tire Rotation","Battery Replacement","Air Filter Replacement",
         "Wheel Alignment", "Spark Plug Replacement", "Coolant Flush", "Transmission Service", "Fuel Injection Service",
         "Wheel Replacement", "Brake Check"};
@@ -31,6 +32,8 @@ public class Provider_Registration extends AppCompatActivity {
 
     //variables to hold the input data
     String v_providerName, v_providerPassWord, v_email,  v_contact, v_address, v_city;
+
+    boolean emailIsValidated = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,12 +107,16 @@ public class Provider_Registration extends AppCompatActivity {
                 v_address = address.getText().toString();
                 v_city = city.getText().toString();
 
+                emailIsValidated = validateEmail(v_email);
                 //validate input
                 if (v_providerName.isEmpty() || v_providerPassWord.isEmpty() || v_email.isEmpty() ||
                     v_contact.isEmpty() || v_address.isEmpty() || v_city.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please provide all the required fields!", Toast.LENGTH_SHORT).show();
-                } else {
-                    DBHelper dbHelper = new DBHelper(Provider_Registration.this);
+                }
+                else if(emailIsValidated==true){
+                    Toast.makeText(Provider_Registration.this, "Email is already existing", Toast.LENGTH_LONG).show();
+                }
+                else {
                     //add service provider data
                     dbHelper.insertServiceProvider(
                             v_providerPassWord, v_providerName, v_address, v_city, null, null, v_email,
@@ -150,5 +157,26 @@ public class Provider_Registration extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    //Validate register email
+    public boolean validateEmail(String email){
+
+        boolean result=false;
+        Cursor cursor = dbHelper.getServiceProviderInfo();
+        try{
+            if(cursor.getCount() > 0){
+                cursor.moveToPosition(-1);
+                while(cursor.moveToNext()){
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).trim().equals(email)){
+                        result = true;
+                    }
+                }
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return result;
     }
 }
