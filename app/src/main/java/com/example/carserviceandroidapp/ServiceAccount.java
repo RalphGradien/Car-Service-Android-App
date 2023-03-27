@@ -39,7 +39,7 @@ public class ServiceAccount extends Fragment {
             Cursor imageCursor = db.getServiceProviderImage(spID);
             imageCursor.moveToFirst();
 
-            String imageLetter=imageCursor.getString(0);
+            String imageLetter = imageCursor.getString(0);
             int image = 0;
 
             switch(imageLetter){
@@ -95,7 +95,7 @@ public class ServiceAccount extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(rootView.getContext(), CustomerEditProfile.class));
+                    startActivity(new Intent(rootView.getContext(), Provider_EditProfile.class));
             }
         });
         return rootView;
