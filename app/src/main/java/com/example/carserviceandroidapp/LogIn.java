@@ -17,12 +17,12 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.gark.R.layout.activity_log_in);
-        EditText username = findViewById(com.example.gark.R.id.email);
-        EditText password = findViewById(com.example.gark.R.id.passwordTxt);
+        setContentView(R.layout.activity_log_in);
+        EditText username = findViewById(R.id.email);
+        EditText password = findViewById(R.id.passwordTxt);
 
 
-        Button login = findViewById(com.example.gark.R.id.sendLink);
+        Button login = findViewById(R.id.sendLink);
         //LOGIN BUTTON
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +70,7 @@ public class LogIn extends AppCompatActivity {
             }
         });
         //REGISTER AS SERVICE PROVIDER
-        TextView regServiceTxt = findViewById(com.example.gark.R.id.regService);
+        TextView regServiceTxt = findViewById(R.id.regService);
         regServiceTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +79,7 @@ public class LogIn extends AppCompatActivity {
             }
         });
         //REGISTER AS CUSTOMER
-        TextView regCustomerTxt = findViewById(com.example.gark.R.id.regCustomer);
+        TextView regCustomerTxt = findViewById(R.id.regCustomer);
         regCustomerTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +88,7 @@ public class LogIn extends AppCompatActivity {
             }
         });
         //Forgot Password
-        TextView forgotPw = findViewById(com.example.gark.R.id.forgotPassword);
+        TextView forgotPw = findViewById(R.id.forgotPassword);
         forgotPw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

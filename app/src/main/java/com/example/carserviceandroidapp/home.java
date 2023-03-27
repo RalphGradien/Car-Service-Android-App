@@ -12,9 +12,9 @@ public class home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.gark.R.layout.activity_home);
-        about = findViewById(com.example.gark.R.id.aboutBtn);
-        login = findViewById(com.example.gark.R.id.loginBtn);
+        setContentView(R.layout.activity_home);
+        about = findViewById(R.id.aboutBtn);
+        login = findViewById(R.id.loginBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
