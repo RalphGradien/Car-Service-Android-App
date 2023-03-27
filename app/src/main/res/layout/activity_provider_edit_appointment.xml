@@ -16,17 +16,30 @@
         tools:context=".Customer_EditAppointment">
 
         <TextView
-            android:paddingStart="10dp"
-            android:gravity="center_vertical"
-            android:textSize="15dp"
             android:id="@+id/dropOffLocation"
-            android:layout_width="350dp"
+            android:layout_width="200dp"
             android:layout_height="43dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/textview_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dropOffLocationlbl" />
+
+
+        <TextView
+            android:id="@+id/serviceTypeBook"
+            android:layout_width="116dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/textview_border"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/dropOffLocation"
             app:layout_constraintTop_toBottomOf="@+id/dropOffLocationlbl" />
 
         <TextView
@@ -98,16 +111,28 @@
 
         <EditText
             android:id="@+id/pickUpLocation"
-            android:paddingStart="10dp"
-            android:gravity="center_vertical"
-            android:textSize="15dp"
-            android:layout_width="350dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="198dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/textview_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabel" />
+
+        <TextView
+            android:id="@+id/serviceTypeDone"
+            android:layout_width="116dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/textview_border"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/pickUpLocation"
             app:layout_constraintTop_toBottomOf="@+id/tvPickupLocationLabel" />
 
         <TextView
@@ -212,6 +237,8 @@
             app:layout_constraintStart_toStartOf="@+id/statusLbl"
             app:layout_constraintTop_toBottomOf="@+id/pickUpLocation" />
 
+
+
         <TextView
             android:id="@+id/statusLbl"
             android:layout_width="wrap_content"
@@ -229,40 +256,40 @@
             style="@style/BlueButton"
             android:layout_width="85dp"
             android:layout_height="45dp"
-            android:layout_marginStart="39dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
             android:text="@string/buttonRemind"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btnCancel"
-            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnUpdate"
             style="@style/GreenButton"
             android:layout_width="85dp"
             android:layout_height="45dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="38dp"
             android:text="@string/buttonUpdate"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnEmail"
+            app:layout_constraintStart_toEndOf="@+id/btnCancel" />
 
         <Button
             android:id="@+id/btnCancel"
             style="@style/RedButton"
             android:layout_width="85dp"
             android:layout_height="45dp"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
             android:text="@string/buttonCancel"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnEmail"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+            app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/appointmentStatusEdit" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -270,7 +297,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp" />
+            app:layout_constraintGuide_begin="-42dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
