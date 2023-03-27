@@ -40,7 +40,7 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
         holder.emailView.setText(currentItem.getCustomerEmail());
         holder.appointmentTypeView.setText(currentItem.getServiceDetails());
         holder.deliveryTypeView.setText(currentItem.getServiceAppointmentType());
-
+        holder.idNumberView.setText(currentItem.getServiceAppointmentID());
         String appointmentStatus = currentItem.getServiceAppointmentStatus();
         holder.appointmentStatusView.setText(appointmentStatus);
         //Shows all parameters when "completed"

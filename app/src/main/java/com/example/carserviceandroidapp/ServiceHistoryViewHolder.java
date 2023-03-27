@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ServiceHistoryViewHolder extends RecyclerView.ViewHolder {
 
    TextView nameView, numberView, emailView,
-           appointmentTypeView,appointmentStatusView, deliveryTypeView,
+           appointmentTypeView,appointmentStatusView, deliveryTypeView, idNumberView,
            completedDateView, pickupDateView, dropOffDateView, completed, pickup;
 
     public ServiceHistoryViewHolder(@NonNull View itemView) {
 
         super(itemView);
+        idNumberView = itemView.findViewById(R.id.iD_Number);
         nameView = itemView.findViewById(R.id.name);
         numberView = itemView.findViewById(R.id.number);
         emailView = itemView.findViewById(R.id.email);
