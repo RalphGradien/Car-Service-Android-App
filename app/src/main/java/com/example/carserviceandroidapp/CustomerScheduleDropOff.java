@@ -10,11 +10,16 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +60,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         TextView txtServiceProviderLocation = findViewById(R.id.txtCSDO_ServiceProviderLocation);
 
         Spinner SpinServiceDetail = findViewById(R.id.spinCSDO_ServiceDetail);
-        Spinner SpinServiceLocation = findViewById(R.id.spinCSDO_Location);
+       // Spinner SpinServiceLocation = findViewById(R.id.spinCSDO_Location);
         Spinner SpinDate = findViewById(R.id.spinCSDO_Date);
         Spinner SpinHours = findViewById(R.id.spinCSDO_Time);
 
@@ -64,6 +69,67 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         btnCSDOConfirm.setBackgroundColor(Color.GREEN);
         btnCSDOCancel.setBackgroundColor(Color.RED);
 
+
+        RadioGroup radioGroup = findViewById(R.id.radio_group);
+        EditText otherText = findViewById(R.id.other_text);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio_button3) {
+                    // Show the EditText when Radio Button 3 is selected
+                    otherText.setVisibility(View.VISIBLE);
+                } else {
+                    // Hide the EditText for all other RadioButtons
+                    otherText.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+
+        RadioButton radioButton1 = findViewById(R.id.radio_button1);
+// Set an OnClickListener on Radio Button 1
+        radioButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Select Radio Button 1 when its text is clicked
+                radioButton1.setChecked(true);
+                DropoffLocation = fullLoc;
+                appointmentType = "Drop Off";
+            }
+        });
+
+        RadioButton radioButton2 = findViewById(R.id.radio_button2);
+// Set an OnClickListener on Radio Button 2
+        radioButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Select Radio Button 2 when its text is clicked
+                radioButton2.setChecked(true);
+                DropoffLocation = custLoc;
+                appointmentType = "Pick Up";
+            }
+        });
+
+        RadioButton radioButton3 = findViewById(R.id.radio_button3);
+// Set an OnClickListener on Radio Button 3
+        radioButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Select Radio Button 3 when its text is clicked
+                radioButton3.setChecked(true);
+                appointmentType = "Pick Up";
+
+            }
+        });
+
+        otherText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioButton3.setChecked(true);
+            }
+        });
 
         Intent intent = getIntent();
         if(intent!=null)
@@ -136,8 +202,16 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             //method of confirmation of booking an appointment
-             showDialog();
+             if(radioButton3.isChecked() && TextUtils.isEmpty(otherText.getText().toString()))
+             {
+                 Toast.makeText(CustomerScheduleDropOff.this,"Please fill in the location",Toast.LENGTH_SHORT).show();
+
+             }
+             else {
+                 showDialog();
+             }
             }
+
 
             private void showDialog()
             {
@@ -150,10 +224,11 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 displayData3();
                 DropoffTimeDate = SpinDate.getSelectedItem().toString() + " " + SpinHours.getSelectedItem().toString() ;
                 ServiceList = "SP_" + spID + "_" + sdID ;
+                 if(radioButton3.isChecked()) DropoffLocation = otherText.getText().toString();
 
-                if(SpinServiceLocation.getSelectedItem().toString().equals("Drop Off")) { DropoffLocation = fullLoc;}
-                else {DropoffLocation = custLoc;}
-                appointmentType = SpinServiceLocation.getSelectedItem().toString();
+//                if(SpinServiceLocation.getSelectedItem().toString().equals("Drop Off")) { DropoffLocation = fullLoc;}
+//                else {DropoffLocation = custLoc;}
+//                appointmentType = SpinServiceLocation.getSelectedItem().toString();
                 BookingDate = CurrDate;AppointmentStatus = "Ongoing";
                 DB.insertAppointment(userID,spID,pickupDateTime,pickupLocation,pickupReadyDate,DropoffTimeDate
                         ,DropoffLocation,BookingDate,CancelledDate,appointmentType,AppointmentStatus);
