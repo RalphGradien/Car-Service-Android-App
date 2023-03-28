@@ -118,6 +118,8 @@ public class home extends AppCompatActivity {
 
                     DB.insertAppointment(1, 2, "03/20/2023 02:30 PM", "Abbosford, Surrey, BC, V43G67 ", "03/19/2023", "03/16/2023 11:00 AM",
                             "123 Main St", "03/15/2023", "", "Drop Off", "Completed");
+                    DB.insertAppointment(5, 2, "03/20/2023 02:30 PM", "Abbosford, Surrey, BC, V43G67 ", "03/19/2023", "03/16/2023 11:00 AM",
+                            "123 Main St", "03/15/2023", "", "Drop Off", "Cancelled");
 
                     DB.insertAppointment(1, 4, "01/13/2023 03:30 PM", "Granville street, Vancouver, BC, V6H 3K4", "01/11/2023", "01/10/2023 11:00 AM",
                             "Granville street, Vancouver, BC, V6H 3K4", "01/06/2023", "", "Drop Off", "Completed");
@@ -164,6 +166,11 @@ public class home extends AppCompatActivity {
                             "King George Avenue, Vancouver, BC, K6V 3K4", "03/08/2023", "", "Pick Up", "Ongoing");
                     DB.insertAppointment(9, 4, "03/30/2023 06:30 PM", "Granville street, Vancouver, BC, S6H 3K6", "04/05/2023", "03/08/2023 06:00 PM",
                             "Granville street, Vancouver, BC, S6H 3K6", "03/08/2023", "", "Pick Up", "Ongoing");
+                    DB.insertAppointment(10, 4, "03/25/2023 05:30 PM", "King George Avenue, Vancouver, BC, K6V 3K4", "03/27/2023", "03/30/2023 05:00 PM",
+                            "King George Avenue, Vancouver, BC, K6V 3K4", "03/08/2023", "", "Pick Up", "Cancelled");
+                    DB.insertAppointment(3, 4, "03/30/2023 06:30 PM", "Granville street, Vancouver, BC, S6H 3K6", "04/05/2023", "03/08/2023 06:00 PM",
+                            "Granville street, Vancouver, BC, S6H 3K6", "03/08/2023", "", "Pick Up", "Cancelled");
+
 
 
 

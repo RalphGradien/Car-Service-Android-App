@@ -56,9 +56,6 @@ public class ServiceHistory extends Fragment {
     //D/AndroidRuntime: Shutting down VM
     //E/AndroidRuntime: FATAL EXCEPTION: main
     private static final String QUERY_COMPLETED_APPOINTMENTS =
-//            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, A.AppointmentType,SD.ServiceName " +
-//                    "FROM APPOINTMENT A, SERVICE_DETAIL SD" +
-//                    "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Cancelled'";
             "SELECT A.AppointmentID, C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID,  A.AppointmentType, SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +
@@ -68,9 +65,6 @@ public class ServiceHistory extends Fragment {
                     "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Completed'";
 
     private static final String QUERY_CANCELLED_APPOINTMENTS =
-//            "SELECT C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, A.AppointmentType,SD.ServiceName " +
-//                    "FROM APPOINTMENT A, SERVICE_DETAIL SD" +
-//                    "WHERE A.ServiceProviderID = ? AND AppointmentStatus = 'Cancelled'";
             "SELECT A.AppointmentID, C.name, C.mobile, C.email, A.AppointmentStatus, A.PickUpDateTime, A.PickUpReadyDate,A.DropOffTimeDate, A.ServiceProviderID, A.AppointmentType,SD.ServiceName " +
                     "FROM APPOINTMENT A " +
                     "INNER JOIN CUSTOMER C ON A.Userid = C.Userid " +

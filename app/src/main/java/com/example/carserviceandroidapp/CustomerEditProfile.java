@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class CustomerEditProfile extends AppCompatActivity {
     DBHelper DB;
-    String username,password,confirm_password,email,mobile,address;
+    String username,password,confirm_password,email,prevemail,mobile,address;
     int userID;
 
     EditText etName;
@@ -97,7 +97,7 @@ public class CustomerEditProfile extends AppCompatActivity {
                     Boolean deletedata=  DB.deleteData(userID);
                         if (deletedata == true && checkDelData ==true) {
                             showDelDialog();
-                           Toast.makeText(CustomerEditProfile.this, "Deleted successfully", Toast.LENGTH_LONG).show();
+                           //Toast.makeText(CustomerEditProfile.this, "Deleted successfully", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(CustomerEditProfile.this, "Failed to delete", Toast.LENGTH_LONG).show();
 
@@ -175,14 +175,14 @@ public class CustomerEditProfile extends AppCompatActivity {
 
                 Boolean checkupdatedata = DB.updateData(editTxtUserName.getText().toString(), userID, editTxtPassword.getText().toString(), editTxtEmail.getText().toString(), editTxtMobile.getText().toString(), editTxtAddress.getText().toString());
                 if (checkupdatedata == true) {
-                    Toast.makeText(CustomerEditProfile.this, "Updated Successfully", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(CustomerEditProfile.this, "Updated Successfully", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(CustomerEditProfile.this, "Failed to Updated", Toast.LENGTH_LONG).show();
                 }
 
 
                 mView.findViewById(R.id.okBTN).setOnClickListener(v -> {
-                    // Toast.makeText(this, "Clicked OK BTN", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(CustomerEditProfile.this, CustomerMainMenu.class);
                     startActivity(intent);
                     alertDialog.dismiss();
@@ -255,17 +255,14 @@ public class CustomerEditProfile extends AppCompatActivity {
 
     //email validation
     private boolean validateEmail(String email){
-
         boolean result=false;
         Cursor cursor = DB.getCustomerData();
         try{
             if(cursor.getCount() > 0){
-                //  cursor.moveToPosition(-1);
+                cursor.moveToPosition(-1);
                 while(cursor.moveToNext()){
-                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).equals(email)){
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("email")).trim().equals(email) && !prevemail.equals(email)){
                         result = true;
-                    }else{
-                        result =   false;
                     }
                 }
             }
@@ -305,6 +302,7 @@ public class CustomerEditProfile extends AppCompatActivity {
                     username = cursor.getString(1);
                     password = cursor.getString(2);
                     email = cursor.getString(3);
+                    prevemail = cursor.getString(3);
                     mobile = cursor.getString(4);
                     address = cursor.getString(5);
                 }
