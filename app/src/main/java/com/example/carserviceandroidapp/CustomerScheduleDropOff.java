@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -201,8 +202,16 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             //method of confirmation of booking an appointment
-             showDialog();
+             if(radioButton3.isChecked() && TextUtils.isEmpty(otherText.getText().toString()))
+             {
+                 Toast.makeText(CustomerScheduleDropOff.this,"Please fill in the location",Toast.LENGTH_SHORT).show();
+
+             }
+             else {
+                 showDialog();
+             }
             }
+
 
             private void showDialog()
             {
@@ -215,7 +224,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 displayData3();
                 DropoffTimeDate = SpinDate.getSelectedItem().toString() + " " + SpinHours.getSelectedItem().toString() ;
                 ServiceList = "SP_" + spID + "_" + sdID ;
-                 if(radioButton3.isChecked())DropoffLocation = otherText.getText().toString();
+                 if(radioButton3.isChecked()) DropoffLocation = otherText.getText().toString();
 
 //                if(SpinServiceLocation.getSelectedItem().toString().equals("Drop Off")) { DropoffLocation = fullLoc;}
 //                else {DropoffLocation = custLoc;}
