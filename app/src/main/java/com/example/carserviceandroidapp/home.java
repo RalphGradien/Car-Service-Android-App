@@ -164,6 +164,11 @@ public class home extends AppCompatActivity {
                             "King George Avenue, Vancouver, BC, K6V 3K4", "03/08/2023", "", "Pick Up", "Ongoing");
                     DB.insertAppointment(9, 4, "03/30/2023 06:30 PM", "Granville street, Vancouver, BC, S6H 3K6", "04/05/2023", "03/08/2023 06:00 PM",
                             "Granville street, Vancouver, BC, S6H 3K6", "03/08/2023", "", "Pick Up", "Ongoing");
+                    DB.insertAppointment(10, 4, "03/25/2023 05:30 PM", "King George Avenue, Vancouver, BC, K6V 3K4", "03/27/2023", "03/30/2023 05:00 PM",
+                            "King George Avenue, Vancouver, BC, K6V 3K4", "03/08/2023", "", "Pick Up", "Cancelled");
+                    DB.insertAppointment(3, 4, "03/30/2023 06:30 PM", "Granville street, Vancouver, BC, S6H 3K6", "04/05/2023", "03/08/2023 06:00 PM",
+                            "Granville street, Vancouver, BC, S6H 3K6", "03/08/2023", "", "Pick Up", "Cancelled");
+
 
 
 

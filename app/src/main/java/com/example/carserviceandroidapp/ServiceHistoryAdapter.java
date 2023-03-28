@@ -1,8 +1,6 @@
 package com.example.carserviceandroidapp;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +27,7 @@ public class ServiceHistoryAdapter extends RecyclerView.Adapter<ServiceHistoryVi
     @NonNull
     @Override
     public ServiceHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ServiceHistoryViewHolder(LayoutInflater.from(context).inflate(R.layout.history_view,parent,false));
+        return new ServiceHistoryViewHolder(LayoutInflater.from(context).inflate(R.layout.serivce_history_view,parent,false));
     }
 
     @Override
