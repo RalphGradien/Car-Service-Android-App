@@ -43,7 +43,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class CustomerScheduleDropOff extends AppCompatActivity {
-    DBHelper DB; int spID,userID;String spName,sdID,userName, fullLoc, custLoc; int aptID;
+    DBHelper DB; int spID,userID;String spName,sdID,userName,custEmail, fullLoc, custLoc; int aptID;
     ArrayList<String>spDetails = new ArrayList<>();
     ArrayList<String>location = new ArrayList<>();
     String pickupDateTime="",pickupLocation="",pickupReadyDate="", DropoffTimeDate="", DropoffLocation="",
@@ -202,14 +202,19 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             //method of confirmation of booking an appointment
-             if(radioButton3.isChecked() && TextUtils.isEmpty(otherText.getText().toString()))
-             {
+
+                if(!radioButton1.isChecked()&& !radioButton2.isChecked()&& !radioButton3.isChecked())
+                {
+                    Toast.makeText(CustomerScheduleDropOff.this,"Please fill in the location",Toast.LENGTH_SHORT).show();
+                }
+                else if(radioButton3.isChecked() && TextUtils.isEmpty(otherText.getText().toString()))
+                {
                  Toast.makeText(CustomerScheduleDropOff.this,"Please fill in the location",Toast.LENGTH_SHORT).show();
 
-             }
-             else {
+                }
+                else {
                  showDialog();
-             }
+                }
             }
 
 
@@ -269,12 +274,12 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                                     }
                                 });
                         try {
+                            displaydata4();
                             Message message = new MimeMessage(session);
                             message.setFrom(new InternetAddress(username));
                             message.setRecipients(Message.RecipientType.TO,
-                                    InternetAddress.parse("arifinw@gmail.com"));
+                                    InternetAddress.parse(custEmail));
                             message.setSubject("Subject: Booking Appointment Confirmation");
-                            displaydata4();
                             message.setText("Hello, " + userName + "\n\nThis is a confirmation email regarding the appointment you booked at our Service Provider. Here are the details" +
                                     "\n\nService Booked   :   " + ServiceDetail +
                                     "\nBooking Time  :   " + BookingDate +
@@ -463,7 +468,7 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                 if(Integer.parseInt( cursor.getString(0))==userID)
                 {
                     userName = cursor.getString(1);
-
+                    custEmail = cursor.getString(3);
                 }
             }
         }
