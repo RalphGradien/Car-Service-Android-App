@@ -1,158 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/txt"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CustomerScheduleDropOff">
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginTop="40dp"
+    android:layout_height="650dp">
 
+    <!-- Text View -->
     <TextView
         android:id="@+id/txtCSDO_ServiceProviderName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-
-        android:text="Service Provider"
-
-        android:textColor="#2E3192"
+        android:paddingBottom="10dp"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinCSDO_Time"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="62dp"
-        android:background="@drawable/textview_border"
-        app:layout_constraintBottom_toTopOf="@+id/btnCSDOConfirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceProviderLocation"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/txtCSDO_Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Date"
         android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Date"
-        app:layout_constraintStart_toStartOf="@+id/spinCSDO_Location" />
+        android:text="Service Provider" />
 
-    <Spinner
-        android:id="@+id/spinCSDO_Location"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/textview_border"
-        android:entries="@array/apt_type"
-        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/txtCSDO_Location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Type of Service"
-        android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Location"
-        app:layout_constraintStart_toStartOf="@+id/spinCSDO_ServiceDetail" />
-
-    <Spinner
-        android:id="@+id/spinCSDO_ServiceDetail"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/textview_border"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/txtCSDO_Time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Time"
-        android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Time"
-        app:layout_constraintStart_toStartOf="@+id/spinCSDO_Date" />
-
-    <TextView
-        android:id="@+id/txtCSDO_ServiceDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:text="Service Detail"
-        android:textColor="#2E3192"
-        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_ServiceDetail"
-        app:layout_constraintStart_toStartOf="@+id/spinCSDO_ServiceDetail" />
-
-    <Spinner
-        android:id="@+id/spinCSDO_Date"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/textview_border"
-        app:layout_constraintBottom_toTopOf="@+id/txtCSDO_Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Button
-        android:id="@+id/btnCSDOConfirm"
-        style="@style/GreenButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="89dp"
-        android:text="@string/btnCSDOConfirm"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCSDOCancel"
-        app:layout_constraintTop_toBottomOf="@+id/spinCSDO_Time" />
-
-    <Button
-        android:id="@+id/btnCSDOCancel"
-
-        style="@style/RedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/btnCSDOCancel"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCSDOConfirm"
-        app:layout_constraintEnd_toStartOf="@+id/btnCSDOConfirm"
-        app:layout_constraintStart_toStartOf="parent" />
-
+    <!-- Text View -->
     <TextView
         android:id="@+id/txtCSDO_ServiceProviderLocation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginBottom="307dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/spinCSDO_Time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCSDO_ServiceProviderName" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:paddingBottom="30dp"
+        android:text="Text View 2" />
+
+    <!-- Text View -->
+    <TextView
+        android:id="@+id/txtCSDO_ServiceDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service Detail"
+        android:paddingBottom="10dp"
+        android:textColor="#2E3192"/>
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/spinCSDO_ServiceDetail"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingBottom="10dp" />
+
+    <!-- Text View -->
+    <TextView
+        android:id="@+id/txtCSDO_Location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="Location"
+        android:textColor="#2E3192" />
+
+    <!-- Radio Group -->
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Radio Button 1 -->
+        <RadioButton
+            android:id="@+id/radio_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drop Off at Service Provider Address" />
+
+        <!-- Radio Button 2 -->
+        <RadioButton
+            android:id="@+id/radio_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick Up at Customer Address" />
+
+        <!-- Radio Button 3 -->
+
+
+            <RadioButton
+
+                android:id="@+id/radio_button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick Up at Other Location" />
+
+            <EditText
+                android:id="@+id/other_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter other location"
+                android:visibility="gone"
+                />
+
+
+    </RadioGroup>
+
+    <!-- Text View -->
+    <TextView
+        android:id="@+id/txtCSDO_Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="Date"
+        android:textColor="#2E3192" />
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/spinCSDO_Date"
+        android:layout_width="match_parent"
+        android:paddingBottom="10dp"
+        android:layout_height="45dp"
+        />
+
+    <!-- Text View -->
+    <TextView
+        android:id="@+id/txtCSDO_Time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="Time"
+        android:textColor="#2E3192"
+        />
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/spinCSDO_Time"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingBottom="10dp"
+        />
+
+    <!-- Button Group -->
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Button 1 -->
+        <Button
+            android:id="@+id/btnCSDOCancel"
+            style="@style/RedButton"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="28dp"
+            android:text="@string/btnCSDOCancel"
+            android:textColor="#FFFFFF" />
+
+        <!-- Button 2 -->
+        <Button
+            android:id="@+id/btnCSDOConfirm"
+            style="@style/GreenButton"
+            android:text="@string/btnCSDOConfirm"
+            android:textColor="#FFFFFF"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+         />
+
+    </LinearLayout>
+
+</LinearLayout>
