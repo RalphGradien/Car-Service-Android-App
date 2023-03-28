@@ -121,6 +121,16 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
         SpinHours.setAdapter(adapter4);
         String selectedHour = SpinHours.getSelectedItem().toString();
 
+        btnCSDOCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerScheduleDropOff.this, CustomerMainMenu.class);
+                startActivity(intent);
+
+
+            }
+        });
+
 
         btnCSDOConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +159,6 @@ public class CustomerScheduleDropOff extends AppCompatActivity {
                         ,DropoffLocation,BookingDate,CancelledDate,appointmentType,AppointmentStatus);
                 getAptID();
                 DB.insertAppointmentDetail(aptID,ServiceList);
-                Toast.makeText(CustomerScheduleDropOff.this,"Successfuly Book an Appointment!!",Toast.LENGTH_SHORT).show();
                 sendEmail();
 
                 mView.findViewById(R.id.okBTN3).setOnClickListener(v -> {
