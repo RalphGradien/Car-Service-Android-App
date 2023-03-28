@@ -142,8 +142,8 @@ public class Customer_Registration extends AppCompatActivity {
             return false;
         }
         else if(cContact.length()==0){
-            etAddress.requestFocus();
-            etAddress.setError("FIELD CANNOT BE EMPTY");
+            etContact.requestFocus();
+            etContact.setError("FIELD CANNOT BE EMPTY");
             return false;
         }
 

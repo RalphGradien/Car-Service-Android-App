@@ -141,8 +141,8 @@ public class ServiceHistory extends Fragment {
             }
         });
 
-//        int serviceProviderID = ServiceProvider.ServiceProviderID;
-        int serviceProviderID = 1;
+     int serviceProviderID = ServiceProvider.ServiceProviderID;
+//        int serviceProviderID = 1;
 
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
