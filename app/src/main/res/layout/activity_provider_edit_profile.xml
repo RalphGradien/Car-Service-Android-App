@@ -59,12 +59,7 @@
         android:text="@string/txtPassword"
         app:layout_constraintBottom_toTopOf="@+id/editProviderPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProviderName" /><![CDATA[
-
-    />
-
-    ]]>
-
+        app:layout_constraintTop_toBottomOf="@+id/editProviderName" />
     <EditText
         android:id="@+id/editProviderPassword"
         android:layout_width="240dp"
@@ -115,15 +110,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProviderAddress" />
 
-    <EditText
+    <TextView
         android:id="@+id/editProviderEmail"
         android:layout_width="240dp"
         android:layout_height="48dp"
         android:background="@drawable/textview_border"
         android:ems="10"
+        android:gravity="left|center_vertical"
         android:hint="@string/hint_editProviderEmail"
         android:inputType="textEmailAddress"
         android:paddingStart="10dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"

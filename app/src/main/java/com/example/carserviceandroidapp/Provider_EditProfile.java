@@ -24,7 +24,7 @@ public class Provider_EditProfile extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         TextView name = findViewById(R.id.editProviderName);
         EditText  password = findViewById(R.id.editProviderPassword);
-        EditText email = findViewById(R.id.editProviderEmail);
+        TextView email = findViewById(R.id.editProviderEmail);
         EditText contact = findViewById(R.id.editProviderContact);
         EditText address = findViewById(R.id.editProviderAddress);
         EditText city = findViewById(R.id.editProviderCity);
