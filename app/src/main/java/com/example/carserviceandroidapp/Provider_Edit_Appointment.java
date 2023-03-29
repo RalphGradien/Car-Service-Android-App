@@ -235,7 +235,10 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                                     boolean isUpdated = dbHelper.cancelAppointment(appIdCurrent);
                                     if (isUpdated) {
                                         Toast.makeText(Provider_Edit_Appointment.this, "Successfully Cancelled", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Provider_Edit_Appointment.this, Provider_Appointment.class));
+//                                        Intent intent = new Intent(Provider_Edit_Appointment.this, Provider_Appointment.class);
+//                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                        startActivity(intent);
+                                        finish();
                                     } else {
                                         Toast.makeText(Provider_Edit_Appointment.this, "Failure to Cancel", Toast.LENGTH_SHORT).show();
                                     }
@@ -252,7 +255,6 @@ public class Provider_Edit_Appointment extends AppCompatActivity {
                 } else {
                     Toast.makeText(Provider_Edit_Appointment.this, "Service in progress, you cannot cancel the appointment", Toast.LENGTH_LONG).show();
                 }
-                finish();
             }
         });
     }
