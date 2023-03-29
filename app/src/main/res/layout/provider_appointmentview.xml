@@ -71,7 +71,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Drop-Off "
+        android:text="Service booked "
         android:layout_below="@+id/customerAddress"
         android:textColor="#707477"
         android:textStyle="bold" />
@@ -93,7 +93,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="Pickup "
+        android:text="Service done"
         android:layout_below="@+id/dropOffDateLabel"
         android:textColor="#707477"
         android:textStyle="bold" />
