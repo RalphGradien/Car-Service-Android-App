@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Random;
+
 public class ServiceAccount extends Fragment {
 
     @Nullable
@@ -76,7 +78,41 @@ public class ServiceAccount extends Fragment {
         if(cID> 0){
             Cursor custCursor = db.getCustomerName(cID);
             custCursor.moveToFirst();
+            Cursor imageCursor = db.getServiceProviderImage(spID);
+            imageCursor.moveToFirst();
+
+            Random random = new Random();
+            char randomChar = (char) (random.nextInt(8) + 'a');
+            int image = 0;
+
+            switch(randomChar) {
+                case 'a':
+                    image = R.drawable.c1;
+                    break;
+                case 'b':
+                    image = R.drawable.c2;
+                    break;
+                case 'c':
+                    image = R.drawable.c3;
+                    break;
+                case 'd':
+                    image = R.drawable.c4;
+                    break;
+                case 'e':
+                    image = R.drawable.c5;
+                    break;
+                case 'f':
+                    image = R.drawable.c6;
+                    break;
+                case 'g':
+                    image = R.drawable.c7;
+                    break;
+                case 'h':
+                    image = R.drawable.c8;
+                    break;
+            }
             profileName.setText(custCursor.getString(0));
+            imageProfile.setImageResource(image);
         }
 
         Button logOut = rootView.findViewById(R.id.logOut);

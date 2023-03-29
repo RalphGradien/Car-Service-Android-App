@@ -43,7 +43,7 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View v) {
                 EditText emailEditText = findViewById(R.id.email);
                 String recipient = emailEditText.getText().toString();
-                sendEmail(recipient);
+
                 //checks if username or password is empty and creates toast
                 DBHelper dbHelper = new DBHelper(ForgotPassword.this);
                 //Checks if login details are correct.
@@ -51,31 +51,28 @@ public class ForgotPassword extends AppCompatActivity {
                 //Returns CustomerID or Service ID on loginStatus[1]
                 //Returns password on loginStatus[2]
                 String[] loginStatus = dbHelper.checkEmail(recipient);
-                if (recipient.isEmpty() ) {
+                if (recipient.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (loginStatus[0].equals("NOT_FOUND")) {
-                    //login details not in Database, show error
                     Toast.makeText(getApplicationContext(), "Email does not exist", Toast.LENGTH_SHORT).show();
+                    return;
                 } else if (loginStatus[0].equals("CUSTOMER")) {
-                    //Stores ID to global variable
                     Toast.makeText(getApplicationContext(), "Email Sent!", Toast.LENGTH_LONG).show();
                     Customer.CustomerID = Integer.parseInt(loginStatus[1]);
                     userPassword = loginStatus[2].toString();
                     sendEmail(recipient);
                     Log.d("CustomerID LOG:", String.valueOf(Customer.CustomerID));
-                }else if (loginStatus[0].equals("SERVICE_PROVIDER")) {
-                    //Stores ID to global variable
+                } else if (loginStatus[0].equals("SERVICE_PROVIDER")) {
                     Toast.makeText(getApplicationContext(), "Email Sent!", Toast.LENGTH_LONG).show();
                     ServiceProvider.ServiceProviderID = Integer.parseInt(loginStatus[1]);
                     userPassword = loginStatus[2].toString();
                     sendEmail(recipient);
                     Log.d("ServiceProviderID LOG:", String.valueOf(ServiceProvider.ServiceProviderID));
-                    // login service provider successful, start app Service Provider Module
                 }
             }
-
         });
+
     }
     private static final String TAG = "ForgotPassword";
     private void sendEmail(String emailEditText) {
@@ -107,11 +104,12 @@ public class ForgotPassword extends AppCompatActivity {
                             InternetAddress.parse(stringReceiverEmail));
                     message.setSubject("Gark App Forgot Password");
 
-                    message.setText("Greetings! " + ", \n\nYour password is: " + userPassword +
+                    message.setText("Greetings! " + "\n\nIt looks like you forgot something. Your password is: " + userPassword +
                             " \n\n Cheers!\n");
 
                     Transport.send(message);
                     Log.i(TAG, "Email sent successfully");
+                    userPassword="";
                 } catch (MessagingException e) {
                     Log.e(TAG, "Email sending failed: " + e.getMessage());
                 }
