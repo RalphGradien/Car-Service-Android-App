@@ -139,7 +139,7 @@ public class ServiceAccount extends Fragment {
                 else {
                     startActivity(new Intent(rootView.getContext(), Provider_EditProfile.class));
                 }
-                    startActivity(new Intent(rootView.getContext(), Provider_EditProfile.class));
+
             }
         });
         return rootView;
